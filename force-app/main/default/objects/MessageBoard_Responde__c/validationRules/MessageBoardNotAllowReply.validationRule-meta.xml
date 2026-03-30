@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>MessageBoardNotAllowReply</fullName>
-    <active>true</active>
-    <description>留言板不可回复</description>
-    <errorConditionFormula>TEXT(MessageBoard__r.IsActive__c)  &lt;&gt; &apos;有效&apos;</errorConditionFormula>
-    <errorMessage>当前留言板已过期，不可新建或编辑回复。请联系留言板创建人重新激活，或新建留言板。</errorMessage>
-</ValidationRule>

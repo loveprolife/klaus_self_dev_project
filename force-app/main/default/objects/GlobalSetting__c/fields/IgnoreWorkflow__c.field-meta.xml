@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>IgnoreWorkflow__c</fullName>
-    <defaultValue>false</defaultValue>
-    <label>忽略工作流/进程生成器</label>
-    <trackTrending>false</trackTrending>
-    <type>Checkbox</type>
-</CustomField>

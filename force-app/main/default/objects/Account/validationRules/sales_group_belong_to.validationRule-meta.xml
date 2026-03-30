@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>sales_group_belong_to</fullName>
-    <active>true</active>
-    <errorConditionFormula>IF(NOT( ISBLANK(Sales_Office__c)) &amp;&amp; NOT(ISBLANK(Sales_Group__c)) ,Sales_Office__r.Value__c &lt;&gt; Sales_Group__r.belong_to_office__c,false)</errorConditionFormula>
-    <errorDisplayField>Sales_Group__c</errorDisplayField>
-    <errorMessage>the sales group not belong to the sales office.</errorMessage>
-</ValidationRule>

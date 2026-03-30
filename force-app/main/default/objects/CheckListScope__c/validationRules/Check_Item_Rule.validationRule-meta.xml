@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Check_Item_Rule</fullName>
-    <active>true</active>
-    <description>只有状态为Active的Check Item才能被使用</description>
-    <errorConditionFormula>NOT( CheckItem__r.Active__c )</errorConditionFormula>
-    <errorMessage>Check Item must be Active!</errorMessage>
-</ValidationRule>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Sub_Account_Need_Customer_Extend</fullName>
-    <active>false</active>
-    <description>分户的时候，公司视图和销售视图不能同时为空</description>
-    <errorConditionFormula>NOT(ISBLANK( ParentCustomerOfSubAcc__c ) ) &amp;&amp;  ISBLANK(Customer_Extend_Sub_Account__c )  &amp;&amp;  ISBLANK( Customer_Extend_Sales__c )</errorConditionFormula>
-    <errorDisplayField>Customer_Extend_Sub_Account__c</errorDisplayField>
-    <errorMessage>Company view and Sales view cannot be empty at the same time</errorMessage>
-</ValidationRule>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Time_buffer_cannot_be_greater_than_60</fullName>
-    <active>true</active>
-    <errorConditionFormula>IF(Time_buffer__c&gt;60,true,false)</errorConditionFormula>
-    <errorDisplayField>Time_buffer__c</errorDisplayField>
-    <errorMessage>Time buffer cannot be greater than 60.</errorMessage>
-</ValidationRule>

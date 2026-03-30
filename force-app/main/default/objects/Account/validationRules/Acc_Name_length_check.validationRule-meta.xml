@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Acc_Name_length_check</fullName>
-    <active>false</active>
-    <errorConditionFormula>LEN(Name) &gt; 80</errorConditionFormula>
-    <errorDisplayField>IsChange__c</errorDisplayField>
-    <errorMessage>Customer name length can&apos;t be longer than 80.</errorMessage>
-</ValidationRule>

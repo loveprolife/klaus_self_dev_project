@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Exhibition_Metting_Room_Reserve_Compact_Layout</fullName>
-    <fields>Name</fields>
-    <fields>Meeting_Topic__c</fields>
-    <label>Exhibition Metting Room Reserve Compact Layout</label>
-</CompactLayout>

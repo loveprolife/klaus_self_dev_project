@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>CustomerName_Len_Over_80</fullName>
-    <active>false</active>
-    <description>客户名称不能超过80个字符长度</description>
-    <errorConditionFormula>LEN(Name) &gt; 80</errorConditionFormula>
-    <errorDisplayField>Name</errorDisplayField>
-    <errorMessage>The customer name cannot exceed 80 characters.</errorMessage>
-</ValidationRule>

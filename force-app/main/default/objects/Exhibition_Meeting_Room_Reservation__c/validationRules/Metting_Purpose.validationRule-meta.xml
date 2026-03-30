@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Metting_Purpose</fullName>
-    <active>true</active>
-    <description>The field must be at least 20 characters long</description>
-    <errorConditionFormula>LEN(Meeting_Purpose__c)&lt; 20</errorConditionFormula>
-    <errorDisplayField>Meeting_Purpose__c</errorDisplayField>
-    <errorMessage>The Meeting Purpose field must be at least 20 characters long</errorMessage>
-</ValidationRule>

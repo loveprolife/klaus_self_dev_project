@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Is_Create_Report__c</fullName>
-    <defaultValue>false</defaultValue>
-    <label>是否日报时创建的计划外到访</label>
-    <trackTrending>false</trackTrending>
-    <type>Checkbox</type>
-</CustomField>

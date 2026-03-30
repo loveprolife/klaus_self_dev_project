@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>The_end_time_must_be_later_than_the_star</fullName>
-    <active>true</active>
-    <description>The end time must be later than the start time</description>
-    <errorConditionFormula>End_Time__c &lt;= Start_Time__c</errorConditionFormula>
-    <errorMessage>The End Time must be later than the Start Time!</errorMessage>
-</ValidationRule>

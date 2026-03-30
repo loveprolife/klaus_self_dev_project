@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>WeightNotEqual100</fullName>
-    <active>true</active>
-    <errorConditionFormula>IsActive__c &amp;&amp; (Elements7__c +  HA__c +  HighEnd__c
-	+  Reporting__c +  Total__c +  TV__c ) != 1</errorConditionFormula>
-    <errorMessage>The sum of weight must eqauls to 100</errorMessage>
-</ValidationRule>

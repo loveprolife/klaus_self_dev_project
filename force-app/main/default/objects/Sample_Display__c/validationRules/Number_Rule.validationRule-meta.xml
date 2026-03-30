@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Number_Rule</fullName>
-    <active>true</active>
-    <errorConditionFormula>MFLOOR(Number__c ) &lt;&gt; Number__c   || 
-Number__c &lt;= 0</errorConditionFormula>
-    <errorDisplayField>Number__c</errorDisplayField>
-    <errorMessage>The number is a positive integer</errorMessage>
-</ValidationRule>

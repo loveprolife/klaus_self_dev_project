@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Due_Date_Check</fullName>
-    <active>true</active>
-    <errorConditionFormula>IF( OR( ISNEW() ,  ISCHANGED( DueDate__c ) ), 
- DueDate__c &lt;  TODAY() , false)</errorConditionFormula>
-    <errorMessage>due date cannot be a past date!</errorMessage>
-</ValidationRule>

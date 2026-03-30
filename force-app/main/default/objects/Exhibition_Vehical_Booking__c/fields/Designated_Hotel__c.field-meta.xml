@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Designated_Hotel__c</fullName>
-    <formula>Exhibition_Arrangement__r.Designated_Hotel__c</formula>
-    <label>Designated Hotel</label>
-    <trackTrending>false</trackTrending>
-    <type>Checkbox</type>
-</CustomField>

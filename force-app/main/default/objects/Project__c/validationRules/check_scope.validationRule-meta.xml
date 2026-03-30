@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>check_scope</fullName>
-    <active>true</active>
-    <description>请输入0-100</description>
-    <errorConditionFormula>Win_Probability__c &gt; 1 || Win_Probability__c &lt; 0</errorConditionFormula>
-    <errorDisplayField>Win_Probability__c</errorDisplayField>
-    <errorMessage>Please input 0-100</errorMessage>
-</ValidationRule>

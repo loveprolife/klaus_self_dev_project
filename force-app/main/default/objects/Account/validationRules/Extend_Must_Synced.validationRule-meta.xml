@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Extend_Must_Synced</fullName>
-    <active>true</active>
-    <errorConditionFormula>NOT(ISBLANK(Customer_Extend_Sub_Account__c)) &amp;&amp;  Customer_Extend_Sub_Account__r.Extend_or_Not__c = false</errorConditionFormula>
-    <errorDisplayField>Customer_Extend_Sub_Account__c</errorDisplayField>
-    <errorMessage>The selected Customer Extend must have been synchronized to MDG.</errorMessage>
-</ValidationRule>

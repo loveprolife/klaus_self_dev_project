@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>OtherSupportMustChooseOneInputForm</fullName>
-    <active>true</active>
-    <errorConditionFormula>!ISNULL( Other_Support__c ) &amp;&amp; ! ISNULL( Other_Support_Proportion__c )</errorConditionFormula>
-    <errorMessage>Other Support, only one input form can be selected</errorMessage>
-</ValidationRule>

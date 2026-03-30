@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>EBusOrNotCannotBeChangedAfterSynced</fullName>
-    <active>false</active>
-    <errorConditionFormula>AND(ISCHANGED( E_commerce_Customer_Label__c ), !ISBLANK( SAP_Customer_Code__c ),  !CONTAINS( $Profile.Name , &apos;System Admin&apos;) , ! ISBLANK(PRIORVALUE(E_commerce_Customer_Label__c )))</errorConditionFormula>
-    <errorDisplayField>E_commerce_Customer_Label__c</errorDisplayField>
-    <errorMessage>E-commerce Customer Label cannot be modified after sync with SAP</errorMessage>
-</ValidationRule>

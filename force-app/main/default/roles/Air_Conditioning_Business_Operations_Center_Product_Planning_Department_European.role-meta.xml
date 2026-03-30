@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Role xmlns="http://soap.sforce.com/2006/04/metadata">
-    <caseAccessLevel>None</caseAccessLevel>
-    <contactAccessLevel>Edit</contactAccessLevel>
-    <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Air Conditioning Business Operations Center Product Planning Department-European</name>
-    <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>Air_Conditioning_Business_Operations_Center</parentRole>
-</Role>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>USA_State_Check</fullName>
-    <active>true</active>
-    <description>如果买方国家是美国，必选</description>
-    <errorConditionFormula>IF(Buyer_Country_Code__r.Value__c = &apos;USA&apos;,  text(USA_State__c) = null, false)</errorConditionFormula>
-    <errorDisplayField>USA_State__c</errorDisplayField>
-    <errorMessage>Please select State field.</errorMessage>
-</ValidationRule>

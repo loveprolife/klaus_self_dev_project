@@ -1,6 +1,0 @@
-/* 针对手机屏幕的样式 */
-@media only screen and (max-width: 600px) {
-    .dialog {
-        max-width: 100%; 
-    }
-}

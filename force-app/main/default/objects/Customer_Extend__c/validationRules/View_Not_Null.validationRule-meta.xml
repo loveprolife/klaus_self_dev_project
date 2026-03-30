@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>View_Not_Null</fullName>
-    <active>true</active>
-    <description>视图不能为空</description>
-    <errorConditionFormula>AND( !Show_Company__c  , !Show_Sales__c  )</errorConditionFormula>
-    <errorDisplayField>Show_Company__c</errorDisplayField>
-    <errorMessage>The selection box cannot be empty at the same time！（Show Company ，Show Sales  ）</errorMessage>
-</ValidationRule>

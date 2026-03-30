@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
-    <customSettingsType>List</customSettingsType>
-    <description>Customer_Order_Inventory_Daily__c和Store_Inspection_Manage_Daily_Sales__c 统计标记</description>
-    <enableFeeds>false</enableFeeds>
-    <label>Statistics Flag</label>
-    <visibility>Public</visibility>
-</CustomObject>

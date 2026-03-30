@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>UpdateBeingUsed</fullName>
-    <active>false</active>
-    <description>Records that have already been assigned cannot be modified！</description>
-    <errorConditionFormula>PRIORVALUE(BeingUsed__c) &amp;&amp; Active__c</errorConditionFormula>
-    <errorDisplayField>Active__c</errorDisplayField>
-    <errorMessage>Records that have already been assigned cannot be modified！</errorMessage>
-</ValidationRule>

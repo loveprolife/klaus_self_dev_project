@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Special__c</fullName>
-    <defaultValue>false</defaultValue>
-    <description>是否是特殊国家，pdf和json是分开订购</description>
-    <label>Special</label>
-    <trackTrending>false</trackTrending>
-    <type>Checkbox</type>
-</CustomField>

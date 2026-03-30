@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>compact_layouts</fullName>
-    <fields>Name</fields>
-    <fields>sales_region__c</fields>
-    <fields>Product_Line__c</fields>
-    <fields>Product__c</fields>
-    <label>compact layouts</label>
-</CompactLayout>

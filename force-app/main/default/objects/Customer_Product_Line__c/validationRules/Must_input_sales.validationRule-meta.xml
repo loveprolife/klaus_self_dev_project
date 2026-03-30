@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Must_input_sales</fullName>
-    <active>false</active>
-    <errorConditionFormula>!CONTAINS( $Profile.Name , &apos;System Admin&apos;)  &amp;&amp;
-ISBLANK(Key_Sales__c)&amp;&amp;ISBLANK( Sales_member01__c )&amp;&amp;ISBLANK( Sales_member02__c )&amp;&amp;ISBLANK( Sales_member03__c )&amp;&amp;ISBLANK( Sales_member04__c )&amp;&amp;ISBLANK( Sales_member05__c )&amp;&amp;ISBLANK( Sales_member06__c )&amp;&amp;ISBLANK( Sales_member07__c )&amp;&amp;ISBLANK( Sales_member08__c )&amp;&amp;ISBLANK( Sales_member09__c )</errorConditionFormula>
-    <errorMessage>Please input this product line sales people in sales information section!</errorMessage>
-</ValidationRule>

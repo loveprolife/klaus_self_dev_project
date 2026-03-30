@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Role xmlns="http://soap.sforce.com/2006/04/metadata">
-    <caseAccessLevel>Edit</caseAccessLevel>
-    <contactAccessLevel>Edit</contactAccessLevel>
-    <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>MY_Salse_S</name>
-    <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>MY_Sales_M</parentRole>
-</Role>

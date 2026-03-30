@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Guarantor_Country_Code_Cannot_be_Input</fullName>
-    <active>true</active>
-    <description>Guarantor_Country_Code_Cannot_be_Input</description>
-    <errorConditionFormula>IF( AND( RecordType.DeveloperName = &apos;NonLC&apos;,Possess_Guarantor_Y_N__c = false, NOT(ISBLANK(  Guarantor_Country_Code__c ))), TRUE, FALSE)</errorConditionFormula>
-    <errorDisplayField>Guarantor_Country_Code__c</errorDisplayField>
-    <errorMessage>Guarantor Country Code  Should be Empty! (Because there is no Possess Guarantor)</errorMessage>
-</ValidationRule>

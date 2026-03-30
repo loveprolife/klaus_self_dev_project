@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>AccountNameCannotBeChangedAfterSynced</fullName>
-    <active>false</active>
-    <errorConditionFormula>AND(ISCHANGED( Name ),! ISBLANK( SAP_Customer_Code__c ) , !CONTAINS( $Profile.Name , &apos;System Admin&apos;) )</errorConditionFormula>
-    <errorDisplayField>Name</errorDisplayField>
-    <errorMessage>Customer Name cannot be modified after sync with SAP</errorMessage>
-</ValidationRule>

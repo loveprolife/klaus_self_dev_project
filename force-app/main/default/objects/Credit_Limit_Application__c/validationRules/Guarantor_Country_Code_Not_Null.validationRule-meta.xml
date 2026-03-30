@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Guarantor_Country_Code_Not_Null</fullName>
-    <active>true</active>
-    <description>Guarantor English Name cannot be null.</description>
-    <errorConditionFormula>IF( AND( RecordType.DeveloperName = &apos;NonLC&apos;,Possess_Guarantor_Y_N__c = true,ISBLANK( China_Credit_Insurance_Guarantor_Code__c ),  ISBLANK(  Guarantor_Country_Code__c ) ), TRUE, FALSE)</errorConditionFormula>
-    <errorDisplayField>Guarantor_Country_Code__c</errorDisplayField>
-    <errorMessage>There is the Credit Insurance Confirmation and China Credit Insurance Guarantor Code,Guarantor Country Code Cannot be Empty !</errorMessage>
-</ValidationRule>

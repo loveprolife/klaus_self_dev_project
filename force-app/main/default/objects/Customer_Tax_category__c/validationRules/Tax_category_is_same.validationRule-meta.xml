@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Tax_category_is_same</fullName>
-    <active>true</active>
-    <errorConditionFormula>Tax_category_code__c &lt;&gt; &apos;&apos; &amp;&amp; Tax_category__r.Tax_category__c &lt;&gt; &apos;&apos; &amp;&amp;
-Tax_category_code__c  &lt;&gt;  Tax_category__r.Tax_category__c</errorConditionFormula>
-    <errorDisplayField>Tax_category__c</errorDisplayField>
-    <errorMessage>Tax classification Tax category must be eques Tax category</errorMessage>
-</ValidationRule>

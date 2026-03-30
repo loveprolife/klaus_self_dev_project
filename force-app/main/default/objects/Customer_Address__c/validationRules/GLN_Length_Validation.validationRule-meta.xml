@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>GLN_Length_Validation</fullName>
-    <active>true</active>
-    <description>GLN固定长度13位</description>
-    <errorConditionFormula>NOT(ISBLANK(Global_Location_Number__c )) &amp;&amp; LEN(Global_Location_Number__c ) != 13</errorConditionFormula>
-    <errorDisplayField>Global_Location_Number__c</errorDisplayField>
-    <errorMessage>Global Location Number must be 13 charactors</errorMessage>
-</ValidationRule>

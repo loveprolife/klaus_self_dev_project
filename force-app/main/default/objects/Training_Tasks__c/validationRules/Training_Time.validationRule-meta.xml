@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Training_Time</fullName>
-    <active>true</active>
-    <errorConditionFormula>Training_End_Time__c -  Training_Start_Time__c &lt;= 0</errorConditionFormula>
-    <errorDisplayField>Training_End_Time__c</errorDisplayField>
-    <errorMessage>The training end time must be longer than the training start time</errorMessage>
-</ValidationRule>

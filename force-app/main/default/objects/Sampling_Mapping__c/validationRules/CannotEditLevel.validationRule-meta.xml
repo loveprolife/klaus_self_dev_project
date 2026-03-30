@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>CannotEditLevel</fullName>
-    <active>true</active>
-    <errorConditionFormula>AND(NOT( ISNEW()),OR(ISCHANGED(Level__c),ISCHANGED(Account__c)))</errorConditionFormula>
-    <errorMessage>不可修改出样等级或客户</errorMessage>
-</ValidationRule>

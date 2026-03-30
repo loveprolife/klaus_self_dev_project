@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Create_Check</fullName>
-    <active>false</active>
-    <description>客户状态为Approved才能创建拓展</description>
-    <errorConditionFormula>ISNEW()  &amp;&amp; Text(Customer__r.Approval_Status__c) &lt;&gt; &apos;Approved&apos;</errorConditionFormula>
-    <errorDisplayField>Customer__c</errorDisplayField>
-    <errorMessage>The customer status must be Approved before creating customer extend.</errorMessage>
-</ValidationRule>

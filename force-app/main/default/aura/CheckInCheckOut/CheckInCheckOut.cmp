@@ -1,3 +1,0 @@
-<aura:component implements="force:appHostable" access="global">
-    <c:checkInCheckOutLWC></c:checkInCheckOutLWC>
-</aura:component>

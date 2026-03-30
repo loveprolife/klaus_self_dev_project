@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Bank_English_Name_cannot_be_Null</fullName>
-    <active>true</active>
-    <description>Confirmation Bank English Name cannot be empty!</description>
-    <errorConditionFormula>IF( AND(RecordType.DeveloperName =&apos;LC&apos;, Credit_Insurance_Confirmation_Y_N__c =True,ISNULL(  Confirmation_Bank_English_Name__c  )), TRUE, FALSE)</errorConditionFormula>
-    <errorDisplayField>Confirmation_Bank_English_Name__c</errorDisplayField>
-    <errorMessage>There is the Credit Insurance Confirmation,Confirmation Bank English Name Cannot be Empty!</errorMessage>
-</ValidationRule>

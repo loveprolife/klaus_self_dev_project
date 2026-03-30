@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>OnlyProductForAskCanEditCost</fullName>
-    <active>true</active>
-    <errorConditionFormula>AND( ISPICKVAL( Need_to_Provide_EXW__c , &apos;NO&apos;) ,  ISCHANGED( Cost__c )  )</errorConditionFormula>
-    <errorDisplayField>Cost__c</errorDisplayField>
-    <errorMessage>Only inquiry product can edit Cost</errorMessage>
-</ValidationRule>
