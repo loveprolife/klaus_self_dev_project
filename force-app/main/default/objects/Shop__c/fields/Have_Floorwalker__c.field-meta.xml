@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Have_Floorwalker__c</fullName>
+    <description>Responsible person 中有巡店员</description>
+    <label>*Have Floorwalker</label>
+    <summaryFilterItems>
+        <field>Responsible_Person__c.RecordType__c</field>
+        <operation>contains</operation>
+        <value>Floorwalker,Backup Floorwalker</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Responsible_Person__c.UserEmail__c</field>
+        <operation>notEqual</operation>
+        <value></value>
+    </summaryFilterItems>
+    <summaryForeignKey>Responsible_Person__c.Shop_Name__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

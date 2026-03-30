@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vehical_Booking_Compact_Layout</fullName>
+    <fields>Internal_Registration__c</fields>
+    <fields>Date__c</fields>
+    <fields>Vehicle_Type__c</fields>
+    <label>Vehical Booking Compact Layout</label>
+</CompactLayout>

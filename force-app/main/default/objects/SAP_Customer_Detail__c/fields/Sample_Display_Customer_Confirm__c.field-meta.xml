@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sample_Display_Customer_Confirm__c</fullName>
+    <label>Sample Display Customer Confirm</label>
+    <referenceTo>Sample_Display_Customer_Confirm__c</referenceTo>
+    <relationshipLabel>SAP Customer Detail</relationshipLabel>
+    <relationshipName>SAP_Customer_Detail</relationshipName>
+    <relationshipOrder>0</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

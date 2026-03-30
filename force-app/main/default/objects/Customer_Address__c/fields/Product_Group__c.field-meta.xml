@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Group__c</fullName>
+    <description>MDG主数据：产品组（产品中类）</description>
+    <label>Product Group</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>00</fullName>
+                <default>false</default>
+                <label>00 通用产品组-营销</label>
+            </value>
+            <value>
+                <fullName>10</fullName>
+                <default>false</default>
+                <label>10 电视</label>
+            </value>
+            <value>
+                <fullName>20</fullName>
+                <default>false</default>
+                <label>20 空调-营销</label>
+            </value>
+            <value>
+                <fullName>21</fullName>
+                <default>false</default>
+                <label>21 环境电器</label>
+            </value>
+            <value>
+                <fullName>30</fullName>
+                <default>false</default>
+                <label>30 冰箱-营销</label>
+            </value>
+            <value>
+                <fullName>31</fullName>
+                <default>false</default>
+                <label>31 洗衣机</label>
+            </value>
+            <value>
+                <fullName>32</fullName>
+                <default>false</default>
+                <label>32 冷柜-营销</label>
+            </value>
+            <value>
+                <fullName>33</fullName>
+                <default>false</default>
+                <label>33 酒柜-营销</label>
+            </value>
+            <value>
+                <fullName>40</fullName>
+                <default>false</default>
+                <label>40 手机-通信</label>
+            </value>
+            <value>
+                <fullName>51</fullName>
+                <default>false</default>
+                <label>51 OEM产品</label>
+            </value>
+            <value>
+                <fullName>52</fullName>
+                <default>false</default>
+                <label>52 家电厨电</label>
+            </value>
+            <value>
+                <fullName>61</fullName>
+                <default>false</default>
+                <label>61 0A外购产成品</label>
+            </value>
+            <value>
+                <fullName>68</fullName>
+                <default>false</default>
+                <label>68 智能商用产品</label>
+            </value>
+            <value>
+                <fullName>81</fullName>
+                <default>false</default>
+                <label>81 医疗自制产品</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

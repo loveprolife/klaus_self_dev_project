@@ -1,3 +1,0 @@
-Hi All
-
-      {!Inspection_Shop_Plan__c.OwnerLastName}{!Inspection_Shop_Plan__c.Inspection_Year__c}.{!Inspection_Shop_Plan__c.Inspection_Month__c}巡店计划已新建，巡店计划编号为：{!Inspection_Shop_Plan__c.Name}

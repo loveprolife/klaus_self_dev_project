@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transaction_Settlement_Method_2_3year__c</fullName>
+    <label>Transaction Settlement Method 2 (3year)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>LC</fullName>
+                <default>false</default>
+                <label>LC</label>
+            </value>
+            <value>
+                <fullName>DP</fullName>
+                <default>false</default>
+                <label>DP</label>
+            </value>
+            <value>
+                <fullName>OA/DA</fullName>
+                <default>false</default>
+                <label>OA/DA</label>
+            </value>
+            <value>
+                <fullName>预付款</fullName>
+                <default>false</default>
+                <label>Advance payment</label>
+            </value>
+            <value>
+                <fullName>即期LC</fullName>
+                <default>false</default>
+                <label>Spot letter credit - LC</label>
+            </value>
+            <value>
+                <fullName>远期LC</fullName>
+                <default>false</default>
+                <label>Long-term credit - LC</label>
+            </value>
+            <value>
+                <fullName>2</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>DP</label>
+            </value>
+            <value>
+                <fullName>1</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>LC</label>
+            </value>
+            <value>
+                <fullName>6</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Long-term credit - LC</label>
+            </value>
+            <value>
+                <fullName>4</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>OA</label>
+            </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Spot letter credit - LC</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

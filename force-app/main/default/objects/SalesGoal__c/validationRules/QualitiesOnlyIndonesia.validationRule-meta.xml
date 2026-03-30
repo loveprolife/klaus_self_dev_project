@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QualitiesOnlyIndonesia</fullName>
+    <active>true</active>
+    <errorConditionFormula>!ISPICKVAL(Product__r.sales_region__c, &apos;Hisense Indonesia&apos;)
+&amp;&amp;  Quantities__c != NULL</errorConditionFormula>
+    <errorDisplayField>Quantities__c</errorDisplayField>
+    <errorMessage>Only Indonesia Can set qualities</errorMessage>
+</ValidationRule>

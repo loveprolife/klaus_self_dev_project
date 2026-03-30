@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Split_Up__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>拆分结束标记 true：拆分完</description>
+    <label>Split Up</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

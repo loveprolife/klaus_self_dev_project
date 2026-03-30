@@ -1,8 +1,0 @@
-各位
- 
-お疲れ様です。
-商談報告書を送付いたします。
-ご確認お願い致します。"
-
-{!Customer_Visit__c.MeetingContent__c}
-{!Customer_Visit__c.RecordLink__c}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Have_File_Quantity__c</fullName>
+    <label>*Have File Quantity</label>
+    <summaryFilterItems>
+        <field>Promoter_Attendance_Information__c.Have_File__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Promoter_Attendance_Information__c.Promoter_Attendance__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

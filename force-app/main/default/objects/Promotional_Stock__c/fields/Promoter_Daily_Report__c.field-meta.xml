@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Promoter_Daily_Report__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Promoter Daily Report</label>
+    <referenceTo>Promoter_Daily_Report__c</referenceTo>
+    <relationshipLabel>Promotional Stocks</relationshipLabel>
+    <relationshipName>Promotional_Stocks</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

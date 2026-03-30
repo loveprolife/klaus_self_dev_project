@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SA_Credit_Send_Email_Flag__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>南非母公司超期预警发送邮件标记，true为选中客户</description>
+    <label>SA Credit Send Email Flag</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

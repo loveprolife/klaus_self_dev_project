@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Way_Of_Shipment__c</fullName>
+    <label>Way Of Shipment</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>海运 Sea Shipment</fullName>
+                <default>false</default>
+                <label>海运 Sea Shipment</label>
+            </value>
+            <value>
+                <fullName>空运 Air Shipment</fullName>
+                <default>false</default>
+                <label>空运 Air Shipment</label>
+            </value>
+            <value>
+                <fullName>快递 DHL/FedEx</fullName>
+                <default>false</default>
+                <label>快递 DHL/FedEx</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

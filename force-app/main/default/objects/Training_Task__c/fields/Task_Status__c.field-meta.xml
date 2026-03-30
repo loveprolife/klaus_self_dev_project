@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Task_Status__c</fullName>
+    <label>Task Status</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>未发布</fullName>
+                <default>true</default>
+                <label>未发布</label>
+            </value>
+            <value>
+                <fullName>发布</fullName>
+                <default>false</default>
+                <label>发布</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Channel_item__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Channel item</label>
+    <referenceTo>Channel_item__c</referenceTo>
+    <relationshipLabel>Thai Sell out Inventorys</relationshipLabel>
+    <relationshipName>Thai_Sell_out_Inventorys</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

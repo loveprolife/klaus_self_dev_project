@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Guarantor_English_Addres_cannot_be_Null</fullName>
+    <active>true</active>
+    <description>Guarantor_English_Address_cannot_be_Null</description>
+    <errorConditionFormula>IF( AND( RecordType.DeveloperName = &apos;NonLC&apos;,Possess_Guarantor_Y_N__c = true,ISBLANK( China_Credit_Insurance_Guarantor_Code__c ), ISBLANK(   Guarantor_English_Address__c )), TRUE, FALSE)</errorConditionFormula>
+    <errorDisplayField>Guarantor_English_Address__c</errorDisplayField>
+    <errorMessage>There is the China Credit Insurance Confirmation and China Credit Insurance Guarantor Code,Guarantor English Address Cannot be Empty !</errorMessage>
+</ValidationRule>

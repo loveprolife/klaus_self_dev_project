@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada_Open_Tickets</fullName>
+    <columns>NAME</columns>
+    <columns>AssignedTo__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>DueDate__c</columns>
+    <columns>Description__c</columns>
+    <columns>InspectionReport__c</columns>
+    <columns>Sales_Region__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Sales_Region__c</field>
+        <operation>equals</operation>
+        <value>Hisense Canada</value>
+    </filters>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>Open</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Ticket__c.Floorwalker</value>
+    </filters>
+    <label>Canada Open Tickets</label>
+    <sharedTo>
+        <roleAndSubordinatesInternal>Canada_GM</roleAndSubordinatesInternal>
+    </sharedTo>
+</ListView>

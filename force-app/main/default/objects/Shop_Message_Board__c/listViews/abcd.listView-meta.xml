@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>abcd</fullName>
+    <columns>priority__c</columns>
+    <columns>NAME</columns>
+    <columns>Message__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>priority__c</field>
+        <operation>equals</operation>
+        <value>C(☆)</value>
+    </filters>
+    <filters>
+        <field>IsActive__c</field>
+        <operation>equals</operation>
+        <value>有效</value>
+    </filters>
+    <label>新商品発売情報</label>
+</ListView>

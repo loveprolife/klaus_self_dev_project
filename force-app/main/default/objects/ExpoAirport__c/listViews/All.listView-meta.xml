@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Exhibition_Arrangement__c</columns>
+    <columns>ExpoAirport_Name_CN__c</columns>
+    <columns>day_range__c</columns>
+    <columns>flight_no__c</columns>
+    <columns>flight_type__c</columns>
+    <columns>arrive_time__c</columns>
+    <columns>start_time__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

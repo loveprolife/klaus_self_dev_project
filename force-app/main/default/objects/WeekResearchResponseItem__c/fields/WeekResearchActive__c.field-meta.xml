@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WeekResearchActive__c</fullName>
+    <formula>Week_Question_Item__r.Shop_Research__r.IsActive__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>门店调查要求是否有效</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

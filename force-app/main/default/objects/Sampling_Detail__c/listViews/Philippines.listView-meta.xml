@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Philippines</fullName>
+    <columns>NAME</columns>
+    <columns>Shop__c</columns>
+    <columns>Product__c</columns>
+    <columns>ProductLine__c</columns>
+    <columns>Is_Add__c</columns>
+    <columns>Display_Status__c</columns>
+    <columns>sales_region_f__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>sales_region_f__c</field>
+        <operation>equals</operation>
+        <value>Hisense Philippines</value>
+    </filters>
+    <label>Philippines</label>
+    <sharedTo>
+        <roleAndSubordinates>Philippine_GM</roleAndSubordinates>
+    </sharedTo>
+</ListView>

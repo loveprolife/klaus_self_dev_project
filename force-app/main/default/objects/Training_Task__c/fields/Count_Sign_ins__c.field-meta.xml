@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Count_Sign_ins__c</fullName>
+    <label># Count Sign-ins</label>
+    <summaryFilterItems>
+        <field>Training_Task_User__c.Check_in_Status__c</field>
+        <operation>equals</operation>
+        <value>签到</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Training_Task_User__c.Check_in_Time__c</field>
+        <operation>notEqual</operation>
+        <value></value>
+    </summaryFilterItems>
+    <summaryForeignKey>Training_Task_User__c.Training_Task__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

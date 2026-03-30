@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cooperating_Status__c</fullName>
+    <description>合作状态，分为已合作、未合作、计划开发和已停止合作四种状态。本年度有开发计划的选择“计划开发”，本年度无开发计划的选择“未合作”。</description>
+    <inlineHelpText>There are three types of status: cooperated, uncooperated, and plan to develop. Fill in “plan to develop” if you have a development plan for the current year, or “uncooperated” if you do not have a development plan for the current year.</inlineHelpText>
+    <label>Cooperating Status</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>已合作</fullName>
+                <default>false</default>
+                <label>已合作</label>
+            </value>
+            <value>
+                <fullName>计划开发</fullName>
+                <default>false</default>
+                <label>计划开发</label>
+            </value>
+            <value>
+                <fullName>未合作</fullName>
+                <default>false</default>
+                <label>未合作</label>
+            </value>
+            <value>
+                <fullName>已停止合作</fullName>
+                <default>false</default>
+                <label>已停止合作</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

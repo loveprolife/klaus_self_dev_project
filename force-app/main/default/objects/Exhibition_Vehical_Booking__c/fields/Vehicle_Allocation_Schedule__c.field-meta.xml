@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Vehicle_Allocation_Schedule__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>用于定义车辆接驳时间</description>
+    <label>Vehicle Allocation Schedule</label>
+    <referenceTo>Vehicle_Allocation_Schedule__c</referenceTo>
+    <relationshipLabel>Vehical Bookings</relationshipLabel>
+    <relationshipName>Vehical_Bookings</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

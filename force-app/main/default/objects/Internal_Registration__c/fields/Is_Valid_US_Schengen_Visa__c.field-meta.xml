@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Valid_US_Schengen_Visa__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>已换为是否持有境外采购商证</description>
+    <inlineHelpText>是否持有境外采购商证</inlineHelpText>
+    <label>Is Valid US Visa</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>OnlyProductForAskCanBeEdited</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( AND( TEXT(Need_to_Provide_EXW__c) == &apos;NO&apos; , CONTAINS( RecordType.DeveloperName , &apos;Sales_Department&apos;) ,  !ISBLANK( Product__c ), Product__c &lt;&gt;  Pricebook_Entry__r.Product__c ) ,  true, false)</errorConditionFormula>
+    <errorDisplayField>Product__c</errorDisplayField>
+    <errorMessage>Only inquiry products can be edited!</errorMessage>
+</ValidationRule>

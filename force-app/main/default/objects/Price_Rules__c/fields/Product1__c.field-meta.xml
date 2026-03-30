@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product1__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Product</label>
+    <lookupFilter>
+        <active>true</active>
+        <booleanFilter>((1 AND 2 AND 3) OR (4 AND (5 OR 6)) OR 7) AND 8</booleanFilter>
+        <filterItems>
+            <field>Product__c.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>ALL_Product_Japan</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.Country</field>
+            <operation>notEqual</operation>
+            <value>South Africa, Indonesia, Chile</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.Sales_Region__c</field>
+            <operation>notEqual</operation>
+            <value>Hisense South Africa, Hisense Indonesia, Hisense Chile</value>
+        </filterItems>
+        <filterItems>
+            <field>Product__c.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>RegionalProduct</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.Country</field>
+            <operation>equals</operation>
+            <value>South Africa, Indonesia, Chile, Thailand</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense South Africa, Hisense Indonesia, Hisense Chile, Hisense Thailand</value>
+        </filterItems>
+        <filterItems>
+            <field>$Profile.ManageUsers</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </filterItems>
+        <filterItems>
+            <field>$User.Sales_Region__c</field>
+            <operation>equals</operation>
+            <valueField>Product__c.sales_region__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Product__c</referenceTo>
+    <relationshipLabel>Price Rules</relationshipLabel>
+    <relationshipName>Price_Rules</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cooperative_State__c</fullName>
+    <label>Cooperative State</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>已合作</fullName>
+                <default>false</default>
+                <label>已合作</label>
+            </value>
+            <value>
+                <fullName>未合作</fullName>
+                <default>false</default>
+                <label>未合作</label>
+            </value>
+            <value>
+                <fullName>计划开发</fullName>
+                <default>false</default>
+                <label>计划开发</label>
+            </value>
+            <value>
+                <fullName>Already cooperated</fullName>
+                <default>false</default>
+                <label>Already cooperated</label>
+            </value>
+            <value>
+                <fullName>Not cooperated</fullName>
+                <default>false</default>
+                <label>Not cooperated</label>
+            </value>
+            <value>
+                <fullName>Plan Development</fullName>
+                <default>false</default>
+                <label>Plan Development</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

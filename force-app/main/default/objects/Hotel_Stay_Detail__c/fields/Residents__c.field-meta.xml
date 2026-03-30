@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Residents__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>住户</description>
+    <label>Residents</label>
+    <referenceTo>Internal_Registration__c</referenceTo>
+    <relationshipLabel>Hotel Stay Details</relationshipLabel>
+    <relationshipName>Hotel_Stay_Details</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

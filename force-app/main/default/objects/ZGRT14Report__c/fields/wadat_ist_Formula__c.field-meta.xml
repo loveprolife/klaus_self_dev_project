@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>wadat_ist_Formula__c</fullName>
+    <formula>DATEVALUE(
+IF( ISBLANK(wadat_ist__c) , &apos;&apos;, LEFT( TEXT(wadat_ist__c) , 10)  )
+)</formula>
+    <label>Ac.GI date</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

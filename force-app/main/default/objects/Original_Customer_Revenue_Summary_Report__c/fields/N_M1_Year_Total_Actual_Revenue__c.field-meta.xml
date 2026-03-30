@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>N_M1_Year_Total_Actual_Revenue__c</fullName>
+    <formula>N_M1_Year_Actual_Revenue_Jan__c  +  N_M1_Year_Actual_Revenue_Feb__c  +  N_M1_Year_Actual_Revenue_Mar__c  +  N_M1_Year_Actual_Revenue_Aprl__c  +  N_M1_Year_Actual_Revenue_May__c  +  N_M1_Year_Actual_Revenue_Jun__c  +  N_M1_Year_Actual_Revenue_Jul__c  +  N_M1_Year_Actual_Revenue_Aug__c  +  N_M1_Year_Actual_Revenue_Sept__c  +   N_M1_Year_Actual_Revenue_Oct__c  +  N_M1_Year_Actual_Revenue_Nov__c  +  N_M1_Year_Actual_Revenue_Dec__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>N-1 Year&apos;s Total Actual Revenue</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

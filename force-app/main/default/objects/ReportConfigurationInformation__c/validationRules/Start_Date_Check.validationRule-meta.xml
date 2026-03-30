@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Start_Date_Check</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( CONTAINS( RecordType.Name , &apos;Weekly Report&apos; ) ,
+NOT ( AND( IF( ISBLANK( TEXT( FirstDayOfCreateWeeklyReport__c ) ), true, VALUE( TEXT( FirstDayOfWeeklyReport__c ) ) &lt;= VALUE( TEXT( FirstDayOfCreateWeeklyReport__c ) ) ), 
+   IF( ISBLANK (TEXT( FirstDayOfReminderWeeklyReport__c ) ) , true, VALUE( TEXT( FirstDayOfWeeklyReport__c ) ) &lt;= VALUE( TEXT( FirstDayOfReminderWeeklyReport__c ) ) ) ) ),
+false)</errorConditionFormula>
+    <errorMessage>The start date must be lower or equal to the creation/reminder date!</errorMessage>
+</ValidationRule>

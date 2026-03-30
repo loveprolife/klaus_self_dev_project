@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exhibition_Format__c</fullName>
+    <label>Exhibition Format</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hall Of Harmony</fullName>
+                <default>false</default>
+                <label>Hall Of Harmony</label>
+            </value>
+            <value>
+                <fullName>Specialized Hall</fullName>
+                <default>false</default>
+                <label>Specialized Hall</label>
+            </value>
+            <value>
+                <fullName>Island Platform</fullName>
+                <default>false</default>
+                <label>Island Platform</label>
+            </value>
+            <value>
+                <fullName>On The wall</fullName>
+                <default>false</default>
+                <label>On The wall</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

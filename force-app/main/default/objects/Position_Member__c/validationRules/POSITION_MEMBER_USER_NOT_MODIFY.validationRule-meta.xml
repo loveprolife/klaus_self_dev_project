@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>POSITION_MEMBER_USER_NOT_MODIFY</fullName>
+    <active>true</active>
+    <description>岗位人员不可修改,请删除后重新创建</description>
+    <errorConditionFormula>AND(NOT($Setup.GlobalSetting__c.IgnoreValidation__c ),ISCHANGED(User__c))</errorConditionFormula>
+    <errorDisplayField>User__c</errorDisplayField>
+    <errorMessage>岗位人员不可修改,请删除后重新创建</errorMessage>
+</ValidationRule>

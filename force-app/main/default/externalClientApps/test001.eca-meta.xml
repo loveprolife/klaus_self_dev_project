@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ExternalClientApplication xmlns="http://soap.sforce.com/2006/04/metadata">
-    <contactEmail>wp3413521688@163.com</contactEmail>
-    <distributionState>Local</distributionState>
-    <isProtected>false</isProtected>
-    <label>test001</label>
-    <orgScopedExternalApp>00Dg5000005qzKf:test001</orgScopedExternalApp>
-</ExternalClientApplication>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TwoDay_Seating__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>TwoDay Seating</label>
+    <referenceTo>Seating_Info__c</referenceTo>
+    <relationshipLabel>Internal Registrations (TwoDay Seating)</relationshipLabel>
+    <relationshipName>Internal_Registrations1</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

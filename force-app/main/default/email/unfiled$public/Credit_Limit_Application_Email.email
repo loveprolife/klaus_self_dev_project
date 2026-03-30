@@ -1,3 +1,0 @@
-System Notice: {!Credit_Limit_Application__c.Name} workflow has been finished. Customer code:{!Credit_Limit_Application__c.Customer_SAP_Code__c}
-Customer Name:{!Credit_Limit_Application__c.Customer_Name__c}
-Insurance Name:{!Credit_Limit_Application__c.Insurance_Company__c}

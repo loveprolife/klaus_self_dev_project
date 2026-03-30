@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Week_Question_Item__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>周调研问题明细</label>
+    <referenceTo>Week_Question_Item__c</referenceTo>
+    <relationshipName>Question_Item_WeekResearchResponseItems</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,3 +1,0 @@
-Dear {!Credit_Limit_Application__c.CreatedBy}:
-
-    Your credit limit application {!Credit_Limit_Application__c.Name} has been rejected from RR System, The rejected reason is "{!Credit_Limit_Application__c.RR_Approval_Information__c}"  you can click this link to view and edit it {!Credit_Limit_Application__c.Link}

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>In</fullName>
+    <active>true</active>
+    <label>In</label>
+    <picklistValues>
+        <picklist>SalesRegion__c</picklist>
+        <values>
+            <fullName>ASEAN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Algeria Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>American Sales Department</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Asia-Pacific Sales Department</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Communications Sales Department</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>East Africa Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Egypt Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Europe Sales Department</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Argentina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Australia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Canada</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Chile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Colombia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Dubai</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense India</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Indonesia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense International</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Japan</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Malaysia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Mexico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense New Zealand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Panama</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Peru</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Philippines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Saudi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Singapore</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense South Africa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Thailand</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense USA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Vietnam</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense West Africa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Home Appliances Sales Department</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Key Account Sales Department</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Middle East and Africa Sales Department</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Others</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USA%28OEM%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>Approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Submitted</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

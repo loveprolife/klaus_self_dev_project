@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Actual_Sales_Income_Ratio_N_1_Year__c</fullName>
+    <inlineHelpText>The proportion of Hisense sales amount of customer total sales amount in last year.</inlineHelpText>
+    <label>Actual Sales Income Ratio(N - 1 Year)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Percent</type>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsPerformance__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>在促销员，新增&quot;当日実績なし&quot;勾选项。勾选后不能“+”当日业绩。
+勾选后，保存时，需要生成一条业绩为0的数据</description>
+    <label>*IsPerformance</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

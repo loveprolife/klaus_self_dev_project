@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Last_12_Month__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>近一年标记</description>
+    <label>Is Last 12 Month</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

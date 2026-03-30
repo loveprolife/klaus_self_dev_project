@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <caseValues>
-        <plural>false</plural>
-        <value>培训任务视频链接</value>
-    </caseValues>
-    <nameFieldLabel>培训任务视频链接编码</nameFieldLabel>
-</CustomObjectTranslation>

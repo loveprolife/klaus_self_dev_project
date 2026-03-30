@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>partipantCheck</fullName>
+    <active>true</active>
+    <errorConditionFormula>(Customer_Visit__r.Customer__c   &lt;&gt;  Customer_Participant__r.AccountId)&amp;&amp;  NOT(ISBLANK(Customer_Participant__c) )</errorConditionFormula>
+    <errorDisplayField>Customer_Participant__c</errorDisplayField>
+    <errorMessage>Must be the visit customer contact!</errorMessage>
+</ValidationRule>

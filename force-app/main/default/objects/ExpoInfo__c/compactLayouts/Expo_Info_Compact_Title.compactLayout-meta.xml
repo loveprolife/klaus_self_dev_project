@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expo_Info_Compact_Title</fullName>
+    <fields>Name</fields>
+    <fields>TitleEN__c</fields>
+    <label>Expo Info Compact Title</label>
+</CompactLayout>

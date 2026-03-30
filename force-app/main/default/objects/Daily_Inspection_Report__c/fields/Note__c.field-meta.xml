@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Note__c</fullName>
+    <description>注释（创建巡店报告时用户填写）</description>
+    <inlineHelpText>Note (to be filled in by the user when creating the inspection report)</inlineHelpText>
+    <label>Note</label>
+    <length>131072</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>2</visibleLines>
+</CustomField>

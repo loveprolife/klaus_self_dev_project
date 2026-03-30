@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Growth_Potential__c</fullName>
+    <inlineHelpText>For new customer, Evaluate by customer&apos;s growth rate. For existing customer, auto generate from last year revenue of the customer</inlineHelpText>
+    <label>Growth Potential</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>10</fullName>
+                <default>false</default>
+                <label>&gt;=15%</label>
+            </value>
+            <value>
+                <fullName>8</fullName>
+                <default>false</default>
+                <label>&gt;=10%</label>
+            </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <label>&gt;=5%</label>
+            </value>
+            <value>
+                <fullName>3</fullName>
+                <default>false</default>
+                <label>&gt;=0%</label>
+            </value>
+            <value>
+                <fullName>0</fullName>
+                <default>false</default>
+                <label>&lt;0%</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

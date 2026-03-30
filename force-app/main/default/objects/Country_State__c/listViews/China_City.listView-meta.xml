@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>China_City</fullName>
+    <columns>NAME</columns>
+    <columns>Name__c</columns>
+    <columns>BelongTo_CNProvince__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>BelongTo_CNProvince__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <label>国内_城市</label>
+</ListView>

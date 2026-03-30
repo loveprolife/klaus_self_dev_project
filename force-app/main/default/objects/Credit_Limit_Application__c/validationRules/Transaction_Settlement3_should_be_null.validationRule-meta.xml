@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Transaction_Settlement3_should_be_null</fullName>
+    <active>true</active>
+    <description>Transaction Settlement Method 3 (3year) should be null</description>
+    <errorConditionFormula>IF(AND(Historical_Transaction_Y_N__c=FALSE,  
+NOT( ISBLANK(Transaction_Settlement_Method_3_3year__c) ) ) , 
+TRUE, FALSE)</errorConditionFormula>
+    <errorDisplayField>Transaction_Settlement_Method_3_3year__c</errorDisplayField>
+    <errorMessage>There is no Historical Transaction,,Transaction Settlement Method 3 (3year) Should be Empty!</errorMessage>
+</ValidationRule>

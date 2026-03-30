@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sampling_Inspection__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Sampling Inspection</label>
+    <referenceTo>Sampling_Inspection__c</referenceTo>
+    <relationshipLabel>Check Results</relationshipLabel>
+    <relationshipName>Check_Results</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

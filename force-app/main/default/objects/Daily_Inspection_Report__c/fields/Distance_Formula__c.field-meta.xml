@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Distance_Formula__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( Distance__c &lt; 1, TEXT(ROUND(Distance__c * 1000 ,0)) &amp; &apos;m&apos;, TEXT(ROUND(Distance__c, 2)) &amp; &apos;km&apos;)</formula>
+    <label>Distance</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

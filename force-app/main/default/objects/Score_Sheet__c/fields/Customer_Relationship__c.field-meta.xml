@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Relationship__c</fullName>
+    <inlineHelpText>Auto generate from customer visit record of last year</inlineHelpText>
+    <label>Customer Relationship Communication</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <label>Good (Management level annual meeting &amp; director level monthly meeting)</label>
+            </value>
+            <value>
+                <fullName>3</fullName>
+                <default>false</default>
+                <label>Average (No meeting with management level &amp;director level quarterly meeting)</label>
+            </value>
+            <value>
+                <fullName>0</fullName>
+                <default>false</default>
+                <label>Poor (Director level half a year or a year meeting)</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

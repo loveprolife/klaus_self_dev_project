@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>StoreRule</fullName>
+    <active>true</active>
+    <errorConditionFormula>RecordType.DeveloperName == &apos;Store&apos; &amp;&amp; ISBLANK(  Store__c )</errorConditionFormula>
+    <errorDisplayField>Store__c</errorDisplayField>
+    <errorMessage>Store is required</errorMessage>
+</ValidationRule>

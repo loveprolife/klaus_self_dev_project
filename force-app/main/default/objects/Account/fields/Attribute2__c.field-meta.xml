@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Attribute2__c</fullName>
+    <label>Attribute2</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>03</fullName>
+                <default>false</default>
+                <label>Government (PA)</label>
+            </value>
+            <value>
+                <fullName>04</fullName>
+                <default>false</default>
+                <label>RUC (PA)</label>
+            </value>
+            <value>
+                <fullName>05</fullName>
+                <default>false</default>
+                <label>Personal ID (PA)</label>
+            </value>
+            <value>
+                <fullName>06</fullName>
+                <default>false</default>
+                <label>PassportOrForeignID</label>
+            </value>
+            <value>
+                <fullName>07</fullName>
+                <default>false</default>
+                <label>End Consumer (PA)</label>
+            </value>
+            <value>
+                <fullName>2A</fullName>
+                <default>false</default>
+                <label>Attribute 2A</label>
+            </value>
+            <value>
+                <fullName>2B</fullName>
+                <default>false</default>
+                <label>Attribute 2B</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

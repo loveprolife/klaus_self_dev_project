@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cooperative_Product_Agency__c</fullName>
+    <label>Product Lineup for Cooperation(Agency)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>20</fullName>
+                <default>false</default>
+                <label>1)Up to 90% of the full lineup product cooperation</label>
+            </value>
+            <value>
+                <fullName>15</fullName>
+                <default>false</default>
+                <label>2)At least have a strong desire to cooperate with a high-end product</label>
+            </value>
+            <value>
+                <fullName>10</fullName>
+                <default>false</default>
+                <label>3)Only willing to cooperate with the middle-end and low-end product</label>
+            </value>
+            <value>
+                <fullName>0</fullName>
+                <default>false</default>
+                <label>4)Only use Hisense as a supplement</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

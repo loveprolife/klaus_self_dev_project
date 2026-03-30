@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exhibition_OAApproval</fullName>
+    <availability>online</availability>
+    <description>部门审批提交</description>
+    <displayType>massActionButton</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <height>600</height>
+    <linkType>url</linkType>
+    <masterLabel>Submit forApproval</masterLabel>
+    <openType>noSidebar</openType>
+    <protected>false</protected>
+    <requireRowSelection>true</requireRowSelection>
+    <url>/lightning/cmp/c__lwcWrapper?c__lwcName=oAApprovalSubmissionLwc</url>
+</WebLink>

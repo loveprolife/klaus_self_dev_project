@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>More_Detail</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>600</height>
+    <isResizable>true</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>More Detail</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>{!IF( Contract__c.Contract_filing_type__c = &quot;无合同备案&quot;, 
+URLFOR(&quot;https://ppms-outer.hisense.com/htManage/ht-noRecord/ht-detail/index/&quot;&amp; Contract__c.Contract_filing_id__c)
+, 
+URLFOR(&quot;https://ppms-outer.hisense.com/htManage/myHtManage/ht-detail/index/&quot;&amp; Contract__c.Contract_filing_id__c)
+)}</url>
+</WebLink>

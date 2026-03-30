@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Retail_Channel__c</fullName>
+    <label>Retail Channel</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Harvey Norman</fullName>
+                <default>false</default>
+                <label>Harvey Norman</label>
+            </value>
+            <value>
+                <fullName>JB Hi-Fi</fullName>
+                <default>false</default>
+                <label>JB Hi-Fi</label>
+            </value>
+            <value>
+                <fullName>The Good Guys</fullName>
+                <default>false</default>
+                <label>The Good Guys</label>
+            </value>
+            <value>
+                <fullName>Bing Lee</fullName>
+                <default>false</default>
+                <label>Bing Lee</label>
+            </value>
+            <value>
+                <fullName>Retravision</fullName>
+                <default>false</default>
+                <label>Retravision</label>
+            </value>
+            <value>
+                <fullName>Radio Rentals</fullName>
+                <default>false</default>
+                <label>Radio Rentals</label>
+            </value>
+            <value>
+                <fullName>RT Edwards&apos;s</fullName>
+                <default>false</default>
+                <label>RT Edwards&apos;s</label>
+            </value>
+            <value>
+                <fullName>Joyce Mayne</fullName>
+                <default>false</default>
+                <label>Joyce Mayne</label>
+            </value>
+            <value>
+                <fullName>Domayne</fullName>
+                <default>false</default>
+                <label>Domayne</label>
+            </value>
+            <value>
+                <fullName>Betta Home Living</fullName>
+                <default>false</default>
+                <label>Betta Home Living</label>
+            </value>
+            <value>
+                <fullName>Bi Rite</fullName>
+                <default>false</default>
+                <label>Bi Rite</label>
+            </value>
+            <value>
+                <fullName>Myer</fullName>
+                <default>false</default>
+                <label>Myer</label>
+            </value>
+            <value>
+                <fullName>Coogans,</fullName>
+                <default>false</default>
+                <label>Coogans,</label>
+            </value>
+            <value>
+                <fullName>Mitchell &amp; Brown</fullName>
+                <default>false</default>
+                <label>Mitchell &amp; Brown</label>
+            </value>
+            <value>
+                <fullName>Leading Appliances</fullName>
+                <default>false</default>
+                <label>Leading Appliances</label>
+            </value>
+            <value>
+                <fullName>VideoPro</fullName>
+                <default>false</default>
+                <label>VideoPro</label>
+            </value>
+            <value>
+                <fullName>Appliances Online</fullName>
+                <default>false</default>
+                <label>Appliances Online</label>
+            </value>
+            <value>
+                <fullName>DDL</fullName>
+                <default>false</default>
+                <label>DDL</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hisense_Japan</fullName>
+    <columns>ACCOUNT.NAME</columns>
+    <columns>SAP_Customer_Code__c</columns>
+    <columns>Customer_Status__c</columns>
+    <columns>ACCOUNT.TYPE</columns>
+    <columns>Province_State__c</columns>
+    <columns>Sales_Region__c</columns>
+    <columns>ACCOUNT.CREATED_DATE</columns>
+    <columns>ACCOUNT.LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Hisense_Entity__c</field>
+        <operation>equals</operation>
+        <value>8410</value>
+    </filters>
+    <label>Hisense Japan</label>
+    <sharedTo>
+        <roleAndSubordinates>JP_GM</roleAndSubordinates>
+    </sharedTo>
+</ListView>

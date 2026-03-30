@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Error_Shipping_Plan</fullName>
+    <active>true</active>
+    <errorConditionFormula>CONTAINS(Shipping__c , &apos;  &apos;) || CONTAINS(Shipping__c , &apos; &apos;)</errorConditionFormula>
+    <errorDisplayField>Shipping__c</errorDisplayField>
+    <errorMessage>Contains error Spaces！</errorMessage>
+</ValidationRule>

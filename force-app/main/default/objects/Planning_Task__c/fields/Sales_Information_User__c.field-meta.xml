@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Information_User__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>2021 Sales Program design, presetation and alignment</description>
+    <label>Sales Information User</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>Planning_Tasks5nzD</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

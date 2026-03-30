@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Future_Month_Invoicing_GAP_Dollar__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(ISBLANK(Flag__c),SAP_Sales_Actual__r.Pending_DN_Net_Income_USD__c + SAP_Sales_Actual__r.Back_Order_Amount_USD__c,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Future Month Dollars</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

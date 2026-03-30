@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Carton_Box__c</fullName>
+    <label>Carton Box</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Color Box-Standard</fullName>
+                <default>false</default>
+                <label>Color Box-Standard</label>
+            </value>
+            <value>
+                <fullName>Color Box -ISTA 6Amazon</fullName>
+                <default>false</default>
+                <label>Color Box -ISTA 6Amazon</label>
+            </value>
+            <value>
+                <fullName>Color Box-6Sams</fullName>
+                <default>false</default>
+                <label>Color Box-6Sams</label>
+            </value>
+            <value>
+                <fullName>Brown Box-Standard</fullName>
+                <default>false</default>
+                <label>Brown Box-Standard</label>
+            </value>
+            <value>
+                <fullName>Brown Box-ISTA 6Amazon</fullName>
+                <default>false</default>
+                <label>Brown Box-ISTA 6Amazon</label>
+            </value>
+            <value>
+                <fullName>Brown Box-6Sams</fullName>
+                <default>false</default>
+                <label>Brown Box-6Sams</label>
+            </value>
+            <value>
+                <fullName>Brown Box-ISTA 3A</fullName>
+                <default>false</default>
+                <label>Brown Box-ISTA 3A</label>
+            </value>
+            <value>
+                <fullName>Brown Box-ISTA 6A standard</fullName>
+                <default>false</default>
+                <label>Brown Box-ISTA 6A standard</label>
+            </value>
+            <value>
+                <fullName>Brown Box-ISTA 6A Amanzon</fullName>
+                <default>false</default>
+                <label>Brown Box-ISTA 6A Amanzon</label>
+            </value>
+            <value>
+                <fullName>Brown Box-ISTA 6A Costco</fullName>
+                <default>false</default>
+                <label>Brown Box-ISTA 6A Costco</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

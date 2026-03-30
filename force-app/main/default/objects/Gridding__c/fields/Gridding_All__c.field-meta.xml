@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gridding_All__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(!ISBLANK(Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Gridding_Code__c),Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Gridding_Code__c + &apos;-&apos;,&apos;&apos; ) +
+if(!ISBLANK(Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Gridding_Code__c),Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Gridding_Code__c + &apos;-&apos;,&apos;&apos; ) +
+if(!ISBLANK(Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Gridding_Code__c),Parent_Gridding__r.Parent_Gridding__r.Parent_Gridding__r.Gridding_Code__c + &apos;-&apos;,&apos;&apos; ) +
+if(!ISBLANK(Parent_Gridding__r.Parent_Gridding__r.Gridding_Code__c),Parent_Gridding__r.Parent_Gridding__r.Gridding_Code__c + &apos;-&apos;,&apos;&apos; ) +
+if(!ISBLANK(Parent_Gridding__r.Gridding_Code__c),Parent_Gridding__r.Gridding_Code__c + &apos;-&apos;,&apos;&apos; ) +
+if(!ISBLANK(Gridding_Code__c),Gridding_Code__c,&apos;&apos; )</formula>
+    <label>网格所有层级</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

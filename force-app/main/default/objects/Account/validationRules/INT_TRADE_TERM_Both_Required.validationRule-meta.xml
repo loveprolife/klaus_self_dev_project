@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>INT_TRADE_TERM_Both_Required</fullName>
+    <active>true</active>
+    <description>国际贸易条款  必须同时存在 或者同时为空</description>
+    <errorConditionFormula>OR(ISBLANK(TEXT(International_Trade_Terms__c)) &amp;&amp; NOT(ISBLANK(International_Trade_Terms_2__c)),ISBLANK(International_Trade_Terms_2__c) &amp;&amp; NOT(ISBLANK(TEXT(International_Trade_Terms__c))))</errorConditionFormula>
+    <errorDisplayField>International_Trade_Terms__c</errorDisplayField>
+    <errorMessage>The International Trade Terms must either both exist or both be empty.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Deposit__c</fullName>
+    <label>Paid</label>
+    <summarizedField>Event_Payment__c.Amount__c</summarizedField>
+    <summaryFilterItems>
+        <field>Event_Payment__c.Charge_Today__c</field>
+        <operation>notEqual</operation>
+        <value>No</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Event_Payment__c.Event_Receipt__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CreditInsuranceConf_Cannot_be_Empty</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( AND(RecordType.DeveloperName =&apos;LC&apos;,Credit_Insurance_Confirmation_Y_N__c =True,ISBLANK( Credit_Insurance_Confirmation_Bank_SWIFT__c )), TRUE, FALSE)</errorConditionFormula>
+    <errorDisplayField>Credit_Insurance_Confirmation_Bank_SWIFT__c</errorDisplayField>
+    <errorMessage>There is the Credit Insurance Confirmation,Credit Insurance Confirmation Bank SWIFT Cannot be Empty !</errorMessage>
+</ValidationRule>

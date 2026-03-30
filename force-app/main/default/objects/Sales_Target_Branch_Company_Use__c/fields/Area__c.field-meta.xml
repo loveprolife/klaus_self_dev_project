@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Area__c</fullName>
+    <label>Area</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>-R &amp; F</fullName>
+                <default>false</default>
+                <label>-R &amp; F</label>
+            </value>
+            <value>
+                <fullName>-WM</fullName>
+                <default>false</default>
+                <label>-WM</label>
+            </value>
+            <value>
+                <fullName>-TV</fullName>
+                <default>false</default>
+                <label>-TV</label>
+            </value>
+            <value>
+                <fullName>-Mobile</fullName>
+                <default>false</default>
+                <label>-Mobile</label>
+            </value>
+            <value>
+                <fullName>-AC</fullName>
+                <default>false</default>
+                <label>-AC</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

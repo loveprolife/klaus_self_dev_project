@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<WaveDashboard xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <content xsi:nil="true"/>
-    <application>Liao_Monthly_Report</application>
-    <dateVersion>1</dateVersion>
-    <description>终端运营月报（总部每月发送邮件）</description>
-    <masterLabel>Salesforce系统终端运营月报</masterLabel>
-</WaveDashboard>

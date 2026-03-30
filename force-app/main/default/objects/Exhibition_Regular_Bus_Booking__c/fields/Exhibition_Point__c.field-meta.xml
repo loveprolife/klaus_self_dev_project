@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exhibition_Point__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <inlineHelpText>地点数据</inlineHelpText>
+    <label>Exhibition Point</label>
+    <referenceTo>Exhibition_Hotel__c</referenceTo>
+    <relationshipLabel>Exhibition Regular Bus Bookings</relationshipLabel>
+    <relationshipName>Exhibition_Regular_Bus_Bookings</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

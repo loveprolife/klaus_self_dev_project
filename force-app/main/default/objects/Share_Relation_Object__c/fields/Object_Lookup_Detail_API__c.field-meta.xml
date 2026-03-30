@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Object_Lookup_Detail_API__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>设置为共享对象LookUp的字段子级关系名称API名称, 自定义字段以__r后缀</inlineHelpText>
+    <label>共享对象子级关系API</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

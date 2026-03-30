@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_In_Attendance_Information__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Check In Attendance Information</label>
+    <referenceTo>Promoter_Attendance_Information__c</referenceTo>
+    <relationshipLabel>SchedulingTask</relationshipLabel>
+    <relationshipName>SchedulingTask</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

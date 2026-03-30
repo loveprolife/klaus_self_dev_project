@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Have_Promoter__c</fullName>
+    <description>Responsible person 中有促销员</description>
+    <label>Store with Promoters</label>
+    <summaryFilterItems>
+        <field>Responsible_Person__c.RecordType__c</field>
+        <operation>equals</operation>
+        <value>Promoter</value>
+    </summaryFilterItems>
+    <summaryFilterItems>
+        <field>Responsible_Person__c.Is_Active__c</field>
+        <operation>equals</operation>
+        <value>True</value>
+    </summaryFilterItems>
+    <summaryForeignKey>Responsible_Person__c.Shop_Name__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

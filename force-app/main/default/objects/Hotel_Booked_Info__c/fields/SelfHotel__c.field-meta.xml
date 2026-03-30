@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SelfHotel__c</fullName>
+    <label>SelfHotel</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>套房Suite</fullName>
+                <default>false</default>
+                <label>套房Suite</label>
+            </value>
+            <value>
+                <fullName>大床房King-size Bedroom</fullName>
+                <default>false</default>
+                <label>大床房King-size Bedroom</label>
+            </value>
+            <value>
+                <fullName>双床房Twin-beds room</fullName>
+                <default>false</default>
+                <label>双床房Twin-beds room</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

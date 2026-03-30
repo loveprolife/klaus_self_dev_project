@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>GSS_Sales_Region_and_Sales_Region_Mapping</fullName>
+    <active>true</active>
+    <label>GSS Sales Region and Sales Region Mapping</label>
+</RecordType>

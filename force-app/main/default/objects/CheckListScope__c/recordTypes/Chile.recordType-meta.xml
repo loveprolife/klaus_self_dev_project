@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Chile</fullName>
+    <active>true</active>
+    <label>Chile</label>
+    <picklistValues>
+        <picklist>BussinessArea__c</picklist>
+        <values>
+            <fullName>Chile</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Malaysia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mexico</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Peru</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Philippines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>USA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vietnam</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Role__c</picklist>
+        <values>
+            <fullName>Floorwalker</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Regional Manager</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sales_Region__c</picklist>
+        <values>
+            <fullName>Algeria Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>East Africa Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Egypt Office</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Argentina</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Chile</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Hisense Colombia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense International</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Philippines</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense Singapore</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hisense West Africa</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

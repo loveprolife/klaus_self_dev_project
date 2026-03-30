@@ -19,5 +19,6 @@
   },
   "xml.preferences.showSchemaDocumentationType": "none",
   "editor.acceptSuggestionOnEnter": "on",
-  "editor.wordBasedSuggestions": "off"
+  "editor.wordBasedSuggestions": "off",
+  "git.ignoreLimitWarning": true
 }

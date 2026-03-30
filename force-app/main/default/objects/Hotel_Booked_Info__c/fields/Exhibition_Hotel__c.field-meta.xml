@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exhibition_Hotel__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Exhibition Hotel</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Exhibition_Hotel__c.HotelType__c</field>
+            <operation>equals</operation>
+            <value>Exhibition  Hotel</value>
+        </filterItems>
+        <filterItems>
+            <field>Exhibition_Hotel__c.Exhibition_Management__r.Name</field>
+            <operation>contains</operation>
+            <value>137</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Exhibition_Hotel__c</referenceTo>
+    <relationshipLabel>Hotel Booked Infos</relationshipLabel>
+    <relationshipName>Hotel_Booked_Infos</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

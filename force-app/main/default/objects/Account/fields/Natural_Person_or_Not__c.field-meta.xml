@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Natural_Person_or_Not__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>是否是自然人</description>
+    <label>Natural Person or Not</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

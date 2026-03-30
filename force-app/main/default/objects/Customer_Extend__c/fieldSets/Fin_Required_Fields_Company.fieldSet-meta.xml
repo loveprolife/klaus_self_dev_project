@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fin_Required_Fields_Company</fullName>
+    <description>验证财务审批必填字段公司视图</description>
+    <displayedFields>
+        <field>Payment_Term__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <displayedFields>
+        <field>Reconciliation_Customer__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <label>Fin Required Fields Company</label>
+</FieldSet>

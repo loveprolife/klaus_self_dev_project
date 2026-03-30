@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Classification__c</fullName>
+    <label>Customer Classification</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>13</fullName>
+                <default>false</default>
+                <label>Gran contribuyente</label>
+            </value>
+            <value>
+                <fullName>15</fullName>
+                <default>false</default>
+                <label>Autorretenedor</label>
+            </value>
+            <value>
+                <fullName>23</fullName>
+                <default>false</default>
+                <label>Agente retencion IVA</label>
+            </value>
+            <value>
+                <fullName>47</fullName>
+                <default>false</default>
+                <label>simple tributacion</label>
+            </value>
+            <value>
+                <fullName>99</fullName>
+                <default>false</default>
+                <label>No responsable</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

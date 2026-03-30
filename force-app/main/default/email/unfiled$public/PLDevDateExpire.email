@@ -1,5 +1,0 @@
-Hi {!Customer_Product_Line__c.CreatedBy},
-
-Your customer product line Expected Development Date will be expires in two months. Product Line : {!Customer_Product_Line__c.Link}
-
-Thanks

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exhibition_Customer__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Exhibition Customer</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>ExpoApplyInfo__c.Owner_User1__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.OwnerId</valueField>
+        </filterItems>
+        <isOptional>true</isOptional>
+    </lookupFilter>
+    <referenceTo>ExpoApplyInfo__c</referenceTo>
+    <relationshipLabel>Exhibition Customer Visits</relationshipLabel>
+    <relationshipName>Exhibition_Customer_Visits</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CHECK_PRO_REPORT</fullName>
+    <active>true</active>
+    <description>Promoter Daily Report can not changed.</description>
+    <errorConditionFormula>AND( !ISNEW(), ISCHANGED(PromoterDailyReport__c))</errorConditionFormula>
+    <errorMessage>Promoter Daily Report can not changed.</errorMessage>
+</ValidationRule>

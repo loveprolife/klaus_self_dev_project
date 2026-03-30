@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_136CantonFair_Vehicle_Info_Drop</fullName>
+    <columns>Internal_Registration__c</columns>
+    <columns>Exhibition_Arrangement__c</columns>
+    <columns>Vehicle_Type__c</columns>
+    <columns>Date__c</columns>
+    <columns>Pick_Up_Point__c</columns>
+    <columns>Pick_Off_Point__c</columns>
+    <columns>Expo_Vehicle_Info__c</columns>
+    <columns>Departure_Time__c</columns>
+    <columns>Plate_Number__c</columns>
+    <columns>DepartureAirline__c</columns>
+    <columns>ReturnFlight__c</columns>
+    <columns>NAME</columns>
+    <columns>Is_Arranged__c</columns>
+    <columns>If_Cancel__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Exhibition_Management__c</field>
+        <operation>contains</operation>
+        <value>136</value>
+    </filters>
+    <filters>
+        <field>Vehicle_Type__c</field>
+        <operation>equals</operation>
+        <value>PickOff</value>
+    </filters>
+    <label>136CantonFair Vehicle Info Drop</label>
+</ListView>

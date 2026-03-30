@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>My_Resignation</fullName>
+    <columns>NAME</columns>
+    <columns>LastDay__c</columns>
+    <columns>Successor__c</columns>
+    <columns>Status__c</columns>
+    <columns>Reason__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Application__c.Resignation</value>
+    </filters>
+    <label>My Resignation</label>
+</ListView>

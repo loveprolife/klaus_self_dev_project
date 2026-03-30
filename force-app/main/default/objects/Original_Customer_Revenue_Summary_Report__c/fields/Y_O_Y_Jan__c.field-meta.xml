@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Y_O_Y_Jan__c</fullName>
+    <formula>IF(OR(N_M1_Year_Actual_Revenue_Jan__c=0), null, Actual_Revenue_Jan__c  /  N_M1_Year_Actual_Revenue_Jan__c  - 1)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Y.O.Y(Jan)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

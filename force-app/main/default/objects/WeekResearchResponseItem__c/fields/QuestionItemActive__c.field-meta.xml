@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QuestionItemActive__c</fullName>
+    <formula>TEXT( Week_Question_Item__r.Status__c ) == &apos;有效&apos;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>问题明细是否仍有效</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

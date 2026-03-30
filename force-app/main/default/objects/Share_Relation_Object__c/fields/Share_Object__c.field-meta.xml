@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Share_Object__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>共享对象</label>
+    <referenceTo>Share_Object__c</referenceTo>
+    <relationshipLabel>共享关系对象</relationshipLabel>
+    <relationshipName>Share_Object_Relation</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

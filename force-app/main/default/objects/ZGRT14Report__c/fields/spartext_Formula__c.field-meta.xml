@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>spartext_Formula__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(  LEFT(spartext__c , 2), 
+&apos;10&apos;, &apos;Multi-media&apos;,
+&apos;11&apos;, &apos;DEL-Multi Media-CRT&apos;,
+&apos;12&apos;, &apos;DEL-Multi Media-LCD&apos;,
+&apos;13&apos;, &apos;DEL-Multi Media-PDP&apos;,
+&apos;14&apos;, &apos;Multi-media-LED&apos;,
+&apos;15&apos;, &apos;Multi-media-BlueT&apos;,
+&apos;16&apos;, &apos;Multi-media-ITV&apos;,
+&apos;17&apos;, &apos;Multi-media-Laser&apos;,
+&apos;18&apos;, &apos;Multi-media-DVD&apos;,
+&apos;19&apos;, &apos;B-Monitor&apos;,
+&apos;20&apos;, &apos;DEL- Media-Communic&apos;,
+&apos;21&apos;, &apos;Multi-media-Mobile P&apos;,
+&apos;22&apos;, &apos;DEL- Media-Bluetoot&apos;,
+&apos;30&apos;, &apos;point of sale&apos;,
+&apos;31&apos;, &apos;Multi-media-Soundar&apos;,
+&apos;32&apos;, &apos;Multi-media-Medical&apos;,
+&apos;33&apos;, &apos;Multi-media-MONITOR&apos;,
+&apos;34&apos;, &apos;Medical.Ultrasound&apos;,
+&apos;35&apos;, &apos;Medical.Monitor&apos;,
+&apos;36&apos;, &apos;Smart City&apos;,
+&apos;49&apos;, &apos;Multi-media-OTS&apos;,
+&apos;50&apos;, &apos;Multi-media-SP&apos;,
+&apos;5Z&apos;, &apos;Multi-media-SP&apos;,
+&apos;60&apos;, &apos;Appliances&apos;,
+&apos;61&apos;, &apos;Appliances-ACH&apos;,
+&apos;62&apos;, &apos;Appliances-REF&apos;,
+&apos;63&apos;, &apos;Appliances-CF&apos;,
+&apos;64&apos;, &apos;Appliances-WM&apos;,
+&apos;65&apos;, &apos;Appliances-SHA&apos;,
+&apos;66&apos;, &apos;Appliances-HisenseAC&apos;,
+&apos;67&apos;, &apos;Appliances-HitachiAC&apos;,
+&apos;68&apos;, &apos;Appliances-ClothesDr&apos;,
+&apos;69&apos;, &apos;Appliances-WineCabi&apos;,
+&apos;6A&apos;, &apos;Appliances-KitchenCH&apos;,
+&apos;6B&apos;, &apos;Appliances-Dishwash&apos;,
+&apos;6C&apos;, &apos;Appliances-CommerCF&apos;,
+&apos;89&apos;, &apos;Appliances-OTS&apos;,
+&apos;90&apos;, &apos;Appliances-SP&apos;,
+&apos;9Z&apos;, &apos;Appliances-PrdLine&apos;,
+&apos;A1&apos;, &apos;Consumer &apos;,
+&apos;&apos;)</formula>
+    <label>Product Line</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Canada</fullName>
+    <columns>NAME</columns>
+    <columns>Parent_Gridding__c</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>CountryOfOriginT__c</field>
+        <operation>equals</operation>
+        <value>Canada</value>
+    </filters>
+    <label>Canada</label>
+    <sharedTo>
+        <roleAndSubordinatesInternal>Canada_GM</roleAndSubordinatesInternal>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Product_Line__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( TEXT(Customer__r.Hisense_Entity__c) == &apos;8500&apos; || TEXT(Customer__r.Hisense_Entity__c) == &apos;8510&apos; || TEXT(Customer__r.Hisense_Entity__c) == &apos;8400&apos;,
+	IF( CONTAINS(&apos;TV,Laser TV&apos;, TEXT(Product_Line_Name__c)), &apos;CE&apos;, 
+	IF( CONTAINS(&apos;AC,LCAC&apos;,TEXT(Product_Line_Name__c)),&apos;AC&apos;,
+	IF( TEXT(Product_Line_Name__c) == &apos;Mobile&apos;,&apos;Mobile&apos;,
+	IF( CONTAINS(&apos;Refrigerator,Freezer,WM,Small Domestic Home Appliances,Cooking,Dishwasher&apos;,TEXT(Product_Line_Name__c)),&apos;HA&apos;,null )))),	
+	IF( CONTAINS(&apos;8000,8010,8040,8050,8060,8070,8080,80B0,80A0,8090,8999,8110,8140&apos;,TEXT(Customer__r.Hisense_Entity__c)),TEXT(Product_Line_Name__c),
+		IF( TEXT(Customer__r.Hisense_Entity__c) == &apos;8200&apos;,
+			IF( CONTAINS(&apos;TV,Laser TV&apos;, TEXT(Product_Line_Name__c)), &apos;BG&apos;,
+			IF( CONTAINS(&apos;AC,LCAC,Refrigerator,Freezer,WM,Small Domestic Home Appliances,Cooking,Dishwasher&apos;, TEXT(Product_Line_Name__c)), &apos;WG&apos;,null)),TEXT(Product_Line_Name__c))
+	)
+
+)</formula>
+    <label>Parent Product Line</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

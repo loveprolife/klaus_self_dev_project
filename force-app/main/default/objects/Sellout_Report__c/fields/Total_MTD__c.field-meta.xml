@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_MTD__c</fullName>
+    <externalId>false</externalId>
+    <formula>TV_MTD__c + Refrigerator_MTD__c +  WM_MTD__c +  AC_MTD__c</formula>
+    <label>Total MTD</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

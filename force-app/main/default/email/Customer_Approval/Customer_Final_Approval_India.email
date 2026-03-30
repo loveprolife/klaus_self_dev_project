@@ -1,1 +1,0 @@
-Hi, a new customer has been created in the sales force system with the code {!Account.SAP_Customer_Code__c} Please check and supplement the complete customer master data. Thank you

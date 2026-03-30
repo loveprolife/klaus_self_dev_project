@@ -1,5 +1,0 @@
-Dear :
-
-The customer synced to SAP System failed. Please click the link blow to view the details in the system: 
-
-{!InterfaceLog__c.Link}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>N_1_Month_QTY_6th_Week__c</fullName>
+    <externalId>false</externalId>
+    <label>Month N+1 QTY: 6th Week</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>3</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

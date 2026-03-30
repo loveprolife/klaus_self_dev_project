@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Guarantor_English_Address_Cannot_be_Empt</fullName>
+    <active>true</active>
+    <description>Guarantor_English_Address_Cannot_be_Empt</description>
+    <errorConditionFormula>IF( AND( RecordType.DeveloperName = &apos;NonLC&apos;,Possess_Guarantor_Y_N__c = false, NOT(ISBLANK( Guarantor_English_Address__c ))), TRUE, FALSE)</errorConditionFormula>
+    <errorDisplayField>Guarantor_English_Address__c</errorDisplayField>
+    <errorMessage>Guarantor Country Address Should not be Empty! (Because there is no Possess Guarantor)</errorMessage>
+</ValidationRule>

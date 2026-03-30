@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Module__c</fullName>
+    <inlineHelpText>Refer to the functional modules in the test case</inlineHelpText>
+    <label>Business Module</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Daily report</fullName>
+                <default>false</default>
+                <label>Promoter Daily report</label>
+            </value>
+            <value>
+                <fullName>Attendance</fullName>
+                <default>false</default>
+                <label>Attendance</label>
+            </value>
+            <value>
+                <fullName>Ticket Management</fullName>
+                <default>false</default>
+                <label>Ticket Management</label>
+            </value>
+            <value>
+                <fullName>Inspection Plan And Task</fullName>
+                <default>false</default>
+                <label>Inspection Plan And Task</label>
+            </value>
+            <value>
+                <fullName>Store Inspection</fullName>
+                <default>false</default>
+                <label>Inspection Report</label>
+            </value>
+            <value>
+                <fullName>Report &amp; Dashboard</fullName>
+                <default>false</default>
+                <label>Report &amp; Dashboard</label>
+            </value>
+            <value>
+                <fullName>Application</fullName>
+                <default>false</default>
+                <label>Application</label>
+            </value>
+            <value>
+                <fullName>APP tab</fullName>
+                <default>false</default>
+                <label>APP tab</label>
+            </value>
+            <value>
+                <fullName>Others</fullName>
+                <default>false</default>
+                <label>Others</label>
+            </value>
+            <value>
+                <fullName>Role-Profile</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Role-Profile</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SAP_Sales_Actual_Plan__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>SAP Sales Actual Plan</description>
+    <label>SAP Sales Actual Plan</label>
+    <referenceTo>SAP_Sales_Actual_Plan__c</referenceTo>
+    <relationshipLabel>SAP Sales Actual Reports</relationshipLabel>
+    <relationshipName>SAP_Sales_Actual_Reports</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CampaignType__c</fullName>
+    <label>Campaign Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Extender Warranty</fullName>
+                <default>false</default>
+                <label>Extender Warranty</label>
+            </value>
+            <value>
+                <fullName>Promotional gift</fullName>
+                <default>false</default>
+                <label>Promotional gift</label>
+            </value>
+            <value>
+                <fullName>Free installments</fullName>
+                <default>false</default>
+                <label>Free installments</label>
+            </value>
+            <value>
+                <fullName>Free Shipping</fullName>
+                <default>false</default>
+                <label>Free Shipping</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

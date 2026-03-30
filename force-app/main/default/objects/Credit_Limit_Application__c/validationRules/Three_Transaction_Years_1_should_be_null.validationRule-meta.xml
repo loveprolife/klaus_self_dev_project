@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Three_Transaction_Years_1_should_be_null</fullName>
+    <active>true</active>
+    <description>Last Three TransactioYears 1 (year)</description>
+    <errorConditionFormula>IF(AND(Historical_Transaction_Y_N__c=FALSE,     
+NOT( ISBLANK(TEXT(  Last_Three_Transaction_Years_1_year__c  )) ) ) , 
+TRUE, FALSE)</errorConditionFormula>
+    <errorDisplayField>Last_Three_Transaction_Years_1_year__c</errorDisplayField>
+    <errorMessage>There is no Historical Transaction,Last Three TransactioYears 1 (year) Should be Empty!</errorMessage>
+</ValidationRule>

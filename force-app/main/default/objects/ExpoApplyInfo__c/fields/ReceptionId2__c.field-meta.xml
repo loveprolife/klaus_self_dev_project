@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ReceptionId2__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>ReceptionId2</label>
+    <referenceTo>Internal_Registration__c</referenceTo>
+    <relationshipLabel>Exhibition Customers (ReceptionId2)</relationshipLabel>
+    <relationshipName>Exhibition_Customers1</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

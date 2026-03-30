@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exhibition_Metting_Room_Info__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Exhibition Meeting Room Info</label>
+    <referenceTo>Exhibition_Meeting_Room_Info__c</referenceTo>
+    <relationshipLabel>Exhibition Meeting Room Reservations</relationshipLabel>
+    <relationshipName>Exhibition_Meeting_Room_Reservations</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

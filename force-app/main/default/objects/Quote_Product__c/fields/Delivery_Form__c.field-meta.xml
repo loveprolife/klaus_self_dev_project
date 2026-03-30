@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Delivery_Form__c</fullName>
+    <label>Delivery Form</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>CKD</fullName>
+                <default>false</default>
+                <label>CKD</label>
+            </value>
+            <value>
+                <fullName>CBU</fullName>
+                <default>false</default>
+                <label>CBU</label>
+            </value>
+            <value>
+                <fullName>CKD-DK</fullName>
+                <default>false</default>
+                <label>CKD-DK</label>
+            </value>
+            <value>
+                <fullName>CKD-JG</fullName>
+                <default>false</default>
+                <label>CKD-JG</label>
+            </value>
+            <value>
+                <fullName>CKD-JG &amp; N-RC</fullName>
+                <default>false</default>
+                <label>CKD-JG &amp; N-RC</label>
+            </value>
+            <value>
+                <fullName>CKD-OC</fullName>
+                <default>false</default>
+                <label>CKD-OC</label>
+            </value>
+            <value>
+                <fullName>MCKD-1 &amp; N-RC</fullName>
+                <default>false</default>
+                <label>MCKD-1 &amp; N-RC</label>
+            </value>
+            <value>
+                <fullName>MCKD-3A</fullName>
+                <default>false</default>
+                <label>MCKD-3A</label>
+            </value>
+            <value>
+                <fullName>MCKD-3A &amp; N-DK</fullName>
+                <default>false</default>
+                <label>MCKD-3A &amp; N-DK</label>
+            </value>
+            <value>
+                <fullName>MCKD-3A &amp; N-OC</fullName>
+                <default>false</default>
+                <label>MCKD-3A &amp; N-OC</label>
+            </value>
+            <value>
+                <fullName>SKD</fullName>
+                <default>false</default>
+                <label>SKD</label>
+            </value>
+            <value>
+                <fullName>SKD（Motherboard CKD）</fullName>
+                <default>false</default>
+                <label>SKD（Motherboard CKD）</label>
+            </value>
+            <value>
+                <fullName>SKD-1 &amp; N-RC</fullName>
+                <default>false</default>
+                <label>SKD-1 &amp; N-RC</label>
+            </value>
+            <value>
+                <fullName>SKDP</fullName>
+                <default>false</default>
+                <label>SKDP</label>
+            </value>
+            <value>
+                <fullName>Motherboard CKD</fullName>
+                <default>false</default>
+                <label>Motherboard CKD</label>
+            </value>
+            <value>
+                <fullName>Motherboard SKD</fullName>
+                <default>false</default>
+                <label>Motherboard SKD</label>
+            </value>
+            <value>
+                <fullName>Motherboard &amp; Module CKD</fullName>
+                <default>false</default>
+                <label>Motherboard &amp; Module CKD</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

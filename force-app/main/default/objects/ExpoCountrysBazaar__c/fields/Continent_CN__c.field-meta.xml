@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Continent_CN__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(Continent__c, &quot;Africa&quot;, &quot;非洲&quot;, &quot;Asia&quot;, &quot;亚洲&quot;,&quot;Europe&quot;,&quot;欧洲&quot;,
+&quot;North America&quot;,&quot;北美洲&quot;,&quot;South America&quot;,&quot;南美洲&quot;,&quot;Oceania&quot;,&quot;大洋洲&quot;,&quot;&quot;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Continent CN</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

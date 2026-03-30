@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cooperating_Customer_SAP_Code__c</fullName>
+    <description>合作主体SAP</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Cooperating customer SAP code. For brand direct operation, it should fill in the SAP code of the channel; for agent cooperation, it should fill in the SAP code of the agent customer.</inlineHelpText>
+    <label>Cooperating  Customer SAP Code</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

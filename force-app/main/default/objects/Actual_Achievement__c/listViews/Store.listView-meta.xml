@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Store</fullName>
+    <columns>NAME</columns>
+    <columns>Sales_Region__c</columns>
+    <columns>Brand__c</columns>
+    <columns>Product_Line__c</columns>
+    <columns>Store_Number__c</columns>
+    <columns>Promoter_Number__c</columns>
+    <columns>S_Promoter_Number__c</columns>
+    <columns>A_Promoter_Number__c</columns>
+    <columns>B_Promoter_Number__c</columns>
+    <columns>C_Promoter_number__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Actual_Achievement__c.Store</value>
+    </filters>
+    <label>Store</label>
+</ListView>

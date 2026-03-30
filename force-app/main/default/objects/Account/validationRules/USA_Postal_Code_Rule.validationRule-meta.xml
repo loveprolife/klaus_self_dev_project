@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>USA_Postal_Code_Rule</fullName>
+    <active>true</active>
+    <description>美国邮编规范校验</description>
+    <errorConditionFormula>AND( ISPICKVAL( Guarantor_Country_Code__c , &apos;US&apos;) ,
+    CONTAINS( Postal_Code__c, &apos; &apos;)
+)</errorConditionFormula>
+    <errorDisplayField>Postal_Code__c</errorDisplayField>
+    <errorMessage>The length of the postal code must not exceed 10 and there must be no spaces.</errorMessage>
+</ValidationRule>

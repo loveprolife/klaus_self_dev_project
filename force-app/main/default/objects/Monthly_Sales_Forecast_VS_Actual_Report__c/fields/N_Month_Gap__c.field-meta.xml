@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>N_Month_Gap__c</fullName>
+    <externalId>false</externalId>
+    <formula>N_Month_Planned_Sales_Volume__c  -  N_Month_Invoiced_Volume__c  -  N_Month_DO_Released_Not_Invoced_Volume__c  -  N_Month_Not_Released_Order__c  -  N_Month_Virtual_Order__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>N Month&apos;s Gap</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>3</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

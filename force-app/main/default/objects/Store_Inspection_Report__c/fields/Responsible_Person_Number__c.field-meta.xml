@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Responsible_Person_Number__c</fullName>
+    <description>巡店员人数（巡店日报表，根据该门店下的3月所有巡店日报数据，最后去重计算，巡店日报状态需要为submitted状态）</description>
+    <externalId>false</externalId>
+    <label>Responsible Person Number</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

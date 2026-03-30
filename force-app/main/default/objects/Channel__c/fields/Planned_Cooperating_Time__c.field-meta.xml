@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Planned_Cooperating_Time__c</fullName>
+    <description>计划合作时间，只有“计划开发”状态的渠道需填写，具体到月份</description>
+    <externalId>false</externalId>
+    <inlineHelpText>only “plan to develop” status of the channel to fill in, specific to the month</inlineHelpText>
+    <label>Planned Cooperating Time</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

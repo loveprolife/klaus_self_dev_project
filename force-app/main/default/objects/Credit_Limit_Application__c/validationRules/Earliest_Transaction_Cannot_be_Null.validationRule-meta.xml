@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Earliest_Transaction_Cannot_be_Null</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( AND( RecordType.DeveloperName=&apos;NonLC&apos;,
+Historical_Transaction_Y_N__c=True,ISPICKVAL(Earliest_Transaction_Year__c, &apos;&apos;)), TRUE, FALSE)</errorConditionFormula>
+    <errorDisplayField>Earliest_Transaction_Year__c</errorDisplayField>
+    <errorMessage>Earliest Transaction Year Should be Empty! (Because there is no Historical Transaction)</errorMessage>
+</ValidationRule>

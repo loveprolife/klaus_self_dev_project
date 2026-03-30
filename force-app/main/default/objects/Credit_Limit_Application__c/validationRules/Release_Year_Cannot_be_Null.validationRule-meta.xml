@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Release_Year_Cannot_be_Null</fullName>
+    <active>true</active>
+    <description>Earliest Year of Release Cannot be Empty !</description>
+    <errorConditionFormula>IF( AND( RecordType.DeveloperName=&apos;NonLC&apos;,
+Historical_Transaction_Y_N__c=True,ISPICKVAL(Earliest_Year_of_Release_year__c, &apos;&apos;)), TRUE, FALSE)</errorConditionFormula>
+    <errorDisplayField>Earliest_Year_of_Release_year__c</errorDisplayField>
+    <errorMessage>Earliest Release Year  Should be Empty! (Because there is no Historical Transaction)</errorMessage>
+</ValidationRule>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hisense_Participant</fullName>
+    <active>true</active>
+    <label>Hisense Participant</label>
+    <picklistValues>
+        <picklist>Hisense_Participant_Position__c</picklist>
+        <values>
+            <fullName>Cost Team</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finance Team</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Manager</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Operation Team</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Product Line</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Director</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sales Manager</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

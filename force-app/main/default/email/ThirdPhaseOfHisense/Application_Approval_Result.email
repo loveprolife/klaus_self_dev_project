@@ -1,5 +1,0 @@
-{!Application__c.RecordType} application from {!Application__c.CreatedBy} has been {!Application__c.Status__c}. 
-The application number is {!Application__c.Name}.
-
-For more details, please check:  {!Application__c.Link}
-Best Regards.

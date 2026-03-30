@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Gift</fullName>
+    <columns>NAME</columns>
+    <columns>Product_Line__c</columns>
+    <columns>sales_region__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Product__c.Gift</value>
+    </filters>
+    <label>Gift</label>
+    <sharedTo>
+        <roleAndSubordinatesInternal>Indonesia_GM</roleAndSubordinatesInternal>
+        <roleAndSubordinatesInternal>Philippine_GM</roleAndSubordinatesInternal>
+        <roleAndSubordinatesInternal>Vietnam_Office_GM</roleAndSubordinatesInternal>
+    </sharedTo>
+</ListView>

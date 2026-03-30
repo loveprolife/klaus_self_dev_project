@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Group__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Sales Group</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>PickList__c.RecordType.Name</field>
+            <operation>equals</operation>
+            <value>Master Data(Team)</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>PickList__c</referenceTo>
+    <relationshipLabel>Customers (Sales Group)</relationshipLabel>
+    <relationshipName>CustomersSales_Group</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

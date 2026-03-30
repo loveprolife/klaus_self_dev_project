@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsExistSales__c</fullName>
+    <externalId>false</externalId>
+    <formula>Key_Sales__c +  Sales_member01__c  + Sales_member02__c  +Sales_member03__c  +Sales_member04__c   +Sales_member05__c  +Sales_member06__c  +Sales_member07__c  +Sales_member08__c  +Sales_member09__c</formula>
+    <label>IsExistSales</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

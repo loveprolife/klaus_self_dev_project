@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Term__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Tax Info required; 
+----G216:Month end +30days----  
+----G007:TT00 ,Paid----
+----G005:OA60 ,Within 60 days Due net----
+----G011:OA75 ,Within 75 days Due net----
+----G006:OA90 ,Within 90 days Due net----
+----0001: Pay immediately w/o deduction----
+----G498: End of month+60 days,Cut off 25th----</description>
+    <label>Payment Term</label>
+    <lookupFilter>
+        <active>false</active>
+        <booleanFilter>((1 AND 2) OR (3 AND 4)) OR 5</booleanFilter>
+        <filterItems>
+            <field>Payment_Term__c.Scope__c</field>
+            <operation>equals</operation>
+            <value>Oversea Company</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense USA, Hisense Mexico, Hisense Australia, Hisense Malaysia, Hisense South Africa</value>
+        </filterItems>
+        <filterItems>
+            <field>Payment_Term__c.Scope__c</field>
+            <operation>equals</operation>
+            <value>Headquarters</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>USA(OEM), American Sales Department, Middle East and Africa Sales Department, Asia-Pacific Sales Department, Key Account Sales Department, Europe Sales Department, Communications Sales Department</value>
+        </filterItems>
+        <filterItems>
+            <field>$Source.Sales_Region__c</field>
+            <operation>equals</operation>
+            <value></value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Payment_Term__c</referenceTo>
+    <relationshipLabel>Customers</relationshipLabel>
+    <relationshipName>Cus_Payment_Terms</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

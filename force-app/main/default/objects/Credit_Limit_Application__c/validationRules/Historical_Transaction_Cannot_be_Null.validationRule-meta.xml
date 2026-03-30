@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Historical_Transaction_Cannot_be_Null</fullName>
+    <active>true</active>
+    <description>Historical_Transaction_Cannot_be_Null(At least one.)</description>
+    <errorConditionFormula>IF( 
+    AND(Historical_Transaction_Y_N__c=True, 
+        AND(
+            OR( 
+                ISPICKVAL(Last_Three_Transaction_Years_1_year__c , &apos;&apos;), 
+                ISNULL(Last_3_Years_Transaction_Amount_1_USD__c), 
+                INCLUDES( Transaction_Settlement_Method_1_3year__c  , &apos;&apos;)
+            ),
+            OR(
+                ISPICKVAL(Last_Three_Transaction_Years_2_year__c , &apos;&apos;), 
+                ISNULL(Last_3_Years_Transaction_Amount_2_USD__c), 
+                INCLUDES( Transaction_Settlement_Method_2_3year__c  , &apos;&apos;)
+            ),
+            OR(
+                ISPICKVAL(Last_Three_Transaction_Years_3_year__c , &apos;&apos;), 
+                ISNULL(Last_3_Years_Transaction_Amount_3_USD__c), 
+                INCLUDES( Transaction_Settlement_Method_3_3year__c  , &apos;&apos;)
+            )
+        )
+    ), TRUE, FALSE)</errorConditionFormula>
+    <errorDisplayField>Historical_Transaction_Y_N__c</errorDisplayField>
+    <errorMessage>One of the group should be filling in. [Last Three Transaction Years 1] /[Last Three Transaction Years 2] /[Last Three Transaction Years 3]</errorMessage>
+</ValidationRule>

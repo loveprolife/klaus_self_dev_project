@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>YOY_Average_Strategy_Customer_Revenue__c</fullName>
+    <formula>IF(OR(Average_Strategy_Customer_Rev_Same_Per__c=0), null, (N_Year_Average_Strategy_Customer_Rev__c / Average_Strategy_Customer_Rev_Same_Per__c) - 1)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Y.O.Y Average Strategy Customer Revenue</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

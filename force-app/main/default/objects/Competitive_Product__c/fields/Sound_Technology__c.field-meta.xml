@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sound_Technology__c</fullName>
+    <label>Sound Technology</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Dolby Atmos</fullName>
+                <default>false</default>
+                <label>Dolby Atmos</label>
+            </value>
+            <value>
+                <fullName>Dolby Audio</fullName>
+                <default>false</default>
+                <label>Dolby Audio</label>
+            </value>
+            <value>
+                <fullName>DTS Virtual-X</fullName>
+                <default>false</default>
+                <label>DTS Virtual-X</label>
+            </value>
+            <value>
+                <fullName>DTS Studio Sound</fullName>
+                <default>false</default>
+                <label>DTS Studio Sound</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

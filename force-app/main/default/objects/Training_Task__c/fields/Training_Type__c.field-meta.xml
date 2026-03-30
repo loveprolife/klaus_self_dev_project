@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Training_Type__c</fullName>
+    <label>Training Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>巡店培训</fullName>
+                <default>false</default>
+                <label>巡店培训</label>
+            </value>
+            <value>
+                <fullName>集中培训-线上</fullName>
+                <default>false</default>
+                <label>集中培训-线上</label>
+            </value>
+            <value>
+                <fullName>集中培训-线下</fullName>
+                <default>false</default>
+                <label>集中培训-线下</label>
+            </value>
+            <value>
+                <fullName>集中培训-渠道</fullName>
+                <default>false</default>
+                <label>集中培训-渠道</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

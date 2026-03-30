@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sampling_Status__c</fullName>
+    <description>出样状态，包括已完成、出样中、撤样中、已撤样和仅线上销售</description>
+    <inlineHelpText>Sampling status of the product, including finished, displaying, withdrawing, withdrawn and only online</inlineHelpText>
+    <label>Sampling Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>已完成</fullName>
+                <default>false</default>
+                <label>已完成</label>
+            </value>
+            <value>
+                <fullName>出样中</fullName>
+                <default>false</default>
+                <label>出样中</label>
+            </value>
+            <value>
+                <fullName>撤样中</fullName>
+                <default>false</default>
+                <label>撤样中</label>
+            </value>
+            <value>
+                <fullName>完成撤样</fullName>
+                <default>false</default>
+                <label>完成撤样</label>
+            </value>
+            <value>
+                <fullName>仅线上销售</fullName>
+                <default>false</default>
+                <label>仅线上销售</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

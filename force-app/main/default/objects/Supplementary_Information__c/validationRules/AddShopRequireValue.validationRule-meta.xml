@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AddShopRequireValue</fullName>
+    <active>true</active>
+    <description>若考勤信息门店为空，则补签必填</description>
+    <errorConditionFormula>OR(
+AND( RecordType.DeveloperName == &apos;CheckInSupplementary&apos; ,
+ISBLANK( Attendance__r.Shop__c ),
+ISBLANK( Shop__c )),
+AND( RecordType.DeveloperName == &apos;CheckOutSupplementary&apos; ,
+ISBLANK(  Attendance__r.CheckOutShop__c  ),
+ISBLANK( Shop__c ))
+)</errorConditionFormula>
+    <errorDisplayField>Shop__c</errorDisplayField>
+    <errorMessage>考勤中门店为空，则补签门店为必填</errorMessage>
+</ValidationRule>

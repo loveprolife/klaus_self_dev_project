@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Participant__c</fullName>
+    <description>参与人姓名
+海信和客户人员名字的合集</description>
+    <externalId>false</externalId>
+    <formula>Hisense_Participant__r.User_Full_Name__c +  Customer_Participant__r.FirstName  +  Customer_Participant__r.LastName</formula>
+    <label>Participant</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

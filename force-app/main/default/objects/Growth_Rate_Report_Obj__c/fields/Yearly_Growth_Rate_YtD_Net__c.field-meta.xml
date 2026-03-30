@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Yearly_Growth_Rate_YtD_Net__c</fullName>
+    <formula>IF(AND(Accumulated_Revenue_Net_Same_Period__c=0,Accumulated_Revenue_Net__c=0),null,IF(Accumulated_Revenue_Net_Same_Period__c=0, 1, (Accumulated_Revenue_Net__c-Accumulated_Revenue_Net_Same_Period__c)/ABS(Accumulated_Revenue_Net_Same_Period__c)))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Yearly Growth Rate(YtD Net)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Percent</type>
+</CustomField>

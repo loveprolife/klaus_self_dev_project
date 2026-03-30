@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>SBU_Code__c</fullName>
+    <description>销售单元编码，通过销售单元匹配信数区组维表中的sub_zh字段获取sub</description>
+    <externalId>false</externalId>
+    <inlineHelpText>It acquires field sub by matching field sub_zh from HiData</inlineHelpText>
+    <label>SBU Code</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

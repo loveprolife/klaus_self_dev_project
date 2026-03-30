@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Create_Check_PostCode</fullName>
+    <active>true</active>
+    <errorConditionFormula>IF( text(Guarantor_Country_Code__c)  = &apos;JP&apos;,  REGEX( Postal_Code__c , &apos;.*-.*&apos;) , false)</errorConditionFormula>
+    <errorDisplayField>Postal_Code__c</errorDisplayField>
+    <errorMessage>Cannot contain &quot;-&quot;.</errorMessage>
+</ValidationRule>

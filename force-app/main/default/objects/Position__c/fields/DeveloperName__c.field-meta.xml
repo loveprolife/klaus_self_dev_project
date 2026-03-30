@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DeveloperName__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <externalId>true</externalId>
+    <inlineHelpText>只能包含字母数字字符，必须以字母开头，不能以下划线字符结尾或包含两个连续的下划线字符，而且在所有岗位中必须是唯一的;</inlineHelpText>
+    <label>岗位小组名</label>
+    <length>80</length>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

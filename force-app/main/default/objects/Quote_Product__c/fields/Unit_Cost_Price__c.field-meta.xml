@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unit_Cost_Price__c</fullName>
+    <formula>IF( Lowest_Price__c &gt; 0, Lowest_Price__c , Cost__c) + 
+Accessories_other__c  +  Royalties__c +  Other_Fee__c +  Delivery_Form_Fee__c  +  Packaging_Fee__c +  Color_Box_Fee__c + POS_Fee__c +  Sales_of_Consumables_Fee__c + Other_Support__c + Cost__c * (  Accessories_other_Proportion__c +  Sales_of_Consumables_Proportion__c +  Commission_Proportion__c + Market_Fee_Proportion__c + After_sales_Fee_Proportion__c + Reserved_Proportion__c + Other_Support_Proportion__c )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Unit Cost Price</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

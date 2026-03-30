@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cooperation_product_lineup_new__c</fullName>
+    <inlineHelpText>Hisense listing products in channel (10 Points）</inlineHelpText>
+    <label>Cooperation product lineup</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>10</fullName>
+                <default>false</default>
+                <label>90% of the whole series</label>
+            </value>
+            <value>
+                <fullName>8</fullName>
+                <default>false</default>
+                <label>Choose at least one high-end product</label>
+            </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <label>Only Medium and Low-end products</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

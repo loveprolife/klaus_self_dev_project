@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ProductInterestEN__c</fullName>
+    <label>Product Interest EN</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>TV</fullName>
+                <default>false</default>
+                <label>TV</label>
+            </value>
+            <value>
+                <fullName>LASER TV</fullName>
+                <default>false</default>
+                <label>LASER TV</label>
+            </value>
+            <value>
+                <fullName>Commercial Display</fullName>
+                <default>false</default>
+                <label>Commercial Display</label>
+            </value>
+            <value>
+                <fullName>Refrigerator（REF）</fullName>
+                <default>false</default>
+                <label>Refrigerator（REF）</label>
+            </value>
+            <value>
+                <fullName>Washing Machine（WM）</fullName>
+                <default>false</default>
+                <label>Washing Machine（WM）</label>
+            </value>
+            <value>
+                <fullName>Freezer</fullName>
+                <default>false</default>
+                <label>Freezer</label>
+            </value>
+            <value>
+                <fullName>Kitchen Appliance（KA）</fullName>
+                <default>false</default>
+                <label>Kitchen Appliance（KA）</label>
+            </value>
+            <value>
+                <fullName>Small Domestic Appliance（SDA）</fullName>
+                <default>false</default>
+                <label>Small Domestic Appliance（SDA）</label>
+            </value>
+            <value>
+                <fullName>Residence Air Conditioner（RAC）</fullName>
+                <default>false</default>
+                <label>Residence Air Conditioner（RAC）</label>
+            </value>
+            <value>
+                <fullName>Light Commercial Air Conditioner（LCAC）</fullName>
+                <default>false</default>
+                <label>Light Commercial Air Conditioner（LCAC）</label>
+            </value>
+            <value>
+                <fullName>Commercial Air Conditioner(CAC)</fullName>
+                <default>false</default>
+                <label>Commercial Air Conditioner(CAC)</label>
+            </value>
+            <value>
+                <fullName>Mobile Phone</fullName>
+                <default>false</default>
+                <label>Mobile Phone</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>3</visibleLines>
+</CustomField>

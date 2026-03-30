@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Flag__c</fullName>
+    <description>如Flag字段有值，则为Requested Delivery Date当月及之前发货的数据</description>
+    <externalId>false</externalId>
+    <label>Flag</label>
+    <length>1</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

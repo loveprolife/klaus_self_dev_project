@@ -1,9 +1,0 @@
-Dear {!Visit_Participant__c.Visit_Owner__c} , 
-
-You are required to execute the customer visit, below is the specific information： 
-
-Customer Visit Record Name: {!Customer_Visit__c.Name} 
-
-Customer Visit Date: {!Customer_Visit__c.Sales_Expected_Remind_Date__c} 
-
-Customer Visit Place: {!Customer_Visit__c.Place__c}

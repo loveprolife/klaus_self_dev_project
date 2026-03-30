@@ -1,9 +1,0 @@
-Dear Operation Team, 
-
-There is one customer synced from SAP System, Please Take Notice in time !
-
-Customer Name : {!Account.Name} 
-
-Customer SAP Code : {!Account.SAP_Customer_Code__c} 
-
-Customer Sales Orgnization : {!Account.Hisense_Entity__c}

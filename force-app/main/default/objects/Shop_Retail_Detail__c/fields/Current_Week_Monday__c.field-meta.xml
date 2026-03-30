@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Current_Week_Monday__c</fullName>
+    <formula>IF(MONTH(PromoterDailyReport__r.Report_Date__c)-1&gt;0, 
+  IF(DAY(PromoterDailyReport__r.Report_Date__c)&gt;=IF(WEEKDAY(PromoterDailyReport__r.Report_Date__c)&gt;1,WEEKDAY(PromoterDailyReport__r.Report_Date__c)-1,7),
+     DATE(YEAR(PromoterDailyReport__r.Report_Date__c),
+          MONTH(PromoterDailyReport__r.Report_Date__c),
+          DAY(PromoterDailyReport__r.Report_Date__c)-IF(WEEKDAY(PromoterDailyReport__r.Report_Date__c)&gt;1,WEEKDAY(PromoterDailyReport__r.Report_Date__c)-1,7)+1
+     ),
+     DATE(YEAR(PromoterDailyReport__r.Report_Date__c),
+          MONTH(PromoterDailyReport__r.Report_Date__c)-1,
+          DAY(ADDMONTHS(DATE(YEAR(PromoterDailyReport__r.Report_Date__c),1,31),MONTH(PromoterDailyReport__r.Report_Date__c)-2))- 
+          IF(WEEKDAY(PromoterDailyReport__r.Report_Date__c)&gt;1,WEEKDAY(PromoterDailyReport__r.Report_Date__c)-1,7) + DAY(PromoterDailyReport__r.Report_Date__c) + 1
+     )          
+  ),
+  IF(DAY(PromoterDailyReport__r.Report_Date__c)&gt;=IF(WEEKDAY(PromoterDailyReport__r.Report_Date__c)&gt;1,WEEKDAY(PromoterDailyReport__r.Report_Date__c)-1,7),
+     DATE(YEAR(PromoterDailyReport__r.Report_Date__c),
+          MONTH(PromoterDailyReport__r.Report_Date__c),
+          DAY(PromoterDailyReport__r.Report_Date__c)-IF(WEEKDAY(PromoterDailyReport__r.Report_Date__c)&gt;1,WEEKDAY(PromoterDailyReport__r.Report_Date__c)-1,7)+1
+     ),
+     DATE(YEAR(PromoterDailyReport__r.Report_Date__c)-1,
+          12,
+          31-IF(WEEKDAY(PromoterDailyReport__r.Report_Date__c)&gt;1,WEEKDAY(PromoterDailyReport__r.Report_Date__c)-1,7) + DAY(PromoterDailyReport__r.Report_Date__c) + 1)         
+  )
+)</formula>
+    <label>报告周</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incident_Category__c</fullName>
+    <label>Incident Category</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bug</fullName>
+                <default>true</default>
+                <label>Bug</label>
+            </value>
+            <value>
+                <fullName>NewChangeRequirement</fullName>
+                <default>false</default>
+                <label>New/Change Requirement</label>
+            </value>
+            <value>
+                <fullName>Translation</fullName>
+                <default>false</default>
+                <label>Translation</label>
+            </value>
+            <value>
+                <fullName>Data Accuracy</fullName>
+                <default>false</default>
+                <label>Data Accuracy</label>
+            </value>
+            <value>
+                <fullName>Operation Issue</fullName>
+                <default>false</default>
+                <label>Operation Issue</label>
+            </value>
+            <value>
+                <fullName>Authorization</fullName>
+                <default>false</default>
+                <label>Authorization</label>
+            </value>
+            <value>
+                <fullName>NiceToHave</fullName>
+                <default>false</default>
+                <label>Nice to Have</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

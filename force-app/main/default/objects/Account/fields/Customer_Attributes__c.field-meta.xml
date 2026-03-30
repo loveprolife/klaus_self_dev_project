@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Customer_Attributes__c</fullName>
+    <label>Customer Attributes</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>TOP Customer</fullName>
+                <default>false</default>
+                <label>TOP Customer</label>
+            </value>
+            <value>
+                <fullName>Non-TOP Customer</fullName>
+                <default>false</default>
+                <label>Non-TOP Customer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

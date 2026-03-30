@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AU_inventory</fullName>
+    <columns>NAME</columns>
+    <columns>WERKS__c</columns>
+    <columns>ZCUSMODEL__c</columns>
+    <columns>ZKYKC__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>WERKS__c</field>
+        <operation>equals</operation>
+        <value>8200</value>
+    </filters>
+    <label>AU inventory</label>
+</ListView>

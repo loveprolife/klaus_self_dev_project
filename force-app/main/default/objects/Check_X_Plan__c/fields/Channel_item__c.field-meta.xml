@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Channel_item__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Channel</label>
+    <referenceTo>Channel_item__c</referenceTo>
+    <relationshipLabel>Hisense X Plan</relationshipLabel>
+    <relationshipName>Hisense_X_Plan</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

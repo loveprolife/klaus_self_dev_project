@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hisense_Recognition_OEM__c</fullName>
+    <label>Customer&apos;s Recognition of Hisense(OEM)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>15</fullName>
+                <default>false</default>
+                <label>1)At least three high-end products</label>
+            </value>
+            <value>
+                <fullName>10</fullName>
+                <default>false</default>
+                <label>2)At least one high-end product</label>
+            </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <label>3)Only low-to-mid-end products</label>
+            </value>
+            <value>
+                <fullName>0</fullName>
+                <default>false</default>
+                <label>4) Hisense is an alternative for the customer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

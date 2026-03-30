@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Start_Time_Tips__c</fullName>
+    <description>酒店入住时间提示，用于提醒用户该时间段内无法直接入住</description>
+    <label>Hotel Tips Start time</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Time</type>
+</CustomField>

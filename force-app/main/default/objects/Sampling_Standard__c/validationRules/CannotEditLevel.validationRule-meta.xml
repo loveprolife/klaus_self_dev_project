@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CannotEditLevel</fullName>
+    <active>true</active>
+    <errorConditionFormula>OR(AND( ISCHANGED( Is_Added__c ),TEXT(Is_Added__c)=&apos;否&apos;, ISCHANGED(Level__c)),AND(ISCHANGED(Level__c),TEXT(Is_Added__c)=&apos;否&apos;))</errorConditionFormula>
+    <errorDisplayField>Level__c</errorDisplayField>
+    <errorMessage>下架产品时不可修改出样等级</errorMessage>
+</ValidationRule>

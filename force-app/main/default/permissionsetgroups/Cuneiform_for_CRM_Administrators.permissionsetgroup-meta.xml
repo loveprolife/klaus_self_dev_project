@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>This permission set group manages the collection of permission sets required to support administrative access to Cuneiform for CRM. Org Admins can assign this group to users that should have profiling capabilities within their Salesforce Org.</description>
-    <hasActivationRequired>false</hasActivationRequired>
-    <label>Cuneiform for CRM: Administrators</label>
-    <permissionSets>Cuneiform_for_CRM_Connected_App_Assignment</permissionSets>
-    <permissionSets>pnova__Cuneiform_for_CRM_Administrative_User</permissionSets>
-    <status>Updated</status>
-</PermissionSetGroup>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CAN_NOT_UPDATE_CHECK_IN_DATE</fullName>
+    <active>true</active>
+    <description>考勤一旦创建，打卡日期不可更改</description>
+    <errorConditionFormula>ISCHANGED(CheckIn_Date__c)</errorConditionFormula>
+    <errorMessage>考勤一旦创建，打卡日期不可更改</errorMessage>
+</ValidationRule>

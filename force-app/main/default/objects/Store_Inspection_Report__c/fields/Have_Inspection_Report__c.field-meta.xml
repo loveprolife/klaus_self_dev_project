@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Have_Inspection_Report__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>根据当月时间维度筛选是否有巡店日报，值为Yes或No，或者True、False（巡店日报表，巡店日报状态需要为submitted状态）</description>
+    <label>Have Inspection Report</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

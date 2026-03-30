@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Have_Responsible_Person__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>是否有巡店员，值为Yes或No，或者True、False（包含巡店员、backup floorwalker）(门店负责人表，巡店员账号需要为active状态)</description>
+    <label>Have Responsible Person</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

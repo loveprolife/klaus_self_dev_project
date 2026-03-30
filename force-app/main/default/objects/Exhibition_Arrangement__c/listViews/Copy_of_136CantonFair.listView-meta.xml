@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_136CantonFair</fullName>
+    <columns>NAME</columns>
+    <columns>Internal_Registration__c</columns>
+    <columns>Inbound_Flight_No__c</columns>
+    <columns>Place_Of_Departure__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Return_Flight_No__c</columns>
+    <columns>Return_Date__c</columns>
+    <columns>Booked_Hotel__c</columns>
+    <columns>Exhibition_Management__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Exhibition_Management__c</field>
+        <operation>contains</operation>
+        <value>2025</value>
+    </filters>
+    <label>136CantonFair</label>
+</ListView>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Store_Inspection_Manage__c</fullName>
+    <label>Store Inspection Manage</label>
+    <referenceTo>Store_Inspection_Manage__c</referenceTo>
+    <relationshipLabel>Store Inspection Manage Daily Sales</relationshipLabel>
+    <relationshipName>Store_Inspection_Manage_Daily_Sales</relationshipName>
+    <relationshipOrder>1</relationshipOrder>
+    <reparentableMasterDetail>true</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>

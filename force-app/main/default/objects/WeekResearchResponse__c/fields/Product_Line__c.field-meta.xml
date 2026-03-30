@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Product_Line__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF ( INCLUDES ( Daily_Report__r.Product_Line__c, &quot;TV&quot; ), &quot;TV; &quot;,null ) &amp;
+IF ( INCLUDES ( Daily_Report__r.Product_Line__c , &quot;AC&quot; ), &quot;AC; &quot;,null ) &amp;
+IF ( INCLUDES ( Daily_Report__r.Product_Line__c , &quot;WM&quot; ), &quot;WM; &quot;,null ) &amp;
+IF ( INCLUDES ( Daily_Report__r.Product_Line__c , &quot;Sound Bar&quot; ), &quot;Sound Bar; &quot;,null ) &amp;
+IF ( INCLUDES ( Daily_Report__r.Product_Line__c , &quot;Refrigerator&quot; ), &quot;Refrigerator; &quot;,null )</formula>
+    <label>Product Line</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

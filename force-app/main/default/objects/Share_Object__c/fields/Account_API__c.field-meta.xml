@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_API__c</fullName>
+    <description>目标对象中的客户SF编码, 类型: 文本/公式文本</description>
+    <externalId>false</externalId>
+    <inlineHelpText>目标对象中的客户SF编码, 类型: 文本/公式文本  (若此表存在产品线纬度,请勿填写此项, 仅供存在门店/客户纬度使用)</inlineHelpText>
+    <label>客户字段API名</label>
+    <length>255</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

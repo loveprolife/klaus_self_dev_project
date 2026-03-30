@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>vdatu_Formula__c</fullName>
+    <formula>DATEVALUE(
+IF( ISBLANK(vdatu__c) , &apos;&apos;, LEFT( TEXT(vdatu__c) , 10)  )
+)</formula>
+    <label>vdatu_Formula</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

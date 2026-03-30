@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NOT_SYSTEM_ADMIN_CANT_CREATE</fullName>
+    <active>true</active>
+    <description>非系统管理员不可创建门店</description>
+    <errorConditionFormula>AND(
+NOT($Setup.GlobalSetting__c.IgnoreValidation__c ),
+Owner:User.Profile.Name != &apos;系统管理员&apos;,
+Owner:User.Profile.Name != &apos;System Administrator&apos;,
+ISNEW()
+)</errorConditionFormula>
+    <errorMessage>门店数据不允许创建/更改所有人!</errorMessage>
+</ValidationRule>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Business_Orgnization_and_Name_Mapping</fullName>
+    <active>true</active>
+    <label>Business Orgnization and Name Mapping</label>
+</RecordType>

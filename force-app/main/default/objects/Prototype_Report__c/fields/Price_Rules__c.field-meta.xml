@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Price_Rules__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Price Rules</label>
+    <referenceTo>Price_Rules__c</referenceTo>
+    <relationshipLabel>Prototype Report</relationshipLabel>
+    <relationshipName>Prototype_Report</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

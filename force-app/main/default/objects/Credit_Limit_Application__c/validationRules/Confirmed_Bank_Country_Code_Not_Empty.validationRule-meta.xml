@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Confirmed_Bank_Country_Code_Not_Empty</fullName>
+    <active>true</active>
+    <description>Because Credit Insurance Confirmation is Selected , Confirmation Bank Country Code cannot be empty!</description>
+    <errorConditionFormula>IF( AND(RecordType.DeveloperName =&apos;LC&apos;, Credit_Insurance_Confirmation_Y_N__c =True,ISBLANK(  Confirmed_Bank_Country_Code__c  )), TRUE, FALSE)</errorConditionFormula>
+    <errorDisplayField>Confirmed_Bank_Country_Code__c</errorDisplayField>
+    <errorMessage>There is the Credit Insurance Confirmation,Confirmed Bank Country Code Cannot be Empty!</errorMessage>
+</ValidationRule>

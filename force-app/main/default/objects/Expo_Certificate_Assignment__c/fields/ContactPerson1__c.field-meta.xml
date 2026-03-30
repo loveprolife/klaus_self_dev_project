@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ContactPerson1__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <inlineHelpText>抄送人1</inlineHelpText>
+    <label>ContactPerson1</label>
+    <referenceTo>Internal_Registration__c</referenceTo>
+    <relationshipLabel>Expo Certificate Assignments</relationshipLabel>
+    <relationshipName>Expo_Certificate_Assignments</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

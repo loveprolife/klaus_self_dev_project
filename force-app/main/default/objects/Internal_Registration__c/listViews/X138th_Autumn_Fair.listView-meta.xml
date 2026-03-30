@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>X138th_Autumn_Fair</fullName>
+    <columns>NAME</columns>
+    <columns>Approval_Status__c</columns>
+    <columns>Your_Resident_city__c</columns>
+    <columns>XHNumber__c</columns>
+    <columns>Name_CN__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Exhibition_Id__c</field>
+        <operation>contains</operation>
+        <value>138</value>
+    </filters>
+    <label>138th Autumn Fair</label>
+</ListView>

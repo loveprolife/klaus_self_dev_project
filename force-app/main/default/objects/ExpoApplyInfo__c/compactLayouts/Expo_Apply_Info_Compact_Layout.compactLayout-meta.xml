@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Expo_Apply_Info_Compact_Layout</fullName>
+    <fields>CompanyEN__c</fields>
+    <fields>FirstNameEN__c</fields>
+    <fields>LastNameEN__c</fields>
+    <fields>FirstNameCN__c</fields>
+    <fields>LastNameCN__c</fields>
+    <fields>Email__c</fields>
+    <fields>ExpoTitleEN__c</fields>
+    <fields>Reception_Email__c</fields>
+    <label>Expo Apply Info Compact Layout</label>
+</CompactLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Forecast_Total_Income__c</fullName>
+    <formula>January_Forecasted_Income__c +  February_Forecasted_Income__c  +  Forecast_Sales_in_March__c  +  Forecast_Sales_in_April__c  +   May_Forecasted_Income__c  +  Forecast_Sales_in_June__c  +  Forecast_Sales_in_July__c  +  Forecast_Sales_in_August__c +  September_Forecasted_Income__c  +  Forecast_Sales_in_October__c  +  Forecast_Sales_in_November__c  +  Forecast_Sales_in_December__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Estimated Sales Income</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

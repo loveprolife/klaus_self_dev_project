@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ticket_Resloved_Number__c</fullName>
+    <description>Tickets表，计算3月份该门店ticket 状态为Closed、Resloved的工单数量，巡店日报状态需要为submitted状态</description>
+    <externalId>false</externalId>
+    <label>Ticket Resloved Number</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

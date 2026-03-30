@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Stor_Location__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Stor. Location</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>PickList__c.RecordType.DeveloperName</field>
+            <operation>equals</operation>
+            <value>Master_Location</value>
+        </filterItems>
+        <filterItems>
+            <field>PickList__c.Freeze__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </filterItems>
+        <filterItems>
+            <field>PickList__c.belong_to_Loc__c</field>
+            <operation>equals</operation>
+            <valueField>$Source.Hisense_Entity__c</valueField>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>PickList__c</referenceTo>
+    <relationshipLabel>Customers Extend (Stor.Location)</relationshipLabel>
+    <relationshipName>CustomersExtendStorLocation</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

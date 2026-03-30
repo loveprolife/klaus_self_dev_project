@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Channel_Code_Formula__c</fullName>
+    <description>从Channel_item__c 表中取Channel_Code__c的值，自动生成</description>
+    <externalId>false</externalId>
+    <label>Channel Code</label>
+    <length>100</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

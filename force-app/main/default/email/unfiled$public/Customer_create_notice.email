@@ -1,8 +1,0 @@
-Dear,
-
-
-Please attention, a new customer has been created:
-{!Account.Name}
-{!Account.SAP_Account__c}
-
-https://hisenseint.lightning.force.com/{!Account.Id}

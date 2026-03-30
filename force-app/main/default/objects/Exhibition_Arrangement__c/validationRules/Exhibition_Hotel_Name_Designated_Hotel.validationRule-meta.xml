@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Exhibition_Hotel_Name_Designated_Hotel</fullName>
+    <active>true</active>
+    <description>如果同时选择了酒店并且勾选checkbox会报错</description>
+    <errorConditionFormula>AND( Designated_Hotel__c ,
+ !ISBLANK( Exhibition_Hotel__c) 
+)</errorConditionFormula>
+    <errorDisplayField>Designated_Hotel__c</errorDisplayField>
+    <errorMessage>You can only fill in one of the two fields: Designated Hotel and Exhibition Hotel.</errorMessage>
+</ValidationRule>

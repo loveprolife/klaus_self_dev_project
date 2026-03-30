@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RecordLink__c</fullName>
+    <externalId>false</externalId>
+    <formula>LEFT($Api.Enterprise_Server_URL_540, FIND( &apos;.my.salesforce.com/services&apos;,$Api.Enterprise_Server_URL_540))+ &apos;lightning.force.com/lightning/r/Customer_Visit__c/&apos; +Id + &apos;/view&apos;</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>*客户拜访记录链接</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

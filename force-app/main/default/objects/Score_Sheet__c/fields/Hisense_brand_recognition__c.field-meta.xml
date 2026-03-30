@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hisense_brand_recognition__c</fullName>
+    <inlineHelpText>Hisense brand location（20 Points）</inlineHelpText>
+    <label>Hisense brand recognition</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>20</fullName>
+                <default>false</default>
+                <label>Benchmarking with A brand in the channel</label>
+            </value>
+            <value>
+                <fullName>10</fullName>
+                <default>false</default>
+                <label>Benchmarking with B brand in the channel</label>
+            </value>
+            <value>
+                <fullName>0</fullName>
+                <default>false</default>
+                <label>The lowest price like OEM</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

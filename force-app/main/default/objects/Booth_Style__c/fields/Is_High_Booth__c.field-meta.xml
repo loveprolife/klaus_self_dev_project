@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_High_Booth__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>是否高端展台</description>
+    <label>Is High Booth</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

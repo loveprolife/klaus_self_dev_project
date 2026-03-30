@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Loop_Relate_Questions__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>子任务是否重复添加标记</description>
+    <label>Is Loop Relate Questions</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

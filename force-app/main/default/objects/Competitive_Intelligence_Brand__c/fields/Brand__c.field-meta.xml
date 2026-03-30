@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Brand__c</fullName>
+    <label>Brand</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>Product_Line__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Samsung</fullName>
+                <default>false</default>
+                <label>Samsung</label>
+            </value>
+            <value>
+                <fullName>LG</fullName>
+                <default>false</default>
+                <label>LG</label>
+            </value>
+            <value>
+                <fullName>Haier</fullName>
+                <default>false</default>
+                <label>Haier</label>
+            </value>
+            <value>
+                <fullName>Midea</fullName>
+                <default>false</default>
+                <label>Midea</label>
+            </value>
+            <value>
+                <fullName>Sony</fullName>
+                <default>false</default>
+                <label>Sony</label>
+            </value>
+            <value>
+                <fullName>TCL</fullName>
+                <default>false</default>
+                <label>TCL</label>
+            </value>
+            <value>
+                <fullName>ONN</fullName>
+                <default>false</default>
+                <label>ONN</label>
+            </value>
+            <value>
+                <fullName>Philips</fullName>
+                <default>false</default>
+                <label>Philips</label>
+            </value>
+            <value>
+                <fullName>Toshiba</fullName>
+                <default>false</default>
+                <label>Toshiba</label>
+            </value>
+            <value>
+                <fullName>Whirlpool</fullName>
+                <default>false</default>
+                <label>Whirlpool</label>
+            </value>
+            <value>
+                <fullName>Bosch</fullName>
+                <default>false</default>
+                <label>Bosch</label>
+            </value>
+            <value>
+                <fullName>Danby</fullName>
+                <default>false</default>
+                <label>Danby</label>
+            </value>
+            <value>
+                <fullName>Hisense</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Hisense</label>
+            </value>
+            <value>
+                <fullName>Sharp</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sharp</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Dishwasher</controllingFieldValue>
+            <controllingFieldValue>Sound Bar</controllingFieldValue>
+            <controllingFieldValue>Hitachi Commercial AC</controllingFieldValue>
+            <controllingFieldValue>Medical Device</controllingFieldValue>
+            <controllingFieldValue>B-Monitor</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>TV</controllingFieldValue>
+            <controllingFieldValue>AC</controllingFieldValue>
+            <controllingFieldValue>WM</controllingFieldValue>
+            <controllingFieldValue>Mobile</controllingFieldValue>
+            <controllingFieldValue>Refrigerator</controllingFieldValue>
+            <controllingFieldValue>Freezer</controllingFieldValue>
+            <controllingFieldValue>Laser TV</controllingFieldValue>
+            <controllingFieldValue>LCAC</controllingFieldValue>
+            <controllingFieldValue>Small Domestic Home Appliances</controllingFieldValue>
+            <controllingFieldValue>Cooking</controllingFieldValue>
+            <valueName>Samsung</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dishwasher</controllingFieldValue>
+            <controllingFieldValue>Sound Bar</controllingFieldValue>
+            <controllingFieldValue>Hitachi Commercial AC</controllingFieldValue>
+            <controllingFieldValue>Medical Device</controllingFieldValue>
+            <controllingFieldValue>B-Monitor</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>TV</controllingFieldValue>
+            <controllingFieldValue>AC</controllingFieldValue>
+            <controllingFieldValue>WM</controllingFieldValue>
+            <controllingFieldValue>Mobile</controllingFieldValue>
+            <controllingFieldValue>Refrigerator</controllingFieldValue>
+            <controllingFieldValue>Freezer</controllingFieldValue>
+            <controllingFieldValue>Laser TV</controllingFieldValue>
+            <controllingFieldValue>LCAC</controllingFieldValue>
+            <controllingFieldValue>Small Domestic Home Appliances</controllingFieldValue>
+            <controllingFieldValue>Cooking</controllingFieldValue>
+            <valueName>LG</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dishwasher</controllingFieldValue>
+            <controllingFieldValue>Hitachi Commercial AC</controllingFieldValue>
+            <controllingFieldValue>Medical Device</controllingFieldValue>
+            <controllingFieldValue>B-Monitor</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>AC</controllingFieldValue>
+            <controllingFieldValue>WM</controllingFieldValue>
+            <controllingFieldValue>Mobile</controllingFieldValue>
+            <controllingFieldValue>Refrigerator</controllingFieldValue>
+            <controllingFieldValue>Freezer</controllingFieldValue>
+            <controllingFieldValue>LCAC</controllingFieldValue>
+            <controllingFieldValue>Small Domestic Home Appliances</controllingFieldValue>
+            <controllingFieldValue>Cooking</controllingFieldValue>
+            <valueName>Haier</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dishwasher</controllingFieldValue>
+            <controllingFieldValue>Hitachi Commercial AC</controllingFieldValue>
+            <controllingFieldValue>Medical Device</controllingFieldValue>
+            <controllingFieldValue>B-Monitor</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>AC</controllingFieldValue>
+            <controllingFieldValue>WM</controllingFieldValue>
+            <controllingFieldValue>Mobile</controllingFieldValue>
+            <controllingFieldValue>Refrigerator</controllingFieldValue>
+            <controllingFieldValue>Freezer</controllingFieldValue>
+            <controllingFieldValue>LCAC</controllingFieldValue>
+            <controllingFieldValue>Small Domestic Home Appliances</controllingFieldValue>
+            <controllingFieldValue>Cooking</controllingFieldValue>
+            <valueName>Midea</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dishwasher</controllingFieldValue>
+            <controllingFieldValue>Hitachi Commercial AC</controllingFieldValue>
+            <controllingFieldValue>Medical Device</controllingFieldValue>
+            <controllingFieldValue>B-Monitor</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>AC</controllingFieldValue>
+            <controllingFieldValue>WM</controllingFieldValue>
+            <controllingFieldValue>Mobile</controllingFieldValue>
+            <controllingFieldValue>Refrigerator</controllingFieldValue>
+            <controllingFieldValue>Freezer</controllingFieldValue>
+            <controllingFieldValue>LCAC</controllingFieldValue>
+            <controllingFieldValue>Small Domestic Home Appliances</controllingFieldValue>
+            <controllingFieldValue>Cooking</controllingFieldValue>
+            <valueName>Whirlpool</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dishwasher</controllingFieldValue>
+            <controllingFieldValue>Hitachi Commercial AC</controllingFieldValue>
+            <controllingFieldValue>Medical Device</controllingFieldValue>
+            <controllingFieldValue>B-Monitor</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>AC</controllingFieldValue>
+            <controllingFieldValue>WM</controllingFieldValue>
+            <controllingFieldValue>Mobile</controllingFieldValue>
+            <controllingFieldValue>Refrigerator</controllingFieldValue>
+            <controllingFieldValue>Freezer</controllingFieldValue>
+            <controllingFieldValue>LCAC</controllingFieldValue>
+            <controllingFieldValue>Small Domestic Home Appliances</controllingFieldValue>
+            <controllingFieldValue>Cooking</controllingFieldValue>
+            <valueName>Bosch</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Dishwasher</controllingFieldValue>
+            <controllingFieldValue>Hitachi Commercial AC</controllingFieldValue>
+            <controllingFieldValue>Medical Device</controllingFieldValue>
+            <controllingFieldValue>B-Monitor</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>AC</controllingFieldValue>
+            <controllingFieldValue>WM</controllingFieldValue>
+            <controllingFieldValue>Mobile</controllingFieldValue>
+            <controllingFieldValue>Refrigerator</controllingFieldValue>
+            <controllingFieldValue>Freezer</controllingFieldValue>
+            <controllingFieldValue>LCAC</controllingFieldValue>
+            <controllingFieldValue>Small Domestic Home Appliances</controllingFieldValue>
+            <controllingFieldValue>Cooking</controllingFieldValue>
+            <valueName>Danby</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sound Bar</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>TV</controllingFieldValue>
+            <controllingFieldValue>Laser TV</controllingFieldValue>
+            <valueName>Sony</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sound Bar</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>TV</controllingFieldValue>
+            <controllingFieldValue>Laser TV</controllingFieldValue>
+            <valueName>TCL</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sound Bar</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>TV</controllingFieldValue>
+            <controllingFieldValue>Laser TV</controllingFieldValue>
+            <valueName>ONN</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sound Bar</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>TV</controllingFieldValue>
+            <controllingFieldValue>Laser TV</controllingFieldValue>
+            <valueName>Philips</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Sound Bar</controllingFieldValue>
+            <controllingFieldValue>All</controllingFieldValue>
+            <controllingFieldValue>TV</controllingFieldValue>
+            <controllingFieldValue>Laser TV</controllingFieldValue>
+            <valueName>Toshiba</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

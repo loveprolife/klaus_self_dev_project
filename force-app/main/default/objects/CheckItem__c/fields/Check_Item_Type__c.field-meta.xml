@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_Item_Type__c</fullName>
+    <defaultValue>&apos;巡店&apos;</defaultValue>
+    <label>Check Item Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Check_Item_Type</valueSetName>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Booked_Hotel__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Booked Hotel</label>
+    <referenceTo>Exhibition_Hotel__c</referenceTo>
+    <relationshipLabel>Exhibition Arrangements (Booked Hotel)</relationshipLabel>
+    <relationshipName>Exhibition_Arrangements1</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

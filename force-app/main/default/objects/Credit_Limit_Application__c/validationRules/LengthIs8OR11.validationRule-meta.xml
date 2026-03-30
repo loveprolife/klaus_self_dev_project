@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>LengthIs8OR11</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND( LEN(Credit_Guarantee_Issuing_Bank_SWIFT__c) != 8 ,LEN(Credit_Guarantee_Issuing_Bank_SWIFT__c) != 11,  RecordType.DeveloperName = &apos;LC&apos;)</errorConditionFormula>
+    <errorDisplayField>Credit_Guarantee_Issuing_Bank_SWIFT__c</errorDisplayField>
+    <errorMessage>Length for [Credit Guarantee Issuing Bank SWIFT] can only be 8 or 11 !</errorMessage>
+</ValidationRule>

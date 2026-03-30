@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>User_or_User_Email_is_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+NOT($Setup.GlobalSetting__c.IgnoreValidation__c ),
+ISBLANK(Principal__c) &amp;&amp;  ISBLANK(UserEmail__c)
+)</errorConditionFormula>
+    <errorMessage>负责人或负责人邮箱必填其一</errorMessage>
+</ValidationRule>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sum_Customer_Detail__c</fullName>
+    <label>*Sum Customer Detail</label>
+    <summaryForeignKey>Sample_Display_Customer_Confirm__c.Sample_Display__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

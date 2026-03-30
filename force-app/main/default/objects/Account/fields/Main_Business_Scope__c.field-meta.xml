@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Main_Business_Scope__c</fullName>
+    <label>Main Business Scope</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Consumer Electronics</fullName>
+                <default>false</default>
+                <label>Consumer Electronics</label>
+            </value>
+            <value>
+                <fullName>Home appliance</fullName>
+                <default>false</default>
+                <label>Home appliance</label>
+            </value>
+            <value>
+                <fullName>Furniture</fullName>
+                <default>false</default>
+                <label>Furniture</label>
+            </value>
+            <value>
+                <fullName>General merchandise</fullName>
+                <default>false</default>
+                <label>General merchandise</label>
+            </value>
+            <value>
+                <fullName>Necessities</fullName>
+                <default>false</default>
+                <label>Necessities</label>
+            </value>
+            <value>
+                <fullName>APPAREL</fullName>
+                <default>false</default>
+                <label>APPAREL</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Profitability__c</fullName>
+    <description>Profits brought by customers</description>
+    <inlineHelpText>Profits brought by customers</inlineHelpText>
+    <label>Customer Profitability</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>10</fullName>
+                <default>false</default>
+                <label>Profitible and year-on-year Growth</label>
+            </value>
+            <value>
+                <fullName>8</fullName>
+                <default>false</default>
+                <label>Positive Gross Profit</label>
+            </value>
+            <value>
+                <fullName>5</fullName>
+                <default>false</default>
+                <label>Ensuring Marginal Profit</label>
+            </value>
+            <value>
+                <fullName>0</fullName>
+                <default>false</default>
+                <label>Negative Gross Profit</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

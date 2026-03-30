@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FieldSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>sales_SAP_onBoard_required</fullName>
+    <description>sales SAP onBoard required</description>
+    <displayedFields>
+        <field>Customer_Short_Name__c</field>
+        <isFieldManaged>false</isFieldManaged>
+        <isRequired>false</isRequired>
+    </displayedFields>
+    <label>sales SAP onBoard required</label>
+</FieldSet>

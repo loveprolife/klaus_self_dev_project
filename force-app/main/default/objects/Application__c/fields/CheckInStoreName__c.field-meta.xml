@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CheckInStoreName__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Check In Store Name</label>
+    <referenceTo>Shop__c</referenceTo>
+    <relationshipName>Request_CheckInShop</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

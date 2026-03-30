@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
-    <caseValues>
-        <plural>false</plural>
-        <value>每日销售</value>
-    </caseValues>
-    <nameFieldLabel><!-- 零售业绩编号 --></nameFieldLabel>
-</CustomObjectTranslation>

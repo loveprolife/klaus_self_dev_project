@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>RecordType__c</fullName>
+    <label>负责人类型</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>巡店员</fullName>
+                <default>false</default>
+                <label>巡店员</label>
+            </value>
+            <value>
+                <fullName>促销员</fullName>
+                <default>false</default>
+                <label>促销员</label>
+            </value>
+            <value>
+                <fullName>Regional Manager</fullName>
+                <default>false</default>
+                <label>区域经理</label>
+            </value>
+            <value>
+                <fullName>Backup Floorwalker</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Backup Floorwalker</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ProductOrCustomerModelProductMustChoose</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK( Product__c ) &amp;&amp;  ISBLANK(Customer_Model_Product__c ) &amp;&amp; 
+ISBLANK( External_ID__c )</errorConditionFormula>
+    <errorMessage>You must choose a product or customer model product for the price book entry.</errorMessage>
+</ValidationRule>

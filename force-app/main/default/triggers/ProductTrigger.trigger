@@ -1,9 +1,0 @@
-trigger ProductTrigger on Product__c (before insert, before update, before delete, after insert, after update) {
-    // new AccountTriggerHandler().run();
-    new Triggers()
-    .bind(Triggers.Evt.afterinsert, new ProductTriggerHandler())
-    .bind(Triggers.Evt.afterupdate, new ProductTriggerHandler())
-    .bind(Triggers.Evt.beforeinsert, new ProductTriggerHandler())
-    .bind(Triggers.Evt.beforeupdate, new ProductTriggerHandler())
-    .manage();
-}

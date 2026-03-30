@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disabled__c</fullName>
+    <description>No:显示 Yes:不显示</description>
+    <formula>ISPICKVAL( Report_Status__c , &apos;Updating&apos;)  ||  ISPICKVAL( Report_Status__c , &apos;No need to update&apos;)</formula>
+    <label>Disabled</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

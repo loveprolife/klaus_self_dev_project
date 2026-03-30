@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Internal_Registration_Invisible__c</fullName>
+    <externalId>false</externalId>
+    <formula>Exhibition_Arrangement__r.Internal_Registration__c</formula>
+    <label>Internal Registration Invisible</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

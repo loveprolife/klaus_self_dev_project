@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>61.0</apiVersion>
-    <description>... this screen-flow is used to create the request cancelation experience for a given profiling definition. It can be exposed as a quick action to enable the cancelation of queued profiling requests.</description>
-    <environments>Default</environments>
-    <label>Cuneiform: Profiling Request: Cancel Request: Screen Flow</label>
-    <processType>Flow</processType>
-</Flow>

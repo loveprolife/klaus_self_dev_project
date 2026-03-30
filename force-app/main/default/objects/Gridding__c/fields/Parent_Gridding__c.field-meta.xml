@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Parent_Gridding__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>上级网格</label>
+    <referenceTo>Gridding__c</referenceTo>
+    <relationshipLabel>网格</relationshipLabel>
+    <relationshipName>Parent_Gridding</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sales_Region_Text__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE( Entity__c , 
+&apos;8400&apos;, &apos;Hisense Malaysia&apos;, 
+&apos;8420&apos;, &apos;Hisense Indonesia&apos;,
+&apos;8430&apos;, &apos;Hisense Thailand&apos;,
+&apos;&apos;)</formula>
+    <label>公司(文本)</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

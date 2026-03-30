@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inventory</fullName>
+    <fields>Shop__c</fields>
+    <fields>Product__c</fields>
+    <fields>Name</fields>
+    <fields>InitialStock__c</fields>
+    <fields>RealStock__c</fields>
+    <fields>SafetyInventory__c</fields>
+    <fields>Customer__c</fields>
+    <label>Inventory</label>
+</CompactLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ShelfShare</fullName>
+    <active>true</active>
+    <label>Shelf Share</label>
+    <picklistValues>
+        <picklist>ProductLine__c</picklist>
+        <values>
+            <fullName>AC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B-Monitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cooking</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dishwasher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Freezer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hitachi Commercial AC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>LCAC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laser TV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical Device</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mobile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refrigerator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Small Domestic Home Appliances</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sound Bar</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

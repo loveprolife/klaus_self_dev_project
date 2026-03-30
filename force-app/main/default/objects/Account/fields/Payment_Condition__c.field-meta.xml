@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Condition__c</fullName>
+    <label>Payment Condition(del)</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>DA 60 DAYS</fullName>
+                <default>false</default>
+                <label>DA 60 DAYS</label>
+            </value>
+            <value>
+                <fullName>DA 90 DAYS</fullName>
+                <default>false</default>
+                <label>DA 90 DAYS</label>
+            </value>
+            <value>
+                <fullName>DA 120 DAYS</fullName>
+                <default>false</default>
+                <label>DA 120 DAYS</label>
+            </value>
+            <value>
+                <fullName>DA 150 DAYS</fullName>
+                <default>false</default>
+                <label>DA 150 DAYS</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

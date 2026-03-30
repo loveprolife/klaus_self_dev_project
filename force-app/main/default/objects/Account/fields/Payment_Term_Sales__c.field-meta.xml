@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Payment_Term_Sales__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <inlineHelpText>Tax Info required;
+----G216:Month end +30days----
+----G007:TT00 ,Paid----
+----G005:OA60 ,Within 60 days Due net----
+----G011:OA75 ,Within 75 days Due net----
+----G006:OA90 ,Within 90 days Due net----
+----0001: Pay immediately w/o deduction----
+----G498: End of month+60 days,Cut off 25th----</inlineHelpText>
+    <label>Payment Term</label>
+    <referenceTo>Payment_Term__c</referenceTo>
+    <relationshipLabel>Customers (Payment Term)</relationshipLabel>
+    <relationshipName>Customers</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

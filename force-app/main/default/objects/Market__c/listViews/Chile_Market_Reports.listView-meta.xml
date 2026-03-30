@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Chile_Market_Reports</fullName>
+    <columns>NAME</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>Shop__c</columns>
+    <columns>Status__c</columns>
+    <columns>Gridding__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Sales_Region__c</field>
+        <operation>equals</operation>
+        <value>Hisense Chile</value>
+    </filters>
+    <label>Chile Market Reports</label>
+    <sharedTo>
+        <roleAndSubordinatesInternal>Chile_GM</roleAndSubordinatesInternal>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Quote_Product_Malaysia</fullName>
+    <active>true</active>
+    <label>Quote Product/Malaysia</label>
+    <picklistValues>
+        <picklist>Carton_Box__c</picklist>
+        <values>
+            <fullName>Brown Box-6Sams</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brown Box-ISTA 3A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brown Box-ISTA 6A Amanzon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brown Box-ISTA 6A Costco</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brown Box-ISTA 6A standard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brown Box-ISTA 6Amazon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brown Box-Standard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Color Box -ISTA 6Amazon</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Color Box-6Sams</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Color Box-Standard</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Cost_Type__c</picklist>
+        <values>
+            <fullName>CIF</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DDP</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EXW</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>FOB</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Delivery_Form__c</picklist>
+        <values>
+            <fullName>CBU</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CKD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CKD-DK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CKD-JG</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CKD-JG %26 N-RC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>CKD-OC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MCKD-1 %26 N-RC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MCKD-3A</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MCKD-3A %26 N-DK</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>MCKD-3A %26 N-OC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Motherboard %26 Module CKD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Motherboard CKD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Motherboard SKD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SKD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SKD%EF%BC%88Motherboard CKD%EF%BC%89</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SKD-1 %26 N-RC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>SKDP</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>In_Store_or_Online__c</picklist>
+        <values>
+            <fullName>In-Store %26 Online</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On-line</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Need_to_Provide_EXW__c</picklist>
+        <values>
+            <fullName>NO</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>YES</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Line__c</picklist>
+        <values>
+            <fullName>AC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B-Monitor</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Freezer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Laser TV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical Device</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mobile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Refrigerator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>TV</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>WM</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Product_Status__c</picklist>
+        <values>
+            <fullName>Green</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Red</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yellow</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

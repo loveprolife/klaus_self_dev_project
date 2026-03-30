@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsNormalF__c</fullName>
+    <formula>IF(TODAY() &lt;  Scheduling_Date__c, Application__c == NULL,  
+     IF( TODAY() ==  Scheduling_Date__c,  Check_In_Status__c != &apos;Late Check in&apos; &amp;&amp;  Check_Out_Status__c == &apos;Early Check out&apos;,  
+        Check_In_Status__c == &apos;Check in&apos; &amp;&amp;  Check_Out_Status__c == &apos;Check out&apos; ) 
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Is Normal</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

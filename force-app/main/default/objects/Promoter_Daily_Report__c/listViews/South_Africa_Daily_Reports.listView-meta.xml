@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>South_Africa_Daily_Reports</fullName>
+    <columns>NAME</columns>
+    <columns>Shop__c</columns>
+    <columns>Owner_text__c</columns>
+    <columns>Report_Date__c</columns>
+    <columns>Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Store_Sales_Region__c</field>
+        <operation>contains</operation>
+        <value>South Africa</value>
+    </filters>
+    <label>South Africa Daily Reports</label>
+    <sharedTo>
+        <roleAndSubordinatesInternal>South_Africa_FIN_M</roleAndSubordinatesInternal>
+    </sharedTo>
+</ListView>

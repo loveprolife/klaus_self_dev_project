@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cost_Back_End_Field__c</fullName>
+    <formula>cost_April__c + Cost_Augest__c + Cost_December__c + Cost_February__c + Cost_January__c + Cost_July__c + Cost_June__c + Cost_March__c + Cost_May__c + Cost_November__c + Cost_October__c + Cost_September__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Cost ( Back End Field)</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Currency</type>
+</CustomField>

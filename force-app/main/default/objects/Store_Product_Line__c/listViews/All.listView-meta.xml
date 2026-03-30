@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Store__c</columns>
+    <columns>Product_Line__c</columns>
+    <columns>Type__c</columns>
+    <columns>Entering_Status__c</columns>
+    <columns>Time_Of_Entry__c</columns>
+    <columns>Close_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Store__c</field>
+        <operation>equals</operation>
+        <value>Fravega-Panamericana - Ramal Pilar KM 36.5-Tortuguitas</value>
+    </filters>
+    <label>All</label>
+</ListView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>TotalSalesQuantity__c</fullName>
+    <label>Total Sales Quantity</label>
+    <summarizedField>Retail_Number__c.Number__c</summarizedField>
+    <summaryForeignKey>Retail_Number__c.PromoterDailyReport__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

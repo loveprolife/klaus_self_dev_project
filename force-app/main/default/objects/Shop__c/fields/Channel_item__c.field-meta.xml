@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Channel_item__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>渠道名称，关联channel item表Id</description>
+    <label>Channel</label>
+    <referenceTo>Channel_item__c</referenceTo>
+    <relationshipLabel>Stores</relationshipLabel>
+    <relationshipName>Stores</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

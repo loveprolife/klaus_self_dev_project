@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validity_Date__c</fullName>
+    <description>供临时证记录使用的日期</description>
+    <label>Validity Date</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>04-15</fullName>
+                <default>false</default>
+                <label>04-15</label>
+            </value>
+            <value>
+                <fullName>04-16</fullName>
+                <default>false</default>
+                <label>04-16</label>
+            </value>
+            <value>
+                <fullName>04-17</fullName>
+                <default>false</default>
+                <label>04-17</label>
+            </value>
+            <value>
+                <fullName>04-18</fullName>
+                <default>false</default>
+                <label>04-18</label>
+            </value>
+            <value>
+                <fullName>04-19</fullName>
+                <default>false</default>
+                <label>04-19</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>East_Africa</fullName>
+    <columns>NAME</columns>
+    <columns>Sales_Region__c</columns>
+    <columns>Store_Name__c</columns>
+    <columns>Level__c</columns>
+    <columns>Channel_item__c</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Sales_Region__c</field>
+        <operation>equals</operation>
+        <value>East Africa Office</value>
+    </filters>
+    <label>East Africa</label>
+    <sharedTo>
+        <roleAndSubordinatesInternal>East_Africa_Office_GM</roleAndSubordinatesInternal>
+    </sharedTo>
+</ListView>

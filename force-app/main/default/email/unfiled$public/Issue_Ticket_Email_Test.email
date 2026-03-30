@@ -1,7 +1,0 @@
-1---{!ApprovalRequest.Process_Assignee}
-
-2---{!ApprovalRequest.Process_Approver}
-
-3---{!Approval_Requesting_User.Username}
-
-4---{!Issue_Ticket__c.Customer__c}

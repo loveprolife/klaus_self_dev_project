@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_PO_on_hand_Unit__c</fullName>
+    <externalId>false</externalId>
+    <formula>SAP_Sales_Actual__r.Invoiced_Qty__c + SAP_Sales_Actual__r.Pending_DN_Qty__c + SAP_Sales_Actual__r.Back_Order_Qty__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>PO on hand Unit</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

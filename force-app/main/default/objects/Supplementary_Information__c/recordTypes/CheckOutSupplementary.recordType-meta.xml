@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CheckOutSupplementary</fullName>
+    <active>true</active>
+    <label>签退补签</label>
+    <picklistValues>
+        <picklist>Status__c</picklist>
+        <values>
+            <fullName>已提交补签申请</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>未提交补签申请</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>补签申请审批拒绝</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>补签申请审批通过</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

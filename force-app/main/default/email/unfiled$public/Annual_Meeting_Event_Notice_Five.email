@@ -1,9 +1,0 @@
-<p style="font-family:Times New Roman;font-size: 0.875em;">Dear {!Internal_Registration__c.Name_CN__c}</p>
-<br/>
-<p style="font-family:Times New Roman;font-size: 0.875em;">提醒您于今日内登录展会系统（https://expo.hisense.com/home）提报回程航班信息（也可扫描嘉宾证背面二维码进入系统）。我们将安排24日的送机服务，请您及时提报，以免无法为您协调车辆资源。</p>
-<br/>
-<p style="font-family:Times New Roman;font-size: 0.875em;">Dear {!Internal_Registration__c.Name_CN__c}</p>
-<br/>
-<p style="font-family:Times New Roman;font-size: 0.875em;">Kindly remind you to log in to the Expo System (https://expo.hisense.com/home) to submit your return flight information today (you can also scan the QR code on the back of your card to access the system). </p>
-
-<p style="font-family:Times New Roman;font-size: 0.875em;">We will arrange airport drop-off services on the 24th. Please provide your information promptly in case we cannot coordinate vehicle resources for you in time.</p>

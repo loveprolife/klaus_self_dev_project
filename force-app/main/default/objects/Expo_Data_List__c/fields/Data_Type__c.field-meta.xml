@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Data_Type__c</fullName>
+    <label>Data Type</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Custom Region</fullName>
+                <default>false</default>
+                <label>Custom Region</label>
+            </value>
+            <value>
+                <fullName>ExhibitorRegion</fullName>
+                <default>false</default>
+                <label>ExhibitorRegion</label>
+            </value>
+            <value>
+                <fullName>PermanentAddress</fullName>
+                <default>false</default>
+                <label>PermanentAddress</label>
+            </value>
+            <value>
+                <fullName>ContactUs</fullName>
+                <default>false</default>
+                <label>ContactUs</label>
+            </value>
+            <value>
+                <fullName>PassType</fullName>
+                <default>false</default>
+                <label>PassType</label>
+            </value>
+            <value>
+                <fullName>VisaType</fullName>
+                <default>false</default>
+                <label>VisaType</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

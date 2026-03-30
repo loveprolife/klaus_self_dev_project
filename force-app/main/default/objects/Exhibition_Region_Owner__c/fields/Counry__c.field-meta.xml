@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Counry__c</fullName>
+    <label>国家</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <controllingField>Primary_Department__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetName>Exhibition_Country</valueSetName>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>乌拉圭</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>伯利兹</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>加拿大</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>危地马拉</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>厄瓜多尔</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>古巴</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>哥伦比亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>哥斯达黎加</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>圣基茨和那维斯</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>圣文森特</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>圭亚那</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>墨西哥</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>多米尼加</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>多米尼加共和国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>委内瑞拉</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>安提瓜和巴布达</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>尼加拉瓜</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>巴哈马</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>巴巴多斯</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>巴拉圭</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>巴拿马</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>巴西</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>智利</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>格林纳达</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>洪都拉斯</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>海地</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>牙买加</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>特立尼达和多巴哥</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>玻利维亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>秘鲁</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>美国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>苏里南</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>萨尔瓦多</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>America Region</controllingFieldValue>
+            <valueName>阿根廷</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>丹麦</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>乌克兰</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>俄罗斯联邦</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>保加利亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>克罗地亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>冰岛</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>列支敦士登</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>匈牙利</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>卢森堡</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>圣马力诺</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>塞尔维亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>奥地利</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>安道尔共和国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>希腊</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>德国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>意大利</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>拉脱维亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>挪威</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>捷克共和国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>摩尔多瓦</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>摩纳哥</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>斯洛伐克</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>斯洛文尼亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>梵蒂冈城</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>比利时</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>法国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>法国南部地区</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>法罗群岛</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>波兰</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>爱尔兰</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>爱沙尼亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>瑞典</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>瑞士</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>白俄罗斯</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>立陶宛</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>罗马尼亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>芬兰</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>英国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>荷兰</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>葡萄牙</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>西班牙</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>阿尔巴尼亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>马其顿</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Europe Region</controllingFieldValue>
+            <valueName>马耳他</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>中非共和国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>乌干达</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>乍得</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>也门</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>以色列</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>伊拉克</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>伊朗</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>佛得角群岛</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>冈比亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>几内亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>几内亚比绍</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>刚果共和国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>刚果民主共和国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>利比亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>利比里亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>加纳</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>加蓬</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>北马里亚纳群岛</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>卡塔尔</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>卢旺达</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>叙利亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>吉布提</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>喀麦隆</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>土耳其</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>圣多马/普林西比</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>坦桑尼亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>埃及</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>埃塞俄比亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>塞内加尔</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>塞拉利昂</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>塞浦路斯</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>塞舌尔群岛</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>多哥</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>尼日利亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>尼日尔</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>巴勒斯坦</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>巴林</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>布基纳法索</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>布隆迪</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>摩洛哥</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>撒哈拉西部</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>毛里塔尼亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>沙特阿拉伯</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>科威特</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>科特迪瓦</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>突尼斯</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>索马里</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>约旦</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>肯尼亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>苏丹</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>贝宁</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>赤道几内亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>阿尔及利亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>阿曼</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>阿联酋</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Mid-East &amp; Africa Region</controllingFieldValue>
+            <valueName>黎巴嫩</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>东帝汶岛</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>中国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>中国台湾</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>中国澳门</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>中国香港</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>北朝鲜</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>印度尼西亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>图瓦卢</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>密克罗尼西亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>巴布亚新几内亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>帕劳</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>所罗门群岛</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>文莱达鲁萨兰</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>新加坡</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>新西兰</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>柬埔寨</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>汤加</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>泰国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>澳大利亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>瑙鲁</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>瓦努阿图</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>美属萨摩亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>老挝</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>菲律宾</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>萨摩亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>蒙古</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>越南</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>韩国</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>马来西亚</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Asia-Pacific Region</controllingFieldValue>
+            <valueName>马绍尔群岛</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Japan Region</controllingFieldValue>
+            <valueName>日本</valueName>
+        </valueSettings>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

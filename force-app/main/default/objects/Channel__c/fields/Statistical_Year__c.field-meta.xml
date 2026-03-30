@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Statistical_Year__c</fullName>
+    <description>统计年份，指更新渠道的年份（每年更新一次渠道）</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Statistical year, the year in which the channels were updated (channels are updated annually)</inlineHelpText>
+    <label>Statistical Year</label>
+    <length>20</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

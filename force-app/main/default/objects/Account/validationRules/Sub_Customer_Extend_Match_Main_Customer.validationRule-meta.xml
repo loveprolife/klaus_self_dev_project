@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Customer_Extend_Match_Main_Customer</fullName>
+    <active>false</active>
+    <errorConditionFormula>NOT(ISBLANK(Customer_Extend_Sub_Account__c))  &amp;&amp; ParentCustomerOfSubAcc__c !=  Customer_Extend_Sub_Account__r.Customer__c</errorConditionFormula>
+    <errorDisplayField>Customer_Extend_Sub_Account__c</errorDisplayField>
+    <errorMessage>You must select customer extend on the main customer</errorMessage>
+</ValidationRule>

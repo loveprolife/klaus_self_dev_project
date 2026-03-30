@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Copy_of_2025Annual</fullName>
+    <columns>NAME</columns>
+    <columns>Inbound_Flight_No__c</columns>
+    <columns>Arrival_Date__c</columns>
+    <columns>Arrival_Time__c</columns>
+    <columns>Need_Vehicle__c</columns>
+    <columns>Vehicle_Run_Time__c</columns>
+    <columns>Luggage__c</columns>
+    <columns>Return_Flight_No__c</columns>
+    <columns>Return_Date__c</columns>
+    <columns>Return_Time__c</columns>
+    <columns>Return_Need_Vehicle__c</columns>
+    <columns>Return_Vehicle_Run_Time__c</columns>
+    <columns>Need_hotel__c</columns>
+    <columns>Hotel_Start_Date__c</columns>
+    <columns>Hotel_End_Date__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Exhibition_Management__c</field>
+        <operation>contains</operation>
+        <value>2025</value>
+    </filters>
+    <filters>
+        <field>Need_hotel__c</field>
+        <operation>equals</operation>
+        <value>true</value>
+    </filters>
+    <label>2025年会</label>
+</ListView>
