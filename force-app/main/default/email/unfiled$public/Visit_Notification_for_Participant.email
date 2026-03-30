@@ -1,0 +1,11 @@
+Dear {!Visit_Participant__c.Visit_Participant_Name__c} ,
+
+You are required to participate in the customer visit, below is the specific information： 
+
+Customer Visit Record Name: {!Visit_Participant__c.Visit_Record_Name__c}
+
+Visit Catagoery: {!Visit_Participant__c.Visit_Category__c}
+
+Customer Visit Date:  {!Visit_Participant__c.Visit_Date__c}
+
+Customer Visit Place: {!Visit_Participant__c.Visi_Place__c}

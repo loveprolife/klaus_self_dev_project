@@ -1,0 +1,39 @@
+{
+  "appPageId" : "e0bf1275-58c2-4fd8-9393-d738c12db8fe",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "301ee2c3-9203-4aa8-b5df-4f2843fbcdd0",
+  "label" : "仪表板 関連リスト",
+  "regions" : [ {
+    "id" : "2414f918-6b39-4a15-b629-17fb4cbe6d5e",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customTitle" : "",
+        "parentRecordId" : "{!recordId}",
+        "relatedListName" : "{!relationshipApiName}",
+        "showBreadCrumbs" : true,
+        "showCustomTitle" : false,
+        "showManualRefreshButton" : true,
+        "showRowNumbers" : true
+      },
+      "componentName" : "forceCommunity:relatedList",
+      "id" : "144ae798-2790-446b-860c-ec6b3318c239",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "8eb8e26a-99a1-49a9-a86c-29ae0dc676b0",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "89e63e77-e083-40e6-b665-3cd45b3d65f8",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "relatedlist-01Z"
+}

@@ -1,0 +1,223 @@
+<apex:page id="header" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false"
+    language="zh_CN" controller="CustomerVisitPrintPDFController" renderAs="pdf" extensions="CustomerVisitPrintPDFController" contentType="application/pdf">
+
+    <head>
+
+        <style type="text/css" media="print">
+            body {
+                font-family: Arial Unicode MS;
+                font-size: 12px;
+                !important
+            }
+
+            @page {
+                margin: 0;
+                size: A4 portrait;
+                /* width height */
+            }
+
+            @page {
+                padding-top: 200px;
+                margin-bottom: 200px;
+                @top-center {
+
+                    content: element(header);
+
+                }
+
+                @bottom-left {
+
+                    content: element(footer);
+
+                }
+            }
+
+            div.header {
+
+                display: block;
+
+                padding: 10px;
+
+                position: running(header);
+
+            }
+
+            div.footer {
+
+                display: block;
+
+                padding: 5px;
+
+                position: running(footer);
+
+                font-size: 10px;
+
+                margin-left: 60px;
+
+            }
+
+            div.content {
+                margin-left: 40px;
+                margin-right: 40px;
+            }
+
+            /* .pagenumber:before {
+
+                content: counter(page);
+
+            }
+
+            .pagecount:before {
+
+                content: counter(pages);
+
+            } */
+
+            .con_img {
+                position: relative;
+            }
+
+            .topTitle {
+                padding-top: 30px;
+                text-align: left;
+                float: right;
+                color: #333;
+                position: absolute;
+                top: 0;
+                right: 0;
+
+            }
+
+            .topLeft {
+                width: 60px;
+                float: left;
+            }
+
+            .topRight {
+                width: 200px;
+                float: left;
+            }
+
+            .footLeft {
+                width: 260px;
+                float: left;
+                color: #777
+            }
+
+            .footRight {
+                width: 400px;
+                float: left;
+                color: #777
+            }
+
+            .footRight a {
+                text-decoration: none;
+                color: #777
+            }
+            
+            .actorDiv {
+                float: left;
+                margin-top: 60px;
+                margin-left: 60px;
+                text-align: center;
+            }
+            .approved{
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .actor {
+                margin-top: 10px;
+                width: 160px;
+                border-top: 1px solid #333
+            }
+
+            .description table {
+                border-collapse: collapse;
+                border-spacing: 0px;
+                font-size: 8px;
+               
+            }
+
+            .description table tbody td {
+                border: 1px solid #111;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="con_img">
+                <apex:image url="{!URLFOR($Resource.hisenseSA_png,'hisenseSA.png')}" width="100%" />
+            </div>
+            <div class="topTitle" align="right">
+                <div>
+                    <div class="topLeft">Date:</div>
+                    <div class="topRight">{!dateStr}</div>
+                </div>
+                <div>
+                    <div class="topLeft">To:</div>
+                    <div class="topRight">{!customerVisit.Customer__r.name}</div>
+                </div>
+                <div>
+                    <div class="topLeft">From:</div>
+                    <div class="topRight">Hisense SA</div>
+                </div>
+                <div>
+                    <div class="topLeft">Att:</div>
+                    <div class="topRight">{!customerVisit.Att__c}</div>
+                </div>
+                <div>
+                    <div class="topLeft">CC:</div>
+                    <div class="topRight">{!customerVisit.CC__c}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+
+            <!-- <div>Page
+            <span class="pagenumber" /> of
+            <span class="pagecount" />
+        </div> -->
+            <div class="footLeft">
+                Woodmead Office Park, Building 17, Maple West
+                <br/> 145 Western service Road, Woodmead 2191
+                <br/>
+                <br/> Tel: 021 832 2999
+                <br/> Customer Care: 0860 HISENSE/0860 4473673
+                <br/>
+                <br/>
+                {!customerVisit.Customer_Visit_Code__c}
+            </div>
+            <div class="footRight">
+                Second Floor, East Block, Centennial Place, Century Boulevard, Century City,
+                <br/> Cape Town, South Africa 7441
+                <br/>
+                <br/> Tel: 021 832 2888
+                <br/> Email:
+                <a href="sales@hisense.co.za - service@hisense.co.za - orders@hisense.co.za">sales@hisense.co.za - service@hisense.co.za - orders@hisense.co.za</a>
+                <br/>
+                <br/>
+                <a href="www.hisense.co.za">www.hisense.co.za</a>
+            </div>
+
+        </div>
+
+        <div class="content">
+            <div class="description" style="font-family: Arial Unicode MS; overflow：auto">
+                <apex:outputField value="{!customerVisit.Description__c}" />
+            </div>
+            <div style="padding-top:100px">Kind regards,</div>
+            <apex:repeat value="{!actorList}" var="actor">
+                <div class="actorDiv">
+                    <span class="approved">Approved</span>
+                    <div class="actor">
+                        <div style="margin-top: 10px;">{!actor.name}</div>
+                        <div>{!actor.title}</div>
+                    </div>
+                </div>
+            </apex:repeat>
+        </div>
+    </body>
+</apex:page>

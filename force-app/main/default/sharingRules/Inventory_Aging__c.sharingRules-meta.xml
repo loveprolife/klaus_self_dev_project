@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Inventory_Aging_CE_USA</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Inventory Aging CE USA</label>
+        <sharedTo>
+            <roleAndSubordinates>USA_CE_DIR</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Division__c</field>
+            <operation>contains</operation>
+            <value>10,14,15,16,17,18,19,21,30,49,50,5Z,31</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Organization__c</field>
+            <operation>equals</operation>
+            <value>8110</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Inventory_Aging_HA_USA</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Inventory Aging HA USA</label>
+        <sharedTo>
+            <roleAndSubordinates>USA_HA_DIR</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>Division__c</field>
+            <operation>contains</operation>
+            <value>60,61,62,63,64,65,66,67,68,69,6A,6B,6C,89,90,9Z</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Organization__c</field>
+            <operation>equals</operation>
+            <value>8110</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

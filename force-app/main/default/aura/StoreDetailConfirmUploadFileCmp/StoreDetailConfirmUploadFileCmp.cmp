@@ -1,0 +1,18 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-06-26 09:59:09
+ * @LastEditors: WFC
+ * @LastEditTime: 2024-11-04 16:26:57
+ * @Description: 
+ * @FilePath: \hisense005\force-app\main\default\aura\StoreDetailConfirmUploadFileCmp\StoreDetailConfirmUploadFileCmp.cmp
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable,lightning:isUrlAddressable" access="global" >
+    <aura:attribute name="recordId" type="String" />
+	<!-- <aura:html tag="style">
+        .slds-modal__container{
+            width: 90%;
+            max-width:90%;
+        }
+    </aura:html> -->
+	<c:storeDetailConfirmUploadFileLwc recordId="{!v.recordId}" onrefreshView="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+</aura:component>

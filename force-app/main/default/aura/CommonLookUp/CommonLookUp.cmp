@@ -1,0 +1,162 @@
+<!--
+ * @Author: WFC
+ * @Date: 2023-02-07 18:07:36
+ * @LastEditors: WFC
+ * @LastEditTime: 2023-03-02 16:14:56
+ * @Description: 
+ * @FilePath: \Hitest_2022\force-app\main\default\aura\CommonLookUp\CommonLookUp.cmp
+-->
+<!--
+ * @Author: WFC
+ * @Date: 2023-02-07 18:07:36
+ * @LastEditors: WFC
+ * @LastEditTime: 2023-03-02 09:52:48
+ * @Description: 
+ * @FilePath: \Hitest_2022\force-app\main\default\aura\CommonLookUp\CommonLookUp.cmp
+-->
+<aura:component controller="CommonLookUpController" implements="flexipage:availableForAllPageTypes,force:appHostable,flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId">
+	<ltng:require styles="{!$Resource.slds_resource + '/styles/salesforce-lightning-design-system.css'}"/>
+	<!-- store selected record,used to single choise -->
+	<aura:attribute name="selectedRecord" type="CommonLookUpController.SearchResultWrapper" description="store selected sObject information when single type,response value when you are in single type"/>
+	<!-- store selected record list,used to multiple choise -->
+	<aura:attribute name="selectedRecordList" type="List" description="store selected sObject List information when multiple type,response value when you are in multiple type"/>
+	<!-- store search record result information -->
+	<aura:attribute name="searchObjList" type="List" description="store fetch result list, this list return from apex fetched, no need to set value"/>
+	<!-- search key work user input -->
+	<aura:attribute name="searchKeyWord" type="string" description="key word user input, system will fetch record based on this keyword, no need to set value"/>
+	<!-- Default message when fetching result -->
+	<aura:attribute name="message" type="String" default="Searching..." description="tip message when fetching records"/>
+	
+	<!-- mark current look up component used single choise or multiple chose -->
+	<aura:attribute name="singleOrMultiple" type="Boolean" default="true" description="true means single choise, false means multiple choise,default value is true"/>
+	<!-- mark which object you want to fetch: account/contact/opportunity. etc... -->
+	<aura:attribute name="searchObjectNameList" type="String[]" required="true" default="[]" description="the object api name you want to fetch. For example, if you want to search Account and Contact records, you can set this value to ['Account','Contact']"/>
+	<!-- mark which field you want to fetch in object: account->Name; contact->lastName etc... -->
+	<aura:attribute name="searchFieldMapping2Object" type="Map" required="true" default="{}" description="mark which object which field you want to return, for example, you want to return account Name and Contact Last Name, you can set this value to {'Account':'Name','Contact':'LastName'}"/>
+	<!-- mark search group you want to execute: ALL FIELDS/EMAIL FIELDS/NAME FIELDS/PHONE FIELDS/SIDEBAR FIELDS -->
+	<aura:attribute name="searchGroup" type="String" default="ALL FIELDS" description="search group you want to choise, available value is : ALL FIELDS/EMAIL FIELDS/NAME FIELDS/PHONE FIELDS/SIDEBAR FIELDS"/>
+	<!-- mark search condition you want to execute: -->
+	<aura:attribute name="searchCondition" type="Map" description="provide additional filter logic when you fetch account, for example, if you want to fetch account records which createddate is today, you just set this value to {'Account':'createddate=TODAY'}"/>
+	<aura:attribute name="searchLabel" type="String" default="Search Records" description="Title about input text, default value is Search Records"/>
+
+	<!-- system provide handler, when waiting status, show spinner -->
+	<aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+	<!-- system provide handler, when done waiting, hide spinner -->
+	<aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+	<aura:handler name="CommonRecordSelectedEvt" event="c:CommonRecordSelectedEvt" action="{!c.recordSelectedHandler}"/>
+
+	<aura:registerEvent name="CommonMethodEvt" type="c:CommonMethodEvt"/>
+	<aura:registerEvent name="CommonRecordSelectedEvt" type="c:CommonRecordSelectedEvt"/>
+
+	<!--use boolean attribute for Store true/false value,
+    make default to "false" so modal box are not display on the load of component. 
+    --> 
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+
+	<div class="slds-m-around--large" style="margin-left: 16px;">
+      	<div aura:id="searchRes" class="slds-form-element slds-lookup slds-is-close" data-select="{!v.singleOrMultiple ? 'single' : ''}">
+        	<label class="slds-form-element__label" for="resultListDiv"> {!v.searchLabel}</label>
+
+        	<aura:if isTrue="{!v.singleOrMultiple}">
+        		<div class="slds-form-element__control">
+	            	<div class="slds-input-has-icon slds-input-has-icon--right">
+	               		<c:svg class="slds-input__icon slds-show" xlinkHref="{!$Resource.slds_resource + '/icons/utility-sprite/svg/symbols.svg#search'}" />
+
+		                <div aura:id="lookup-pill" class="slds-pill-container slds-hide">
+		                  	<span class="slds-pill">
+		                    	<span class="slds-pill__label">
+		                       		{!v.selectedRecord.objValue} 
+		                     	</span>
+		                     	<button class="slds-button slds-button--icon slds-pill__remove" onclick="{!c.clearSelectedHandlerWhenSingle}">
+		                        	<c:svg class="slds-button__icon" xlinkHref="{!$Resource.slds_resource + '/icons/utility-sprite/svg/symbols.svg#close'}" />
+		                        	<span class="slds-assistive-text">Remove</span>
+		                     	</button>
+		                  	</span>
+		               	</div>
+		              	<div aura:id="lookupField" class="slds-show">
+		               		<ui:inputText  updateOn="keyup" keyup="{!c.fetchResultHandler}" class="slds-lookup__search-input slds-input " value="{!v.searchKeyWord}" placeholder="must search more than 2 character" aura:id="searchValue"/>
+		              	</div>   
+	            	</div>
+	        	</div>
+	        	<aura:set attribute="else">
+	        		<div class="slds-form-element__control">
+			            <div class="slds-input-has-icon slds-input-has-icon--right">
+			                <!-- This markup is for when an record is selected -->
+			                <div aura:id="lookup-pill" class="slds-pill-container">
+			                    <div aura:id="lookupField" class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"  style="width: 100%;">
+			                        
+			                        <ui:inputText  updateOn="keyup" keyup="{!c.fetchResultHandler}" class="slds-lookup__search-input slds-input " value="{!v.searchKeyWord}" placeholder="must search more than 2 character" aura:id="searchValue"/>
+			                        
+			                        <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+			                            <c:svg class="slds-input__icon slds-show" xlinkHref="{!$Resource.slds_resource + '/icons/utility-sprite/svg/symbols.svg#search'}" />
+			                        </span>
+			                    </div> 
+			                    <aura:iteration items="{!v.selectedRecordList}" var="sr">
+			                        <lightning:pill class="slds-m-around_xx-small" label="{!sr.objValue}" name="{!sr.objId}" onremove="{!c.clearSelectedHandlerWhenMulple}" title="{!sr.objLabel}" onclick="{!c.openView}">
+			                        </lightning:pill>
+			                    </aura:iteration>
+			                </div>
+			            </div>
+			        </div>
+	        	</aura:set>
+        	</aura:if>
+         	
+
+	        <div class="slds-lookup__menu slds" id="resultListDiv" style="background-color: rgb(222, 235, 235); border: 1px solid rgba(0, 0, 0, 0.164);">
+	            <div class="slds-lookup__item--label slds-text-body--small">
+					<span>{!v.message}</span>
+					<button class="slds-button slds-button_neutral slds-float_right" onclick="{!c.addUser}" style="margin-left: 10px;">添加</button>
+				</div>
+	            <center> <ui:spinner aura:id="spinner"/> </center>
+	            <ul class="slds-lookup__list" role="listbox">
+	               	<aura:iteration items="{!v.searchObjList}" var="singleRec">
+	                	<c:CommonLookUpResultItem selectedRecord="{!singleRec}" selectedRecordList="{!v.selectedRecordList}" />
+	               	</aura:iteration>
+	            </ul>
+	        </div>
+	    </div>
+    </div>
+
+
+	<aura:if isTrue="{!v.isOpen}">
+
+		<!--###### MODAL BOX Start######--> 
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<!-- ###### MODAL BOX HEADER Start ######-->
+				<header class="slds-modal__header">
+					<lightning:buttonIcon iconName="utility:close"
+											onclick="{! c.closeModel }"
+											alternativeText="close"
+											variant="bare-inverse"
+											class="slds-modal__close"/>
+					<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Send Email User</h2>
+				</header>
+				<!--###### MODAL BOX BODY Part Start######-->
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+					<lightning:recordEditForm aura:id="editForm" objectApiName="Send_Email_User__c" onsuccess="{!c.handleSuccess}" onerror="{!c.handleError}" >
+						<lightning:inputField fieldName="Username__c"></lightning:inputField>
+						<lightning:inputField fieldName="Address__c"></lightning:inputField>
+					
+						<!--###### MODAL BOX FOOTER Part Start ######-->
+						<footer class="slds-modal__footer">
+							<lightning:button variant="neutral" 
+												label="Cancel"
+												title="Cancel"
+												onclick="{! c.closeModel }"/>
+							<lightning:button variant="brand" 
+												label="Save"
+												title="Save"
+												type="submit"/>
+						
+						</footer>
+					</lightning:recordEditForm>
+				</div>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+		<!--###### MODAL BOX Part END Here ######-->
+	</aura:if>
+
+
+</aura:component>

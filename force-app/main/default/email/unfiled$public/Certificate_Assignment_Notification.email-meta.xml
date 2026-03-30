@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>通知各审批人部门归属证件的使用情况</description>
+    <encodingKey>GB2312</encodingKey>
+    <name>Certificate Assignment Notification</name>
+    <style>none</style>
+    <subject>Notice of Document Usage</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

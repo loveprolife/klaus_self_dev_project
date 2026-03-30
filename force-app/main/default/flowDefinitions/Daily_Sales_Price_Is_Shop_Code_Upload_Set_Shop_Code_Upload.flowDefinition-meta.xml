@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>1</activeVersionNumber>
+    <description>Shop Code Upload为空则赋值上门店code</description>
+    <masterLabel>Daily Sales Shop Code Upload Is Null Set Shop Code Upload</masterLabel>
+</FlowDefinition>

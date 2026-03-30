@@ -1,0 +1,120 @@
+<!--
+ * @Author: YYL
+ * @LastEditors: TJP
+-->
+<template>
+    <!-- 自定义弹窗 -->
+    <c-modal-lwc data-id="product selection" static-mode=true title="" show-ok=true show-close=true hidden-close-icon=false onok={handleOk} onclose={handleCancel}>
+        <h1>{modalMsg}</h1>
+    </c-modal-lwc>
+    <!-- Loading -->
+    <template if:true={isShowSpinner} >
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+    <template if:true={showProductLine}>
+        <div class="container full-height">
+            <article class="slds-card card-content" part="card">
+                <div class="slds-card__body slds-grid slds-var-m-right_small slds-var-m-left_small">
+                    <header class="slds-media slds-media_center slds-has-flexi-truncate" part="header">
+                        <div class="slds-media__body" part="title">
+                            <h2 class="slds-card__header-title">
+                                <span class="slds-truncate slds-text-heading_medium"></span>
+                            </h2>
+                        </div>
+                        <div class="slds-no-flex" part="actions">
+                        <slot name="actions">
+                            <div slot="actions">
+                                <div style="margin-left:5px;display:inline-block;">                                    
+                                    <lightning-button class="slds-var-p-right_x-small backButton" variant="Neutral" label={label.INSPECTION_REPORT_BACK} onclick={handleBack}>
+                                    </lightning-button>
+                                    <template if:true={showSubmit}>
+                                        <lightning-button class="slds-var-p-right_x-small backButton" variant="brand" label={label.INSPECTION_REPORT_SAVE} onclick={handleSonSave}>
+                                        </lightning-button>
+                                    </template>
+                                    <template if:true={showSubmit}>
+                                        <lightning-button class="my-brand" variant="brand" label={label.Inspection_Completed} onclick={handleSubmit}>
+                                        </lightning-button>
+                                    </template>
+                                </div>
+                            </div>
+                        </slot>
+                        </div>
+                    </header>
+                </div>
+
+                <lightning-accordion allow-multiple-sections-open active-section-name={activeSections} onsectiontoggle={handleSectionToggle}>
+                    <template for:each={categoryType} for:item="item">
+                    <lightning-accordion-section name={item.categoryRelationship.Category_Type__c} label={item.name} key={item.id} >
+                    </lightning-accordion-section>
+                    
+                    <template if:true={item.status}>
+                        <div class="slds-is-relative" key={item.id}>
+                            <div class="slds-modal__header custom-modal-header" style={IssueStyle}>
+                                <lightning-card class="slds-color__background_gray-4 pageHeader">
+                                    <c-new-australia-inspection-item-page-lwc 
+                                        record-id={recordId} 
+                                        record-item-id={recordItemId}
+                                        store-id={storeId} 
+                                        product-line={productLine} 
+                                        check-label={item.name} 
+                                        check-name={item.name}
+                                        field-red={isRed}
+                                        status={status}
+                                        submit={item.isSubmit}
+                                        result-init={isInitCheckResult}
+                                        onselect={handleHasEdit}
+                                        ongoback={handleCloseInspectionItem}
+                                        onrefreshdata={handleRefreshData}>
+                                    </c-new-australia-inspection-item-page-lwc>
+                                </lightning-card>
+                          </div>
+                       </div>
+                    </template>
+                    </template>
+                </lightning-accordion>    
+
+                <template if:true={showSamplingProductCheck}>
+                    <lightning-accordion allow-multiple-sections-open active-section-name={activeSampleSections} onsectiontoggle={handleSampleSectionToggle}>    
+                        <template for:each={samplingListOneCheck} for:item="item">
+                            <lightning-accordion-section name={item.categoryRelationship.Category_Type__c} label={item.name} key={item.id} >
+                            </lightning-accordion-section>
+                            <template if:true={samplingStatus}>
+                                <div class="slds-is-relative" key={item.id}>
+                                    <div class="slds-modal__header custom-modal-header">
+                                        <lightning-card class="slds-color__background_gray-4 pageHeader">
+                                            <c-new-australia-sampling-product-line-lwc 
+                                                record-id={recordItemId} 
+                                                inspection-id={recordId}                                                
+                                                store-id={storeId} 
+                                                product-line={productLine} 
+                                                status={status}
+                                                check-name={item.name} 
+                                                unite-laser-t-v={uniteLaserTV}
+                                                submit={item.isSubmit}
+                                                onselect={handleHasEdit}
+                                                ongoback={handleCloseSamplingInspection}
+                                                onrefreshdata={handleRefreshData}>
+                                            </c-new-australia-sampling-product-line-lwc>
+                                        </lightning-card>
+                                    </div>
+                               </div>
+                            </template>
+                        </template>
+                    </lightning-accordion>
+                </template>
+            </article>
+        </div>
+    </template>
+    <template if:true={showAlert}>
+        <c-check-file-modal-lwc
+            record-id={recordId}
+            record-item-id={recordItemId}
+            store-id={storeId}
+            onclose={handleAlertClose}
+            oncontinue={handleContinue}
+            oncreateticket={handleCreateTicket}
+        ></c-check-file-modal-lwc>
+    </template>
+
+</template>

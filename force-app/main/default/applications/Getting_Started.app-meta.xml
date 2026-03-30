@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <defaultLandingTab>Getting_Started</defaultLandingTab>
+    <description>The starting point for your Force.com trial with videos and text tutorials to help you get started.</description>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Getting Started</label>
+    <tabs>standard-Chatter</tabs>
+    <tabs>Getting_Started</tabs>
+    <tabs>SAP_Sales_Actual__c</tabs>
+    <tabs>Issue_Ticket__c</tabs>
+    <tabs>SAP_Sales_Actual_Plan__c</tabs>
+    <tabs>Customer_Management__c</tabs>
+    <tabs>Customer_Information__c</tabs>
+    <tabs>Rep_Project_Pipeline__c</tabs>
+    <tabs>Notes__c</tabs>
+    <tabs>Project__c</tabs>
+    <tabs>Project_Equipment__c</tabs>
+    <tabs>Customer_Order_Report__c</tabs>
+    <tabs>Ecss_Customer_Info__c</tabs>
+    <tabs>Expo_Purpose__c</tabs>
+    <tabs>Expo_Menu_Controller__c</tabs>
+    <tabs>Product_line_Detail__c</tabs>
+    <tabs>Expo_Date_Controller__c</tabs>
+    <tabs>Expo_Fields_Controller__c</tabs>
+</CustomApplication>

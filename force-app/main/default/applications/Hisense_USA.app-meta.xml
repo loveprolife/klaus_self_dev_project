@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#00AAA6</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Hisense USA</label>
+    <navType>Standard</navType>
+    <profileActionOverrides>
+        <actionName>Tab</actionName>
+        <content>Home_Page_USA</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>standard-home</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>USA General Manager Read-only</profile>
+    </profileActionOverrides>
+    <tabs>standard-Event</tabs>
+    <tabs>standard-Account</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>Customer_Visit__c</tabs>
+    <tabs>Credit_Limit_Application__c</tabs>
+    <tabs>standard-Task</tabs>
+    <tabs>Order__c</tabs>
+    <tabs>Delivery_Order__c</tabs>
+    <tabs>Invoice__c</tabs>
+    <tabs>Product__c</tabs>
+    <tabs>standard-Feed</tabs>
+    <tabs>Customer_Management__c</tabs>
+    <tabs>Customer_Information__c</tabs>
+    <tabs>Rep_Project_Pipeline__c</tabs>
+    <tabs>Notes__c</tabs>
+    <tabs>Project__c</tabs>
+    <tabs>Project_Equipment__c</tabs>
+    <tabs>Customer_Order_Report__c</tabs>
+    <tabs>Product_line_Detail__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Hisense_USA_UtilityBar</utilityBar>
+</CustomApplication>

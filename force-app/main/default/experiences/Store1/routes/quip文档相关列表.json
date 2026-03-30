@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "4f83b8d0-225e-4ee7-9801-36094670d799",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "extrelated_quip",
+  "id" : "57574553-da29-4bb6-a006-9cd53be37fc3",
+  "label" : "Quip 文档相关列表",
+  "pageAccess" : "UseParent",
+  "routeType" : "extrelated-quip",
+  "type" : "route",
+  "urlPrefix" : "quip"
+}

@@ -1,0 +1,25 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-04-18 11:45:18
+ * @LastEditors: WFC
+ * @LastEditTime: 2024-04-18 11:47:04
+ * @Description: 
+ * @FilePath: \hisenseall-231026\force-app\main\default\lwc\dailySalesNoUploadLwc\dailySalesNoUploadLwc.html
+-->
+<template>
+    <lightning-card class="slds-color__background_gray-4 pageHeader">
+        <header class = "slds-modal__header">
+            <h2 class = "slds-modal__title slds-hyphenate slds-text-title_bold slds-text-color_error">
+                You do not have permission to upload files, please contact the administrator!
+            </h2>
+        </header>
+        <div class="modal-footer slds-modal__footer">
+            <lightning-button
+                variant="brand-outline"
+                label="Back"
+                onclick={back}
+                class="slds-m-left_x-small"
+            > </lightning-button>
+        </div>
+    </lightning-card>
+</template>

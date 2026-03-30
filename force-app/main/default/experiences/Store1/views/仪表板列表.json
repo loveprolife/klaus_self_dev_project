@@ -1,0 +1,31 @@
+{
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "96cfaa34-38f5-4bd3-be27-ea6a42e41887",
+  "label" : "仪表板列表",
+  "regions" : [ {
+    "id" : "06223289-0f57-48e4-8381-6ddbef06d307",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "forceCommunity:dashboardList",
+      "id" : "b7375ca2-89ee-4b78-a333-4aede2b42e1a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "059723cb-2930-42c5-9dfb-47c2fe09c403",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "b71a1b6b-3191-4fbf-b2aa-f6eda47413b4",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-01Z"
+}

@@ -1,0 +1,303 @@
+<template>
+
+    <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+    <!-- <c-modal-lwc data-id="product selection" static-mode=true title="" show-ok=true show-close=true
+        hidden-close-icon=false onok={handleOk}>
+        <h1>{label.PromoterDailyReport_DeleteReminder}</h1>
+    </c-modal-lwc> -->
+    <template for:each={recordList} for:item="item" for:index="index">
+        <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-resizable consumerTraitResearchTable"
+            key={item.index}>
+            <thead>
+                <!-- No. -->
+                <tr>
+                    <td class="tdOne">
+                        <span>{fields.No__c}</span>
+                    </td>
+                    <td class="tdTwo">
+
+                        <lightning-record-edit-form object-api-name="ConsumerTraitResearch__c" density="Compact">
+                            <lightning-input-field variant="label-hidden" field-name='No__c' data-index={index}
+                                name={index} value={item.No__c} data-field-name="No__c" readonly>
+                            </lightning-input-field>
+                        </lightning-record-edit-form>
+
+                    </td>
+                </tr>
+                <!-- Gender -->
+                <tr>
+                    <td class="tdOne">
+                        <span>{fields.Gender__c}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <template lwc:if={viewMode}>
+                            <lightning-input variant="label-hidden" value={item.Gender__c} readonly></lightning-input>
+                        </template>
+                        <template lwc:else>
+                            <lightning-record-edit-form object-api-name="ConsumerTraitResearch__c" density="Compact">
+                                <lightning-input-field variant="label-hidden" field-name='Gender__c' data-index={index}
+                                    name={index} value={item.Gender__c} data-field-name="Gender__c"
+                                    onchange={inputChangeHandler} read-only={viewMode}>
+                                </lightning-input-field>
+                            </lightning-record-edit-form>
+                        </template>
+                    </td>
+                </tr>
+                <!-- Race -->
+                <tr>
+                    <td class="tdOne">
+                        <span>{fields.Race__c}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <template lwc:if={viewMode}>
+                            <lightning-input variant="label-hidden" value={item.Race__c} readonly></lightning-input>
+                        </template>
+                        <template lwc:else>
+                            <lightning-record-edit-form object-api-name="ConsumerTraitResearch__c" density="Compact">
+                                <lightning-input-field variant="label-hidden" field-name='Race__c' data-index={index}
+                                    name={index} value={item.Race__c} data-field-name="Race__c"
+                                    onchange={inputChangeHandler} read-only={viewMode}>
+                                </lightning-input-field>
+                            </lightning-record-edit-form>
+                        </template>
+                    </td>
+                </tr>
+                <!-- Age -->
+                <tr>
+                    <td class="tdOne">
+                        <span>{fields.Age__c}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <lightning-input variant="label-hidden" field-name='Age__c' data-index={index} name={index}
+                            value={item.Age__c} data-field-name="Age__c" onchange={inputChangeHandler} type="text"
+                            read-only={viewMode}>
+                        </lightning-input>
+                    </td>
+                </tr>
+                <!-- Occupation -->
+                <tr>
+                    <td class="tdOne">
+                        <span>{fields.Occupation__c}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <lightning-input variant="label-hidden" field-name='Occupation__c' data-index={index}
+                            name={index} value={item.Occupation__c} data-field-name="Occupation__c"
+                            onchange={inputChangeHandler} type="text" read-only={viewMode}>
+                        </lightning-input>
+                    </td>
+                </tr>
+                <!-- Products -->
+                <tr>
+                    <td class="tdOne">
+                        <span>{fields.Product__c}</span>
+                        <span>s</span>
+                    </td>
+                    <td class="tdTwo">
+                        <template if:false={viewMode}>
+                            <div style="float: right;">
+                                <a>
+                                    <lightning-icon variant="success" icon-name="utility:add" size="x-small" title=""
+                                        data-index={index} data-id={productIndex} onclick={productItemAddHandler}>
+                                    </lightning-icon>
+                                    <span class="slds-assistive-text"></span>
+                                </a>
+                            </div>
+                        </template>
+
+                    </td>
+                </tr>
+            </thead>
+            <template for:each={item.productItemList} for:item="product" for:index="productIndex">
+                <tbody class="consumerTraitResearchProductTable" key={product.index}>
+                    <!-- Product -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>&emsp;{fields.Product__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <!-- <lightning-record-edit-form object-api-name="ConsumerTraitResearch__c" density="Compact">
+                                <lightning-input-field variant="label-hidden" field-name='Product__c' data-index={index}
+                                    data-id={productIndex} name={index} value={product.Product__c}
+                                    data-field-name="Product__c" onchange={productInputChangeHandler}>
+                                </lightning-input-field>
+                            </lightning-record-edit-form> -->
+
+                            <!-- 自定义组件 -->
+                            <c-lookup-lwc data-index={index} data-id={productIndex} data-field-name="Product__c"
+                                obj-name="Product__c" op={lookupProductFilter} record-id={product.Product__c}
+                                read-only={viewMode} onlookupupdate={lookUpChangeHandler}
+                                drop-down-style="max-height: 5rem;"></c-lookup-lwc>
+                        </td>
+                    </tr>
+                    <!-- Unit Price -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>&emsp;{fields.UnitPrice__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <lightning-record-edit-form object-api-name="ConsumerTraitResearch__c" record-id={product.Id} density="Compact">
+                                <lightning-input-field variant="label-hidden" field-name='UnitPrice__c'
+                                    data-index={index} data-id={productIndex} name={index} value={product.UnitPrice__c}
+                                    data-field-name="UnitPrice__c" onchange={productInputChangeHandler}
+                                    read-only={viewMode}>
+                                </lightning-input-field>
+                            </lightning-record-edit-form>
+
+                        </td>
+                    </tr>
+                    <!-- Quantity -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>&emsp;{fields.Quantity__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <lightning-input variant="label-hidden" field-name='Quantity__c' data-index={index}
+                                data-id={productIndex} name={index} value={product.Quantity__c}
+                                data-field-name="Quantity__c" onchange={productInputChangeHandler} type="number"
+                                read-only={viewMode}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+                    <!-- Action -->
+                    <template if:false={viewMode}>
+                        <tr>
+                            <td class="tdOne">
+                                <span>&emsp;{label.PromoterDailyReport_ACTIONS}</span>
+                            </td>
+                            <td class="tdTwo">
+                                <div>
+                                    <div style="float: left;">
+                                        <a>
+                                            <lightning-icon variant="success" icon-name="utility:dash" size="x-small"
+                                                title="" data-index={index} data-id={productIndex}
+                                                onclick={productItemRemoveHandler}>
+                                            </lightning-icon>
+                                            <span class="slds-assistive-text"></span>
+                                        </a>
+                                    </div>
+                                    <div style="float: right;">
+                                        <a>
+                                            <lightning-icon variant="success" icon-name="utility:add" size="x-small"
+                                                title="" data-index={index} data-id={productIndex}
+                                                onclick={productItemAddHandler}>
+                                            </lightning-icon>
+                                            <span class="slds-assistive-text"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </template>
+
+                </tbody>
+
+            </template>
+
+            <!-- Summary -->
+            <tr>
+                <td class="tdOne">
+                    <span>{label.PromoterDailyReport_SUMMARY}</span>
+                </td>
+                <td class="tdTwo">
+                    <lightning-input type="number" name="index" variant="label-hidden" value={item.Summary}
+                        formatter="currency" step="0.01" data-index={index} data-field-name="Summary" readonly>
+                    </lightning-input>
+                </td>
+            </tr>
+            <!-- Income Bracket -->
+            <tr>
+                <td class="tdOne">
+                    <span>{fields.IncomeBracket__c}</span>
+                </td>
+                <td class="tdTwo">
+                    <lightning-input variant="label-hidden" field-name='IncomeBracket__c' data-index={index}
+                        name={index} value={item.IncomeBracket__c} data-field-name="IncomeBracket__c"
+                        onchange={inputChangeHandler} type="text" read-only={viewMode}>
+                    </lightning-input>
+                </td>
+            </tr>
+            <!-- Date of Purchase -->
+            <tr>
+                <td class="tdOne">
+                    <span>{fields.DateOfPurchase__c}</span>
+                </td>
+                <td class="tdTwo">
+                    <lightning-record-edit-form object-api-name="ConsumerTraitResearch__c" density="Compact">
+                        <lightning-input-field variant="label-hidden" field-name='DateOfPurchase__c' data-index={index}
+                            name={index} value={item.DateOfPurchase__c} data-field-name="DateOfPurchase__c"
+                            onchange={inputChangeHandler} read-only={viewMode}>
+                        </lightning-input-field>
+                    </lightning-record-edit-form>
+
+                </td>
+            </tr>
+            <!-- Receive Newsletter -->
+            <tr>
+                <td class="tdOne">
+                    <span>{fields.ReceiveNewsletter__c}</span>
+                </td>
+                <td class="tdTwo">
+                    <template lwc:if={viewMode}>
+                        <lightning-input variant="label-hidden" value={item.ReceiveNewsletter__c}
+                            readonly></lightning-input>
+                    </template>
+                    <template lwc:else>
+                        <lightning-record-edit-form object-api-name="ConsumerTraitResearch__c" density="Compact">
+                            <lightning-input-field variant="label-hidden" field-name='ReceiveNewsletter__c'
+                                data-index={index} name={index} value={item.ReceiveNewsletter__c}
+                                data-field-name="ReceiveNewsletter__c" onchange={inputChangeHandler}
+                                read-only={viewMode}>
+                            </lightning-input-field>
+                        </lightning-record-edit-form>
+                    </template>
+                </td>
+            </tr>
+            <!-- eMail Address -->
+            <tr>
+                <td class="tdOne">
+                    <span>{fields.eMailAddress__c}</span>
+                </td>
+                <td class="tdTwo">
+                    <lightning-input variant="label-hidden" field-name='eMailAddress__c' data-index={index} name={index}
+                        value={item.eMailAddress__c} data-field-name="eMailAddress__c" onchange={inputChangeHandler}
+                        type="email" read-only={viewMode}>
+                    </lightning-input>
+                </td>
+            </tr>
+            <!-- Action -->
+            <template if:false={viewMode}>
+                <tr>
+                    <td class="tdOne">
+                        <span>{label.PromoterDailyReport_ACTIONS}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <div>
+                            <div style="float: left;">
+                                <a>
+                                    <lightning-icon variant="success" icon-name="utility:dash" size="x-small" title=""
+                                        data-index={index} onclick={itemRemoveHandler}>
+                                    </lightning-icon>
+                                    <span class="slds-assistive-text"></span>
+                                </a>
+                            </div>
+                            <div style="float: right;">
+                                <a>
+                                    <lightning-icon variant="success" icon-name="utility:add" size="x-small" title=""
+                                        data-index={index} onclick={itemAddHandler}>
+                                    </lightning-icon>
+                                    <span class="slds-assistive-text"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </template>
+
+
+
+        </table>
+    </template>
+
+</template>

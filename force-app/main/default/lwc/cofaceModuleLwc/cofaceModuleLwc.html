@@ -1,0 +1,494 @@
+<template>
+    <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+    <section class="slds-card coface-card">
+        <div class="slds-card__header slds-grid"><header class="slds-media slds-media_center slds-has-flexi-truncate"> </header></div>
+        <div class="slds-card__body slds-p-horizontal_medium slds-var-m-around_large">
+            <!-- 第一行：互斥选择：公司名称 / 识别号 -->
+            <div class="slds-grid slds-gutters slds-wrap slds-var-m-bottom_small">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                    <lightning-radio-group
+                        name="searchMode"
+                        label="搜索方式"
+                        variant="label-hidden"
+                        options={modeOptions}
+                        value={mode}
+                        type="button"
+                        onchange={handleModeChange}>
+                    </lightning-radio-group>
+                </div>
+            </div>
+
+            <!-- 第二行：当选择 公司名称 时显示：国家（picklist）+ 公司名称（必填）+ 搜索公司 按钮 -->
+            <template if:true={isCompanyMode}>
+                <div class="slds-grid slds-gutters slds-wrap slds-m-bottom_x-small">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12">
+                        <!-- 可输入模糊搜索的国家选择（公司名称模式） -->
+                        <div class="country-dropdown">
+                            <lightning-input
+                                class="input-validate"
+                                type="text"
+                                name="country"
+                                label="国家"
+                                placeholder="国家/地区"
+                                value={countrySearchText}
+                                onfocus={handleCountryFocus}
+                                oninput={handleCountrySearchInput}
+                                onchange={handleCountrySearchInput}
+                                onmousedown={handleCountryMouseDown}
+                                onblur={handleCountryBlur}
+                                message-when-value-missing="请选择一个国家"
+                                required>
+                            </lightning-input>
+                        </div>
+                        <div if:true={showCountryDropdown} class="slds-dropdown slds-dropdown_fluid slds-dropdown_length-5 country-dropdown" onmousedown={handleCountryMouseDown}>
+                            <ul class="slds-listbox slds-listbox_vertical" role="listbox">
+                                <template for:each={filteredCountryOptions} for:item="opt" for:index="index">
+                                    <li key={opt.value} class="slds-listbox__item" role="presentation">
+                                        <div class="slds-media slds-listbox__option slds-listbox__option_plain"
+                                             role="option"
+                                             data-value={opt.value}
+                                             data-label={opt.label}
+                                             data-special={opt.special}
+                                             onmousedown={handleCountrySelect}>
+                                            <span class="slds-media__body">
+                                                <span class="slds-truncate" title={opt.label}>{opt.label}</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                        <lightning-input
+                            class="input-validate-company-name"
+                            type="text"
+                            name="companyName"
+                            label="公司名称"
+                            required
+                            value={companyName}
+                            maxlength="120"
+                            message-when-value-missing="请输入公司名称"
+                            onchange={handleCompanyNameChange}>
+                        </lightning-input>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-12 slds-var-m-top_large slds-is-relative">
+                        <lightning-button
+                            variant="brand"
+                            label="搜索公司"
+                            title="搜索公司"
+                            icon-name="utility:search"
+                            icon-position="left"
+                            onclick={handleSearch}>
+                        </lightning-button>
+                    </div>
+                </div>
+            </template>
+
+            <!-- 识别号模式：国家 + 识别类型下拉 + 文本框 + 搜索公司 按钮 -->
+            <template if:false={isCompanyMode}>
+                <div class="slds-grid slds-gutters slds-wrap slds-m-bottom_x-small">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12">
+                        <!-- 可输入模糊搜索的国家选择（识别号模式） -->
+                        <div class="country-dropdown">
+                            <lightning-input
+                                class="input-validate"
+                                type="text"
+                                name="countryIdMode"
+                                label="国家"
+                                placeholder="国家/地区"
+                                value={countrySearchText}
+                                onfocus={handleCountryFocus}
+                                oninput={handleCountrySearchInput}
+                                onchange={handleCountrySearchInput}
+                                onmousedown={handleCountryMouseDown}
+                                onblur={handleCountryBlur}
+                                message-when-value-missing="请选择一个国家"
+                                required>
+                            </lightning-input>
+                        </div>
+                        <div if:true={showCountryDropdown} class="slds-dropdown slds-dropdown_fluid slds-dropdown_length-5 country-dropdown" onmousedown={handleCountryMouseDown}>
+                            <ul class="slds-listbox slds-listbox_vertical" role="listbox">
+                                <template for:each={filteredCountryOptions} for:item="opt" for:index="index">
+                                    <li key={opt.value} class="slds-listbox__item" role="presentation">
+                                        <div class="slds-media slds-listbox__option slds-listbox__option_plain"
+                                             role="option"
+                                             data-value={opt.value}
+                                             data-label={opt.label}
+                                             data-special={opt.special}
+                                             onmousedown={handleCountrySelect}>
+                                            <span class="slds-media__body">
+                                                <span class="slds-truncate" title={opt.label}>{opt.label}</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12">
+                        <lightning-combobox
+                            class="idType"
+                            name="idType"
+                            label="识别类型"
+                            value={identifierType}
+                            options={identifierTypeOptions}
+                            placeholder="选择识别类型"
+                            onchange={handleIdentifierTypeChange}
+                            required>
+                        </lightning-combobox>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12">
+                        <lightning-input
+                            class="identifierValue"
+                            type="text"
+                            name="identifierValue"
+                            label="识别号"
+                            value={identifierValue}
+                            placeholder="请输入识别号"
+                            onchange={handleIdentifierValueChange}
+                            required>
+                        </lightning-input>
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-12 slds-var-m-top_large action-col slds-is-relative">
+                        <lightning-button
+                            variant="brand"
+                            label="搜索公司"
+                            title="搜索公司"
+                            icon-name="utility:search"
+                            icon-position="left"
+                            onclick={handleSearch}>
+                        </lightning-button>
+                    </div>
+                </div>
+            </template>
+
+            <!-- 第三行：更多/精简 搜索条件 链接（仅公司名称模式显示） -->
+            <div class="slds-grid slds-wrap slds-m-bottom_x-small">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12"></div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-text-align_right" style="height: 10px; position: relative; top: -10px">
+                    <template if:true={isCompanyMode}>
+                        <template if:false={showMoreFilters}>
+                            <lightning-button variant="base" label="+更多搜索条件" class="link-like" onclick={toggleMoreFilters}></lightning-button>
+                        </template>
+                        <template if:true={showMoreFilters}>
+                            <lightning-button variant="base" label="-精简搜索条件" class="link-like" onclick={toggleMoreFilters}></lightning-button>
+                        </template>
+                    </template>
+                </div>
+            </div>
+
+            <!-- 第四行：当展开更多时，显示 邮编 + 城市（仅公司名称模式） -->
+            <template if:true={isCompanyMode}>
+                <template if:true={showMoreFilters}>
+                    <div class="slds-grid slds-gutters slds-wrap slds-m-bottom_medium">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12">
+                            <lightning-input
+                                type="text"
+                                name="postalCode"
+                                label="邮编"
+                                value={postalCode}
+                                maxlength="20"
+                                onchange={handlePostalCodeChange}>
+                            </lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12">
+                            <lightning-input
+                                type="text"
+                                name="city"
+                                label="城市"
+                                value={city}
+                                maxlength="80"
+                                onchange={handleCityChange}>
+                            </lightning-input>
+                        </div>
+                    </div>
+                </template>
+            </template>
+
+            <!-- 搜索结果与已选用公司：左右布局 -->
+            <div class="slds-grid slds-gutters slds-wrap">
+                <!-- 左侧：搜索结果 -->
+                <div class="slds-col slds-size_1-of-1 slds-large-size_2-of-2">
+                    <div class="slds-text-heading_small slds-m-bottom_small">Results of my search ({resultCount})</div>
+
+                    <template if:true={hasResults}>
+                        <div class="slds-grid slds-wrap slds-gutters_small slds-var-p-right_small">
+                            <template for:each={results} for:item="item" for:index="index">
+                                <div key={item.id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-1 slds-var-m-bottom_small">
+                                    <article class="slds-card slds-p-around_small result-card selected-card"
+                                             data-id={item.id}
+                                             data-index={index}
+                                             data-item={item}
+                                             onclick={handleArticleClick}
+                                             onmouseenter={handleResultMouseEnter}
+                                             onmouseleave={handleResultMouseLeave}>
+                                        <div class="slds-grid slds-wrap slds-gutters_x-small">
+                                            <div class="slds-col slds-size_1-of-1">
+                                                <div class="slds-text-title_bold slds-truncate" title={item.name}>{item.name}</div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-text-color_weak slds-text-body_small">
+                                                <!-- 国家：{item.country} | 城市：{item.city} | 邮编：{item.postalCode} -->
+                                                {item.address}
+                                            </div>
+                                            <template if:true={item.postalCode}>
+                                                <div class="slds-col slds-size_1-of-1 slds-text-color_weak slds-text-body_small">
+                                                    postalCode: {item.postalCode}
+                                                </div>
+                                            </template> 
+                                            <template for:each={item.externalIds} for:item="extdrnal" for:index="extdrnalIndex">
+                                                <template if:true={extdrnal.id}>
+                                                    <div class="slds-col slds-size_1-of-1 slds-text-color_weak slds-text-body_small" key={extdrnal.repositorySlug}>
+                                                        {extdrnal.repositorySlug} : {extdrnal.id}
+                                                    </div>
+                                                </template>
+                                            </template>
+                                        </div>
+                                    </article>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+
+                    <template if:false={hasResults}>
+                        <div class="slds-text-color_weak">暂无搜索结果。请设置条件并点击“搜索公司”。</div>
+                    </template>
+                </div>
+
+                <!-- 右侧：已选用公司（模拟3个） -->
+                <!-- <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    <div class="slds-text-heading_small slds-m-bottom_small">Already in my report</div>
+                    <template for:each={selectedList} for:item="sel" for:index="index">
+                        <article key={sel.index} class="slds-card slds-p-around_small selected-card slds-m-bottom_x-small ">
+                            <div class="slds-grid slds-wrap slds-gutters_x-small">
+                                <div class="slds-col slds-size_1-of-1 slds-text-title_bold slds-truncate" title={sel.name}>{sel.name}</div>
+                                <div class="slds-col slds-size_1-of-1 slds-text-color_weak slds-text-body_small">
+                                    国家：{sel.countryCode}
+                                </div>
+                            </div>
+                        </article>
+                    </template>
+                    <template if:true={noSelectedPlaceholder}>
+                        <div class="slds-text-color_weak">暂无已选用公司。</div>
+                    </template>
+                </div> -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ORDER Dialog -->
+    <template if:true={isDialogOpen}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="cofaceDialogTitle" class="slds-modal slds-fade-in-open">
+            <template if:true={isShowOrderSpinner} >
+                <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+            </template>
+            <!-- Set container width to 40% of screen -->
+            <div class="slds-modal__container" style="width: 40vw; min-width:40vw;">
+                <div class="slds-modal__content " style="padding: 24px 32px;">
+                    <div class="slds-grid slds-var-p-around_medium" style="display: flex; align-items: center;">
+                        <div>
+                            <!-- Preload icon to reduce initial lag -->
+                            <lightning-icon icon-name="standard:webcart" alternative-text="webcart" size="medium" title="webcart" class="slds-var-m-right_x-small"></lightning-icon>
+                        </div>
+                        <div style="font-size: 1.6rem;">ORDER</div>
+                        <div class="slds-col_bump-left">
+                            <lightning-icon icon-name="utility:close" alternative-text="close" title="close" size="small" onclick={handleCloseDialog} style="cursor: pointer;"></lightning-icon>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-grid slds-wrap slds-gutters_x-small slds-var-p-around_medium" style="font-size: 0.9rem">
+                        <div class="slds-col slds-size_1-of-1 slds-var-m-bottom_medium">
+                            <div class="slds-truncate" title={selectItem.name} style="font-size: 1.4rem;">{selectItem.name}</div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-var-m-bottom_small">
+                            <span style="color:rgb(11 177 143);">Address:</span> {selectItem.address}
+                        </div>
+                        <template if:true={selectItem.postalCode}>
+                            <div class="slds-col slds-size_1-of-1  slds-var-m-bottom_small">
+                               <span  style="color:rgb(11 177 143);">PostalCode:</span> {selectItem.postalCode}
+                            </div>
+                        </template>
+                        <template if:true={legalForm}>
+                            <div class="slds-col slds-size_1-of-1  slds-var-m-bottom_small">
+                               <span  style="color:rgb(11 177 143);">Legal Form:</span> {legalForm}
+                            </div>
+                        </template>
+                        <template if:true={registrationDateFormatted}>
+                            <div class="slds-col slds-size_1-of-1  slds-var-m-bottom_small">
+                               <span  style="color:rgb(11 177 143);">Registration Date:</span> {registrationDateFormatted}
+                            </div>
+                        </template>
+                        <template if:true={lastMajorUpdateFormatted}>
+                            <div class="slds-col slds-size_1-of-1  slds-var-m-bottom_small">
+                               <span  style="color:rgb(11 177 143);">Last Major Update:</span> {lastMajorUpdateFormatted}
+                            </div>
+                        </template>
+                        <template for:each={selectItem.externalIds} for:item="extdrnal" for:index="index">
+                            <template if:true={extdrnal.id}>
+                                <div class="slds-col slds-size_1-of-1 slds-var-m-bottom_small" key={extdrnal.repositorySlug}>
+                                    <span style="color: rgb(11 177 143);">{extdrnal.repositorySlug}:</span> {extdrnal.id}
+                                </div>
+                            </template>
+                        </template>
+                    </div>
+                    <div class="slds-var-m-around_small">
+                        <div class="line"></div>
+                    </div>
+                    <div class="slds-grid slds-gutters slds-var-p-around_medium">
+                        <div class="slds-col slds-align_absolute-center">
+                            <lightning-button
+                                variant="neutral"
+                                label="Full Report"
+                                value="full-report"
+                                onclick={handleReport}
+                                icon-name="utility:chart"
+                                icon-position="left"
+                                class="my-brand dialog-action-btn">
+                            </lightning-button>
+                        </div>
+                        <div class="slds-col slds-align_absolute-center">
+                            <lightning-button
+                                variant="neutral"
+                                label="Score"
+                                value="dra-report"
+                                onclick={handleReport}
+                                icon-name="utility:favorite"
+                                icon-position="left"
+                                class="my-brand dialog-action-btn ">
+                            </lightning-button>
+                        </div>
+                        <div class="slds-col slds-align_absolute-center">
+                            <lightning-button
+                                variant="neutral"
+                                label="Urba360"
+                                onclick={handleUrba360}
+                                icon-name="utility:contract_line_outcome"
+                                icon-position="left"
+                                class="my-brand dialog-action-btn"
+                                disabled
+                                >
+                            </lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- ORDER Next Dialog -->
+    <template if:true={isReportDialopOpen}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="cofaceDialogTitle" class="slds-modal slds-fade-in-open">
+            <template if:true={isShowOrderSpinner} >
+                <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+            </template>
+            <!-- Set container width to 40% of screen -->
+            <div class="slds-modal__container" style="width: 40vw; min-width:40vw;">
+                <div class="slds-modal__content " style="padding: 24px 32px;">
+                    <div class="slds-grid slds-var-p-around_medium" style="display: flex; align-items: center;">
+                        <div>
+                            <!-- Preload icon to reduce initial lag -->
+                            <lightning-icon icon-name="standard:webcart" alternative-text="webcart" size="medium" title="webcart" class="slds-var-m-right_x-small"></lightning-icon>
+                        </div>
+                        <div style="font-size: 1.6rem;">ORDER</div>
+                        <div class="slds-col_bump-left">
+                            <lightning-icon icon-name="utility:close" alternative-text="close" title="close" size="small" onclick={handleCloseDialog} style="cursor: pointer;"></lightning-icon>
+                        </div>
+                    </div>
+                    
+                    <div class="slds-grid slds-wrap slds-gutters_x-small slds-var-p-around_medium" style="font-size: 0.9rem">
+                        <div class="slds-col slds-size_1-of-1">
+                            <div class="slds-truncate" title={selectItem.name} style="font-size: 1.4rem;">{selectItem.name}</div>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1  slds-var-m-bottom_medium">
+                            <template if:true={lastMajorUpdateFormatted}>
+                                <span style="color:rgb(11 177 143);">Last Major Update:</span> {lastMajorUpdateFormatted}
+                            </template>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1">
+                            <div class="slds-truncate" title={reportType} style="font-size: 1.4rem; color:#f315b7;">{reportType}</div>
+                        </div>
+                        <!-- <template if:true={isMonitorable}> -->
+                            <div class="slds-col slds-size_1-of-1 slds-var-m-bottom_small">
+                                <lightning-radio-group 
+                                    name="monitorableRadioGroup"
+                                    label="Monitorable"
+                                    options={monitorableOptions}
+                                    value={monitorableValue}
+                                    type="radio"
+                                    onchange={handleMonitorable}>
+                                </lightning-radio-group>
+                            </div>
+                        <!-- </template> -->
+                        <div class="slds-col slds-size_1-of-1 slds-var-m-bottom_small">
+                            <lightning-radio-group 
+                                name="availabilityRadioGroup"
+                                label="Availability"
+                                options={availabilityOptions}
+                                value={availabilityValue}
+                                type="radio"
+                                onchange={handleAvailability}>
+                            </lightning-radio-group>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-var-m-bottom_small">
+                            <div style="font-size: 0.75rem;font-weight: 700;">Show amounts in</div>
+                            <lightning-select
+                                name="currency"
+                                label="Show amounts in"
+                                value={currencyValue}
+                                options={currencyOptions}
+                                onchange={handleCurrency}
+                                variant="label-hidden"
+                                >
+                            </lightning-select>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-var-m-bottom_small">
+                            <div style="font-size: 0.75rem;font-weight: 700;">Language</div>
+                            <lightning-select
+                                name="language"
+                                label="Language"
+                                value={languageValue}
+                                options={languageOptions}
+                                onchange={handleLanguage}
+                                variant="label-hidden"
+                                >
+                            </lightning-select>
+                        </div>
+                    </div>
+                    <div class="slds-var-p-around_medium">
+                        <div class="line"></div>
+                    </div>
+                    <div class="slds-grid slds-gutters slds-var-p-around_medium">
+                        <div class="slds-col">
+                            <lightning-button
+                                variant="neutral"
+                                label="Back"
+                                onclick={handleBackReport}
+                                class="my-brand dialog-action-btn">
+                            </lightning-button>
+                        </div>
+                         <div class="slds-col">
+                            <lightning-button
+                                variant="brand"
+                                label="Order"
+                                onclick={handleOrderReport}
+                                icon-name="utility:checkout"
+                                icon-position="left"
+                                class="my-brand dialog-action-btn slds-float_right">
+                            </lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

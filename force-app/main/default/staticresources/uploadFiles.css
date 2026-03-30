@@ -1,0 +1,34 @@
+.slds-file-selector__dropzone {
+    border: 0px;
+}
+/* remove the "or drop files" label from the right of the lightning:input type file */
+.slds-file-selector__dropzone .slds-file-selector__text{
+    font-size: 0 !important;
+}
+
+/* insert the text "New Exam" into the button of the lightning:input type file */
+.slds-file-selector__dropzone .slds-file-selector__text:after{
+    content: 'Or Test Drop' !important;
+    font-size: .8125rem !important;
+    display: none;
+}
+
+/* remove the "Upload Files" text from the button of the lightning:input type file */
+.slds-file-selector__dropzone .slds-file-selector__button{
+    font-size: 0 !important;
+}
+
+/* insert the text "New Exam" into the button of the lightning:input type file */
+.slds-file-selector__dropzone .slds-file-selector__button:after{
+    content: ' ' !important;
+    font-size: .8125rem !important;
+    color: rgba(27, 82, 151, 1.0) !important;
+}
+
+.slds-file-selector__dropzone .slds-button__icon{
+    margin: 0 auto;
+}
+
+.uploadFilesLwc-upload .slds-form-element__label{
+    display: none;
+}

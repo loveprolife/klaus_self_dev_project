@@ -1,0 +1,46 @@
+{
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "d88bb235-06a3-4733-81bb-f770a244cb78",
+  "label" : "记录列表",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "enableInlineEdit" : true,
+        "filterName" : "{!filterId}",
+        "layout" : "FULL",
+        "pageSize" : 25,
+        "scope" : "{!objectName}",
+        "showActionBar" : true,
+        "showChartsPanel" : true,
+        "showDisplay" : "showall",
+        "showFilterPanel" : true,
+        "showImageIcon" : true,
+        "showManualRefreshButton" : true,
+        "showObjectName" : true,
+        "showPinnedList" : true,
+        "showSearchBar" : true
+      },
+      "componentName" : "forceCommunity:objectHome",
+      "id" : "46ca997d-1c49-4317-a17d-59f110bf16e5",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "e7b2eff4-fa34-4dd6-803a-0f906bc81a9a",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "abb2d16a-003f-4bd5-9ec2-ea4ef8e1bea0",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "700d7afd-39a9-4c98-9b84-296d6a171109",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list"
+}

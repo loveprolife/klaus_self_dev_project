@@ -1,0 +1,35 @@
+:host{ 
+    --slds-c-tooltip-color-background: #fff;
+    --slds-c-tooltip-text-color: #000;
+}
+
+.triangle{
+    transform: rotate(45deg);
+    position:absolute;
+    top:60px;
+    left:270px;
+    width: 20px;
+    height: 20px; 
+    border:1px rgb(143 143 143) solid
+}
+
+.box{
+    position:absolute;
+    top:48px;
+    left:270px;
+    z-index: 9999;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+    border-left: 10px solid transparent;
+}
+
+.tooltip{
+    position:absolute;
+    top:64px;
+    left:260px;
+    border: 1px rgb(143 143 143) solid; 
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+}

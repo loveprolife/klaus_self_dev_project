@@ -1,0 +1,33 @@
+<!--
+ * @Author: WFC
+ * @Date: 2023-06-12 10:06:52
+ * @LastEditors: WFC
+ * @LastEditTime: 2023-07-10 14:08:47
+ * @Description: 
+ * @FilePath: \Hitest_2022\force-app\main\default\lwc\uploadVideoLWC\uploadVideoLWC.html
+-->
+<template>
+    <template if:true={showPage}>
+        <lightning-card title="过堂视频" icon-name='custom:custom21'>
+            <div style="margin-top: 40px;">
+                <lightning-file-upload class="slds-align_absolute-center slds-text-heading_medium"
+                    label="请上传mp4, webm, mov, m4v类型文件"
+                    name="fileUploader"
+                    accept={acceptedFormats}
+                    record-id={recordId}
+                    onuploadfinished={handleUploadFinishedEvent}
+                    title="请上传mp4, webm, mov, m4v类型文件"
+                    multiple>
+                </lightning-file-upload>
+            </div>
+        </lightning-card>
+        <div class="modal-footer slds-modal__footer" style="margin-top: 40px;">
+            <lightning-button
+                variant="brand-outline"
+                label="Cancel"
+                onclick={cancel}
+                class="slds-m-left_x-small"
+            > </lightning-button>
+        </div>
+    </template>
+</template>

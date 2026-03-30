@@ -1,0 +1,36 @@
+<!--
+ * @Author: YYL
+ * @Date: 2024-03-21 16:50:27
+ * @LastEditors: YYL
+ * @LastEditTime: 2024-04-11 14:55:50
+ * @FilePath: /SalesForceUat/force-app/main/default/lwc/urgingButton/urgingButton.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<template>
+    <!-- <div class="slds-is-relative">
+        <div class="slds-modal__footer">
+            <div style="display: inline-block;margin-left: -50px;padding-left:-30px">
+                <span title="Initiate Approval Reminding">发起审批提醒</span>
+            </div>
+            <div style="display: inline-block;">
+                <lightning-button 
+                    variant="Urging" 
+                    label="Urging" 
+                    title="Urging action" 
+                    onclick={urging} 
+                    class="slds-m-left_x-small"
+                    ></lightning-button>
+            </div>
+        </div>
+    </div> -->
+    <lightning-card title={label.Urging} icon-name="standard:live_chat_visitor">
+        <lightning-button
+            slot="actions" 
+            variant="Urging" 
+            label="Urging" 
+            title="Urging action" 
+            onclick={urging} 
+            class="slds-m-left_x-small"
+            ></lightning-button>
+    </lightning-card>
+</template>

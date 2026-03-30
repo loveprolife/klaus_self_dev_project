@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>巡店</fullName>
+        <default>true</default>
+        <label>巡店</label>
+    </customValue>
+    <customValue>
+        <fullName>客户拜访</fullName>
+        <default>false</default>
+        <label>客户拜访</label>
+    </customValue>
+    <customValue>
+        <fullName>客户拓展</fullName>
+        <default>false</default>
+        <label>客户拓展</label>
+    </customValue>
+    <masterLabel>Check Item Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

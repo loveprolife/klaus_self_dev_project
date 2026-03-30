@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>salesVSTargetLwc</componentName>
+                <identifier>c_salesVSTargetLwc</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Mexico Promoter</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>promoterRemindersLwc</componentName>
+                <identifier>c_promoterRemindersLwc</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+                    <criteria>
+                        <leftValue>{!$User.Sales_Region__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Hisense Chile</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$User.Sales_Region__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Hisense Indonesia</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$User.Sales_Region__c}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Hisense South Africa</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>NE</operator>
+                        <rightValue>Mexico Promoter</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>promoterReminders2Lwc</componentName>
+                <identifier>c_promoterReminders2Lwc</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+                    <criteria>
+                        <leftValue>{!$User.Sales_Region__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Hisense Chile</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$User.Sales_Region__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Hisense Indonesia</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$User.Sales_Region__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Hisense South Africa</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Mexico Promoter</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>ticketLinkLwc</componentName>
+                <identifier>c_ticketLinkLwc</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>newCheckInCheckOutAutoLWC</componentName>
+                <identifier>c_newCheckInCheckOutAutoLWC</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Sales_Region__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Hisense South Africa</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>dashboardName</name>
+                    <value>kXyWcBqwPXoOBsFKQyAukYSvYaGNkR</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideOnError</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>desktopDashboards:embeddedDashboard</componentName>
+                <identifier>desktopDashboards_embeddedDashboard</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
+                    <criteria>
+                        <leftValue>{!$User.Sales_Region__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Hisense South Africa</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$User.Profile.Name}</leftValue>
+                        <operator>CONTAINS</operator>
+                        <rightValue>System Admin</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>examinationLinkLwc</componentName>
+                <identifier>c_examinationLinkLwc</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Mobile Home Promoter</masterLabel>
+    <template>
+        <name>flexipage:defaultAppHomeTemplate</name>
+    </template>
+    <type>AppPage</type>
+</FlexiPage>

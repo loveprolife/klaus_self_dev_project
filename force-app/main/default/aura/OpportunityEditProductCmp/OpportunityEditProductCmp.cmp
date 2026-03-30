@@ -1,0 +1,87 @@
+<aura:component controller="OpportunityEditProductController"
+implements="flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId" 
+access="global">
+<style>
+    .slds-modal__container {
+    max-width: 120rem !important;
+    width:80% !important;
+    }
+</style><!-- 主记录ID -->
+<aura:attribute name="recordId" type="Id" />
+<!-- 判断值 -->
+<aura:attribute name="isSaved" type="Boolean" required="true" description="" default="false" access="private"/>
+<aura:attribute name="isShowEdit" type="Boolean" required="true" description="" default="false" access="private"/>
+<!-- 初始化数据 -->
+<aura:attribute name="thisOpp" type="Object" />
+<aura:attribute name="productStatusPicklists" type="List" />
+<aura:attribute name="deliveryFormPicklists" type="List" />
+<aura:attribute name="productListData" type="List"/>
+<aura:attribute name="pageLabelList" type="List"/>
+<aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+
+<div class="quote_edit_product_panel">
+	<h2 class="title slds-text-heading--medium" >
+	<!-- Edit Product -->{!v.pageLabelList[4]}
+	</h2>
+	<aura:renderIf isTrue="{!v.productListData.length > 0}">
+		<lightning:card>
+	        <aura:set attribute="title">
+	            <lightning:icon iconName="standard:account" size="big"/>
+	            <!-- Products -->{!v.pageLabelList[11]} [{!v.productListData.length}]
+	        </aura:set>
+	    </lightning:card> 
+	    <div class="productEditTableBox" style="width: 100%;overflow-x: scroll;font-family: 'SalesforceSans-Regular',Helvetica,Arial,sans-serif;">
+            <ul style="width: 100%;background-color: #efefef;font-size: 12px;font-weight: bold;line-height: 32px;">
+				<li style="width:5%;display: inline-block;padding: 3px;text-align: center;"><!-- No. -->{!v.pageLabelList[6]}</li>
+				<li style="width:30%;display: inline-block;padding: 3px;text-align: center;"><!-- Product Name -->{!v.pageLabelList[2]}</li>
+				<li style="width:15%;display: inline-block;padding: 3px;text-align: center;"><!-- Quantity -->
+				{!v.pageLabelList[7]}
+				</li>
+				<li style="width:15%;display: inline-block;padding: 3px;text-align: center;"><!-- Product Status -->{!v.pageLabelList[8]}</li>
+				<li style="width:25%;display: inline-block;padding: 3px;text-align: center;"><!-- Remark -->
+				{!v.pageLabelList[9]}
+				</li>
+				<li style="width:5%;display: inline-block;padding: 3px;text-align: center;"><!-- Action -->
+				{!v.pageLabelList[10]}
+				</li>
+			</ul>
+			<aura:iteration items="{!v.productListData}" var="i" indexVar="index">
+                <lightning:recordEditForm aura:id="recordViewForm"
+                                     recordId="{!i.Id}"
+                                     objectApiName="Opportunity_Product__c">
+				<ul id="product" class="{!index}" style="width: 100%;font-size: 12.5px;">
+					<li style="width:5%;display: inline-block;padding: 3px;text-align: center;">
+                        {!index + 1}
+                    </li>
+				  	
+                    <li style="width:30%;display: inline-block;padding: 3px;text-align: center;">
+                        <!--<lightning:inputField id="{!index}" fieldName="Product__c" value="{!i.Product__c}" disabled="true" onchange="{!c.productChange}"/>-->
+                        {!i.Product__r.Name}
+				  	</li>
+                    <li style="width:15%;display: inline-block;padding: 3px;">
+                        <ui:inputNumber value="{!i.Quantity__c}" updateOn="keyup"/>
+                    </li> 
+                    <li style="width:15%;display: inline-block;padding: 3px;">
+                        <lightning:select name="select1" value="{!i.Product_Status__c}">
+					        <aura:iteration items="{!v.productStatusPicklists}" var="p">
+								<ui:inputSelectOption label="{!p.label}" text="{!p.value}"/>
+							</aura:iteration>
+					    </lightning:select>
+                    </li> 
+                    <li style="width:25%;display: inline-block;padding: 3px;">
+                        <ui:inputText value="{!i.Remark__c}"/>
+                    </li>     
+	                <li style="width:5%;display: inline-block;padding: 3px;text-align: center;">
+	                    <lightning:icon id="{!index}" variant="error" iconName="utility:delete" class="slds-icon slds-icon_small" size="small" alternativeText="delete" onclick="{!c.removeDeletedRow}"/>
+		            </li>			        
+				</ul>			        
+                </lightning:recordEditForm>
+			</aura:iteration>
+	    </div>	
+	</aura:renderIf>
+	<!-- 保存产品 -->
+	<input class="assign_admit" type="button" value="{!$Label.c.Common_Button_Save}" onclick="{!c.saveProduct}" ></input>
+	<!-- 返回 -->
+    <input class="assign_cancel" type="button" value="{!$Label.c.Common_Button_Cancel}" onclick="{!c.assignCancel}"></input>
+</div>
+</aura:component>

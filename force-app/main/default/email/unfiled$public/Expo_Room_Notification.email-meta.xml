@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>展会审批拒绝通知(Online)</description>
+    <encodingKey>GB2312</encodingKey>
+    <name>Expo Room Notification</name>
+    <style>none</style>
+    <subject>2025 IFA Registration Rejection  系统邮件无需回复 &lt;Please do NOT reply&gt;</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

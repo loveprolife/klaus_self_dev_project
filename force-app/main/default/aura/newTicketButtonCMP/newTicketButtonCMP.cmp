@@ -1,0 +1,5 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes" access="global">
+    <aura:html tag="style">
+    </aura:html>
+    <c:newTicketButtonLwc recordId="{!v.recordId}" onrefreshview="{!c.refreshview}" onclosemodal="{!c.closeModal}" />
+</aura:component>

@@ -1,0 +1,28 @@
+<!--
+  @description       : 
+  @author            : chenpeng@deloitte.com.cn
+  @group             : 
+  @last modified on  : 12-27-2021
+  @last modified by  : chenpeng@deloitte.com.cn
+-->
+<template>
+	<lightning-card>
+        <template if:true={isShowSpinner} >
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+        <!--地图部分}-->
+        <div>
+            <template if:true={isShowMap}> 
+                <div class="slds-p-around_medium">
+                    <iframe id="vfFrame" src="/apex/Gridding_Shop_MapPage" style="overflow: hidden;width:100%" width="100%" height="400px">
+
+                    </iframe>
+                </div>
+            </template>
+            <template if:false={isShowMap}> 
+                <p> 无门店数据</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

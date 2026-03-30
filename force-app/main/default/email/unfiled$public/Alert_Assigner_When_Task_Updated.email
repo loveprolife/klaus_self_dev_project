@@ -1,0 +1,4 @@
+Dear {!Task.CreatedBy},
+  The task {!Task.Subject} you assigned has been updated by {!Task.LastModifiedBy}. Please take action to view the detailed information.
+
+{!Task.Link}

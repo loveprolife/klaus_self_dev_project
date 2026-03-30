@@ -1,0 +1,185 @@
+<template>
+    <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand" style="position: fixed;"></lightning-spinner>
+    </template>
+
+    <lightning-modal-header>
+        <h1 class="slds-text-title_bold">New Ticket</h1>
+    </lightning-modal-header>
+    <lightning-modal-body>
+        <lightning-record-edit-form object-api-name="Ticket__c" density="Comfy">
+            <lightning-messages></lightning-messages>
+
+            <!-- Sales Region -->
+            <lightning-input-field field-name='SBU__c' data-field-name="SBU__c"
+                value={ticket.SBU__c} onchange={handleFieldChange} onkeydown={handleKeyDown} required>
+            </lightning-input-field>
+
+            <!-- Subject -->
+            <lightning-input-field field-name='Subject__c' data-field-name="Subject__c"
+                value={ticket.Subject__c} onchange={handleFieldChange} onkeydown={handleKeyDown} required>
+            </lightning-input-field>
+
+            <!-- Description -->
+            <lightning-input-field field-name='Description__c' data-field-name="Description__c" 
+                value={ticket.Description__c} onchange={handleFieldChange} onkeydown={handleKeyDown} required>
+            </lightning-input-field>
+
+            <!-- Store 20241017-->
+            <c-account-look-up-lwc
+                label={fields.Store__c}
+                record-id={ticket.Store__c}
+                show-label=true
+                data-field-name="Store__c" 
+                obj-name="Shop__c"
+                op={lookupStoreFilter} 
+                onlookupupdate={lookUpChangeHandler}
+                read-only={isReadOnly}
+            >
+            </c-account-look-up-lwc>
+
+            <!-- Status -->
+            <lightning-input-field field-name='Status__c' data-field-name="Status__c" 
+                value={ticket.Status__c} onchange={handleFieldChange} onkeydown={handleKeyDown} required>
+            </lightning-input-field>
+
+            <!-- Priority -->
+            <lightning-input-field field-name='Priority__c' data-field-name="Priority__c" 
+                value={ticket.Priority__c} onchange={handleFieldChange} onkeydown={handleKeyDown} required>
+            </lightning-input-field>
+
+            <!-- Category -->
+            <lightning-input-field field-name='Category__c' data-field-name="Category__c" 
+                value={ticket.Category__c} onchange={handleFieldChange} onkeydown={handleKeyDown} required>
+            </lightning-input-field>
+
+            <!-- Product Category -->
+            <lightning-input-field field-name='Product_Category__c' data-field-name="Product_Category__c" 
+                value={ticket.Product_Category__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+            </lightning-input-field>
+
+            <!-- Product Line -->
+            <lightning-input-field field-name='Product_Line__c' data-field-name="Product_Line__c"
+                value={ticket.Product_Line__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+            </lightning-input-field>
+            <!-- <div class="slds-var-m-left_xx-small">
+                <span>{fields.Product_Line__c}</span>
+                <div>
+                    <lightning-pill-container 
+                        class="productLinePill"
+                        items={productLineInfo} 
+                    ></lightning-pill-container>
+                </div>
+            </div> -->
+            
+            <!-- Product -->
+            <div>
+                <div class="slds-var-m-left_xx-small">
+                    <template if:true={isSouthAfrica}>
+                        <span class="slds-text-color_error">&nbsp;*&nbsp;</span>
+                    </template>
+                    <span style="color:#444444; font-size: 0.75rem;">{fields.Product__c}</span>
+                    <lightning-helptext content={label.Product_Model_Help_Text} class="slds-m-left_xx-small">
+                    </lightning-helptext>
+                </div>
+                <!-- <a style="margin-left: 3rem;">
+                    <lightning-icon variant="success" icon-name="utility:dash" size="x-small"
+                        title="" onclick={deleteProductValue}>
+                    </lightning-icon>
+                    <span class="slds-assistive-text"></span>
+                </a> -->
+                <!-- <lightning-input-field field-name='Product__c' data-field-name="Product__c" readonly required={isSouthAfrica}>
+                </lightning-input-field> -->
+                <div>
+                    <template for:each={productInfo} for:item="pill" for:index="index">
+                        <lightning-pill
+                            class="slds-var-p-right_xx-small slds-var-p-left_xx-small"
+                            key={pill.Name} 
+                            label={pill.Name}
+                            data-index={index}
+                            draggable="true"
+                            data-name={pill.Name}
+                            onremove={handleItemRemove}>
+                            <lightning-icon icon-name="standard:device"></lightning-icon>
+                        </lightning-pill>
+                    </template>
+                </div>
+                <c-account-look-up-lwc
+                    class="productLookup"
+                    name="onProduct"
+                    obj-name="Product__c" 
+                    op={lookupFilter} 
+                    onlookupupdate={handleChangeProductOption}
+                    no-show-select-record="true"
+                    is-required={isSouthAfrica}
+                    >
+                </c-account-look-up-lwc>
+            </div>
+
+            <!-- SeriesNum -->
+            <lightning-input-field field-name='SeriesNum__c' data-field-name="SeriesNum__c"
+                value={ticket.SeriesNum__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+            </lightning-input-field>
+           
+            <!-- </template> -->
+            <!-- Due Date -->
+            <lightning-input-field class="date-format-hide" field-name="DueDate__c" data-field-name="DueDate__c"
+                value={ticket.DueDate__c} onchange={handleFieldChange} required>
+            </lightning-input-field>
+
+            <!-- Department -->
+            <div class="slds-var-m-bottom_small slds-var-p-left_xx-small">
+                <span>{fields.Department__c}</span>
+                <lightning-helptext content={label.INSPECTION_REPORT_MSG_DEPARTMENT_USER} class="slds-m-left_xx-small">
+                </lightning-helptext>
+                <lightning-input-field class="department slds-has-error" field-name='Department__c' data-field-name="Department__c" variant="label-hidden"
+                    value={ticket.Department__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+                </lightning-input-field>
+            </div>
+
+            <!-- Assigned to -->
+            <div class="slds-var-m-bottom_small">
+                <span class="slds-var-p-left_xx-small">{fields.AssignedTo__c}</span>
+                <lightning-helptext content={label.INSPECTION_REPORT_MSG_DEPARTMENT_USER} class="slds-m-left_xx-small">
+                </lightning-helptext>
+                <!-- 自定义组件 -->
+                <c-account-look-up-lwc 
+                    class="userLookup" 
+                    name="userLookup" 
+                    data-field-name="AssignedTo__c" 
+                    obj-name="User" 
+                    op={lookupUserFilter}
+                    record-id={ticket.AssignedTo__c} 
+                    onlookupupdate={lookUpChangeAssignedToHandler}
+                >
+                </c-account-look-up-lwc>
+                <!-- <div class="slds-var-p-left_xx-small">
+                    <lightning-pill-container 
+                        items={assignedToInfo} 
+                        onitemremove={handleAssignedToRemove}
+                    ></lightning-pill-container>
+                </div> -->
+            </div>
+
+            <!-- Attachment -->
+            <div class="slds-var-m-bottom_small slds-var-p-left_xx-small">
+                <span>{label.PromoterDailyReport_ATTACHMENT}</span>
+                <!-- <c-upload-files3-lwc data-index={ticket.index} onselectfiles={handleSelectFiles}></c-upload-files3-lwc> -->
+                <c-upload-files-no-record-id onselectfiles={handleSelectFiles}></c-upload-files-no-record-id>
+            </div>
+
+        </lightning-record-edit-form>
+        <div style="height: 100px;"></div>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <!-- Cancel Button -->
+        <lightning-button label="Cancel" title="Non-primary action" onclick={cancelHandleClick}
+            class="slds-m-left_x-small">
+        </lightning-button>
+        <!-- Save & New -->
+        <!-- Save Button -->
+        <lightning-button variant="brand" label="Save" title="Primary action" onclick={saveHandleClick}
+            class="slds-m-left_x-small"></lightning-button>
+    </lightning-modal-footer>
+
+</template>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Refrigerator</fullName>
+        <default>false</default>
+        <label>Refrigerator</label>
+    </customValue>
+    <customValue>
+        <fullName>Hisense TV</fullName>
+        <default>false</default>
+        <label>Hisense TV</label>
+    </customValue>
+    <customValue>
+        <fullName>Toshiba TV</fullName>
+        <default>false</default>
+        <label>Toshiba TV</label>
+    </customValue>
+    <customValue>
+        <fullName>Air Conditioner</fullName>
+        <default>false</default>
+        <label>Air Conditioner</label>
+    </customValue>
+    <customValue>
+        <fullName>Washing Machine</fullName>
+        <default>false</default>
+        <label>Washing Machine</label>
+    </customValue>
+    <customValue>
+        <fullName>All Categories</fullName>
+        <default>false</default>
+        <label>All Categories</label>
+    </customValue>
+    <masterLabel>Training Classification</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

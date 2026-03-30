@@ -1,0 +1,12 @@
+<!--
+ * @Author: WFC
+ * @Date: 2025-09-18 16:22:21
+ * @LastEditors: WFC
+ * @LastEditTime: 2025-09-18 16:22:44
+ * @Description: 
+ * @FilePath: \testuat\force-app\main\default\aura\EventReceiptDownloadPDFCmp\EventReceiptDownloadPDFCmp.cmp
+-->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable" access="global" controller="CreatePromoterDailyReportCmpController">
+    <aura:attribute name="recordId" type="Id" />
+    <c:eventReceiptDownloadPDFLWC recordId="{!v.recordId}" onrefreshview="{!c.refreshView}" onclosemodal="{!c.closeModal}"/>
+</aura:component>

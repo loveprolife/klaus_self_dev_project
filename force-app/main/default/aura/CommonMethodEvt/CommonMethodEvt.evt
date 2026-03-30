@@ -1,0 +1,3 @@
+<aura:event type="COMPONENT" description="by this event we are calling parent method">
+	
+</aura:event>

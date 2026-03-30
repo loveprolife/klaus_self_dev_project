@@ -1,0 +1,149 @@
+<template>
+
+    <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+    <!-- <c-modal-lwc data-id="product selection" static-mode=true title="" show-ok=true show-close=true hidden-close-icon=false onok={handleOk}>
+        <h1>{label.PromoterDailyReport_DeleteReminder}</h1>
+    </c-modal-lwc> -->
+    <template for:each={recordList} for:item="item" for:index="index">
+        <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-resizable inHouseShareTable"
+            key={item.index}>
+
+            <!-- Product Line -->
+            <tr>
+                <td class="tdOne">
+                    <span style="color:red">*</span>
+                    <span>{fields.ProductLine__c}</span>
+                </td>
+                <td class="tdTwo">
+                    <template lwc:if={viewMode}>
+                        <lightning-formatted-text value={item.ProductLine__c} readonly></lightning-formatted-text>
+                    </template>
+                    <template lwc:else>
+                        <lightning-record-edit-form object-api-name="PromoterShare__c" density="Compact">
+                            <lightning-input-field variant="label-hidden" field-name='ProductLine__c' data-index={index}
+                                name={index} value={item.ProductLine__c} data-field-name="ProductLine__c"
+                                onchange={productLineChangeHandler}>
+                            </lightning-input-field>
+                        </lightning-record-edit-form>
+                    </template>
+
+                </td>
+            </tr>
+            <!-- Hisense's Share -->
+            <tr>
+                <td class="tdOne">
+                    <span>{label.PromoterDailyReport_SHARE}</span>
+                </td>
+                <td class="tdTwo">
+                    <lightning-formatted-text value={item.hisensShare}></lightning-formatted-text>
+                </td>
+            </tr>
+            <!-- Brand & Stock -->
+            <tr class="greyBackground">
+                <td class="tdOne">
+                    <span>{fields.Brands__c}</span>
+                </td>
+                <td class="tdTwo">
+                    <span>{fields.Stock__c}</span>
+                </td>
+            </tr>
+
+            <!-- brandItemList -->
+            <template for:each={item.brandItemList} for:item="brandItem" for:index="brandIndex">
+
+                <!-- Brand & Stock -->
+                <tr key={brandItem.index}>
+                    <td class="tdTwo">
+                        <template lwc:if={brandItem.HisenseFlag__c}>
+                            <!-- <lightning-input variant="label-hidden" value="Hisense" readonly="true">
+                                    </lightning-input> -->
+                            <lightning-formatted-text value="Hisense"></lightning-formatted-text>
+                        </template>
+                        <template lwc:else>
+                            <!-- <lightning-record-edit-form object-api-name="PromoterShare__c" density="Compact">
+                                    <lightning-input-field variant="label-hidden" field-name='Brand__c'
+                                        data-field-name="Brand__c" data-id={brandIndex} data-index={index}
+                                        name={brandIndex} value={brandItem.Brand__c} onchange={inputChangeHandler}>
+                                    </lightning-input-field>
+                                </lightning-record-edit-form> -->
+
+                            <!-- 自定义组件 -->
+                            <c-lookup-lwc data-index={index} data-id={brandIndex} data-field-name="Brands__c"
+                                obj-name="Brand__c" op={lookupBrandFilter} record-id={brandItem.Brands__c}
+                                read-only={viewMode} onlookupupdate={lookUpChangeHandler}
+                                drop-down-style="max-height: 5rem;"></c-lookup-lwc>
+                        </template>
+                    </td>
+
+                    <td class="tdTwo">
+                        <lightning-input variant="label-hidden" field-name='Stock__c' data-field-name="Stock__c"
+                            data-id={brandIndex} data-index={index} name={brandIndex} value={brandItem.Stock__c}
+                            onchange={inputChangeHandler} type="number" read-only={viewMode}>
+                        </lightning-input>
+
+                    </td>
+                </tr>
+
+            </template>
+
+            <!-- Action -->
+            <template if:false={viewMode}>
+                <tr class="shareTableBody">
+                    <td class="tdOne">
+                        <span>{label.PromoterDailyReport_ACTIONS}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <div>
+                            <div style="float: left;">
+                                <a>
+                                    <lightning-icon variant="success" icon-name="utility:dash" size="x-small" title=""
+                                        data-index={index} onclick={itemRemoveHandler}>
+                                    </lightning-icon>
+                                    <span class="slds-assistive-text"></span>
+                                </a>
+                            </div>
+                            <div style="float: right;">
+                                <a>
+                                    <lightning-icon variant="success" icon-name="utility:add" size="x-small" title=""
+                                        data-index={index} onclick={brandItemAdd}>
+                                    </lightning-icon>
+                                    <span class="slds-assistive-text"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </template>
+
+            <!-- Comment -->
+            <tr>
+                <td class="tdOne">
+                    <span>{fields.Comment__c}</span>
+                </td>
+                <td class="tdTwo">
+                    <lightning-input variant="label-hidden" field-name='Comment__c' data-field-name="Comment__c"
+                        data-id='0' data-index={index} name='0' value={item.Comment__c} onchange={inputChangeHandler}
+                        type="text" read-only={viewMode}>
+                    </lightning-input>
+                </td>
+            </tr>
+            <!-- Attachments -->
+            <tr style="border-bottom: 6px solid #16aaa3;">
+                <td class="tdOne">
+                    <span>{label.PromoterDailyReport_ATTACHMENT}</span>
+                </td>
+                <td class="tdTwo">
+                    <c-upload-files-lwc parent-id={recordId} record-id={item.Id} data-index={item.index}
+                        onselectfiles={handleSelectFiles} disabled-delete={viewMode} disabled-upload={viewMode}>
+                    </c-upload-files-lwc>
+                </td>
+            </tr>
+
+
+        </table>
+        <!-- <hr key={item.index}>  -->
+    </template>
+
+</template>

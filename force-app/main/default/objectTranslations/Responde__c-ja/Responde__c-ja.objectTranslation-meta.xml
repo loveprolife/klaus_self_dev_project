@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>日刊新聞のコメントが返事をした</value>
+    </caseValues>
+    <nameFieldLabel>日刊新聞の評価は説明に答えた</nameFieldLabel>
+</CustomObjectTranslation>

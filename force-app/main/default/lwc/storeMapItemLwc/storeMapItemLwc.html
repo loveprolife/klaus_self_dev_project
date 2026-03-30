@@ -1,0 +1,105 @@
+<!--
+ * @Author: tom
+ * @Date: 2024-10-23 10:39:25
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2024-12-10 17:28:08
+-->
+<template>
+    <div style="word-break:break-all;">
+        <strong>{info.value.Name}&nbsp;&nbsp;({info.value.object.Shop_Level__c})</strong>
+        <br/>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_9-of-12">
+                <span style="color: grey;font-size:small;">
+                    {info.value.GridName}&nbsp;&nbsp;{info.value.AccountName}
+                </span>
+            </div>
+            <div class="slds-col slds-size_3-of-12" style="text-align: right;">
+                <span style="font-size:small;color: rgb(255, 0, 0);">
+                    <!-- {Store_Map_Distance}: -->
+                    {info.value.distanceStr}
+                </span>
+            </div>
+        </div>
+        <br/>
+        <template if:true={info.value.object.Phone__c}>
+            <br/>
+            <span style="font-size:small;">
+                Contact:{info.value.object.Phone__c}
+            </span>
+        </template>
+    </div>
+<!-- 2024-12-05 TJP 注释 
+    <div class="slds-grid slds-wrap items-wraper" style="margin-top: 0.4rem;"> -->
+        
+        <!-- <div class="slds-col slds-size_1-of-2">
+            <template if:true={objectAccessible.Retail_Number__c}>
+                <span style=" cursor: pointer;color: rgb(22, 170, 163);border:1px solid rgb(22, 170, 163);" data-index={info.index} onclick={goToDailySales}>{info.value.dailySalesSellOut}({info.value.object.CurrencyIsoCode})</span>
+            </template>
+        </div> -->
+        
+        <!-- 2024-12-05 注释 
+        <div class="slds-col slds-size_1-of-2" style="text-align: left;">
+            <template if:true={objectAccessible.Daily_Inspection_Report__c}> -->
+                <!-- border:1px solid rgb(22, 170, 163); -->
+        <!-- 2024-12-05 注释 
+                <span style=" cursor: pointer;color: rgb(22, 170, 163);" data-index={info.index} onclick={goToInspectionReport}>{label.STORE_MAP_INSPECTION_REPORT_COUNT}<span style="text-decoration: underline;">{info.value.inspectionReportCount}</span></span>
+            </template> 
+        </div>
+
+    </div> -->
+    <template if:true={reportIsNull}>
+        <div class="slds-grid slds-wrap items-wraper slds-grid_reverse" style="margin-top: 0.4rem;">
+
+                <div class="slds-col slds-size_4-of-12" style="text-align: right;">
+                    <!-- text-decoration: underline;  -->
+                    <!-- <span style="cursor: pointer;color: rgb(0, 156, 219);" data-index={info.index} onclick={goToFloorwalkerReportDetail}>{label.Store_Map_Review}</span> -->
+                    <button class="slds-button slds-button_brand" data-index={info.index} onclick={goToFloorwalkerReportDetail}>
+                        {label.Store_Map_Review}
+                    </button>
+                </div>
+                <!-- <div style="margin-left:5px;display:inline-block;">
+                    <button class="slds-button slds-button_brand"
+                       onclick={handleEdit}>{label.INSPECTION_REPORT_EDIT}</button>
+                 </div> -->
+                <div class="slds-col slds-size_8-of-12" style="text-align: left;">
+                    <template if:true={objectAccessible.Daily_Inspection_Report__c}>
+                        <span style=" cursor: pointer;color: rgb(22, 170, 163);" data-index={info.index} onclick={goToInspectionReport}>{label.STORE_MAP_INSPECTION_REPORT_COUNT}<span style="text-decoration: underline;">{info.value.inspectionReportCount}</span></span>
+                    </template> 
+                </div>
+        </div>
+    </template>
+    <template if:false={reportIsNull}>
+        <div class="slds-grid slds-wrap items-wraper" style="margin-top: 0.4rem;">
+
+            <div class="slds-col slds-size_1-of-2" style="text-align: left;">
+                <template if:true={objectAccessible.Daily_Inspection_Report__c}>
+                    <!-- border:1px solid rgb(22, 170, 163); -->
+                    <span style=" cursor: pointer;color: rgb(22, 170, 163);" data-index={info.index} onclick={goToInspectionReport}>{label.STORE_MAP_INSPECTION_REPORT_COUNT}<span style="text-decoration: underline;">{info.value.inspectionReportCount}</span></span>
+                </template> 
+            </div>
+
+        </div>
+    </template>
+
+    <!-- margin-top: 0.4rem; -->
+    <div class="slds-grid slds-wrap items-wraper slds-grid_reverse" style="margin-top: 10px;">
+
+        <div class="slds-col slds-size_4-of-12" style="text-align: right;">
+            <!-- text-decoration: underline;  -->
+            <span style="cursor: pointer;color: rgb(0, 156, 219);" data-index={info.index} onclick={goToStore}>{label.Store_Map_Detail}</span>
+        </div>
+        <template if:true={info.value.isStoreFloorwalker}>
+            <div class="slds-col slds-size_8-of-12" style="text-align: left;">
+                <!-- text-decoration: underline;  -->
+                <span style="cursor: pointer;color: rgb(0, 156, 219);" data-index={info.index} onclick={goToFloorwalkerReport}>{label.Store_Map_Goto_Report}</span>
+            </div>
+        </template>
+        <template if:true={info.value.isStorePromoter}>
+            <div class="slds-col slds-size_8-of-12" style="text-align: left;">
+                <!-- text-decoration: underline;  -->
+                <span style="cursor: pointer;color: rgb(0, 156, 219);" data-index={info.index} onclick={goToPromoterReport}>{label.Store_Map_Goto_Report}</span>
+            </div>
+        </template>
+    </div>
+</template>

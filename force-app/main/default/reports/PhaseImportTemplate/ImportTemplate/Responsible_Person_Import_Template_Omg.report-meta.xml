@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CHILD_ID</field>
+    </columns>
+    <columns>
+        <field>Responsible_Person__c.Shop_Name_Text__c</field>
+    </columns>
+    <columns>
+        <field>Responsible_Person__c.Principal__c</field>
+    </columns>
+    <columns>
+        <field>Responsible_Person__c.RecordType__c</field>
+    </columns>
+    <columns>
+        <field>Responsible_Person__c.UserEmail__c</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <columns>
+        <field>FK_CUSTENT_ID</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>Responsible Person Import Template</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$Shop__c$Responsible_Person__c@Responsible_Person__c.Promoter_Attendance_Rule__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>FK_CUSTENT_ID</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

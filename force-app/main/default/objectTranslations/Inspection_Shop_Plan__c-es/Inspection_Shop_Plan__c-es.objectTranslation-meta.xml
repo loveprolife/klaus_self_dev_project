@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Plan de revisión</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Plan de revisións</value>
+    </caseValues>
+    <gender>Feminine</gender>
+    <nameFieldLabel>Plan de revisión</nameFieldLabel>
+</CustomObjectTranslation>

@@ -1,0 +1,4 @@
+{!Credit_Limit_Application__c.Name}  Onboard process has been rejected. 
+
+Click the link to edit the record: 
+{!Credit_Limit_Application__c.Link}

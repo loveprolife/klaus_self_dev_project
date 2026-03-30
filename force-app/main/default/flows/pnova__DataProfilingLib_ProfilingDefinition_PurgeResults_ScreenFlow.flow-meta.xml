@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <description>... this screen-flow is used to create the purge profiling results experience for a given profiling definition.  It can be exposed as a quick action to enable the purging of legacy profiling results.</description>
+    <environments>Default</environments>
+    <label>Cuneiform: Profiling Definition: Purge Results: Screen Flow</label>
+    <processType>Flow</processType>
+</Flow>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Customer__c</field>
+        <field>Customer_SAP_Code__c</field>
+        <field>Name</field>
+        <field>Approval_Limit__c</field>
+        <field>Approval_Status__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>lina2@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.Profile</field>
+                <operation>equals</operation>
+                <value>AAAAAAAAAAAAA</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>ApproveRecord</ifCriteriaNotMet>
+        <label>Sales Director Auto Approved</label>
+        <name>Auto_Approved1</name>
+    </approvalStep>
+    <emailTemplate>unfiled$public/Credit_Limit_Application_Notification</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <criteriaItems>
+            <field>Credit_Limit_Application__c.Approval_Status__c</field>
+            <operation>contains</operation>
+            <value>Draft,Rejected,Risk Post Rejected,Risk Management Committee Rejected,Insurance Company Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Credit_Limit_Application__c.RecordType</field>
+            <operation>equals</operation>
+            <value>NonLC,NonLC Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.HisenseSSOName__c</field>
+            <operation>equals</operation>
+            <value>lina2</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Update_Approval_Status_to_RR_Approving_A</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <label>Credit Limit Application- NonLC SD auto</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>5</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>展会内部员工 审批通过就发成功邀请函 - 短信</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Exhibition  Internal Registration Approved SMS1</name>
+    <style>none</style>
+    <subject>136 Canton Fair Participation Registration  Approved Successfully</subject>
+    <textOnly>Dear ，
+
+您提交的报名资料已经过公司内部审核通过，展会将于2024年10月15日举行，请仔细阅读本邮件
+
+您的证件类型：
+
+请注意以下信息填报要求
+
+事项 系统开放时间 系统关闭时间
+酒店预定 9月28日 10月13日
+接机预定 9月28日 接机日前2天
+会议室预定 9月28日 10月19日
+班车预订 9月28日 用车当日前2天
+顺德送机预定 9月28日 送机前2天
+
+以上信息请登录信鸿，查找【国际营销展会系统】轻应用进入进行填报
+
+登陆遇到问题咨询 崔杰 cuijie3@hisense.com
+
+
+We appreciated your trust and support!
+
+Expo Coordination Team</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

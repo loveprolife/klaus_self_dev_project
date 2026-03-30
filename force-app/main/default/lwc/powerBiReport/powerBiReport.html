@@ -1,0 +1,24 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-11-22 14:28:35
+ * @LastEditors: WFC
+ * @LastEditTime: 2024-11-22 14:29:02
+ * @Description: powerbi正式
+ * @FilePath: \hisense005\force-app\main\default\lwc\powerBiReport\powerBiReport.html
+-->
+<template>
+    <lightning-card title="Embedded Power BI Report (LWC)" icon-name="utility:graph">
+      <div class="slds-m-around_medium">
+        <template if:true={report.data}>
+          <template if:true={report.data.error}>
+            <div>{report.data.error}</div>
+          </template>
+        </template>
+        <template if:true={report.data}>
+          <template if:true={report.data.embedUrl}>
+            <div data-id="embed-container" style="height: 480px"></div>
+          </template>
+        </template>
+      </div>
+    </lightning-card>
+  </template>

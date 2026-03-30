@@ -1,0 +1,13 @@
+Dear Finance Team, 
+
+There is a new customer get approved in Salesforce System, Please Take Notice in time !
+
+Customer Created by : {!Account.OwnerFullName} [{!Account.OwnerEmail}]
+
+Customer Name : {!Account.Name} 
+
+Customer SAP Code : {!Account.SAP_Customer_Code__c} 
+
+Customer Sales Orgnization : {!Account.Hisense_Entity__c}
+
+Customer Link : {!Account.Link}

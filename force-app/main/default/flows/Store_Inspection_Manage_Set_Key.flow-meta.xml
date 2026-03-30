@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Decision_Store_Customer</name>
+        <label>Decision Store Customer</label>
+        <locationX>440</locationX>
+        <locationY>466</locationY>
+        <defaultConnector>
+            <targetReference>Update_User</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Have_Store</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Store__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_User_Store</targetReference>
+            </connector>
+            <label>Have Store</label>
+        </rules>
+        <rules>
+            <name>Have_Customer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Customer__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_User_Customer</targetReference>
+            </connector>
+            <label>Have Customer</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_Store_Customer_0</name>
+        <label>Decision Store Customer</label>
+        <locationX>1046</locationX>
+        <locationY>474</locationY>
+        <defaultConnector>
+            <targetReference>Update_Product</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Have_Store_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Store__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Product_Store</targetReference>
+            </connector>
+            <label>Have Store</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Decision_User_Product_Line</name>
+        <label>Decision User Product Line</label>
+        <locationX>768</locationX>
+        <locationY>359</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Have_User</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.User__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Store_Customer</targetReference>
+            </connector>
+            <label>Have User</label>
+        </rules>
+        <rules>
+            <name>Have_Product_Line</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Product_Line__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Decision_Store_Customer_0</targetReference>
+            </connector>
+            <label>Have Product Line</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <formulas>
+        <name>Key_Customer_User</name>
+        <dataType>String</dataType>
+        <expression>Text({!$Record.Sales_Region__c}) + &apos;-&apos; + {!$Record.User__c} + &apos;-&apos; + Text({!$Record.Year__c}) + &apos;-&apos; + Text({!$Record.Month__c}) + &apos;-&apos; + Text({!$Record.Task_Type__c}) + &apos;-&apos;  + {!$Record.Customer__c}</expression>
+    </formulas>
+    <formulas>
+        <name>Key_Product_Line</name>
+        <dataType>String</dataType>
+        <expression>Text({!$Record.Sales_Region__c}) + &apos;-&apos; + Text({!$Record.Year__c}) + &apos;-&apos; + Text({!$Record.Month__c}) + &apos;-&apos; + Text({!$Record.Product_Line__c}) + &apos;-&apos; + Text({!$Record.Task_Type__c})</expression>
+    </formulas>
+    <formulas>
+        <name>Key_Store_Product_Line</name>
+        <dataType>String</dataType>
+        <expression>Text({!$Record.Sales_Region__c}) + &apos;-&apos; + Text({!$Record.Year__c}) + &apos;-&apos; + Text({!$Record.Month__c}) + &apos;-&apos; + Text({!$Record.Product_Line__c}) + &apos;-&apos; + Text({!$Record.Task_Type__c}) + &apos;-&apos;  + {!$Record.Store__c}</expression>
+    </formulas>
+    <formulas>
+        <name>Key_Store_User</name>
+        <dataType>String</dataType>
+        <expression>Text({!$Record.Sales_Region__c}) + &apos;-&apos; + {!$Record.User__c} + &apos;-&apos; + Text({!$Record.Year__c}) + &apos;-&apos; + Text({!$Record.Month__c}) + &apos;-&apos; + Text({!$Record.Task_Type__c}) + &apos;-&apos;  + {!$Record.Store__c}</expression>
+    </formulas>
+    <formulas>
+        <name>Key_User</name>
+        <dataType>String</dataType>
+        <expression>Text({!$Record.Sales_Region__c}) + &apos;-&apos; + {!$Record.User__c} + &apos;-&apos; + Text({!$Record.Year__c}) + &apos;-&apos; + Text({!$Record.Month__c}) + &apos;-&apos; + Text({!$Record.Task_Type__c})</expression>
+    </formulas>
+    <interviewLabel>Store Inspection Manage Set Key {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Store Inspection Manage Set Key</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Owner</name>
+        <label>Update Owner</label>
+        <locationX>762</locationX>
+        <locationY>961</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>User__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>OwnerId</field>
+            <value>
+                <elementReference>$Record.User__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Product</name>
+        <label>Update Product</label>
+        <locationX>918</locationX>
+        <locationY>697</locationY>
+        <connector>
+            <targetReference>Update_Owner</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Key__c</field>
+            <value>
+                <elementReference>Key_Product_Line</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Product_Store</name>
+        <label>Update Product Store</label>
+        <locationX>1228</locationX>
+        <locationY>702</locationY>
+        <connector>
+            <targetReference>Update_Owner</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Key__c</field>
+            <value>
+                <elementReference>Key_Store_Product_Line</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_User</name>
+        <label>Update User</label>
+        <locationX>237</locationX>
+        <locationY>697</locationY>
+        <connector>
+            <targetReference>Update_Owner</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Key__c</field>
+            <value>
+                <elementReference>Key_User</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_User_Customer</name>
+        <label>Update User Customer</label>
+        <locationX>450</locationX>
+        <locationY>690</locationY>
+        <connector>
+            <targetReference>Update_Owner</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Key__c</field>
+            <value>
+                <elementReference>Key_Customer_User</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_User_Store</name>
+        <label>Update User Store</label>
+        <locationX>643</locationX>
+        <locationY>710</locationY>
+        <connector>
+            <targetReference>Update_Owner</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Key__c</field>
+            <value>
+                <elementReference>Key_Store_User</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Decision_User_Product_Line</targetReference>
+        </connector>
+        <object>Store_Inspection_Manage__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

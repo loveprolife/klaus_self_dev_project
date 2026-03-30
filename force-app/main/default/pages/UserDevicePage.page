@@ -1,0 +1,14 @@
+<apex:page controller="UserDeviceController" lightningStylesheets="true">
+    <apex:sectionHeader title="Mobile Device Tracking" />
+    <apex:pageBlock >
+        <apex:form >
+            <apex:pageBlockTable value="{!device}" var="a">
+                <apex:column value="{!a.id}" headerValue="Device ID" />
+                <apex:column value="{!a.userName}" headerValue="User" />
+                <apex:column value="{!a.deviceType}" headerValue="Device Type" />
+                <apex:column value="{!a.platformType}" headerValue="Platform" />
+                <apex:column value="{!a.status}" headerValue="Status" />
+            </apex:pageBlockTable>
+        </apex:form>
+    </apex:pageBlock>
+</apex:page>

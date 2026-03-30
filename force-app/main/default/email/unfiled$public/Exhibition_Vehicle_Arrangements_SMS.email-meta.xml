@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>展会车辆安排(接机) - 短信</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Exhibition Vehicle Arrangements SMS</name>
+    <style>none</style>
+    <subject>请查收您的接机车辆信息 Please check your pick-up vehicle information</subject>
+    <textOnly>Dear {!Exhibition_Vehical_Booking__c.Internal_Registration__c} 您好!
+感谢您来参加137届广交会。您的接机信息如下：
+
+车牌号：{!Exhibition_Vehical_Booking__c.Assistant_Vehicle_Num__c}
+司机：{!Exhibition_Vehical_Booking__c.Assistant_Driver__c}
+电话：{!Exhibition_Vehical_Booking__c.Assistant_Driver_Phone__c}
+发车时间：{!Exhibition_Vehical_Booking__c.Assistant_Use_Time__c}
+上车地点：{!Exhibition_Vehical_Booking__c.Pick_Up_Point__c}
+下车地点：{!Exhibition_Vehical_Booking__c.Pick_Off_Point__c}
+
+如您有任何疑问，请联系陈文静（手机：13727477703 邮箱：chenwenjing@hisense.com）
+
+谢谢！
+
+Dear {!Exhibition_Vehical_Booking__c.Internal_Registration__c}
+
+Thank you for attending the  137 Canton Fair.Here are your pick-up details:
+
+Vehicle No.: {!Exhibition_Vehical_Booking__c.Assistant_Vehicle_Num__c}
+Driver: {!Exhibition_Vehical_Booking__c.Assistant_Driver__c}
+Phone No.: {!Exhibition_Vehical_Booking__c.Assistant_Driver_Phone__c}
+Departure time: {!Exhibition_Vehical_Booking__c.Assistant_Use_Time__c}
+Pick up location: {!Exhibition_Vehical_Booking__c.Pick_Up_Point__c}
+Drop off location: {!Exhibition_Vehical_Booking__c.Pick_Off_Point__c}
+
+If you have any questions, please contact Chenwenjing at 13727477703 or chenwenjing@hisense.com
+
+Thank  you  for  attending.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

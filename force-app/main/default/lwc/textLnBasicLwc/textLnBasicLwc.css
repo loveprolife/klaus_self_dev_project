@@ -1,0 +1,63 @@
+:host {
+    --slds-c-textarea-sizing-min-height: 200px;
+}
+/*文件上传*/
+.upload-container{
+    position: relative;
+    width:110px;
+    height:35px;
+    border:1px solid #66B3FF;
+    border-radius: 4px;
+    /*box-shadow: 1px 1px 5px #66B3FF;*/
+    line-height: 35px;
+    padding-left: 8px;
+    /*background-color: blue;*/
+    background-color: rgb(0,118,208);
+    overflow: hidden;
+}
+.myinput{
+    /*position: absolute; top: 0; bottom: 0; left: 0;right: 0; opacity: 0;*/
+    position: absolute;
+     width:110px;
+     height:35px;
+     right: 0;
+     top: 0;
+     opacity: 0;
+     filter: alpha(opacity=0);
+     -ms-filter: 'alpha(opacity=0)';
+     
+}
+
+.upload-container input{
+    /*position: absolute; top: 0; bottom: 0; left: 0;right: 0; opacity: 0;*/
+    position: absolute;
+     width:110px;
+     height:35px;
+     right: 0;
+     top: 0;
+     opacity: 0;
+     filter: alpha(opacity=0);
+     -ms-filter: 'alpha(opacity=0)';
+     
+}
+
+.mydiv_for{
+	width:110px;
+    height:35px;
+    border:1px solid #66B3FF;
+    border-radius: 4px;
+    /*box-shadow: 1px 1px 5px #66B3FF;*/
+    line-height: 35px;
+    padding-left: 8px;
+    /*background-color: blue;*/
+    background-color: rgb(0,118,208);
+
+}
+
+.mydiv_for:hover{
+	background-color: rgba(0,118,208,0.91);
+}
+
+.mydiv_for input{
+	display: none;
+}

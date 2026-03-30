@@ -1,0 +1,63 @@
+<template>
+    <div class="slds-is-relative">
+        <template if:true={isShowSpinner} >
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+         </template>
+        <!-- <div id="cover" style="position:absolute;left:0px;top:0px;background:#000;z-index:999;">
+        </div> -->
+        <video id="video" style={videoStyle}></video>
+        <canvas class="canvas" style={canvasStyle}></canvas>
+        <canvas class="acturalCanvas" style='display:none;'></canvas>
+        <div>
+            <table>
+                <tr>
+                    <td style="padding: 20px; text-align: center; width: 33%;">
+                        <button id="closelwc" class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-large" onclick={handleClose}>
+                            <svg class="slds-button__icon" aria-hidden="true">
+                             <use 
+                               xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close">
+                             </use>
+                            </svg>
+                            <span class="slds-assistive-text">close</span>
+                        </button>
+                    </td>
+                    <td style="padding: 20px; text-align: center; width: 34%;">
+                        <button id="capture" class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-large" style="width:100px; height:100px;" onclick={handleCapture}>
+                            <svg class="slds-button__icon" aria-hidden="true" style="width:50px; height:50px;">
+                            <use 
+                            xlink:href={captureIconUrl}>
+                            </use>
+                            </svg>
+                            <span class="slds-assistive-text">{label.CheckInCheckOut_PHOTO}</span>
+                        </button>
+                    </td>
+                    <td style="padding: 20px; text-align: center; width: 33%;">
+                        <template lwc:if={opening}>
+                            <button id="switch" class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-large" onclick={handleSwitch}>
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#replace">
+                                </use>
+                                </svg>
+                                <span class="slds-assistive-text">switch</span>
+                            </button>
+                        </template>
+                        <template lwc:else>
+                            <button id="ok" class="slds-button slds-button_icon slds-button_icon-border slds-button_icon-large" onclick={handleOk}>
+                                <svg class="slds-button__icon" aria-hidden="true">
+                                 <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#check">
+                                 </use>
+                                </svg>
+                                <span class="slds-assistive-text">check</span>
+                            </button>
+                        </template>
+                    </td>
+                </tr>
+            </table>
+            <template if:true={debugMode}>
+                <textarea name="input1" style="width:100%; height: 900px;">
+                    {message}
+                </textarea>
+            </template>
+        </div>
+    </div>
+</template>

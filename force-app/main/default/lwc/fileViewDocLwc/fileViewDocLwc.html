@@ -1,0 +1,109 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-04-30 23:28:44
+ * @LastEditors: WFC
+ * @LastEditTime: 2024-05-15 09:12:31
+ * @Description: 
+ * @FilePath: \HisenseAll20240426\force-app\main\default\lwc\fileViewDocLwc\fileViewDocLwc.html
+-->
+<template>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open forceContentModalPreviewPlayer">
+        <div role="document" data-aura-rendered-by="3347:0">
+            <div class="toolbar top forceContentBasePreviewToolbar forceContentPreviewPlayerTopToolbar" 
+                data-aura-class="forceContentBasePreviewToolbar forceContentPreviewPlayerTopToolbar">
+                <div class="slds-grid slds-grid--align-spread preview-top-toolbar" >
+                    <div class="file-preview-title" >
+                        <span >
+                            <template lwc:if={isEXCEL}><lightning-icon icon-name='doctype:excel' alternative-text='excel' size='medium' title='excel'></lightning-icon></template>
+                            <template lwc:elseif={isDoc}><lightning-icon icon-name='doctype:word' alternative-text='word' size='medium' title='word'></lightning-icon></template>
+                            <template lwc:elseif={isTEXT}><lightning-icon icon-name='doctype:txt' alternative-text='txt' size='medium' title='txt'></lightning-icon></template>
+                            <template lwc:elseif={isPDF}><lightning-icon icon-name='doctype:pdf' alternative-text='pdf' size='medium' title='pdf'></lightning-icon></template>
+                            <template lwc:elseif={isPPT}><lightning-icon icon-name='doctype:ppt' alternative-text='ppt' size='medium' title='ppt'></lightning-icon></template>
+                            <template lwc:else><lightning-icon icon-name='doctype:unknown' alternative-text='unknown' size='medium' title='unknown'></lightning-icon></template>
+                        </span>
+                        <span class="slds-truncate uiOutputText slds-var-m-left_x-small"  data-aura-class="uiOutputText">{fileTitle}</span>
+                    </div>
+                    <div class="slds-align--absolute-center" >
+                        <!-- workaround for W-2413659, remove once that bug is fixed -->
+                        <!-- workaround for W-2413659, remove once that bug is fixed -->
+                        <!-- workaround for W-2413659, remove once that bug is fixed --><!--render facet: 4746:0-->
+                        <template if:true={isShowDownload}>
+                            <div
+                                class="forceContentPreviewerAction forceContentPreviewerActionsBar forceActionsContainer"
+                                data-aura-class="forceContentPreviewerAction forceContentPreviewerActionsBar forceActionsContainer">
+                                <div class="slds-truncate" ><!--render facet: 4733:0-->
+                                    <div class="" >
+                                        <button aria-live="off" type="button" title="Download"
+                                                class="slds-button slds-button--icon-inverse previewerAction uiButton" aria-label=""
+                                                data-aura-class="uiButton" onclick={handleDownload}>
+                                                <lightning-icon icon-name='utility:download' alternative-text='download' size='x-small' title='download' class="my-icon"></lightning-icon>
+                                                <span dir="ltr" class=" label bBody slds-var-m-left_xx-small">Download</span>
+                                            <!--render facet: 4736:0--></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <template if:true={isShowDetail}>
+                            <div
+                                class="forceContentPreviewerAction forceContentPreviewerActionsBar forceActionsContainer"
+                                data-aura-class="forceContentPreviewerAction forceContentPreviewerActionsBar forceActionsContainer">
+                                <div class="slds-truncate" ><!--render facet: 4754:0-->
+                                    <div class="" >
+                                        <button aria-live="off" type="button" title="File Details"
+                                                class="slds-button slds-button--icon-inverse previewerAction uiButton" aria-label=""
+                                                data-aura-class="uiButton" onclick={handleDetails}>
+                                                <lightning-icon icon-name='utility:form' alternative-text='form' size='x-small' title='form' class="my-icon"></lightning-icon>
+                                                <span dir="ltr" class=" label bBody slds-var-m-left_xx-small" >File Details</span>
+                                            <!--render facet: 4757:0--></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        
+                    </div>
+                    <div class="file-preview-close slds-align-right" ><span
+                            class="preview-close-text slds-truncate uiOutputText" 
+                            data-aura-class="uiOutputText"></span><!--render facet: 4517:0-->
+                        <div class="forceContentPreviewerAction"
+                            data-aura-class="forceContentPreviewerAction">
+                            <div class="slds-truncate" ><!--render facet: 4506:0-->
+                                <div class="" >
+                                    <button aria-live="off" type="button" title="Close"
+                                            class="slds-button slds-button--icon-inverse staticActionButton uiButton"
+                                            aria-label="" data-aura-class="uiButton" onclick={handleClose}>
+                                            <lightning-icon icon-name='utility:close' alternative-text='close' size='x-small' title='close'  class="my-icon"></lightning-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="AVAILABLE preview" data-aura-rendered-by="3512:0"><!--render facet: 3:3067;a-->
+                <!--render facet: 7:3067;a-->
+                <div tabindex="-1" style=""
+                     class="svg uiScroller forceContentSvgPreview scroller-wrapper scroll-vertical native"
+                    data-aura-class="uiScroller forceContentSvgPreview">
+                    <div class="scroller"><!--render facet: 11:3067;a-->
+                        <!-- <img src={fileSrc} alt={fileTitle} class="pageImg" onerror={handleImgLoadError} onload={handleImgLoadSuccess}> -->
+                        <template for:each={imgUrls} for:item="imgUrl">
+                            <div key={imgUrl} class="page slds-var-m-bottom_large">
+                                <img class="pageImg" src={imgUrl} onerror={handleImgLoadError} onload={handleImgLoadSuccess} oncontextmenu={handleMenu}>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div id="previewStatus" class="hidden forceContentPreviewStatus" 
+                     data-aura-class="forceContentPreviewStatus"><p class=" previewStatusHeader" >
+                    <span class="uiOutputText"
+                          data-aura-class="uiOutputText">Loading preview...</span></p><!--unrender facet: 3521:0--><p
+                        class="previewStatusSubHeader slds-var-p-horizontal_x-large" ><span
+                        class="uiOutputText" data-aura-class="uiOutputText"></span></p>
+                    <!--render facet: 3524:0--></div>
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

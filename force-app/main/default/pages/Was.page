@@ -1,0 +1,42 @@
+<apex:page controller="WasController">
+
+    <head>
+
+    </head>
+
+    <body>
+        <apex:outputText value="{!userName}" id="userName" />
+    </body>
+    <script>
+        var _paq = window._paq || [];
+        window.addEventListener('message', function (event) {
+            console.log('wwwww---接收消息----', event.data);
+            const { customUrl, documentTitle } = event.data;
+            if(customUrl != undefined && customUrl != '' && documentTitle != undefined && documentTitle != ''){
+                (function () {
+                    // 获取用户名
+                    var userName = document.getElementById('{!$Component.userName}').innerText;
+
+                    var u = (("https:" === document.location.protocol) ? "https://was-gtw.hisense.com/" : "http://was-gtw.hisense.com/");
+                    _paq.push(["setTrackerUrl", u + "data/api/collectData/1.gif"]);
+                    _paq.push(["setSiteId", "231"]);
+                    _paq.push(['setUserId', userName]);
+                    _paq.push(['setCustomUrl', customUrl]);
+                    _paq.push(['setDocumentTitle', documentTitle]);
+                    _paq.push(["trackPageView"]);
+                    _paq.push(["enableLinkTracking"]);
+                    var d = document,
+                        g = d.createElement("script"),
+                        s = d.getElementsByTagName("script")[0];
+                    g.type = "text/javascript";
+                    g.async = true;
+                    g.defer = true;
+                    g.src = u + "file/was-js-file.js";
+                    s.parentNode.insertBefore(g, s);
+                    console.log('wwww---完成---' + JSON.stringify(_paq))
+                })();
+            }
+        });
+
+    </script>
+</apex:page>

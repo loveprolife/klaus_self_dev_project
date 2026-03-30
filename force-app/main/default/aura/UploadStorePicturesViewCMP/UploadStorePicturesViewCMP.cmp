@@ -1,0 +1,3 @@
+<aura:component implements="force:hasRecordId,forceCommunity:availableForAllPageTypes,flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,force:appHostable,lightning:isUrlAddressable,lightning:hasPageReference,force:lightningQuickActionWithoutHeader,force:hasRecordId,lightning:actionOverride" access="global">
+	<c:uploadStorePicturesViewLWC recordId="{!v.recordId}" showLabel="true"></c:uploadStorePicturesViewLWC>
+</aura:component>

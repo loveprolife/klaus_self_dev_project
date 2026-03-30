@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>General Check List</fullName>
+        <default>false</default>
+        <label>General Check List</label>
+    </customValue>
+    <customValue>
+        <fullName>Sampling Product Check</fullName>
+        <default>true</default>
+        <label>Sample Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Prototype</fullName>
+        <default>false</default>
+        <label>Prototype</label>
+    </customValue>
+    <customValue>
+        <fullName>Material</fullName>
+        <default>false</default>
+        <label>Material</label>
+    </customValue>
+    <customValue>
+        <fullName>Booth and image</fullName>
+        <default>false</default>
+        <label>Booth and image</label>
+    </customValue>
+    <customValue>
+        <fullName>Personnel</fullName>
+        <default>false</default>
+        <label>Personnel</label>
+    </customValue>
+    <customValue>
+        <fullName>Speak With the Store Leader</fullName>
+        <default>false</default>
+        <label>Speak With the Store Leader</label>
+    </customValue>
+    <customValue>
+        <fullName>Training</fullName>
+        <default>false</default>
+        <label>Training</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales</fullName>
+        <default>false</default>
+        <label>Sales</label>
+    </customValue>
+    <customValue>
+        <fullName>Weekly Asks</fullName>
+        <default>false</default>
+        <label>Weekly Asks</label>
+    </customValue>
+    <customValue>
+        <fullName>Brand Feedback</fullName>
+        <default>false</default>
+        <label>Hisense Feedback</label>
+    </customValue>
+    <customValue>
+        <fullName>Sample Condition</fullName>
+        <default>false</default>
+        <label>Sample Condition</label>
+    </customValue>
+    <customValue>
+        <fullName>Material Display</fullName>
+        <default>false</default>
+        <label>Material Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Booth</fullName>
+        <default>false</default>
+        <label>Booth</label>
+    </customValue>
+    <customValue>
+        <fullName>Competing Goods</fullName>
+        <default>false</default>
+        <label>Competing Goods</label>
+    </customValue>
+    <customValue>
+        <fullName>Photo</fullName>
+        <default>false</default>
+        <label>Photo</label>
+    </customValue>
+    <customValue>
+        <fullName>Hisense Display</fullName>
+        <default>false</default>
+        <label>Hisense Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Competitive Display</fullName>
+        <default>false</default>
+        <label>Competitive Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Material X</fullName>
+        <default>false</default>
+        <label>Material X</label>
+    </customValue>
+    <customValue>
+        <fullName>Hisense X Sample</fullName>
+        <default>false</default>
+        <label>Hisense X Sample</label>
+    </customValue>
+    <customValue>
+        <fullName>Competitive X Sample</fullName>
+        <default>false</default>
+        <label>Competitive X Sample</label>
+    </customValue>
+    <customValue>
+        <fullName>Competitive Feedback</fullName>
+        <default>false</default>
+        <label>Competitive Feedback</label>
+    </customValue>
+    <customValue>
+        <fullName>Ticket</fullName>
+        <default>false</default>
+        <label>Ticket</label>
+    </customValue>
+    <customValue>
+        <fullName>Promotions</fullName>
+        <default>false</default>
+        <label>Promotions</label>
+    </customValue>
+    <customValue>
+        <fullName>Activities of Competitors</fullName>
+        <default>false</default>
+        <label>Activities of Competitors</label>
+    </customValue>
+    <customValue>
+        <fullName>Brand Image Reinforcement</fullName>
+        <default>false</default>
+        <label>Brand Image Reinforcement</label>
+    </customValue>
+    <customValue>
+        <fullName>Relationships on the Sales Floor</fullName>
+        <default>false</default>
+        <label>Relationships on the Sales Floor</label>
+    </customValue>
+    <customValue>
+        <fullName>Always Do What Is Right</fullName>
+        <default>false</default>
+        <label>Always Do What Is Right</label>
+    </customValue>
+    <customValue>
+        <fullName>Needs on the Sales Floor</fullName>
+        <default>false</default>
+        <label>Needs on the Sales Floor</label>
+    </customValue>
+    <customValue>
+        <fullName>Sample Inspection Img</fullName>
+        <default>false</default>
+        <label>Sample Inspection Img</label>
+    </customValue>
+    <customValue>
+        <fullName>Merchandising and Boxes On Floor</fullName>
+        <default>false</default>
+        <label>Merchandising and Boxes On Floor</label>
+    </customValue>
+    <customValue>
+        <fullName>Competitive Intelligence</fullName>
+        <default>false</default>
+        <label>Competitive Intelligence</label>
+    </customValue>
+    <customValue>
+        <fullName>Laser TV Display</fullName>
+        <default>false</default>
+        <label>Laser TV Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Overall Display</fullName>
+        <default>false</default>
+        <label>Overall Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Shelf Share</fullName>
+        <default>false</default>
+        <label>Shelf Share</label>
+    </customValue>
+    <customValue>
+        <fullName>Stock in PDV</fullName>
+        <default>false</default>
+        <label>Stock in PDV</label>
+    </customValue>
+    <customValue>
+        <fullName>Business Meeting Note</fullName>
+        <default>false</default>
+        <label>Business Meeting Note</label>
+    </customValue>
+    <customValue>
+        <fullName>Event</fullName>
+        <default>false</default>
+        <label>Event</label>
+    </customValue>
+    <customValue>
+        <fullName>Store Market Share</fullName>
+        <default>false</default>
+        <label>Store Market Share</label>
+    </customValue>
+    <customValue>
+        <fullName>Sample Display Check</fullName>
+        <default>false</default>
+        <label>Sample Display Check</label>
+    </customValue>
+    <customValue>
+        <fullName>STI</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>STI</label>
+    </customValue>
+    <customValue>
+        <fullName>POS identification</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>POS identification</label>
+    </customValue>
+    <customValue>
+        <fullName>Visit Wrap-Up</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Visit Wrap-Up</label>
+    </customValue>
+    <customValue>
+        <fullName>In-Store Special Training Event Form</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>In-Store Special Training Event Form</label>
+    </customValue>
+    <customValue>
+        <fullName>Visit Prep</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Visit Prep</label>
+    </customValue>
+    <customValue>
+        <fullName>Sample Display</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Sample Display-DEL</label>
+    </customValue>
+    <masterLabel>Category Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

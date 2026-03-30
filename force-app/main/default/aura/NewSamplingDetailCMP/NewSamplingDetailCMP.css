@@ -1,0 +1,6 @@
+.THIS .line {
+    border-top: 1px solid rgb(165, 165, 165); /* 上边框，宽度为2px，颜色为黑色 */
+    width: 100%; /* 横线宽度 */
+    margin-top: 20px; /* 上边距 */
+    margin-bottom: 20px; /* 上边距 */  
+}

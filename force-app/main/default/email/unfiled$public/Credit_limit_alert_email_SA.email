@@ -1,0 +1,13 @@
+Customer credit limit usage over 50%
+
+Customer: {!Account.Name}
+
+SAP number: {!Account.SAP_Customer_Code__c}
+
+Credit limit amount(USD): {!Account.SAP_Credit_Limit__c}
+
+Credit limit available balance(USD): {!Account.Avaliable_Credit_Limit__c}
+
+Credit limit available balance(ZAR): {!Account.Avaliable_Credit_Limit_ZAR__c}
+
+{!Account.Link}

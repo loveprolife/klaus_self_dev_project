@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Activities of Competitors</masterLabel>
+        <translation>竞品活动</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Always Do What Is Right</masterLabel>
+        <translation>恪守准则</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Booth</masterLabel>
+        <translation>展厅</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Booth and image</masterLabel>
+        <translation>展厅和物料</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Brand Image Reinforcement</masterLabel>
+        <translation>品牌形象强化</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Business Meeting Note</masterLabel>
+        <translation><!-- Business Meeting Note --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Competing Goods</masterLabel>
+        <translation>竞品</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Competitive Display</masterLabel>
+        <translation>竞品出样</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Competitive Feedback</masterLabel>
+        <translation>竞品信息收集</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Competitive Intelligence</masterLabel>
+        <translation>竞品情报</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Competitive X Sample</masterLabel>
+        <translation><!-- Competitive X Sample --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Event</masterLabel>
+        <translation><!-- Event --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>General Check List</masterLabel>
+        <translation>终端通用检查列表</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Hisense Display</masterLabel>
+        <translation>海信样机检查</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Hisense Feedback</masterLabel>
+        <translation>海信产品信息收集</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Hisense X Sample</masterLabel>
+        <translation><!-- Hisense X Sample --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Laser TV Display</masterLabel>
+        <translation>激光电视出样检查</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Material</masterLabel>
+        <translation>物料</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Material Display</masterLabel>
+        <translation>物料展示</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Material X</masterLabel>
+        <translation><!-- Material X --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Merchandising and Boxes On Floor</masterLabel>
+        <translation>地面摆放的样机和箱子</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Needs on the Sales Floor</masterLabel>
+        <translation>卖场需求</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Overall Display</masterLabel>
+        <translation>总体展示情况</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Personnel</masterLabel>
+        <translation>人员</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Photo</masterLabel>
+        <translation>照片</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Promotions</masterLabel>
+        <translation>促销活动</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Prototype</masterLabel>
+        <translation>样机</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Relationships on the Sales Floor</masterLabel>
+        <translation>卖场关系维护</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sales</masterLabel>
+        <translation>销售</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sample Condition</masterLabel>
+        <translation>样机状态</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sample Display</masterLabel>
+        <translation>出样检查</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sample Display Check</masterLabel>
+        <translation><!-- Sample Display Check --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sample Inspection Img</masterLabel>
+        <translation><!-- Sample Inspection Img --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Shelf Share</masterLabel>
+        <translation>货架份额</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Speak With the Store Leader</masterLabel>
+        <translation>和门店负责人交谈</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Stock in PDV</masterLabel>
+        <translation>门店库存</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Store Market Share</masterLabel>
+        <translation><!-- Store Market Share --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Ticket</masterLabel>
+        <translation>工单</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Training</masterLabel>
+        <translation>培训</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Weekly Asks</masterLabel>
+        <translation>周度任务</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

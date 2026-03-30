@@ -1,0 +1,10 @@
+Dear System Admin , 
+
+There is Error for Hisense Interface, Please Take Action in time.
+Below is the Specific Information:
+
+Interface Class Name: {!InterfaceLog__c.Class__c} 
+
+Request Body: {!InterfaceLog__c.Req_Json__c}
+
+Response Body: {!InterfaceLog__c.Res_Json__c}

@@ -1,0 +1,328 @@
+<!--
+ * @Author: YYL
+ * @LastEditors: YYL
+-->
+<template>
+    <!-- Loading -->
+    <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+     </template>
+    <div class="slds-modal__header" style="padding: 0px;">
+        <lightning-card class="slds-color__background_gray-4 pageHeader" title={inspectionTitlelabel} icon-name="standard:article">
+            <div slot="actions">
+                <div style="margin-left:5px;display:inline-block;">
+                    <lightning-button class="my-brand" variant="brand" label={label.INSPECTION_REPORT_BACK} onclick={handleBack}>
+                    </lightning-button>
+                </div>
+                <div style="margin-left:5px;display:inline-block;">
+                    <template if:false={showSave}>
+                        <lightning-button class="my-brand" variant="brand" label={label.INSPECTION_REPORT_EDIT} onclick={handleEdit}>
+                        </lightning-button>
+                    </template>
+                    <template if:true={showSave}>
+                        <lightning-button class="my-brand" variant="brand" label={label.INSPECTION_REPORT_SAVE} onclick={handleSave}>
+                        </lightning-button>
+                    </template>
+                </div>
+            </div>
+        </lightning-card>
+      </div>
+    <div class="slds-modal__content slds-scrollable_y">
+        <!-- <lightning-accordion class="example-accordion" active-section-name="Store Information"> -->
+        <lightning-accordion allow-multiple-sections-open active-section-name="Store Information">
+            <!-- 门店基本信息 -->
+            <lightning-accordion-section class="custom-section" name="Store Information" label="Store Information">
+                <template if:true={showStoreInfo}>
+                    <lightning-record-edit-form object-api-name="Check_X_Plan__c" record-id={xPlan.id}>
+
+                        <lightning-input-field 
+                            data-field-name="Sales_Region__c"
+                            field-name="Sales_Region__c" 
+                            variant="label-stacked" 
+                            value={salesRegion}
+                            onchange={handleChangeSalesRegion} 
+                            disabled={recordDatereadonly}>
+                        </lightning-input-field>  
+    
+                        <lightning-input-field 
+                            data-field-name="Channel_item__c"
+                            field-name="Channel_item__c"
+                            value={xPlan.Channel_item__c}
+                            onchange={changeChannel}
+                            disabled={recordDatereadonly}>
+                        </lightning-input-field>
+
+                        <lightning-input-field 
+                            data-field-name="Store_Name__c"
+                            field-name="Store_Name__c"
+                            value={xPlan.Store_Name__c}
+                            onchange={changeStoreName}
+                            readonly={recordDatereadonly}>
+                        </lightning-input-field>
+    
+                        <lightning-input-field 
+                            data-field-name="Level__c"
+                            field-name="Level__c"
+                            value={xPlan.Level__c}
+                            onchange={changeLevel}
+                            disabled={recordDatereadonly}>
+                        </lightning-input-field>
+    
+                    </lightning-record-edit-form>
+                </template>
+            </lightning-accordion-section>
+             <!-- 照片反馈 -->
+             <lightning-accordion-section class="custom-section" name="Store Appearance" label="Store Appearance">
+                <template if:true={isCheckItem}>
+                    <c-new-x-plan-inspection-item-page-lwc
+                        check-x-plan-id={xPlan.Id}
+                        check-label="Photo"
+                        disabled={recordDatereadonly}>  
+                    </c-new-x-plan-inspection-item-page-lwc>
+                </template>
+            </lightning-accordion-section>
+            <!-- 产品展示 -->
+            <lightning-accordion-section class="custom-section" name="Hisense Display" label="Hisense Display">
+                <table style="margin-bottom: 15px;margin-top: 10px;">
+                    <tr>
+                        <td>
+                            <span style="color:#808080">Brand</span>
+                        </td>
+                        <td>
+                            <span style="color:#808080">Series</span>
+                        </td>
+                        <td>
+                            <span style="color:#808080">Size</span>
+                        </td>
+                        <td>
+                            <span style="color:#808080">Quantity</span>
+                        </td>
+                    </tr>
+                    <template for:each={xPlanProduct} for:item="item" for:index="index">
+                        <tr key={item}>
+                            <td style="width: 30%;">
+                                <lightning-record-edit-form object-api-name="Check_X_Plan_Product__c">
+                                    <!-- Brand Name -->
+                                    <lightning-input-field 
+                                        data-field-name="Brand__c" 
+                                        field-name="Brand__c"
+                                        data-index={index} 
+                                        variant="label-hidden"
+                                        placeholder="Brand"
+                                        value={item.Brand__c}
+                                        onchange={changeBrnad}
+                                        disabled={recordDatereadonly}>
+                                    </lightning-input-field>
+                                </lightning-record-edit-form>
+                            </td>
+                            <td style="width: 30%;">
+                                <lightning-record-edit-form object-api-name="Check_X_Plan_Product__c">
+                                    <!-- Brand Name -->
+                                    <lightning-input-field 
+                                        data-field-name="Series__c" 
+                                        field-name="Series__c" 
+                                        data-index={index}
+                                        variant="label-hidden"
+                                        placeholder="Series"
+                                        value={item.Series__c}
+                                        onchange={changeSerise}
+                                        disabled={recordDatereadonly}>
+                                    </lightning-input-field>
+                                </lightning-record-edit-form>
+                            </td>
+                            <td style="width: 20%;">
+                                <lightning-record-edit-form object-api-name="Check_X_Plan_Product__c">
+                                    <!-- Brand Name -->
+                                    <lightning-input-field 
+                                        data-field-name="Size__c" 
+                                        field-name="Size__c" 
+                                        data-index={index}
+                                        variant="label-hidden"
+                                        placeholder="Size"
+                                        value={item.Size__c}
+                                        onchange={changeSize}
+                                        disabled={recordDatereadonly}>
+                                    </lightning-input-field>
+                                </lightning-record-edit-form>
+                            </td>
+                            <td style="width: 20%;">
+                                <lightning-record-edit-form object-api-name="Check_X_Plan_Product__c">
+                                    <!-- Brand Name -->
+                                    <lightning-input-field 
+                                        data-field-name="Quantity__c" 
+                                        field-name="Quantity__c" 
+                                        data-index={index}
+                                        variant="label-hidden"
+                                        placeholder="Qty"
+                                        value={item.Quantity__c}
+                                        onchange={changeQty}
+                                        disabled={recordDatereadonly}>
+                                    </lightning-input-field>
+                                </lightning-record-edit-form>
+                            </td>
+                            <template if:false={recordDatereadonly}>
+                                <!-- <td colspan="1"> -->
+                                    <lightning-button
+                                        icon-name="utility:dash"
+                                        variant="base"
+                                        data-index={index}
+                                        onclick={checkProductDel}>
+                                    </lightning-button>
+                                <!-- </td> -->
+                            </template>
+                        </tr>
+                    </template>
+                </table>
+                <template if:false={recordDatereadonly}>
+                    <lightning-button-icon
+                        class="my-brand"
+                        icon-name="utility:add"
+                        onclick={checkProductAdd}
+                        disabled={disabled} 
+                    ></lightning-button-icon>
+                </template> 
+                <template if:true={isCheckItem}>
+                    <c-new-x-plan-inspection-item-page-lwc
+                        check-x-plan-id={xPlan.Id}
+                        check-label="Hisense Display"
+                        disabled={recordDatereadonly}>  
+                    </c-new-x-plan-inspection-item-page-lwc>
+                </template>
+            </lightning-accordion-section>
+            <lightning-accordion-section class="custom-section" name="Competitive Display" label="Competitive Display">
+                <table style="margin-bottom: 15px;margin-top: 10px;">
+                    <tr>
+                        <td>
+                            <span style="color:#808080">Brand</span>
+                        </td>
+                        <td>
+                            <span style="color:#808080">Series</span>
+                        </td>
+                        <td>
+                            <span style="color:#808080">Size</span>
+                        </td>
+                        <td>
+                            <span style="color:#808080">Quantity</span>
+                        </td>
+                    </tr>
+                    <template for:each={xPlanProductCompetitive} for:item="item" for:index="index">
+                        <tr key={item}>
+                            <td style="width: 30%;">
+                                <lightning-record-edit-form object-api-name="Check_X_Plan_Product__c">
+                                    <!-- Brand Name -->
+                                    <lightning-input-field 
+                                        data-field-name="Brand__c" 
+                                        field-name="Brand__c" 
+                                        data-index={index}
+                                        variant="label-hidden"
+                                        value={item.Brand__c}
+                                        onchange={changeBrnadCompetitive}
+                                        disabled={recordDatereadonly}>
+                                    </lightning-input-field>
+                                </lightning-record-edit-form>
+                            </td>
+                            <td style="width: 30%;">
+                                <lightning-record-edit-form object-api-name="Check_X_Plan_Product__c">
+                                    <!-- Brand Name -->
+                                    <lightning-input-field 
+                                        data-field-name="Series_Competitive__c" 
+                                        field-name="Series_Competitive__c" 
+                                        data-index={index}
+                                        variant="label-hidden"
+                                        value={item.Series_Competitive__c}
+                                        onchange={changeSeriseCompetitive}
+                                        disabled={recordDatereadonly}>
+                                    </lightning-input-field>
+                                </lightning-record-edit-form>
+                            </td>
+                            <td style="width: 20%;">
+                                <lightning-record-edit-form object-api-name="Check_X_Plan_Product__c">
+                                    <!-- Brand Name -->
+                                    <lightning-input-field 
+                                        data-field-name="Size__c" 
+                                        field-name="Size__c" 
+                                        data-index={index}
+                                        variant="label-hidden"
+                                        value={item.Size__c}
+                                        onchange={changeSizeCompetitive}
+                                        disabled={recordDatereadonly}>
+                                    </lightning-input-field>
+                                </lightning-record-edit-form>
+                            </td>
+                            <td style="width: 20%;">
+                                <lightning-record-edit-form object-api-name="Check_X_Plan_Product__c">
+                                    <!-- Brand Name -->
+                                    <lightning-input-field 
+                                        data-field-name="Quantity__c" 
+                                        field-name="Quantity__c" 
+                                        data-index={index}
+                                        variant="label-hidden"
+                                        value={item.Quantity__c}
+                                        onchange={changeQtyCompetitive}
+                                        disabled={recordDatereadonly}>
+                                    </lightning-input-field>
+                                </lightning-record-edit-form>
+                            </td>
+                            <template if:false={recordDatereadonly}>
+                                <!-- <td colspan="1"> -->
+                                    <lightning-button
+                                        icon-name="utility:dash"
+                                        variant="base"
+                                        data-index={index}
+                                        onclick={checkProductCompetitiveDel}>
+                                    </lightning-button>
+                                <!-- </td> -->
+                            </template>
+                        </tr>
+                    </template>
+                </table>
+                <template if:false={recordDatereadonly}>
+                    <lightning-button-icon
+                        class="my-brand"
+                        icon-name="utility:add"
+                        onclick={checkProductCompetitiveAdd}
+                    ></lightning-button-icon>
+                </template>
+                <template if:true={isCheckItem}>
+                    <c-new-x-plan-inspection-item-page-lwc
+                        check-x-plan-id={xPlan.Id}
+                        check-label="Competitive Display"
+                        disabled={recordDatereadonly}>  
+                    </c-new-x-plan-inspection-item-page-lwc>
+                </template>
+            </lightning-accordion-section>
+            <!-- 物料 -->
+            <lightning-accordion-section class="custom-section" name="Material X" label="Material X">
+                    <template if:true={isCheckItem}>
+                        <c-new-x-plan-inspection-item-page-lwc
+                            check-x-plan-id={xPlan.Id}
+                            check-label="Material X"
+                            disabled={recordDatereadonly}>  
+                        </c-new-x-plan-inspection-item-page-lwc>
+                    </template>
+            </lightning-accordion-section>
+            <!-- 改善方向 -->
+            <!-- <lightning-accordion-section class="custom-section" name="open" label="Improvement">
+                <template if:true={isCheckItem}>
+                    <c-new-x-plan-inspection-item-page-lwc
+                        check-x-plan-id={xPlan.Id}
+                        check-label="Improvement"
+                        disabled={recordDatereadonly}>  
+                    </c-new-x-plan-inspection-item-page-lwc>
+                </template>
+            </lightning-accordion-section> -->
+            <lightning-accordion-section name={label.PromoterDailyReport_TICKET} label={label.PromoterDailyReport_TICKET}>
+                <template if:true={isCheckItem}>
+                    <template if:true={showSave}>
+                        <a onclick={addTicket} slot="actions" style="margin-right: 0.5rem;margin-left: 2.0rem">
+                            <lightning-icon variant="success" icon-name="utility:add" size="small"
+                                title=""></lightning-icon>
+                            <span class="slds-assistive-text"></span>
+                        </a>
+                    </template>
+                    <c-new-tickets-x-lwc record-id={xPlan.Id} onsavedata={ticketSaveData} view-mode={viewMode} oncheckdata={ticketCheckDate}></c-new-tickets-x-lwc>
+                </template>
+            </lightning-accordion-section>
+        </lightning-accordion>
+    </div>
+</template>

@@ -1,0 +1,22 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes" 
+                access="global" controller="MonthlyReportController">
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="isHisenseIII" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+	<aura:html tag="style">
+        .slds-modal__container{
+            width: 100%;
+            max-width:90%;
+        }
+    </aura:html>
+
+    <aura:if isTrue="{!v.isHisenseIII == 'yes'}">
+        <c:monthlyReportLwc recordId="{!v.recordId}" onrefreshview="{c.refreshView}" onclosemodal="{!c.closeModal}"/>
+    </aura:if>
+    <aura:if isTrue="{!v.isHisenseIII == 'no'}">
+        <c:researchReportLwc recordId="{!v.recordId}" onrefreshview="{c.refreshView}" onclosemodal="{!c.closeModal}"/>
+    </aura:if>
+    <aura:if isTrue="{!AND(v.isHisenseIII != 'no',v.isHisenseIII != 'yes')}">
+        <lightning:spinner alternative-text="Loading" size="small"></lightning:spinner>
+    </aura:if>
+</aura:component>

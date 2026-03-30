@@ -1,0 +1,166 @@
+<template>
+    <!-- pc端页面 -->
+    <template if:false={isMobile}>
+        <div class="slds-card slds-card_boundary slds-grid slds-grid_vertical forceListViewManager">
+            <div class="slds-page-header--object-home slds-page-header_joined slds-page-header slds-shrink-none test-headerRegion forceListViewManagerHeader" data-aura-class="forceListViewManagerHeader">
+                <div class="slds-grid" >
+                    <div class="slds-col slds-has-flexi-truncate firstHeaderRow" >
+                        <div class="slds-media slds-no-space slds-grow" >
+                            
+                            <div class="slds-var-m-right_small">
+                                <lightning-icon icon-name='custom:custom45' alternative-text='custom45' size='medium' title='custom45'></lightning-icon>
+                            </div>
+                            <div class="slds-media__body slds-align-middle" >
+                                <div class="slds-truncate" >
+                                    <div class="slds-page-header__name slds-text-color_default forceListViewPicker" data-aura-class="forceListViewPicker">
+                                        <div class="slds-page-header__name-title" >
+                                            <h1 >
+                                                <span class="triggerLinkText selectedListView slds-page-header__title uiOutputText" data-aura-class="uiOutputText">
+                                                    Sample Removal Confirm
+                                                </span>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-grid ">
+                    <div class="slds-col slds-align-bottom">
+                        <p class="slds-text-body_small">
+                            <span>{detailsInfo} · </span>
+                            <span>{updatedInfo} </span>
+                        </p>
+                    </div>
+                    <div class="slds-col slds-no-flex slds-grid slds-align-bottom">
+                        <lightning-button-icon 
+                            class="slds-var-m-right_xx-small"
+                            icon-name="utility:refresh"  
+                            alternative-text="Refresh" 
+                            title="Refresh" 
+                            slot="actions"
+                            onclick={handleRefreshClick}
+                            >
+                            <label>Refresh</label>
+                        </lightning-button-icon>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="slds-grid listDisplays safari-workaround-anchor">
+                <div class="slds-grid listViewContainer safari-workaround">
+                    <div class="slds-col slds-no-space forceListViewManagerPrimaryDisplayManager">
+                        <template if:true={isShowSpinner} >
+                            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+                        </template>
+                        <!--pc端列表-->
+                        <lightning-datatable
+                            key-field="id"
+                            data={confirmData}
+                            show-row-number-column
+                            row-number-offset={rowOffset}
+                            hide-checkbox-column
+                            columns={columns}
+                        >   
+                        </lightning-datatable>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <!-- app端页面 -->
+    <template if:true={isMobile}>
+        <article class="slds-card">
+            <div class="slds-page-header--object-home slds-page-header_joined slds-page-header slds-shrink-none test-headerRegion forceListViewManagerHeader" data-aura-class="forceListViewManagerHeader">
+                <div class="slds-grid" >
+                    <div class="slds-col slds-has-flexi-truncate firstHeaderRow" >
+                        <div class="slds-media slds-no-space slds-grow" >
+                            
+                            <div class="slds-var-m-right_small">
+                                <lightning-icon icon-name='custom:custom45' alternative-text='custom45' size='large' title='custom45'></lightning-icon>
+                            </div>
+                            <div class="slds-media__body slds-align-middle slds-clearfix" >
+                            
+                                <div class="slds-truncate slds-float_left" >
+                                    <div class="slds-text-color_default forceListViewPicker" data-aura-class="forceListViewPicker">
+                                        <div class="slds-page-header__name-title" >
+                                            <h1 >
+                                                <p class="triggerLinkText selectedListView slds-page-header__title uiOutputText" data-aura-class="uiOutputText">
+                                                    Sample Removal Confirm
+                                                </p>
+                                                <p class="slds-text-body_small">
+                                                    <span>{detailsInfo} · </span>
+                                                    <span>{updatedInfo} </span>
+                                                </p>
+                                            </h1>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="slds-truncate slds-float_right" >
+                                    <lightning-button-icon 
+                                        class="slds-var-m-right_xx-small"
+                                        icon-name="utility:refresh"  
+                                        alternative-text="Refresh" 
+                                        title="Refresh" 
+                                        slot="actions"
+                                        onclick={handleRefreshClick}
+                                        >
+                                        <label>Refresh</label>
+                                    </lightning-button-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+    
+            <div class="slds-card__body">
+                <template if:true={isShowSpinner} >
+                    <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+                </template>
+                <!--app端列表-->
+                <lightning-layout>
+                    <lightning-layout-item flexibility="auto" padding="around-small">
+                        <template for:each={confirmData} for:item="confirm" for:index="index">
+                            <a key={confirm}  href={confirm.NameToUrl} style="color: inherit; text-decoration: none;">
+                                <ul class="slds-border_bottom slds-var-p-around_small slds-text-body_small" >
+                                    <li class="slds-text-heading_medium" style="font-weight: bold;">
+                                        <span style="display:inline-block;">{SampleRemovalConfirmLabel.Name} {confirm.Name}</span>
+                                    </li>
+                                    <li>
+                                        <span style="display:inline-block; width: 40%;">{SampleRemovalConfirmLabel.Sample_Removal_Code__c} : </span> 
+                                        <span style="display:inline-block;">{confirm.Sample_Removal_Code__c}</span>
+                                    </li>
+                                    <li>
+                                        <span style="display:inline-block; width: 40%;">{SampleRemovalConfirmLabel.Product_Model__c} : </span>
+                                        <span style="display:inline-block;">{confirm.Product_Model__c}</span>
+                                    </li>
+                                    <li>
+                                        <span style="display:inline-block; width: 40%;">{SampleRemovalConfirmLabel.Store__c} : </span>
+                                        <span style="display:inline-block;">{confirm.Store__c}</span>
+                                    </li>
+                                    <li>
+                                        <span style="display:inline-block; width: 40%;">{SampleRemovalConfirmLabel.Number__c} : </span>
+                                        <span style="display:inline-block;">{confirm.Number__c}</span>
+                                    </li>
+                                    <li>
+                                        <span style="display:inline-block; width: 40%;">{SampleRemovalConfirmLabel.Status__c} : </span>
+                                        <span style="display:inline-block;">{confirm.Status__c}</span>
+                                    </li>
+                                    <li>
+                                        <span style="display:inline-block; width: 40%;">{SampleRemovalConfirmLabel.Deadline__c} : </span>
+                                        <span style="display:inline-block;">{confirm.Deadline__c}</span>
+                                    </li>
+                                </ul>
+                            </a>
+                        </template>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </article>
+    </template>
+    
+</template>

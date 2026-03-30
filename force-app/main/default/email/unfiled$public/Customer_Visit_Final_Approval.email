@@ -1,0 +1,4 @@
+{!Customer_Visit__c.Name} Onboard process has been Final Approved. 
+
+Click the link to edit the record: 
+{!Customer_Visit__c.Link}

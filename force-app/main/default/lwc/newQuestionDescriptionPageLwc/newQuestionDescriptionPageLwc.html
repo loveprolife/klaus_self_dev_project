@@ -1,0 +1,48 @@
+<!--
+ * @Author: YYL
+ * @LastEditors: YYL
+-->
+<template>
+    <lightning-card class="slds-color__background_gray-4 pageHeader" title='Question Description(Multiple language)' style="text-align: center;">
+        <div slot="actions">
+            <div style="margin-left:5px;display:inline-block;">
+                <lightning-button onclick={handleShowAllPage} label={label.INSPECTION_REPORT_BACK}></lightning-button>
+            </div>
+            <div style="margin-left:5px;display:inline-block;">
+                <button type="button" class="slds-button slds-button_brand" onclick={handleSave}>{label.Save}</button>
+            </div>
+         </div>
+    </lightning-card>
+    <lightning-card>
+        <lightning-record-edit-form object-api-name="CheckItem__c">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size_2-of-3">
+
+                    <!-- Description_CN -->
+                    <div class="slds-card">
+                        <div class="slds-col" style="text-align: left;">
+                            <lightning-input-field 
+                                data-field-name="Description_CN__c"
+                                field-name="Description_CN__c"
+                                value={questionDescriptionCn}
+                                onchange={handleChangeQuestionDescriptionCn}>    
+                            </lightning-input-field>
+                        </div>
+                    </div>
+
+                    <!-- Description_EN -->
+                    <div class="slds-card">
+                        <div class="slds-col" style="text-align: left;">
+                            <lightning-input-field 
+                                data-field-name="Description_EN__c"
+                                field-name="Description_EN__c"
+                                value={questionDescriptionEn}
+                                onchange={handleChangeQuestionDescriptionEn}>    
+                            </lightning-input-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>

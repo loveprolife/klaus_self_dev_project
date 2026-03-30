@@ -1,0 +1,173 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false" language="zh_CN"  controller="CustomerVisitPrintPDFController" renderAs="pdf" extensions="CustomerVisitPrintPDFController" contentType="application/pdf">
+<head>
+    <style> 
+       @page{
+            margin-top: 0cm;
+            margin-left: 0cm;
+            margin-right: 0cm;
+            margin-bottom: 0cm;
+            size: A4 portrait; 
+        }  
+        .out_box{
+            font-family: Arial Unicode MS;!important
+        }
+        .header{
+            text-align:center;
+            color: #00AA88;
+            font-size: 2.5em;
+            font-weight: bold;
+            font-family: sans-serif;
+            font-style: italic;
+        }
+        .out_box .content{
+            /*border:2px solid #111;*/
+            padding:6px 2px 6px 2px;
+            font-size:12px; 
+        }
+        .out_box table{
+            border-collapse: collapse;
+            width: 100%;            
+        }
+        .out_box table tr{
+            padding-left: 5px;
+            /*height:40px;*/
+            /*page-break-inside:avoid;*/
+        }
+        .out_box table td{
+            border:1px solid #111;
+        }
+    </style> 
+</head>
+<apex:form >
+    <div class="out_box">
+        <div class="header"> 
+               <apex:image url="{!URLFOR($Resource.hisense_jpg,'Hisense.jpg')}"/>       
+        </div> 
+        <div class="content">
+            <table>
+                <tr style="text-align:center;width: 100%;" >
+                    <td colspan="8" style="font-family: sans-serif;font-weight: bold;font-size: 2em" >
+                        Meeting Minutes
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="font-family: sans-serif;font-weight: bold">
+                        Visit Basic Information 
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%">Customer Visit Name</td>
+                    <td width="30%">{!customerVisit.Name}</td>
+                    <td width="20%">Customer</td>
+                    <td width="30%">{!customerName}</td>
+                </tr>
+                <tr>
+                    <td width="20%">Visit Category</td>
+                    <td width="30%">{!customerVisit.Visit_Category__c}</td>
+                    <td width="20%">Visit Date</td>
+                    <td width="30%">
+                        <apex:outputText value="{0,date,yyyy'-'MM'-'dd}">
+                            <apex:param value="{!customerVisit.Visit_Date__c}"/> 
+                        </apex:outputText>
+                    </td>
+                </tr>
+                <tr>
+                    <!--
+                    <td width="25%">Sales Expected Remind Date</td>
+                    <td width="25%">
+                        <apex:outputText value="{0,date,yyyy'-'MM'-'dd}">
+                            <apex:param value="{!customerVisit.Sales_Expected_Remind_Date__c}"/> 
+                        </apex:outputText>
+                    </td>
+                -->
+                    <td width="20%">Place</td>
+                    <td width="30%">{!customerVisit.Place__c}</td>
+                    <td width="20%">Status</td>
+                    <td width="30%">{!customerVisit.Status__c}</td>
+                </tr>
+            </table>
+        </div>
+    </div>    
+    <div class="out_box">
+        <div class="content">
+            <apex:outputPanel rendered="{!visitParticipantList.size > 0}">
+            <table>
+                <thead> 
+                    <tr>
+                        <td colspan="4" style="font-family: sans-serif;font-weight: bold">
+                            Participant Information
+                        </td>
+                    </tr>
+                </thead>
+                <apex:outputPanel rendered="{!hisenseList.size > 0}">
+                    <tbody>
+                        <tr>
+                            <td colspan="4">
+                                Hisense Participant
+                            </td>
+                        </tr>
+                    </tbody>
+                </apex:outputPanel>
+                <apex:repeat value="{!hisenseList}" var="hisenseParticipantIndex">
+                    <tbody>
+                        <tr>
+                            <td width="20%">Name</td>
+                            <td width="35%">{!hisenseParticipantIndex[0]}</td>
+                            <td width="20%">Title</td>
+                            <td width="30%">{!hisenseParticipantIndex[1]}</td>
+                        </tr>
+                    </tbody>
+                </apex:repeat>
+
+                <apex:outputPanel rendered="{!customerList.size > 0}">
+                    <tbody>
+                    <tr>
+                        <td colspan="4">
+                            Customer Participant
+                        </td>
+                    </tr>
+                    </tbody>
+                </apex:outputPanel>
+                <apex:repeat value="{!customerList}" var="customerParticipantIndex">
+                    <tbody>
+                    <tr>
+                        <td width="20%">Name</td>
+                        <td width="30%">{!customerParticipantIndex[0]}</td>
+                        <td width="20%">Title</td>
+                        <td width="30%">{!customerParticipantIndex[1]}</td>
+                    </tr>
+                    </tbody>
+                </apex:repeat>
+                <tfoot></tfoot>
+            </table>
+            </apex:outputPanel>
+        </div>
+    </div>
+    <div class="out_box">
+        <div class="content">
+            <table>
+                <tr>
+                    <td colspan="2" style="font-family: sans-serif;font-weight: bold">
+                         Visit Detail Information
+                    </td>
+                </tr>
+                <tr>
+                    <td width="20%">Visit Purpose</td>
+                    <td width="80%">{!customerVisit.Visit_Purpose__c}</td>
+                </tr>
+                <!-- <tr>
+                    <td width="20%">Meeting Minutes</td>
+                    <td width="80%">{!customerVisit.Meeting_Minutes__c}</td>
+                </tr> -->
+                <tr>
+                    <td width="20%">Meeting Minutes</td> 
+                    <td width="80%">
+                        <apex:outputText escape="false" value="{!customerVisit.MeetingContent__c}" ></apex:outputText>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</apex:form>
+
+</apex:page>

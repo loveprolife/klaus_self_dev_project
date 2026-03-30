@@ -1,0 +1,499 @@
+<!--
+ * @Author: WFC
+ * @Date: 2023-06-29 09:34:58
+ * @LastEditors: YYL
+ * @LastEditTime: 2025-06-09 09:14:54
+ * @Description:    
+ * @FilePath: \Hitest_2022\force-app\main\default\lwc\trainingTaskCreateExaminationLWC\trainingTaskCreateExaminationLWC.html
+-->
+<template>
+    <div class="slds-is-relative" style="height: auto;padding-top: 1rem;padding-left: 1rem;border:solid 1px rgb(192, 192, 192)">
+        <template if:true={isShowSpinnerMax} >
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        </template>
+        <!-- {label.Selected_Questions} '已选试题'-->
+        <lightning-card title={label.Selected_Questions} icon-name="standard:contact_list">
+            <lightning-button variant="brand" label={label.Add_From_Question_Banks} onclick={showQuestionBanks} slot="actions" style="padding-right: 1rem;" title={label.Add_From_Question_Banks}></lightning-button>
+            <lightning-button variant="brand" label={label.New_Question_Bank} onclick={showCreateQuestionType} slot="actions" style="padding-right: 1rem;" title={label.New_Question_Bank}></lightning-button>
+
+            <!-- YYL 新增分享二维码功能按钮 20250509 -->
+            <lightning-button variant="brand" label={label.Share_Question_Bank} onclick={showShareQuestion} slot="actions" style="padding-right: 1rem;" title={label.Share_Question_Bank}></lightning-button>
+            
+            <!-- YYL 新增查看已上传的人员名单 20250605 -->
+            <lightning-button variant="brand" label={label.View_Personnel} onclick={downLoadViewPersonnel} slot="actions" style="padding-right: 1rem;" title={label.View_Personnel}></lightning-button>
+        </lightning-card>
+            
+        <lightning-card>
+            <lightning-accordion active-section-name="AA" allow-multiple-sections-open="true">
+                <lightning-accordion-section name="A" label={singleChoiceListLabel}>
+                    <table class="slds-table slds-table_bordered" style="border: 1px solid rgb(221, 219, 218);table-layout: fixed" width="200px">
+                        <template for:each={singleChoiceList} for:item="questionBank" for:index="index">
+                            <tr key='{questionBank.index}'>
+                                <td style="width:80%;">{questionBank.questionNumber}.{questionBank.title}</td>
+                                <td style="width:10%;">{questionBank.score}分</td>
+                                <td style="width:10%;" class="cursor">
+                                    <lightning-icon
+                                        title="修改"
+                                        variant="success"
+                                        icon-name="utility:edit_form"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="edit_form" 
+                                        label='修改' 
+                                        onclick={editQuestionInfo}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                    <lightning-icon
+                                        title="详情"
+                                        variant="success"
+                                        icon-name="utility:info"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="info" 
+                                        label='详情' 
+                                        onclick={showQuestionInfo}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                    <lightning-icon
+                                        title="Delete"
+                                        variant="error"
+                                        icon-name="utility:delete"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="delete" 
+                                        label='删除' 
+                                        onclick={deleteQuestion}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                </td>
+                            </tr>
+                        </template>
+                    </table>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="B" label={multipleChoiceListLabel}>
+                    <table class="slds-table slds-table_bordered" style="border: 1px solid rgb(221, 219, 218);">
+                        <template for:each={multipleChoiceList} for:item="questionBank" for:index="index">
+                            <tr key='{questionBank.index}'>
+                                <td style="width:80%;">{questionBank.questionNumber}.{questionBank.title}</td>
+                                <td style="width:10%;">{questionBank.score}分</td>
+                                <td style="width:10%;" class="cursor">
+                                    <lightning-icon
+                                        title="修改"
+                                        variant="success"
+                                        icon-name="utility:edit_form"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="edit_form" 
+                                        label='修改' 
+                                        onclick={editQuestionInfo}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                    <lightning-icon
+                                        title="详情"
+                                        variant="success"
+                                        icon-name="utility:info"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="info" 
+                                        label='详情' 
+                                        onclick={showQuestionInfo}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                    <lightning-icon
+                                        title="Delete"
+                                        variant="error"
+                                        icon-name="utility:delete"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="delete" 
+                                        label='删除' 
+                                        onclick={deleteQuestion}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                </td>
+                            </tr>
+                        </template>
+                    </table>
+                </lightning-accordion-section>
+
+                <lightning-accordion-section name="C" label={judgmentQuestionListLabel}>
+                    <table class="slds-table slds-table_bordered" style="border: 1px solid rgb(221, 219, 218);">
+                        <template for:each={judgmentQuestionList} for:item="questionBank" for:index="index">
+                            <tr key='{questionBank.index}'>
+                                <td style="width:80%;">{questionBank.questionNumber}.{questionBank.title}</td>
+                                <td style="width:10%;">{questionBank.score}分</td>
+                                <td style="width:10%;" class="cursor">
+                                    <lightning-icon
+                                        title={label.Training_Task_Update}
+                                        variant="success"
+                                        icon-name="utility:edit_form"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="edit_form" 
+                                        label={label.Training_Task_Update}
+                                        onclick={editQuestionInfo}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                    <lightning-icon
+                                        title={label.Training_Task_Details}
+                                        variant="success"
+                                        icon-name="utility:info"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="info" 
+                                        label={label.Training_Task_Details} 
+                                        onclick={showQuestionInfo}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                    <lightning-icon
+                                        title={label.Training_Task_Delete}
+                                        variant="error"
+                                        icon-name="utility:delete"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="delete" 
+                                        label={label.Training_Task_Delete}
+                                        onclick={deleteQuestion}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                </td>
+                            </tr>
+                        </template>
+                    </table>
+                </lightning-accordion-section>
+                
+                <lightning-accordion-section name="D" label={subjectiveQuestionListLabel}>
+                    <table class="slds-table slds-table_bordered" style="border: 1px solid rgb(221, 219, 218);">
+                        <template for:each={subjectiveQuestionList} for:item="questionBank" for:index="index">
+                            <tr key='{questionBank.index}'>
+                                <td style="width:80%;">{questionBank.questionNumber}.{questionBank.title}</td>
+                                <td style="width:10%;">{questionBank.score}分</td>
+                                <td style="width:10%;" class="cursor">
+                                    <lightning-icon
+                                        title={label.Training_Task_Update}
+                                        variant="success"
+                                        icon-name="utility:edit_form"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="edit_form" 
+                                        label={label.Training_Task_Update}
+                                        onclick={editQuestionInfo}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                    <lightning-icon
+                                        title={label.Training_Task_Details}
+                                        variant="success"
+                                        icon-name="utility:info"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="info" 
+                                        label={label.Training_Task_Details}
+                                        onclick={showQuestionInfo}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                    <lightning-icon
+                                        title={label.Training_Task_Delete}
+                                        variant="error"
+                                        icon-name="utility:delete"                     
+                                        size="small" 
+                                        data-record={questionBank.Id} 
+                                        alternative-text="delete" 
+                                        label={label.Training_Task_Delete} 
+                                        onclick={deleteQuestion}
+                                        style="padding-right: 1rem;"
+                                        >
+                                    </lightning-icon>
+                                </td>
+                            </tr>
+                        </template>
+                    </table>
+                </lightning-accordion-section>
+            </lightning-accordion>
+        </lightning-card>
+        
+    </div>
+
+    <!-- 修改已选题目分数 -->
+    <template if:true={isShowEditSelectQuestionScore}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 46%; max-width: 46%; overflow:auto">
+                <template if:true={isShowSpinnerEditQuestionScore} >
+                    <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+                </template>
+                <div class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">
+                        Edit Question Score
+                    </h2>
+                </div>
+                <div class="slds-var-p-around_medium slds-grid slds-wrap slds-media_center slds-grid_align-center" style="background-color: rgb(255, 255, 255);">
+                    <lightning-record-edit-form  record-id={editQuestionnaireQuestionBank}  onsubmit={handleEditQuestionScoreSubmit} onsuccess={handleEditQuestionScoreSuccess} object-api-name='Questionnaire_Question_Bank__c'>
+                        <lightning-input-field field-name='Score__c' required> </lightning-input-field>
+                        <div class="slds-m-top_medium slds-align_absolute-center" style="padding-bottom: 2rem;">
+                            <lightning-button
+                                class="slds-m-top_small"
+                                label="Cancel"
+                                onclick={closeEditSelectQuestionScore}
+                                style="padding-right: 1rem;"
+                            ></lightning-button>
+                            <lightning-button
+                                class="slds-m-top_small"
+                                variant="brand"
+                                type="submit"
+                                name="Save"
+                                label="Save"
+                            ></lightning-button>
+                        </div>
+                    </lightning-record-edit-form>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+     <!-- 新增试题 选择题型 -->
+     <template if:true={isShowSelectQuestionType}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 46%; max-width: 46%; overflow:auto">
+                <div class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">
+                        New Question Bank
+                    </h2>
+                </div>
+                <div class="slds-var-p-around_medium slds-grid slds-wrap slds-media_center slds-grid_align-center" style="background-color: rgb(255, 255, 255);">
+                    <lightning-radio-group name="radioGroup"
+                          label="Select a record type"
+                          options={questionRecordTypeOptions}
+                          value={questionTypeValue}
+                          type="radio"
+                          class="my-radio-group"
+                          onchange={changeQuestionType}
+                          ></lightning-radio-group>
+                </div>
+                <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                    <lightning-button label='Cancel' onclick={closeShowCreateQuestion} class="slds-p-around_x-small"></lightning-button>
+                    <lightning-button variant="brand" label='Next' onclick={showCreateQuestion} class="slds-p-around_x-small"></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- 新增试题 下一步，填写内容 -->
+    <template if:true={isShowSelectQuestionInfo}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 46%; max-width: 46%;">
+                <template if:true={isShowSpinnerCreateQuestion} >
+                    <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+                </template>
+                <div class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">
+                        New Question Bank:{selectQuestionRecordType}
+                    </h2>
+                </div>
+                <div class="slds-p-around_medium slds-grid slds-wrap" style="background-color: rgb(255, 255, 255); overflow:auto">
+                    <div class="slds-col slds-size_8-of-8 slds-p-horizontal_x-small">
+                        <lightning-record-edit-form object-api-name='Question_Bank__c' onsubmit={handleSubmit} onsuccess={handlecreateQuestionInfoSuccess}>
+                            <lightning-input-field field-name='Title_Type__c'> </lightning-input-field>
+                            <lightning-input-field field-name='Title__c' required> </lightning-input-field>
+                            <template if:true={isChoiceNew}>
+                                <lightning-input-field field-name='Choice_A__c' required> </lightning-input-field>
+                                <lightning-input-field field-name='Choice_B__c' required> </lightning-input-field>
+                                <lightning-input-field field-name='Choice_C__c' required> </lightning-input-field>
+                                <lightning-input-field field-name='Choice_D__c' required> </lightning-input-field>
+                            </template>
+                            <template if:true={isMultipleChoiceNew}>
+                                <lightning-input-field field-name='Multiple_Choice_Answer__c' required> </lightning-input-field>
+                            </template>
+                            <template if:true={isSingleChoiceNew}>
+                                <lightning-input-field field-name='Single_Answer__c' required> </lightning-input-field>
+                            </template>
+                            <template if:true={isJudgmentQuestionNew}>
+                                <lightning-input-field field-name='True_answer__c' required> </lightning-input-field>
+                            </template>
+                            <lightning-input-field field-name='Score__c' required> </lightning-input-field>
+                            <div class="slds-m-top_medium slds-align_absolute-center" style="padding-bottom: 2rem;">
+                                <lightning-button
+                                    class="slds-m-top_small"
+                                    label="Cancel"
+                                    onclick={handleCloseQuestionInfo}
+                                    style="padding-right: 1rem;"
+                                ></lightning-button>
+                                <lightning-button
+                                    class="slds-m-top_small"
+                                    variant="brand"
+                                    type="submit"
+                                    name="Save"
+                                    label="Save"
+                                ></lightning-button>
+                            </div>
+                        </lightning-record-edit-form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- 题目详情 -->
+    <template if:true={isQuestionInfoOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container" style="width: 50%; max-width: 90%;">
+                <template if:true={isShowSpinner} >
+                    <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+                </template>
+                <div class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">
+                        试题详情
+                    </h2>
+                </div>
+                <div class="slds-modal__header">
+                    <lightning-record-view-form object-api-name='Question_Bank__c' record-id={Question_Bank__c}>
+                        <lightning-output-field field-name='Title_Type__c'> </lightning-output-field>
+                        <lightning-output-field field-name='Title__c'> </lightning-output-field>
+                        <template if:true={isChoice}>
+                            <lightning-output-field field-name='Choice_A__c'> </lightning-output-field>
+                            <lightning-output-field field-name='Choice_B__c'> </lightning-output-field>
+                            <lightning-output-field field-name='Choice_C__c'> </lightning-output-field>
+                            <lightning-output-field field-name='Choice_D__c'> </lightning-output-field>
+                        </template>
+                        <template if:true={isMultipleChoice}>
+                            <lightning-output-field field-name='Multiple_Choice_Answer__c'> </lightning-output-field>
+                        </template>
+                        <template if:true={isSingleChoice}>
+                            <lightning-output-field field-name='Single_Answer__c'> </lightning-output-field>
+                        </template>
+                        <template if:true={isJudgmentQuestion}>
+                            <lightning-output-field field-name='True_answer__c'> </lightning-output-field>
+                        </template>
+                        <div>Score</div>
+                        <div>{Score__c}</div>
+                    </lightning-record-view-form>
+                </div>
+                
+                <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                    <lightning-button label='Return' onclick={closeQuestionInfo} class="slds-p-around_x-small"></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- 从题库添加试题页面 -->
+    <template if:true={isNewQuestionModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <template if:true={isShowSpinner} >
+                    <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+                </template>
+                <div class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">
+                        <!--新增试题-->
+                        {label.Add_From_Question_Banks}
+                    </h2>
+                </div>
+                <div class="slds-var-p-around_medium slds-grid slds-wrap" style="background-color: rgb(255, 255, 255);">
+                   
+                    <div class="slds-col slds-size_3-of-12 slds-var-p-horizontal_x-small">
+                        <lightning-combobox
+                            name="Question Type"
+                            label="Question Type"
+                            placeholder="Choose Type"
+                            onchange={handleChangeQuestionType}
+                            options={questionTypeOptions}
+                            dropdown-alignment="auto"
+                        ></lightning-combobox>
+                    </div>
+                   
+                    <div class="slds-col slds-size_3-of-12 slds-var-p-horizontal_x-small">
+                        <lightning-combobox
+                            name="Title Type"
+                            label="Title Type"
+                            placeholder="Choose Type"
+                            onchange={handleChangeTitleType}
+                            options={titleTypeOptions}
+                            dropdown-alignment="auto"
+                        ></lightning-combobox>
+                    </div>
+
+                    <div class="slds-col slds-size_4-of-12 slds-var-p-horizontal_x-small">
+                        <lightning-input 
+                            type="text" 
+                            name="Question Title" 
+                            label='Question Title'
+                            placeholder="Question Title"
+                            onchange={handleChangeQuestionTitle}
+                        ></lightning-input> 
+                    </div>
+                    
+                    <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small">
+                        <div style="margin-top: 24px;">
+                            <lightning-button variant="brand" label='Search' onclick={searchData} class="slds-p-around_x-small"></lightning-button>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_12-of-12 slds-p-horizontal_x-small" style="height: 400px; padding-top: 1rem; overflow: auto">
+                        
+                        <lightning-datatable
+                            data={questionBankDatas}
+                            columns={columns}
+                            key-field="Id"
+                            onrowselection={getSelectedQuesions}
+                            oncellchange={updateScore}
+                            show-row-number-column
+                            suppress-bottom-bar
+                        ></lightning-datatable>
+
+                    </div>
+                </div>
+                <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                    
+                    <span style="float: left; color: red">
+                        <lightning-helptext 
+                            content="选择试题后，请添加试题分数"
+                            class="slds-m-left_xx-small"
+                        ></lightning-helptext>
+                    </span>
+                    <lightning-button label='Return' onclick={closeModal} class="slds-p-around_x-small"></lightning-button>
+                    <template if:true={isCanSave}>
+                        <lightning-button variant="brand" label='Confirm' onclick={saveSelectedQuesions} class="slds-p-around_x-small"></lightning-button>
+                    </template>
+                    <template if:false={isCanSave}>
+                        <lightning-button variant="brand" label='Confirm' disabled="true" class="slds-p-around_x-small"></lightning-button>
+                    </template>
+                    
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- YYL 分享二维码 20250509-->
+    <!-- <template if:true={isShowShareQuestion}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <c-examination-code-lwc record-id={recordId} onclose={closeShareQuestion}></c-examination-code-lwc>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template> -->
+
+    <!-- YYL 导入需要考试用户 20250528-->
+    <template if:true={isShowShareQuestion}>
+        <!-- <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open"> -->
+            <c-examination-user-upload-file-lwc 
+                record-id={recordId} 
+                onclose={closeShareQuestion}>
+            </c-examination-user-upload-file-lwc>
+        <!-- </section> -->
+        <!-- <div class="slds-backdrop slds-backdrop_open"></div> -->
+    </template>
+</template>

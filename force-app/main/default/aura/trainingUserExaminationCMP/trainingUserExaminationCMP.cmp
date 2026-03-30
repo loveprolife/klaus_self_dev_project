@@ -1,0 +1,18 @@
+<!--
+ * @Author: WFC
+ * @Date: 2023-06-20 16:36:15
+ * @LastEditors: WFC
+ * @LastEditTime: 2023-06-20 16:39:06
+ * @Description: 
+ * @FilePath: \Hitest_2022\force-app\main\default\aura\trainingUserExaminationCMP\trainingUserExaminationCMP.cmp
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable" access="global" >
+	
+	<aura:html tag="style">
+        .slds-modal__container{
+            width: 100%;
+            max-width:100%;
+        }
+    </aura:html>
+	<c:trainingUserExaminationLWC recordId="{!v.recordId}" onrefreshView="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+</aura:component>

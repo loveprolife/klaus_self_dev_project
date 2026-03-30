@@ -1,0 +1,50 @@
+/* Make the host and card fill available space and allow iframe to occupy full viewport on mobile */
+:host {
+  display: block;
+  height: 100%;
+}
+
+/* Lightning card body should be able to stretch */
+.card--full {
+  display: block;
+  height: 100%;
+}
+
+/* Wrapper that will control iframe sizing */
+.frame-wrap {
+  position: relative;
+  width: 100%;
+  /* Default desktop: give it a reasonable height; can be overridden by container */
+  /* min-height: 480px; */
+  height: 100%;
+  padding-top: 56.25%; /* 16:9 比例；若需 16:10 可改为 62.5% */
+  /* Allow scrolling so bottom content is not covered by host app bottom bar */
+  overflow: auto;
+}
+
+/* Iframe fills its container */
+.qbi-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Mobile viewport full-bleed */
+@media (max-width: 600px) {
+  :host {
+    /* allow the component to grow to the viewport height when used inside flexipages */
+    min-height: 100vh;
+  }
+  .card--full,
+  .frame-wrap {
+    min-height: 90vh;
+    height: 90vh;
+  }
+
+  /* Safe area for iOS and fallback space for Android app bottom bar */
+  .frame-wrap {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 64px); /* 64px = 预估底部操作条高度，可按需调整 */
+  }
+}

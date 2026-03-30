@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>SA_Market_Manager</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>南非市场经理查看所有南非门店的考勤信息</description>
+        <label>SA Market Manager</label>
+        <sharedTo>
+            <role>SouthAfrica_Market_Manager</role>
+        </sharedTo>
+        <booleanFilter>1</booleanFilter>
+        <criteriaItems>
+            <field>CurrencyIsoCode</field>
+            <operation>equals</operation>
+            <value>ZAR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>SA_Regional_Manager</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>南非网格经理可查看全国所有门店促销员的打卡信息</description>
+        <label>SA Regional Manager</label>
+        <sharedTo>
+            <group>South_Africa_RM</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>CurrencyIsoCode</field>
+            <operation>equals</operation>
+            <value>ZAR</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

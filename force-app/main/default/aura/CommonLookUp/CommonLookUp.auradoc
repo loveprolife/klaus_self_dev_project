@@ -1,0 +1,53 @@
+<aura:documentation>
+    <aura:description>
+    	<p>
+    		An <code>c:CommonLookUp</code> component provides an eaisier way to create a lookup component. 2 types can use: single/multiple. There are 2 attributes used to set return value, Usage is as follows:
+		</p>
+		<p>
+			selectedRecord : used to store the return record when single mode.
+		</p>
+		<p>
+			selectedRecordList: used to store the return records when multiple mode.
+		</p>
+		<p>
+			4 variables can use.
+		</p>
+		<ul>
+			<li>objId: object Id in salesforce</li>
+			<li>objName: object API Name in salesforce</li>
+			<li>objLabel: object label name in salesforce</li>
+			<li>objValue: object return value in salesforce,this value dependence on field attribute input</li>
+		</ul>
+		<p>
+			example:<br/>
+			Single Choise<br/>
+			in component.cmp<br/>
+			&lt;aura:attribute name="selectedRecord" type="CommonLookUpController.SearchResultWrapper"/&gt;
+			<br/>
+			&lt;c:CommonLookup searchObjList="['Account','Contact']" searchFieldMapping2Object="{'Account':'Name','Contact':'Name'}" selectedRecord="{!v.selectedRecord}"/&gt;
+			<br/>
+			in Controller.js
+			<br/>
+			alert(component.get('v.selectedRecord').objId);<br/>
+    		alert(component.get('v.selectedRecord').objName);<br/>
+    		alert(component.get('v.selectedRecord').objValue);<br/>
+    		alert(component.get('v.selectedRecord').objLabel);<br/>
+
+    		Multi Choise<br/>
+    		&lt;aura:attribute name="selectedRecordList" type="List"/&gt;
+    		<br/>
+    		&lt;c:CommonLookUp searchObjList="['Account','Contact']" searchFieldMapping2Object="{'Account':'Name','Contact':'Name'}" selectedRecordList="{!v.selectedRecordList}" singleOrMultiple="false"/&gt;
+    		<br/>
+    		in Controller.js<br/>
+    		for(var i=0;i&lt; component.get('v.selectedRecordList').length;i++) {<br/>
+	    		var selectedRecord = component.get('v.selectedRecordList')[i];<br/>
+	    		alert(selectedRecord.objId);<br/>
+	    		alert(selectedRecord.objValue);<br/>
+	    		alert(selectedRecord.objLabel);<br/>
+	    		alert(selectedRecord.objName);<br/>
+	    	}
+    		<br/>
+		</p>
+	</aura:description>
+    
+</aura:documentation>

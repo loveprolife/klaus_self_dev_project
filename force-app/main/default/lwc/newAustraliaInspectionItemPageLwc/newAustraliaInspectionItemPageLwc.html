@@ -1,0 +1,437 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-08-08 08:59:50
+ * @LastEditors: TJP
+ * @LastEditTime: 2025-09-23 17:05:27
+ * @Description: 
+ * @FilePath: \hisense005\force-app\main\default\lwc\newInspectionItemPageLwc\newInspectionItemPageLwc.html
+-->
+<!--
+ * @Author: YYL
+ * @LastEditors: WFC
+-->
+<template>
+    <template if:true={spinnerFlag}>
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </template>
+    <div class="container full-height">
+        <div class="tree-node">
+            <template for:each={treeData} for:item="tree" for:index="index">
+                <div key={tree}>
+                    <!-- <span>{tree.parent.CheckItem__r.Description__c}</span> -->
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-1">
+
+                            <!-- YYL 移除掉初始化后Active为false不展示的逻辑 -->
+                            <!-- <template if:true={tree.parent.CheckItem__r.Active__c}> -->
+                                <div class="slds-card">
+
+                                    <div class="slds-col" style="text-align: left;">
+                                        <!-- <span>{item.CheckItem__r.Description__c}</span> -->
+                                        <span style="color: red">*</span>
+                                        <template if:true={fieldRed}>
+                                            <!-- <template lwc:if={tree.parent.Response__c}> -->
+                                            <template lwc:if={tree.parent.Response__c}>
+                                                <span>{tree.parent.CheckItem__r.Description__c}</span>
+                                            </template>
+                                            <template lwc:else>
+                                                <span style="color:red">{tree.parent.CheckItem__r.Description__c}</span>
+                                            </template>
+                                        </template>
+                                        <template if:false={fieldRed}>
+                                            <span>{tree.parent.CheckItem__r.Description__c}</span>
+                                        </template>
+                                        <template lwc:if={tree.parent.CheckItem__r.HelpText__c}>
+                                            <lightning-helptext class="helptext" content={tree.parent.CheckItem__r.HelpText__c} ></lightning-helptext>
+                                        </template>
+                                    </div>
+
+                                    <!-- YYL 必填示例图 20250303-->
+                                    <template if:true={tree.parent.isImgList}>
+                                        <div class="slds-col" style="text-align: left;">
+                                            <span style="text-align: left;">{label.Sample_Image}</span>
+                                            <div class="slds-var-m-top_small" style="text-align: left;">
+                                                <template for:each={tree.imgList} for:item="picture">
+                                                    <div class="inline-block-div slds-var-m-right_small" key={picture.contentDocumentId}>
+                                                        <img src={picture.downloadUrl} alt="Thumbnail" class="thumbnail" style="display:block;width:50px;height:50px"
+                                                            data-id={picture.contentDocumentId} onclick={preview}/>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </template>
+
+                                    <!-- Yes/NO -->
+                                    <template if:true={tree.parent.yesNo}>
+
+                                        <div class="slds-col slds-var-m-bottom_medium" style="text-align: left;">
+                                            <!-- <lightning-combobox
+                                                variant="label-hidden"
+                                                data-id={item.CheckItem__c}
+                                                data-index={index}
+                                                placeholder="Select Progress"
+                                                options={item.option}
+                                                onchange={handleChangeYesAndNo}
+                                                value={item.Response__c}
+                                                disabled={disabled}>
+                                            </lightning-combobox> -->
+                                            <lightning-radio-group 
+                                                type="button"
+                                                variant="label-hidden"
+                                                data-id={tree.parent.CheckItem__c}
+                                                data-index={index}
+                                                placeholder="Select Progress"
+                                                options={tree.parent.option}
+                                                onchange={handleChangeYesAndNo}
+                                                value={tree.parent.Response__c}
+                                                disabled={disabled}>
+                                            </lightning-radio-group>
+                                        </div>
+                                        
+                                    </template>
+                                    
+                                    <!-- 文本 -->
+                                    <template if:true={tree.parent.text}>
+                                        <div class="slds-col slds-var-m-bottom_medium input-wrapper">
+                                            <lightning-input
+                                                variant="label-hidden"
+                                                data-id={tree.parent.Id}
+                                                data-index={index}
+                                                onchange={handleChangeResponse}
+                                                value={tree.parent.Response__c}
+                                                disabled={disabled}
+                                                class={tree._inputClass}>
+                                            </lightning-input>
+                                        </div>
+                                        <template if:true={tree._rowError}>
+                                            <lightning-layout>
+                                                <lightning-layout-item class="slds-var-p-horizontal_small">
+                                                    <div class="slds-form-element__help slds-text-color_error">
+                                                        {label.Inspection_Max_Text}
+                                                    </div>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </template>
+                                    </template>
+
+                                    <!-- 整数 -->
+                                    <template if:true={tree.parent.integer}>
+                                        <div class="slds-col slds-var-m-bottom_medium">
+                                            <lightning-input
+                                                variant="label-hidden"
+                                                data-id={tree.parent.Id}
+                                                data-index={index}
+                                                type="number"
+                                                message-when-step-mismatch="Please enter an integer"
+                                                message-when-bad-input="Please enter an integer"
+                                                onchange={handleChangeResponse}
+                                                value={tree.parent.Response__c}
+                                                disabled={disabled}
+                                                class={tree._inputClass}>
+                                            </lightning-input>
+                                        </div>
+                                        <template if:true={tree._rowError}>
+                                            <lightning-layout>
+                                                <lightning-layout-item class="slds-var-p-horizontal_small">
+                                                    <div class="slds-form-element__help slds-text-color_error">
+                                                        {tree.IntegerMaxTips}
+                                                    </div>
+                                                </lightning-layout-item>
+                                            </lightning-layout>
+                                        </template>
+                                    </template>
+                                
+                                    <!-- 多选 -->
+                                    <template if:true={tree.parent.selection}>
+                                        <div class="slds-col slds-var-m-bottom_medium">
+                                            <div style="display: flex;flex-wrap:wrap;">
+                                                <template for:each={tree.parent.option} for:item="selection" for:index="indexItem">
+                                                    <lightning-input 
+                                                        class="slds-var-m-right_medium"
+                                                        data-id="checkbox" 
+                                                        data-index={index}
+                                                        key={selection.label} 
+                                                        type="checkbox" 
+                                                        label={selection.value}
+                                                        value={selection.value}
+                                                        onchange={handleChangeYesAndNo}
+                                                        checked={selection.flag}
+                                                        disabled={disabled}>
+                                                    </lightning-input>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </template>
+                                
+                                    <!-- 单选 -->
+                                    <template if:true={tree.parent.picklist}>
+                                        <div class="slds-col slds-var-m-bottom_medium">
+                                            <lightning-combobox
+                                                variant="label-hidden"
+                                                data-id="checkItem"
+                                                data-index={index}
+                                                placeholder={tree.parent.Response__c}
+                                                options={tree.parent.option}
+                                                value={tree.parent.Response__c}
+                                                onchange={handleChangeYesAndNo}
+                                                disabled={disabled}>
+                                            </lightning-combobox>
+                                        </div>
+                                    </template>
+                                
+                                    <!-- 打分 -->
+                                    <template if:true={tree.parent.score}>
+                                        <div class="slds-col slds-var-m-bottom_medium">
+                                            <lightning-combobox 
+                                                variant="label-hidden"
+                                                data-id={tree.parent.Id}
+                                                data-index={index}
+                                                placeholder="Select Progress"
+                                                onchange={handleChangeYesAndNo}
+                                                value={tree.parent.Response__c}
+                                                options={tree.parent.option}
+                                                disabled={disabled}>
+                                            </lightning-combobox>
+                                        </div>
+                                    </template>
+
+                                    <template if:true={tree.parent.showProductLine}>
+                                        <div class="slds-col slds-var-m-bottom_medium">
+                                            <lightning-combobox
+                                                data-id={tree.parent.Id}
+                                                data-index={index}
+                                                value={tree.parent.Product_Line__c}
+                                                placeholder="Select Product Line"
+                                                options={productLineOptions.data}
+                                                onchange={handleChangeProductLine}
+                                                variant="label-hidden"
+                                                disabled={disabled}>
+                                            </lightning-combobox>
+                                        </div>
+                                    </template>
+                                    <template if:true={tree.parent.object}>                                   
+                                        <div class="slds-col slds-var-m-bottom_medium">
+                                            <c-lookup-lwc
+                                                name="onProductLine"
+                                                data-field-name={tree.parent.CheckItem__r.Object_Api_Name__c}
+                                                obj-name={tree.parent.CheckItem__r.Object_Api_Name__c}
+                                                op={lookupFilter} 
+                                                data-recordid={index} 
+                                                record-id={tree.parent.Response__c}
+                                                onlookupupdate={handleChangeProductOption}
+                                                read-only={disabled}>
+                                            </c-lookup-lwc>
+                                        </div>                                        
+                                    </template>
+
+                                    <!-- YYL Object类型 20250304 -->
+                                    <!-- <template if:true={tree.parent.object}>
+                                        <div class="slds-col slds-var-m-bottom_medium">
+                                            <lightning-record-edit-form object-api-name="CheckItem__c">
+                                                <lightning-input-field 
+                                                    field-name={tree.parent.CheckItem__r.Object_Api_Name__c} 
+                                                    data-field-name={tree.parent.CheckItem__r.Object_Api_Name__c}
+                                                    variant="label-hidden"
+                                                    data-id={tree.parent.Id}
+                                                    data-index={index}
+                                                    onchange={handleChangeResponse}
+                                                    value={tree.parent.Response__c}
+                                                    disabled={disabled}>
+                                                </lightning-input-field>
+                                            </lightning-record-edit-form>
+                                        </div>
+                                    </template> -->
+
+                                    <!-- YYL 数字类型 20250304 -->
+                                    <template if:true={tree.parent.number}>
+                                        <div class="slds-col slds-var-m-bottom_medium">
+                                            <lightning-input
+                                                variant="label-hidden"
+                                                data-id={tree.parent.Id}
+                                                data-index={index}
+                                                type="number"
+                                                message-when-step-mismatch="Please enter an Number"
+                                                message-when-bad-input="Please enter an Number"
+                                                step="0.01"
+                                                onblur={handleChangeResponse}
+                                                value={tree.parent.Response__c}
+                                                disabled={disabled}>
+                                            </lightning-input>
+                                        </div>
+                                    </template>
+
+                                    <!-- YYL 邮箱类型 20250304 -->
+                                    <template if:true={tree.parent.email}>
+                                        <div class="slds-col slds-var-m-bottom_medium">
+                                            <lightning-input
+                                                variant="label-hidden"
+                                                data-id={tree.parent.Id}
+                                                data-index={index}
+                                                type="email"
+                                                message-when-step-mismatch="Please enter an email"
+                                                message-when-bad-input="Please enter an email"
+                                                onblur={handleChangeResponse}
+                                                value={tree.parent.Response__c}
+                                                disabled={disabled}>
+                                            </lightning-input>
+                                        </div>
+                                    </template>
+
+                                    <!-- TJP 日期类型 20250916 -->
+                                    <template if:true={tree.parent.date}>
+                                        <div class="slds-col slds-var-m-bottom_medium">
+                                            <lightning-input
+                                                variant="label-hidden"
+                                                data-id={tree.parent.Id}
+                                                data-index={index}
+                                                type="date"
+                                                message-when-step-mismatch="Please enter an date"
+                                                message-when-bad-input="Please enter an date"
+                                                onblur={handleChangeResponse}
+                                                value={tree.parent.Response__c}
+                                                disabled={disabled}>
+                                            </lightning-input>
+                                        </div>
+                                    </template>
+
+                                    <!-- 是否有评论 -->
+                                    <template if:true={tree.parent.CheckItem__r.HasComment__c}>
+                                        <div class="slds-col" style="text-align: left;">
+                                            <template if:true={tree.parent.CommentRequired}>
+                                                <span style="color: red">*</span>
+                                            </template>
+                                            <span>
+                                                Description
+                                            </span>
+                                        </div>
+                                        <div class="slds-col slds-var-m-bottom_medium">
+                                            <lightning-input
+                                                variant="label-hidden"
+                                                data-id={tree.parent.Id}
+                                                data-index={index}
+                                                onblur={handleChangeComments}
+                                                value={tree.parent.Comments__c}
+                                                disabled={disabled}>
+                                            </lightning-input>
+                                        </div>
+                                    </template>
+
+                                    <!-- 上传文件 -->
+                                    <template if:true={tree.parent.CheckItem__r.HasFile__c}>
+                                        <div class="slds-col" style="text-align: left;">
+                                            <template if:true={tree.parent.FileRequired}>
+                                                <span style="color: red">*</span>
+                                            </template>
+                                            <span>{label.Upload_Photo}</span>
+                                        </div> 
+                                        <div class="slds-col slds-var-m-bottom_medium slds-var-m-left_small">
+                                            <c-new-upload-files-lwc
+                                                record-id={tree.parent.Id}
+                                                record-item-id={recordItemId}
+                                                disabled-delete={disabled}
+                                                disabled-upload={disabled}>
+                                            </c-new-upload-files-lwc>
+                                        </div>
+                                    </template>
+                                </div>
+                            <!-- </template> -->
+                        </div>
+                    </div>
+                    <template if:true={tree.children}>
+                        <!-- 新增循环子问题逻辑 YYL 20250305 -->
+                        <template for:each={tree.children} for:item="child" for:index="childIndex">
+                            <div key={tree.id}>
+                                <div>
+                                    <template for:each={child} for:item="childItem" for:index="childIndexItem">
+                                        <c-new-inspection-item-note-page-lwc key={childItem} 
+                                                                            node={childItem} 
+                                                                            submit={submit}
+                                                                            field-red={fieldRed}
+                                                                            response={tree.parent.Response__c}
+                                                                            disabled={disabled}
+                                                                            need-refresh={needRefresh}
+                                                                            parent-index={index}
+                                                                            child-index={childIndex}
+                                                                            child-index-item={childIndexItem}
+                                                                            onselect={handleChangeHasEdit}
+                                                                            ondata={handleProcessingdata}></c-new-inspection-item-note-page-lwc>
+                                    </template> 
+                                </div>
+                                <template if:true={tree.parent.CheckItem__r.Is_Loop_Relate_Questions__c}>
+                                    <template if:true={tree.parent.isShowPageItem}>
+                                        <div class="slds-grid slds-grid_vertical slds-text-align_left slds-var-m-left_medium slds-var-m-bottom_medium">
+                                            <div class="slds-col">{label.INSPECTION_REPORT_ACTION}</div>
+                                            <!-- <lightning-button
+                                                icon-name="action:delete"
+                                                variant="base"
+                                                data-index={index}
+                                                data-index1={childIndex}
+                                                onclick={handleDelRelate}>
+                                            </lightning-button> -->
+                                            <div class="slds-col">
+                                                <a style="margin-right: 3rem;">
+                                                    <lightning-icon 
+                                                        variant="success" 
+                                                        icon-name="utility:add"
+                                                        size="x-small" 
+                                                        title=""
+                                                        disabled={disabled}
+                                                        data-index={index}
+                                                        onclick={handleAddRelate}>
+                                                    </lightning-icon>
+                                                    <span class="slds-assistive-text"></span>
+                                                </a>
+                                                <a style="margin-right: 3rem;">
+                                                    <lightning-icon variant="success"
+                                                        icon-name="utility:dash" 
+                                                        size="x-small" 
+                                                        title=""
+                                                        data-index={index}
+                                                        data-index1={childIndex}
+                                                        onclick={handleDelRelate}>
+                                                    </lightning-icon>
+                                                    <span class="slds-assistive-text"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="line"></div>
+                                    </template>
+                                </template>
+                            </div>
+                        </template> 
+                        <!-- <template if:true={tree.parent.isShowPageItem}>
+                            <template if:true={tree.parent.CheckItem__r.Is_Loop_Relate_Questions__c}>
+                                <div class="slds-col" style="text-align: left;margin: 20px;">
+                                    <lightning-button-icon 
+                                        icon-name="utility:add" 
+                                        disabled={disabled} 
+                                        onclick={handleAddRelate}
+                                        data-index={index}
+                                        variant="brand">
+                                    </lightning-button-icon>
+                                </div>
+                            </template>
+                        </template> -->
+                    </template>
+                    
+                    <!-- <template if:false={showChildren}>
+                        <template if:true={tree.children}>
+                            <template for:each={tree.children} for:item="child">
+                                <c-new-inspection-item-note-page-lwc key={child} node={child} submit={submit} response={tree.parent.Response__c}></c-new-inspection-item-note-page-lwc>
+                            </template>
+                        </template>
+                    </template> -->
+                </div>
+            </template>
+        </div>
+    <!-- </lightning-card> -->
+    </div>
+    <template if:true={showAlert}>
+        <c-custom-multiline-alert-with-icons-lwc
+            title={alertTitle}
+            message={alertMessage}
+            icon-type={iconType}
+            onclose={handleAlertClose}
+        ></c-custom-multiline-alert-with-icons-lwc>
+    </template>
+</template>

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "db19fb74-b766-4093-8123-728f3e3a58bf",
+  "appPageId" : "e0bf1275-58c2-4fd8-9393-d738c12db8fe",
+  "configurationTags" : [ ],
+  "devName" : "Group_List",
+  "id" : "501ce792-792a-49ad-a0d2-9162630235f1",
+  "label" : "小组列表",
+  "routeType" : "list-0F9",
+  "type" : "route",
+  "urlPrefix" : "group"
+}

@@ -1,0 +1,135 @@
+<!--
+ * @Author: WFC
+ * @Date: 2023-05-26 14:06:44
+ * @LastEditors: WFC
+ * @LastEditTime: 2023-07-17 11:20:07
+ * @Description: 
+ * @FilePath: \Hitest_2022\force-app\main\default\lwc\trainingExaminationLWC\trainingExaminationLWC.html
+-->
+<template>
+    <template if:true={isShowSpinner} >
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+     </template>
+    <template if:true={isShowQuestion}>
+        <lightning-card class="slds-color__background_gray-4 pageHeader">
+            <header class = "slds-modal__header">
+                <h2 class = "slds-modal__title slds-hyphenate slds-text-title_bold">
+                    {trainingTaskName}     
+                </h2>
+            </header>
+        </lightning-card>
+
+        <lightning-card>
+            <div class="slds-modal__content" >
+                <template if:true={haveSingleChoiceList}>
+                    <div class="type">{label.Single_Choice_Question}：</div>
+                </template>
+                
+                <template for:each={singleChoiceList} for:item="singleChoice" for:index="index">
+                    <div key={singleChoice.Id}>
+                        <div>
+                            <span>{singleChoice.Sort__c}. {singleChoice.Title__c} ({singleChoice.Score__c}分)</span>
+                        </div>
+                        <div class="optionDiv">
+                            <div class="optionSpan">
+                                <lightning-input type="radio" label={singleChoice.Choice_A__c} name={singleChoice.Id} value="A" onchange={selectSingleChoice}></lightning-input> 
+                            </div>
+                            <div class="optionSpan">
+                                <lightning-input type="radio" label={singleChoice.Choice_B__c} name={singleChoice.Id} value="B" onchange={selectSingleChoice}></lightning-input>
+                            </div>
+                            <div class="optionSpan">
+                                <lightning-input type="radio" label={singleChoice.Choice_C__c} name={singleChoice.Id} value="C" onchange={selectSingleChoice}></lightning-input>
+                            </div>
+                            <div class="optionSpan">
+                                <lightning-input type="radio" label={singleChoice.Choice_D__c} name={singleChoice.Id} value="D" onchange={selectSingleChoice}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </template>
+
+                <template if:true={haveMultipleChoiceList}>
+                    <div class="type">{label.Multiple_Choice_Question}：</div>
+                </template>
+                <template for:each={multipleChoiceList} for:item="multipleChoice" for:index="index">
+                    <div key={multipleChoice.Id}>
+                        <div>
+                            <span>{multipleChoice.Sort__c}. {multipleChoice.Title__c} ({multipleChoice.Score__c}分)</span>
+                        </div>
+                        <div class="optionDiv">
+                            <div class="optionSpan">
+                                <lightning-input type="checkbox" label={multipleChoice.Choice_A__c} name={multipleChoice.Id} value="A" onchange={selectMultipleChoice}></lightning-input> 
+                            </div>
+                            <div class="optionSpan">
+                                <lightning-input type="checkbox" label={multipleChoice.Choice_B__c} name={multipleChoice.Id} value="B" onchange={selectMultipleChoice}></lightning-input>
+                            </div>
+                            <div class="optionSpan">
+                                <lightning-input type="checkbox" label={multipleChoice.Choice_C__c} name={multipleChoice.Id} value="C" onchange={selectMultipleChoice}></lightning-input>
+                            </div>
+                            <div class="optionSpan">
+                                <lightning-input type="checkbox" label={multipleChoice.Choice_D__c} name={multipleChoice.Id} value="D" onchange={selectMultipleChoice}></lightning-input>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </template>
+
+                <template if:true={haveJudgmentQuestionList}>
+                    <div class="type">{label.Judgment_Question}：</div>
+                </template>
+                <template for:each={judgmentQuestionList} for:item="judgmentQuestion" for:index="index">
+                    <div key={judgmentQuestion.Id}>
+                        <div>
+                            <span>{judgmentQuestion.Sort__c}. {judgmentQuestion.Title__c} ({judgmentQuestion.Score__c}分)</span>
+                        </div>
+                        <div class="optionDiv">
+                            <div class="optionSpan">
+                                <lightning-input type="radio" label="True" name={judgmentQuestion.Id} value="True" onchange={selectSingleChoice}></lightning-input> 
+                            </div>
+                            <div class="optionSpan">
+                                <lightning-input type="radio" label="False" name={judgmentQuestion.Id} value="False" onchange={selectSingleChoice}></lightning-input> 
+                            </div>
+                        </div>
+                    </div>
+                    
+                </template>
+
+                <template if:true={haveSubjectiveQuestionList}>
+                    <div class="type">{label.Subjective_Questions}：</div>
+                </template>
+                <template for:each={subjectiveQuestionList} for:item="subjectiveQuestion" for:index="index">
+                    <div key={subjectiveQuestion.Id}>
+                        <div>
+                            <span>{subjectiveQuestion.Sort__c}. {subjectiveQuestion.Title__c} ({subjectiveQuestion.Score__c}分)</span>
+                        </div>
+                        <div class="optionDiv">
+                            <lightning-textarea max-length="131072" name={subjectiveQuestion.Id} onchange={changeSubjectiveQuestion}></lightning-textarea>
+                        </div>
+                    </div>
+                    
+                </template>
+            </div>
+        </lightning-card>
+    </template>
+    
+        <lightning-card>
+            <div class="modal-footer slds-modal__footer">
+                <lightning-button
+                    variant="brand-outline"
+                    label={label.Training_Task_Cancel}
+                    onclick={cancel}
+                    class="slds-var-m-left_x-small"
+                > </lightning-button>
+                <template if:true={isCanAnswer}>
+                    <lightning-button
+                            variant="brand"
+                            label={label.Training_Task_Submit}
+                            onclick={submit}
+                            class="slds-var-m-left_x-small"
+                    ></lightning-button>
+                </template>
+            </div>
+        </lightning-card>
+   
+
+</template>

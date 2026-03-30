@@ -1,0 +1,72 @@
+.full-height {
+    /* 使用视口高度单位，使卡片占满整个视口高度 */
+    /* height: 100vh;  */
+    margin: 0; /* 去除外边距 */
+    background-color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content {
+    flex: 1; /* 使卡片内容区域填满容器 */
+}
+
+.helptext{
+    position: relative;
+    top: -6px;
+}
+
+.my-brand {
+    --slds-c-button-brand-color-background: #25665E;
+    --slds-c-button-brand-color-border: #25665E;
+}
+
+.backButton{
+    --slds-c-button-text-color: #25665E;
+}
+
+.tree-node {
+    /* margin-left: 20px;
+    border-left: 1px solid #ddd;
+    padding-left: 10px; */
+}
+
+.thumbnail-container {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.thumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.inline-block-div {
+    display: inline-block;
+}
+
+.line {
+    border-top: 1px solid rgb(165, 165, 165); /* 上边框，宽度为2px，颜色为黑色 */
+    width: 100%; /* 横线宽度 */
+    margin-top: 20px; /* 上边距 */
+    margin-bottom: 20px; /* 上边距 */  
+}
+
+.input-error input {
+    border-color: red;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper lightning-input.slds-has-error input {
+    border-color: #ea001e;
+}

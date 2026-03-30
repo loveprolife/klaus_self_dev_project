@@ -1,0 +1,132 @@
+/**********************************************************************
+ * function:Profile
+ * @author:lizunxing
+ * @url: /services/apexrest
+ * @data: 
+ * date:2024-07-16
+*************************************************************************/
+@RestResource(urlMapping='/SendProfileToBigData')
+global with sharing class SendProfileToBigData {  
+
+    global class AppInput{
+        public String startTime; 
+        public String endTime; 
+    }
+    global class AppOutPut{
+        //public Integer totalPage;
+        List<ProfileInfo> profileInfoList;
+    }
+
+    public class ProfileInfo {
+        public String Id;
+        public String Name;
+        public String UserLicenseId;
+        public String UserType;
+        public String CreatedDate;
+        public String CreatedById;
+        public String LastModifiedDate;
+        public String LastModifiedById;
+        public String SystemModstamp;
+        public String Description;
+        public String LastViewedDate;
+        public String LastReferencedDate;
+    }
+
+    @HttpPost
+    global static SendProfileToBigData.AppOutPut adoPost() {
+
+        RestRequest req = RestContext.request;
+        String reqBody = req.requestBody.tostring(); 
+        //String reqBody = '{"startTime":"2024-01-09 00:00:00","endTime":"2024-01-10 00:00:00"}'; 
+        SendProfileToBigData.AppInput appInput = new SendProfileToBigData.AppInput();
+        
+        SendProfileToBigData.AppOutPut result = new SendProfileToBigData.AppOutPut();
+        
+        try{
+            appInput = (SendProfileToBigData.AppInput)JSON.deserialize(reqBody, SendProfileToBigData.AppInput.class);
+
+            if(String.isBlank(appInput.startTime) || String.isBlank(appInput.endTime)){
+                return result;
+            }
+
+
+            appInput.startTime = Utility.increaseHoursInStringDate(appInput.startTime,8).replace(' ','T') + '.000+0000';
+            appInput.endTime = Utility.increaseHoursInStringDate(appInput.endTime,8).replace(' ','T') + '.000+0000';
+
+            String sql = 'select '+
+            'Id,'+
+            'Name,'+
+            'UserLicenseId,'+
+            'UserType,'+
+            'CreatedDate,'+
+            'CreatedById,'+
+            'LastModifiedDate,'+
+            'LastModifiedById,'+
+            'SystemModstamp,'+
+            'Description,'+
+            'LastViewedDate,'+
+            'LastReferencedDate '+
+
+            ' from Profile where LastModifiedDate >= '+appInput.startTime+' and LastModifiedDate <= '+appInput.endTime;
+            //List<Profile> ProfileList = (List<Profile>)Utility.getRecordListPage(sql, appInput.pageIndex, appInput.pageSize);
+            List<Profile> ProfileList = Database.query(sql);
+
+            List<ProfileInfo> ProfileInfoList = new List<ProfileInfo>();
+
+            for(Profile a : ProfileList){
+                ProfileInfo c = new ProfileInfo();
+                c.Id = checkNull(a.Id + '');
+                c.Name = checkNull(a.Name + '');
+                c.UserLicenseId = checkNull(a.UserLicenseId + '');
+                c.UserType = checkNull(a.UserType + '');
+                c.CreatedDate = checkNull(a.CreatedDate + '');
+                c.CreatedById = checkNull(a.CreatedById + '');
+                c.LastModifiedDate = checkNull(a.LastModifiedDate + '');
+                c.LastModifiedById = checkNull(a.LastModifiedById + '');
+                c.SystemModstamp = checkNull(a.SystemModstamp + '');
+                c.Description = checkNull(a.Description + '');
+                c.LastViewedDate = checkNull(a.LastViewedDate + '');
+                c.LastReferencedDate = checkNull(a.LastReferencedDate + '');
+              
+                ProfileInfoList.add(c);
+
+            }
+            result.ProfileInfoList = ProfileInfoList;
+            //String sql1 = 'select count(id) totalNumber from Profile where LoginTime >= '+appInput.startTime+' and LoginTime <= '+appInput.endTime;
+            //List<AggregateResult> c = Database.query(sql1);
+            //result.totalPage = (Integer.valueOf(c.get(0).get('totalNumber')) + Integer.valueOf(appInput.pageSize) - 1) / Integer.valueOf(appInput.pageSize);
+
+            System.debug('result :' + result);
+            //log
+            InterfaceLog__c ic = new InterfaceLog__c();
+            ic.Class__c = 'SendProfileToBigData';
+            ic.Time__c = System.Now();
+            ic.ReturnCode__c = '1';
+            ic.Req_Json__c = reqBody;
+            insert ic;
+
+            return result; 
+        }catch(Exception e){
+            //log
+            InterfaceLog__c ic = new InterfaceLog__c();
+            ic.Class__c = 'SendProfileToBigData';
+            ic.Time__c = System.Now();
+            ic.ReturnCode__c = '0';
+            ic.Req_Json__c = reqBody;
+            ic.ErrorMsg__c = e.getMessage();
+            insert ic;
+
+            return result; 
+        }
+    }
+
+    public static String checkNull(String str){
+        if(String.isBlank(str)){
+            return '';
+        }else if('null'.equals(str)){
+            return '';
+        }else{
+            return str;
+        }
+    }
+}

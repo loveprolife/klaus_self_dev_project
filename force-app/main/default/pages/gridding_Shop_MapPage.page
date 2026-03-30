@@ -1,0 +1,123 @@
+<!--
+  @description       : 
+  @author            : chenpeng@deloitte.com.cn
+  @group             : 
+  @last modified on  : 12-27-2021
+  @last modified by  : chenpeng@deloitte.com.cn
+-->
+<apex:page sidebar="false" controller="Gridding_Shop_MapController">
+
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <style type="text/css">
+            body, html,#map{
+                width: 100%;
+                height: 100%;
+                overflow: hidden;}
+            #map{
+                margin-top:35px;
+            }
+            .myButton {
+                background-color:rgba(27, 82, 151, 1);
+                -moz-border-radius:28px;
+                -webkit-border-radius:28px;
+                border-radius:8px;
+                border: 1px solid rgb(221, 219, 218);
+                display:inline-block;
+                cursor:pointer;
+                color: rgb(255, 255, 255);
+                font-family:Arial;
+                font-size:13px;
+                padding-left:1rem;
+                padding-right:1rem;
+                padding-top:0.5rem;
+                padding-bottom:0.5rem;
+                text-decoration:none;
+                text-shadow:0px 1px 0px #2f6627;
+            }
+            .myButton:hover {
+                background-color:1px solid rgb(221, 219, 218);
+                color: rgb(255, 255, 255);
+            }
+            .myButton:active {
+                position:relative;
+                top:1px;
+                color: rgb(255, 255, 255);
+            }
+            #buttGroup{
+                position:fixed; 
+                top:0; 
+                width:90%; 
+                height: 30px;
+                z-index: 9999;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div id="map"></div>
+    </body>
+    </html>
+
+    <script type="text/javascript">
+
+        //地址集合
+        var markerArr = []; 
+
+        //中心点
+        var initPoint = Object();
+        // 接收消息
+        var lexOrigin = '{!lexOrigin}';
+        console.log("lexOrigin" + lexOrigin);
+
+        var result = new Object();
+        window.addEventListener("message", function (event) {
+
+            console.log("event.origin" + event.origin);
+            if (event.origin === lexOrigin) {
+                var receivedfromLWC = event.data;
+                let outputLWC = document.getElementById('gridding-shop-map-l-w-c');
+                let receivedfromLWCMessage = new Object();
+                receivedfromLWCMessage = JSON.parse(receivedfromLWC);
+
+                console.log(receivedfromLWCMessage);
+                //搜索结果
+                if (receivedfromLWCMessage.key == 'markersList') {
+                    markerArr = receivedfromLWCMessage.value;
+
+                    //中心点赋值, 点位中的第一个点作为中心点
+                    initPoint.shopName = markerArr[0].shopName;
+                    initPoint.point = markerArr[0].position;
+                    createMap();
+                }
+            }
+        }, false );
+
+        //初始化谷歌地图
+        function createMap() {
+            var initP = initPoint.point;
+            var map = new google.maps.Map(
+                document.getElementById('map'), {
+                    zoom: 12, 
+                    center: initP,
+                    mapTypeId: google.maps.MapTypeId.MAP
+                }
+            );
+
+            //循环制造门店点位
+            for (var i = 0; i < markerArr.length; i++) {
+                let shopName = markerArr[i].shopName;
+                let point = markerArr[i].position;
+                var initMarker = new google.maps.Marker({position: point, map: map, title: shopName, label: shopName});
+            }
+        }
+    </script>
+  
+
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAucQYfZ2tw2RBO7jieFwG27-BeldZVgFY
+
+    &callback=createMap&language=en"></script>
+
+</apex:page>

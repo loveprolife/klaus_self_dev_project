@@ -8,11 +8,15 @@
     <label>Approvals</label>
     <navType>Console</navType>
     <tabs>standard-ApprovalsHome</tabs>
-    <tabs>District__c</tabs>
+    <tabs>Expo_Date_Controller__c</tabs>
+    <tabs>Expo_Fields_Controller__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
         <mappings>
-            <tab>District__c</tab>
+            <tab>Expo_Date_Controller__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Expo_Fields_Controller__c</tab>
         </mappings>
         <mappings>
             <tab>standard-ApprovalsHome</tab>

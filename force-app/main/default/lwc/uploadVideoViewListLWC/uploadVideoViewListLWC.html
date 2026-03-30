@@ -1,0 +1,96 @@
+<!--
+ * @Author: WFC
+ * @Date: 2023-06-12 15:09:47
+ * @LastEditors: WFC
+ * @LastEditTime: 2023-07-10 15:26:26
+ * @Description: 培训人员上传的文件list
+ * @FilePath: \Hitest_2022\force-app\main\default\lwc\uploadVideoViewListLWC\uploadVideoViewListLWC.html
+-->
+<template>
+    <lightning-card>
+        <div style="margin-bottom: 20px;">
+            <lightning-icon icon-name='standard:file' alternative-text='file' size='small' title='file' style="margin-left: 10px;margin-right: 10px"></lightning-icon>
+            <span style="font-weight: bolder;font-size:medium">Files ({fileInfoListSize})</span>
+            <lightning-button-icon 
+                icon-name="utility:refresh" 
+                alternative-text="Refresh"
+                class="slds-m-left_xx-small"
+                title="Refresh"
+                onclick={refreshFileBox}
+                style="float: right;padding-right:30px"
+                >
+            </lightning-button-icon>
+        </div>
+        <table class="slds-table slds-table_bordered" style="border: 1px solid rgb(221, 219, 218);">
+            <tr>
+                <td class="title">Title</td>
+                <td class="title">Last Modified</td>
+                <td class="title">Size</td>
+                <td class="title">FileType</td>
+                <td class="title">Action</td>
+            </tr>
+                <template for:each={fileInfoList} for:item="fileInfo" for:index="index">
+                    <tr key='{fileInfo.index}'>
+                        <td style="width:20%;">
+                            <a href={fileInfo.ContentDocumentUrl} target="_blank">
+                                <template lwc:if={fileInfo.isMP4}><lightning-icon icon-name='doctype:mp4' alternative-text='mp4' size='small' title='mp4'></lightning-icon></template>
+                                <template lwc:elseif={fileInfo.isEXCEL}><lightning-icon icon-name='doctype:excel' alternative-text='excel' size='small' title='excel'></lightning-icon></template>
+                                <template lwc:elseif={fileInfo.isJPG}><lightning-icon icon-name='doctype:image' alternative-text='image' size='small' title='image'></lightning-icon></template>
+                                <template lwc:elseif={fileInfo.isTEXT}><lightning-icon icon-name='doctype:txt' alternative-text='txt' size='small' title='txt'></lightning-icon></template>
+                                <template lwc:elseif={fileInfo.isPDF}><lightning-icon icon-name='doctype:pdf' alternative-text='pdf' size='small' title='pdf'></lightning-icon></template>
+                                <template lwc:elseif={fileInfo.isCSV}><lightning-icon icon-name='doctype:csv' alternative-text='csv' size='small' title='csv'></lightning-icon></template>
+                                <template lwc:elseif={fileInfo.isPPT}><lightning-icon icon-name='doctype:ppt' alternative-text='ppt' size='small' title='ppt'></lightning-icon></template>
+                                <template lwc:else><lightning-icon icon-name='doctype:unknown' alternative-text='unknown' size='small' title='unknown'></lightning-icon></template>
+                                <span style="margin-left: 6px;">{fileInfo.Title}</span>
+                            </a>
+                        </td>
+                        <td style="width:20%;">{fileInfo.LastModifiedDate}</td>
+                        <td style="width:20%;">{fileInfo.ContentSize}</td>
+                        <td style="width:20%;">{fileInfo.fileType}</td>
+                        <td style="width:20%;" class="cursor">
+                            <lightning-icon
+                                variant="error"
+                                icon-name="utility:delete"                     
+                                size="small" 
+                                data-record={fileInfo.ContentDocumentId} 
+                                alternative-text="delete" 
+                                label='删除' 
+                                onclick={showDeleteFileBox}>
+                            </lightning-icon>
+                            <!-- <lightning-button
+                                data-record={fileInfo.ContentDocumentId} 
+                                variant="destructive" 
+                                label='删除' 
+                                onclick={showDeleteFileBox} 
+                                value='删除'>
+                            </lightning-button> -->
+                        </td>
+                    </tr>
+                    
+                </template>
+
+        </table>
+    </lightning-card>
+
+    <template if:true={show}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <template if:true={isShowSpinner}>
+                    <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+                </template>
+                <header class="slds-modal__header">
+                    <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Delete File?</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <p style="text-align: center">Deleting a file also removes it from any records or posts it's attached to.</p>
+                    
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button variant="brand-outline" label='Cancel' onclick={cancel} class="slds-p-around_x-small"></lightning-button>
+                    <lightning-button variant="brand" label='Delete' onclick={deleteFile} class="slds-p-around_x-small"></lightning-button>
+                </footer>
+            </div>
+            </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

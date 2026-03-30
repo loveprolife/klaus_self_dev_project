@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>IFA报名审批通过</description>
+    <encodingKey>GB2312</encodingKey>
+    <name>IFA Internal Registration Approved</name>
+    <style>none</style>
+    <subject>2025 IFA  Registration Approved  系统邮件无需回复 &lt;Please do NOT reply&gt;</subject>
+    <textOnly>尊敬的 王芳，
+
+       您的报名已通过集团公司审核。2025年IFA展将于9月5日-9日在德国柏林举行。为保证参展顺利，各公司/事业部需及时自行办理申根签证、预订机票等事宜。德国柏林的酒店、大巴、会议室等需求统计将在开放预订前单独邮件通知，届时也请通过展会系统进行需求提报。
+登陆遇到问题咨询 王芳 wangfang19@hisense.com
+
+Dear  王芳，
+
+Your registration has been approved by the group company. 2025 IFA exhibition will be held in Berlin from Sept.5th to Sept.9th. To ensure seamless participation in the exhibition, it is essential to promptly address matters such as applying for a Schengen visa and booking air tickets independently. Demand statistics for accommodations, transportation, and meeting rooms in Berlin will be communicated via email prior to the reservation opening. At that time, please submit your requirements through the Hisense expo system. 
+ 
+Should you encounter any issues during the login process, please contact Ms. Wang Fang for assistance wangfang19@hisense.com.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

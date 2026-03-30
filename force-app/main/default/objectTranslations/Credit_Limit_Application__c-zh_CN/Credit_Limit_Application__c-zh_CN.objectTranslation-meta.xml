@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>信用额度申请</value>
+    </caseValues>
+    <nameFieldLabel>信用申请号</nameFieldLabel>
+</CustomObjectTranslation>

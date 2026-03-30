@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Tax_category_decision</name>
+        <label>Tax category decision</label>
+        <locationX>664</locationX>
+        <locationY>505</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Not_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Tax_category</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_tax_category</targetReference>
+            </connector>
+            <label>Not Null</label>
+        </rules>
+    </decisions>
+    <description>加拿大取消默认税分类</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Tax_Catagoery_External_Id</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.National_tax_category__r.Tax_category__c} + &apos;1&apos;</expression>
+    </formulas>
+    <interviewLabel>Customer address set tax category {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Customer address set tax category</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Tax_category</name>
+        <label>Get Tax category</label>
+        <locationX>671</locationX>
+        <locationY>380</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Tax_category_decision</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Tax_Catagoery_External_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Tax_Catagoery_External_Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Tax_category__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Set_tax_category</name>
+        <label>Set tax category</label>
+        <locationX>976</locationX>
+        <locationY>501</locationY>
+        <inputAssignments>
+            <field>Tax_category__c</field>
+            <value>
+                <elementReference>Get_Tax_category.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>544</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Get_Tax_category</targetReference>
+        </connector>
+        <filterFormula>{!$Record.Customer_Extend__r.Customer__r.RecordType.DeveloperName} = &apos;Customer_Address&apos;&amp;&amp;TEXT({!$Record.Customer_Extend__r.Hisense_Entity_Sales__c})&lt;&gt;&apos;8120&apos;</filterFormula>
+        <object>Customer_Extend_Tax_category__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

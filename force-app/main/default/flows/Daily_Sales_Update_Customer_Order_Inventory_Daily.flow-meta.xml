@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Daily Sales 修改数量同步修改Customer Order Inventory Daily 表中的数据</description>
+    <environments>Default</environments>
+    <interviewLabel>Daily Sales Update Customer Order Inventory Daily {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Daily Sales Update Customer Order Inventory Daily</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <description>获取 Customer Order Inventory Daily表</description>
+        <name>Get_Customer_Order_Inventory_Daily</name>
+        <label>Get Customer Order Inventory Daily</label>
+        <locationX>776</locationX>
+        <locationY>406</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Update_Customer_Order_Inventory_Daily</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Daily_Sales__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Customer_Order_Inventory_Daily__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>更改 Customer Order Inventory Daily 数量字段</description>
+        <name>Update_Customer_Order_Inventory_Daily</name>
+        <label>Update Customer Order Inventory Daily</label>
+        <locationX>780</locationX>
+        <locationY>578</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Customer_Order_Inventory_Daily.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Quantity__c</field>
+            <value>
+                <elementReference>$Record.Number__c</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Customer_Order_Inventory_Daily__c</object>
+    </recordUpdates>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Get_Customer_Order_Inventory_Daily</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Number__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Retail_Number__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

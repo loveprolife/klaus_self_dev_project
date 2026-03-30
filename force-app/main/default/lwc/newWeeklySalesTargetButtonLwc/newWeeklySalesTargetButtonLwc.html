@@ -1,0 +1,119 @@
+<template>
+
+    <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+    <lightning-modal-header if:false={recordId} label={label.NewWeeklySalesTarget}></lightning-modal-header>
+    <lightning-modal-header if:true={recordId} label={label.EditWeeklySalesTarget}></lightning-modal-header>
+    
+    <lightning-modal-body>
+        <lightning-record-edit-form object-api-name="Weekly_Sales_Target__c" density="Compact">
+            <lightning-messages></lightning-messages>
+
+            <span>{fields.Sales_Region__c}</span>
+            <lightning-input-field field-name='Sales_Region__c' data-field-name="Sales_Region__c" variant="label-hidden"
+                value={weeklySalesTarger.Sales_Region__c} onchange={handleFieldChange} onkeydown={handleKeyDown} disabled=true>
+            </lightning-input-field>
+
+            <span if:false={isEdit} style="color:red">*</span>
+            <span>{fields.Week__c}</span>
+            <lightning-combobox
+                  variant="label-hidden"
+                  options={getWeekOptions}
+                  value={weeklySalesTarger.Week__c}
+                  onchange={handleFieldChange}
+                  disabled={isEdit}>
+            </lightning-combobox>
+
+            <span if:false={isEdit} style="color:red">*</span>
+            <span>{fields.Channel_item__c}</span>
+            <template if:true={isEdit}>
+                <input type="text" class="slds-input" disabled value={weeklySalesTarger.Channel_Name__c} />
+            </template>
+            <template if:false={isEdit}>
+                <c-combobox-autocomplete 
+                    hidden-label=true
+                    options={channelOptions}
+                    onselectoption={channelOptionChange}
+                    classes="slds-m-bottom_small custom-search-input"
+                    value={weeklySalesTarger.Channel_Name__c}
+                    >
+                </c-combobox-autocomplete>
+            </template>
+            <!-- <lightning-input-field disabled={isEdit} field-name='Channel_item__c' data-field-name="Channel_item__c" variant="label-hidden" value={weeklySalesTarger.Channel_item__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+            </lightning-input-field> -->
+
+            <!-- Store -->
+            <span if:false={isEdit} style="color:red">*</span>
+            <span>{fields.Store__c}</span>
+            <template if:true={isEdit}>
+                <input type="text" class="slds-input" disabled value={weeklySalesTarger.Store_Name__c} />
+            </template>
+            <template if:false={isEdit}>
+                <c-combobox-autocomplete 
+                    hidden-label=true
+                    options={storeOptions}
+                    onselectoption={storeOptionChange}
+                    classes="slds-m-bottom_small custom-search-input"
+                    value={weeklySalesTarger.Store_Name__c}
+                    name="storeName">
+                </c-combobox-autocomplete>
+            </template>
+            <!-- <lightning-input-field disabled={isEdit} field-name='Store__c' data-field-name="Store__c" variant="label-hidden" value={weeklySalesTarger.Store__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+            </lightning-input-field> -->
+
+            <span if:false={isEdit} style="color:red">*</span>
+            <span>{fields.Product_Line__c}</span>
+            <lightning-input-field field-name='Product_Line__c' data-field-name="Product_Line__c" variant="label-hidden"
+                value={weeklySalesTarger.Product_Line__c} onchange={handleFieldChange} onkeydown={handleKeyDown} disabled={isEdit}>
+            </lightning-input-field>
+
+            <span if:false={isEdit} style="color:red">*</span>
+            <span>{fields.Model__c}</span>
+            <template if:true={isEdit}>
+                <input type="text" class="slds-input" disabled value={weeklySalesTarger.Model_Name__c} />
+            </template>
+            <template if:false={isEdit}>
+                <c-lookup-lwc 
+                    name="onProduct"
+                    search-key={weeklySalesTarger.Model_Name__c}
+                    obj-name="Product__c" 
+                    placeholder={label.add_Inspection_product}
+                    op={lookupFilter} 
+                    onlookupupdate={handleChangeProductOption}
+                    read-only={isEdit}>
+                </c-lookup-lwc>
+            </template>
+
+            <span>{fields.RSP__c}</span>
+            <lightning-input-field field-name='RSP__c' data-field-name="RSP__c" variant="label-hidden"
+                value={weeklySalesTarger.RSP__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+            </lightning-input-field>
+
+            <span style="color:red">*</span>
+            <span>{fields.Plan_Target__c}</span>
+            <lightning-input-field disabled={channleEditFlg} field-name='Plan_Target__c' data-field-name="Plan_Target__c" variant="label-hidden"
+                value={weeklySalesTarger.Plan_Target__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+            </lightning-input-field>
+
+            <template lwc:if={isEdit}>
+                <span>{fields.Target__c}</span>
+                <lightning-input-field disabled={channleEditFlg} field-name='Target__c' data-field-name="Target__c" variant="label-hidden"
+                    value={weeklySalesTarger.Target__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+                </lightning-input-field>
+            </template>
+        </lightning-record-edit-form>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <!-- Cancel Button -->
+        <lightning-button label="Cancel" title="Non-primary action" onclick={cancelHandleClick}
+            class="slds-m-left_x-small">
+        </lightning-button>
+        <!-- Save & New -->
+        <!-- Save Button -->
+        <lightning-button variant="brand" label="Save" title="Primary action" onclick={saveHandleClick}
+            class="slds-m-left_x-small"></lightning-button>
+    </lightning-modal-footer>
+
+</template>

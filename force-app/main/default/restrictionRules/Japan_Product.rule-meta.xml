@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RestrictionRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <description>&amp;amp;amp;#26085;&amp;amp;amp;#26412;&amp;amp;amp;#29992;&amp;amp;amp;#25143;&amp;amp;amp;#26597;&amp;amp;amp;#30475;&amp;amp;amp;#26085;&amp;amp;amp;#26412;&amp;amp;amp;#20135;&amp;amp;amp;#21697;</description>
+    <enforcementType>Restrict</enforcementType>
+    <masterLabel>日本用户查看日本产品</masterLabel>
+    <recordFilter>RecordType.DeveloperName=&apos;ALL_Product_Japan&apos;</recordFilter>
+    <targetEntity>Product__c</targetEntity>
+    <userCriteria>CASE($User.Country__c, &apos;Japan&apos;, 1, 0)=1</userCriteria>
+    <version>1</version>
+</RestrictionRule>

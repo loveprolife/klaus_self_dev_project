@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "eced4341-b96d-46e7-96b0-a46e8226e667",
+  "appPageId" : "5637ed1b-1cbb-4478-b05d-b7ba4ba7ac38",
+  "configurationTags" : [ ],
+  "devName" : "Login",
+  "id" : "3422487f-6462-48ca-8938-5158beb38724",
+  "label" : "登录",
+  "routeType" : "login-home",
+  "type" : "route",
+  "urlPrefix" : ""
+}

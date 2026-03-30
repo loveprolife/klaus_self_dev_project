@@ -17,7 +17,7 @@
     <enableJPGPreviews>false</enableJPGPreviews>
     <enableLWCFileUpload>true</enableLWCFileUpload>
     <enableLWCFileUploadInFlows>false</enableLWCFileUploadInFlows>
-    <enableLibraryManagedFiles>false</enableLibraryManagedFiles>
+    <enableLibraryManagedFiles>true</enableLibraryManagedFiles>
     <enableSiteGuestUserToUploadFiles>false</enableSiteGuestUserToUploadFiles>
     <enableUploadFilesOnAttachments>false</enableUploadFilesOnAttachments>
     <setValidContentTypeForAtchDocDownload>false</setValidContentTypeForAtchDocDownload>

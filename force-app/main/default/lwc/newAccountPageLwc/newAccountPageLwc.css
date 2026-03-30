@@ -1,0 +1,38 @@
+:host{ 
+    --slds-c-accordion-heading-font-size: 1rem;
+    --slds-c-accordion-section-spacing-inline-end: 0px;
+    --slds-c-textarea-sizing-min-height: 200px;
+}
+
+.line {
+    border-top: 1px solid rgb(165, 165, 165); /* 上边框，宽度为2px，颜色为黑色 */
+    width: 100%; /* 横线宽度 */
+    margin-top: 30px; /* 上边距 */
+    margin-bottom: 30px; /* 上边距 */  
+}
+
+.noline {
+    width: 100%; /* 横线宽度 */
+    margin-top: 30px; /* 上边距 */
+    margin-bottom: 30px; /* 上边距 */  
+}
+
+.my-button {
+    --slds-c-button-neutral-spacing-inline-start: 2rem;
+    --slds-c-button-neutral-spacing-inline-end: 2rem;
+}
+
+/* 组件 CSS 文件（如：datatableStyle.css） */
+.my-table lightning-datatable::part(table) {
+    border: 2px solid #0070d2; /* 外边框颜色和粗细 */
+    border-radius: 4px; /* 圆角 */
+}
+
+lightning-pill {
+    cursor: move;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+}

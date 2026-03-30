@@ -1,0 +1,103 @@
+<aura:component controller="CreditLimitApplicationRRInfoController"
+implements="flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId" 
+access="global">
+    <ltng:require styles="{!$Resource.enlargeModalWindow + '/enlargeModalWindow.css'}" />
+
+<!-- 主记录ID -->
+<aura:attribute name="recordId" type="Id" />
+<aura:attribute name="loaded" type="Boolean" default="false" />
+
+<!-- 初始化数据 -->
+<aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+<aura:attribute name="rrAuditListData" type="Credit_Limit_Application_RR_INFO__c[]"/>
+
+<div class="exampleHolder">
+	<aura:if isTrue="{! v.loaded }">
+		<lightning:spinner alternativeText="Loading" />
+	</aura:if>
+</div>
+
+<div class="slds-grid slds-page-header forceRelatedListCardHeader" >
+	<h2 class="slds-card__header-title">
+		<span class="slds-truncate">{!$Label.c.RR_Approval_Information}</span>
+	</h2>
+	<div style="float: right;margin-left:20em">
+		<lightning:button variant="brand-outline" label="{!$Label.c.RR_Approval_Information_Sync}" title="{!$Label.c.RR_Approval_Information_Sync}" onclick="{! c.admit }" />
+	</div>
+</div>
+
+<div style="width: 100%;">
+	<table class="tableCss" style="width: 100%;" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr class="slds-line-height_reset" style="position: -webkit-sticky; position: sticky;" bgcolor="#FFFFFF">
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Audit_Node}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Audit_Status}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Audit_Person}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Audit_Time}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Audit_Opinion}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Audti_Limit}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Audti_Term}</span>
+				</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+<div class="slds-scrollable" style="width: 100%;">
+	<table class="tableCss" style="width: 100%;word-break:break-all;" cellpadding="1" cellspacing="1">
+		<tbody class="slds-scrollable">
+			<aura:iteration items="{!v.rrAuditListData}" var="item" indexVar="index">
+				<tr class="slds-hint-parent" bgcolor="#FFFFFF">
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.Audit_Node__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.Audit_Status__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.Audit_Person__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="7%;">
+						<span class="">
+							{!item.Audit_Time__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.Audit_Opinion__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.Audti_Limit__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.Audti_Term__c}
+						</span>
+					</td>
+				</tr>
+			</aura:iteration>
+		</tbody>
+	</table>
+</div>
+</aura:component>

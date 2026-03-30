@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CheckItem__c$Id</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$OrderNumber__c</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$BussinessArea__c</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$Project__c</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$Description__c</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$HelpText__c</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$MaximumScore__c</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$IsYesOrNo__c</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$HasFile__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>CheckItem__c$IsCountInScore__c</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$Active__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>Check Items Import Template</description>
+    <format>Tabular</format>
+    <name>Check Items Import Template</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Check_Items__c</reportType>
+    <scope>user</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>CheckItem__c$Id</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CheckItem__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

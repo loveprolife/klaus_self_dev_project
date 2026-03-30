@@ -1,0 +1,25 @@
+<template>
+    <lightning-card class="slds-color__background_gray-4 pageHeader">
+        <header class = "slds-modal__header">
+            <h2 class = "slds-modal__title slds-hyphenate slds-text-title_bold">
+                {objectLoad}  
+            </h2>
+        </header>
+        <div style="margin-top: 2rem;" class="star-container slds-dl_horizontal slds-media_center slds-grid_align-center" >
+            <span style="margin-right: 1rem;">Week</span>
+            <lightning-combobox
+                    variant="label-hidden"
+                    options={getWeekOptions}
+                    value={week}
+                    onchange={handleFieldChange}
+                    disabled={isEdit}>
+            </lightning-combobox>
+        </div>
+        <div class="star-container slds-dl_horizontal slds-media_center slds-grid_align-center" >
+            
+            <div style="padding-top: 30px;padding-bottom: 2rem;">
+                <lightning-button label={label.List_Button_Calculate} onclick={runAll} variant="brand"></lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

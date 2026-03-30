@@ -1,0 +1,14 @@
+.THIS .slds-pill{
+    /* color : var(--lwc-brandTextLink,rgb(1, 118, 211)); */
+    /* text-decoration : underline; */
+    cursor : pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--lwc-brandTextLink,rgb(41, 146, 233));
+    border-radius: 10px 10px 10px 10px;
+}
+.THIS .slds-pill:hover{
+    background-color:rgba(173, 216, 230, 0.7);
+}

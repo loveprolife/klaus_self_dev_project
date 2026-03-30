@@ -1,0 +1,125 @@
+<template>
+    <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+    <!-- <c-modal-lwc data-id="product selection" static-mode=true title="" show-ok=true show-close=true hidden-close-icon=false onok={handleOk}>
+        <h1>{label.PromoterDailyReport_DeleteReminder}</h1>
+    </c-modal-lwc> -->
+
+    <template if:true={storeId}>
+       <c-upload-store-pictures-view-l-w-c record-id={storeId} show-label="true"></c-upload-store-pictures-view-l-w-c> 
+    </template>
+    
+    <template for:each={recordList} for:item="item" for:index="index">
+        <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-resizable marketInsightTable"
+            key={item.index}>
+            <tbody>
+                <!-- <tr>
+                    <td class="tdOne">
+                        <span>Date</span>
+                    </td>
+                    <td class="tdTwo">
+                        {reportDate}
+                    </td>
+                </tr> -->
+                <tr>
+                    <td class="tdOne">
+                        <span style="color:red">*</span>
+                        <span>{fields.Store__c}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <!-- <template lwc:if={viewMode}>
+                            <lightning-input variant="label-hidden" value={item.store} readonly>
+                            </lightning-input>
+                        </template>
+                        <template lwc:else>
+                            <lightning-combobox variant="label-hidden" data-field-name="Store__c" data-index={index}
+                                value={item.Store__c} options={storeOptions} onchange={inputChangeHandler} required>
+                            </lightning-combobox>
+                        </template> -->
+
+                        <lightning-input variant="label-hidden" value={item.store} readonly>
+                        </lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdOne">
+                        <span>{fields.Comments__c}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <!-- <lightning-record-edit-form object-api-name="StoreView__c" density="Compact">
+                            <lightning-input-field variant="label-hidden" field-name='Comments__c'
+                                data-field-name="Comments__c" data-id={index} data-index={index} name={index}
+                                value={item.Comments__c} onchange={inputChangeHandler}>
+                            </lightning-input-field>
+                        </lightning-record-edit-form> -->
+
+                        <lightning-input variant="label-hidden" field-name='Comments__c' data-field-name="Comments__c"
+                            data-id={index} data-index={index} name={index} value={item.Comments__c}
+                            onchange={inputChangeHandler} type="text" read-only={viewMode}>
+                        </lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tdOne">
+                        <span style="color:red">*</span>
+                        <span>{label.PromoterDailyReport_ATTACHMENT}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <c-upload-files-lwc parent-id={recordId} record-id={item.Id} data-index={item.index}
+                            onselectfiles={handleSelectFiles} disabled-delete={viewMode} disabled-upload={viewMode}>
+                        </c-upload-files-lwc>
+                    </td>
+                </tr>
+                <template if:false={viewMode}>
+                    <tr>
+                        <td class="tdOne">
+                            <span>{label.PromoterDailyReport_ACTIONS}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <div>
+                                <div style="float: left;">
+                                    <a>
+                                        <lightning-icon variant="success" icon-name="utility:dash" size="x-small"
+                                            title="" data-index={index} onclick={itemRemoveHandler}>
+                                        </lightning-icon>
+                                        <span class="slds-assistive-text"></span>
+                                    </a>
+                                </div>
+                                <div style="float: right;">
+                                    <a>
+                                        <lightning-icon variant="success" icon-name="utility:add" size="x-small"
+                                            title="" data-index={index} onclick={addStoreViewItem}>
+                                        </lightning-icon>
+                                        <span class="slds-assistive-text"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- <a style="margin-right: 4rem;">
+                            <lightning-icon variant="success" icon-name="utility:dash" size="x-small" title=""
+                                data-index={index} onclick={itemRemoveHandler}>
+                            </lightning-icon>
+                            <span class="slds-assistive-text"></span>
+                        </a> -->
+                            <!-- <a style="margin-right: 4rem;">
+                            <lightning-icon variant="success" icon-name="utility:add" size="x-small" title=""
+                                data-index={index} onclick={addStoreViewItem}>
+                            </lightning-icon>
+                            <span class="slds-assistive-text"></span>
+                        </a> -->
+                            <!-- <a>
+                            <lightning-icon variant="success" icon-name="utility:attach" size="x-small" title=""
+                                data-index={index} data-id={brandIndex} onclick={handleclick}>
+                            </lightning-icon>
+                            <span class="slds-assistive-text"></span>
+                        </a> -->
+                        </td>
+                    </tr>
+                </template>
+
+            </tbody>
+        </table>
+    </template>
+    <input type="file" onchange={uploadFile} accept={acceptedFormats} class="storeViewFileInput"></lightning-input>
+
+</template>

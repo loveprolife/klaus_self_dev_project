@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Internal_Expo_Meeting_Room_Start</flowApiName>
+    <label>Exhibition Send Email Test</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;AgreeStored__c&quot;:true,&quot;Agree_Private_Policy__c&quot;:true,&quot;Approval_FDID__c&quot;:&quot;191ef6eab83d1229e6a42ff4484a0749&quot;,&quot;Approval_Status__c&quot;:&quot;高级权限&quot;,&quot;Certificate_Type_Text__c&quot;:&quot;Day Voucher|临时证&quot;,&quot;Certificate_Type__c&quot;:&quot;Day Voucher|临时证&quot;,&quot;Company_Abbr__c&quot;:&quot;海信集团\\集团公司\\流程IT与数据管理部\\国际营销解决方案部&quot;,&quot;ContactEmail__c&quot;:&quot;cuijie3@hisense.com&quot;,&quot;Counry__c&quot;:&quot;中国&quot;,&quot;CurrencyIsoCode&quot;:&quot;USD&quot;,&quot;Deliverable__c&quot;:&quot;xx&quot;,&quot;Department_Code__c&quot;:&quot;Day Voucher|临时证&quot;,&quot;Department_Name__c&quot;:&quot;国际营销解决方案部&quot;,&quot;Email__c&quot;:&quot;cuijie3@hisense.com&quot;,&quot;Exhibition_Id__c&quot;:&quot;a3KTL0000001XRl2AM&quot;,&quot;First_Name__c&quot;:&quot;Mars&quot;,&quot;Gender__c&quot;:&quot;男&quot;,&quot;Is_Present__c&quot;:true,&quot;Is_Valid_Schengen_Visa__c&quot;:false,&quot;Is_Valid_US_Schengen_Visa__c&quot;:true,&quot;Is_Verify_Batch__c&quot;:false,&quot;Is_Verify__c&quot;:true,&quot;Last_Name__c&quot;:&quot;Cui&quot;,&quot;Last_Verified_Date__c&quot;:&quot;2024-09-29T10:01:20.000Z&quot;,&quot;Name&quot;:&quot;Mars Cui&quot;,&quot;Name_CN__c&quot;:&quot;崔杰&quot;,&quot;OwnerId&quot;:&quot;0050o00000ZMayOAAT&quot;,&quot;Phone__c&quot;:&quot;18660220291&quot;,&quot;Position__c&quot;:&quot;高级业务需求分析工程师&quot;,&quot;Product_Line__c&quot;:&quot;其他&quot;,&quot;Purpose_Of_Exhibition__c&quot;:&quot;参展&quot;,&quot;Remark__c&quot;:&quot;2&quot;,&quot;Verify_Result__c&quot;:&quot;接口调用成功,验证通过,成功获取Ldap账号信息&quot;,&quot;XHNumber__c&quot;:&quot;cuijie3&quot;,&quot;value&quot;:{&quot;Approval_FDID__c&quot;:&quot;191ef6eab83d1229e6a42ff4484a0749&quot;,&quot;Approval_Status__c&quot;:&quot;高级权限&quot;,&quot;Certificate_Type_Text__c&quot;:&quot;Day Voucher|临时证&quot;,&quot;Certificate_Type__c&quot;:&quot;Day Voucher|临时证&quot;,&quot;Company_Abbr__c&quot;:&quot;海信集团\\集团公司\\流程IT与数据管理部\\国际营销解决方案部&quot;,&quot;ContactEmail__c&quot;:&quot;cuijie3@hisense.com&quot;,&quot;Counry__c&quot;:&quot;中国&quot;,&quot;CurrencyIsoCode&quot;:&quot;USD&quot;,&quot;Deliverable__c&quot;:&quot;xx&quot;,&quot;Department_Code__c&quot;:&quot;Day Voucher|临时证&quot;,&quot;Department_Name__c&quot;:&quot;国际营销解决方案部&quot;,&quot;Email__c&quot;:&quot;cuijie3@hisense.com&quot;,&quot;Exhibition_Id__c&quot;:&quot;a3KTL0000001XRl2AM&quot;,&quot;First_Name__c&quot;:&quot;Mars&quot;,&quot;Gender__c&quot;:&quot;男&quot;,&quot;Last_Name__c&quot;:&quot;Cui&quot;,&quot;Last_Verified_Date__c&quot;:&quot;2024-09-29T10:01:20.000Z&quot;,&quot;Name&quot;:&quot;Mars Cui&quot;,&quot;Name_CN__c&quot;:&quot;崔杰&quot;,&quot;OwnerId&quot;:&quot;0050o00000ZMayOAAT&quot;,&quot;Phone__c&quot;:&quot;18660220291&quot;,&quot;Position__c&quot;:&quot;高级业务需求分析工程师&quot;,&quot;Product_Line__c&quot;:&quot;其他&quot;,&quot;Purpose_Of_Exhibition__c&quot;:&quot;参展&quot;,&quot;Remark__c&quot;:&quot;2&quot;,&quot;Verify_Result__c&quot;:&quot;接口调用成功,验证通过,成功获取Ldap账号信息&quot;,&quot;XHNumber__c&quot;:&quot;cuijie3&quot;}}</sobjectValue>
+            </value>
+        </parameters>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordUpdated</type>
+            <value>
+                <sobjectValue>{&quot;AgreeStored__c&quot;:true,&quot;Agree_Private_Policy__c&quot;:true,&quot;Approval_FDID__c&quot;:&quot;191ef6eab83d1229e6a42ff4484a0749&quot;,&quot;Approval_Status__c&quot;:&quot;高级权限&quot;,&quot;Certificate_Type_Text__c&quot;:&quot;Day Voucher|临时证&quot;,&quot;Certificate_Type__c&quot;:&quot;Day Voucher|临时证&quot;,&quot;Company_Abbr__c&quot;:&quot;海信集团\\集团公司\\流程IT与数据管理部\\国际营销解决方案部&quot;,&quot;ContactEmail__c&quot;:&quot;cuijie3@hisense.com&quot;,&quot;Counry__c&quot;:&quot;中国&quot;,&quot;CurrencyIsoCode&quot;:&quot;USD&quot;,&quot;Deliverable__c&quot;:&quot;xx&quot;,&quot;Department_Code__c&quot;:&quot;Day Voucher|临时证&quot;,&quot;Department_Name__c&quot;:&quot;国际营销解决方案部&quot;,&quot;Email__c&quot;:&quot;cuijie3@hisense.com&quot;,&quot;Exhibition_Id__c&quot;:&quot;a3KTL0000001XRl2AM&quot;,&quot;First_Name__c&quot;:&quot;Mars&quot;,&quot;Gender__c&quot;:&quot;男&quot;,&quot;Is_Present__c&quot;:true,&quot;Is_Valid_Schengen_Visa__c&quot;:false,&quot;Is_Valid_US_Schengen_Visa__c&quot;:true,&quot;Is_Verify_Batch__c&quot;:false,&quot;Is_Verify__c&quot;:true,&quot;Last_Name__c&quot;:&quot;Cui&quot;,&quot;Last_Verified_Date__c&quot;:&quot;2024-09-29T10:01:20.000Z&quot;,&quot;Name&quot;:&quot;Mars Cui&quot;,&quot;Name_CN__c&quot;:&quot;崔杰&quot;,&quot;OwnerId&quot;:&quot;0050o00000ZMayOAAT&quot;,&quot;Phone__c&quot;:&quot;18660220291&quot;,&quot;Position__c&quot;:&quot;高级业务需求分析工程师&quot;,&quot;Product_Line__c&quot;:&quot;其他&quot;,&quot;Purpose_Of_Exhibition__c&quot;:&quot;参展&quot;,&quot;Remark__c&quot;:&quot;3&quot;,&quot;Verify_Result__c&quot;:&quot;接口调用成功,验证通过,成功获取Ldap账号信息&quot;,&quot;XHNumber__c&quot;:&quot;cuijie3&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>Expo_Meeting_Roon</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+    </testPoints>
+</FlowTest>

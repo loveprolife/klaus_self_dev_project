@@ -1,0 +1,64 @@
+<!--
+ * @Author: YYL
+ * @LastEditors: YYL
+-->
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+                <lightning-icon icon-name="custom:custom11" title="custom11" size="small"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+              <h2 class="slds-card__header-title">
+                <span>{ExaminationInfo.Label}</span>
+              </h2>
+            </div>
+          </header>
+        </div>
+
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label" 
+            style="width: 100%;">
+            <!-- <thead>
+                    <tr class="slds-line-height_reset">
+                        <th style="width: 70%;">
+                            <div class="slds-truncate">{ExaminationInfo.Name}</div>
+                        </th>
+                    </tr>
+                </thead> -->
+            <tbody>
+                <template for:each={examinationData} for:item="item" for:index="index">
+                    <tr class="slds-hint-parent" key={item.Examination__c}>
+                        <td style="white-space: normal; word-break: break-all;">
+                            {item.Examination__r.Name}
+                        </td>
+                        <td style="text-align: right;color:red;">
+                            <lightning-button variant="base" label={label.Examination_Link_To_Do} data-id={item.Examination__c}
+                                onclick={reportOnClick} class="slds-m-left_x-small">
+                            </lightning-button>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        
+            
+            <!-- <div style="padding: 16px; text-align:right">
+                <a onclick={moreOnClick}>
+                    <span style="font-size: medium;">{label.CheckInCheckOut_More}</span>
+                    <lightning-icon variant="success" icon-name="utility:chevronright" size="x-small" title="more"
+                        data-name="newPromoterDailyReportLwc" onclick={moreOnClick}>
+                    </lightning-icon>
+                    <span class="slds-assistive-text"></span>
+                </a>
+            </div> -->
+    </article>
+
+    <template if:true={isShowExamination}>
+        <c-examination-lwc 
+            record-id={recordId} 
+            onclose={closeExamination}>
+        </c-examination-lwc>
+    </template>
+    
+</template>

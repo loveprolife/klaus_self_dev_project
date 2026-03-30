@@ -1,0 +1,78 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-05-06 17:08:29
+ * @LastEditors: WFC
+ * @LastEditTime: 2024-05-07 11:31:37
+ * @Description: 
+ * @FilePath: \HisenseAll20240426\force-app\main\default\lwc\fileViewMobileLwc\fileViewMobileLwc.html
+-->
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+              <div class="slds-media__figure slds-list_horizontal">
+                  <div class="slds-var-p-top_xx-small slds-var-p-right_small">
+                      <lightning-icon 
+                      icon-name='standard:file' 
+                      alternative-text='file' 
+                      size='medium' 
+                      title='File'
+                  ></lightning-icon>
+                  </div>
+                  <div class="slds-media__body slds-align-middle" >
+                      <span class="slds-text-title_bold">Files ({fileInfoListSize})</span>
+                  </div>
+              </div>
+            </header>
+
+            <div>
+                <lightning-button-icon 
+                    icon-name="utility:refresh" 
+                    alternative-text="Refresh"
+                    class="slds-m-left_xx-small"
+                    title="Refresh"
+                    onclick={refreshFileBox}
+                    >
+                </lightning-button-icon>
+            </div>
+        </div>
+        
+        <div class="slds-var-p-left_small slds-var-p-right_small slds-var-p-bottom_large">
+            <ul>
+            <template for:each={fileInfoList} for:item="fileInfo" for:index="index">
+                    <li key='{fileInfo.index}' class="slds-clearfix slds-var-m-bottom_small">
+                        <div 
+                            onclick={showFileDetail} 
+                            data-id={fileInfo.ContentDocumentId} 
+                            data-type={fileInfo.fileType} 
+                            data-text={fileInfo.Title} 
+                            data-url={fileInfo.ContentDocumentUrl} >
+                            <div class="slds-float_left slds-list_horizontal">
+                                <div class="centerImg">
+                                    <template lwc:if={fileInfo.isMP4}>
+                                        <lightning-icon icon-name='doctype:mp4' alternative-text='mp4' size='medium' title='mp4'></lightning-icon>
+                                    </template>
+                                    <template lwc:else>
+                                        <img src={fileInfo.viewSrc} class="view-img">
+                                    </template>
+                                </div>
+                                <div class="slds-var-p-left_x-small">
+                                    <a class="slds-var-p-bottom_x-small">{fileInfo.Title}</a>
+                                    <div>
+                                        <span class="slds-text-title">{fileInfo.LastModifiedDate} • {fileInfo.ContentSize} • {fileInfo.fileType}</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="slds-float_right">
+                            <template if:true={allowDownload}>
+                                <lightning-button label="Download" data-id={fileInfo.versionId} onclick={handleClickDownload} class="slds-var-m-right_xx-small"></lightning-button>
+                            </template>
+                        </div>
+                    </li>
+            </template>
+            </ul>
+        </div>
+    </article>
+</template>

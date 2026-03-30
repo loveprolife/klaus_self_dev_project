@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>年会活动通知主题1</description>
+    <encodingKey>GB2312</encodingKey>
+    <name>Annual Meeting Event Notice One</name>
+    <style>none</style>
+    <subject>欢迎来青参加2025年度营销会议 Welcome to Qingdao for the 2025 Annual Marketing Meeting</subject>
+    <textOnly>Dear {!Internal_Registration__c.Name_CN__c},
+欢迎来青参加2025年度营销会议。青岛天气多云间晴，气温-2至9度。
+青岛海天金融中心酒店地址：崂山区仙霞岭路29号。
+18、19日10点-20点将有工作人员在酒店大堂协助办理入住并发放参会证。
+
+Dear {!Internal_Registration__c.Name_CN__c}, 
+
+Welcome to Qingdao for the 2025 Annual Marketing Meeting. The weather is sunny, -2 to 9 °C. 
+
+Qingdao Haitian Financial Center Hotel address: 29 Xianxialing Road, Laoshan District.
+
+On 18 &amp; 19, from 10:00 to 20:00, staff will be in the hotel lobby to assist check-in.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

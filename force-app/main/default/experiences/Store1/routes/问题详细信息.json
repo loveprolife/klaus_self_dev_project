@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "0f5f0b11-f142-4504-a66e-61bf6a4759d8",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "Question_Detail",
+  "id" : "e6a21b05-f80a-4262-91ce-256e91ad9b50",
+  "label" : "问题详细信息",
+  "routeType" : "feeditem",
+  "type" : "route",
+  "urlPrefix" : "question"
+}

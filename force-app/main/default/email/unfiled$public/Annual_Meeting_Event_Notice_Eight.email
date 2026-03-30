@@ -1,0 +1,3 @@
+<p style="font-family:Times New Roman;font-size: 0.875em;">Dear {!Internal_Registration__c.Name_CN__c} 您好!</p>
+
+<p style="font-family:Times New Roman;font-size: 0.875em;">非常抱歉！由于您所乘坐航班的时间段无同行人员，项目组无法安排送机，请自行安排交通工具，谢谢！</p>

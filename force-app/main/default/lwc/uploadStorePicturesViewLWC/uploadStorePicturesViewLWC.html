@@ -1,0 +1,7 @@
+<template>
+	<template if:true={isShowPic}>
+		<lightning-card title={shorePicTitle}>
+			<c-upload-files-lwc record-id={recordId} record-ids={recordIds} onselectfiles={handleSelectFiles} disabled-delete="true" disabled-upload = "true"></c-upload-files-lwc>
+		</lightning-card>
+	</template>
+</template>

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "3ab7a613-6e3a-4efd-b5ff-b561be3c728a",
+  "appPageId" : "e0bf1275-58c2-4fd8-9393-d738c12db8fe",
+  "configurationTags" : [ ],
+  "devName" : "Home",
+  "id" : "7582f68b-213b-4c94-9a63-c90189c26a2f",
+  "label" : "主页",
+  "pageAccess" : "UseParent",
+  "routeType" : "home",
+  "type" : "route",
+  "urlPrefix" : ""
+}

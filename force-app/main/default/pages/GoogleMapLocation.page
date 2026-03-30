@@ -1,0 +1,367 @@
+<apex:page controller="LocationController" showHeader="false" sidebar="false">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+        <style>
+            .custom-info-window { 
+                padding: 0px 10px 10px 10px;
+            }
+            .action-button {
+                float: right;
+                background: #007bff;
+                color: white;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            .input{
+                height: 30px
+            }
+            .custom-icon{
+                width: 40px;
+                height: 30px;
+            }
+        </style>
+    </head>
+    
+    <script>
+        let map;
+        let geocoder;
+        let placesService;
+        let marker;
+        let latitude = 36.1405;
+        let longitude = 120.4755;
+        let infoWindow;
+        //let dex = ja;
+        let storeAddress;
+        let addressDetails = { country: '', province: '', city: '', street: '' };
+        let directionsRenderer;
+        // let markers = [];
+
+        const params = new URLSearchParams(window.location.search);
+        if(params.get('param1') != undefined && params.get('param1') != null && params.get('param1') != ''){
+            latitude = Number(params.get('param1'));
+        }
+        if(params.get('param2') != undefined && params.get('param2') != null && params.get('param2') != ''){
+            longitude = Number(params.get('param2'));
+        }
+        //if(params.get('param3') != undefined && params.get('param3') != null && params.get('param3') != ''){
+        //    dex = (params.get('param3'));
+        //    console.log('--' + dex);
+        //}
+        
+        // 初始化位置信息及地图
+        function initPosition() {
+            // // 获取用户授权并定位
+            // if (navigator.geolocation) {
+            //     navigator.geolocation.getCurrentPosition(
+            //         function(position) {
+            //             // 成功回调：输出经纬度
+            //             latitude = position.coords.latitude;
+            //             longitude = position.coords.longitude;
+            //             console.log('当前定位纬度:', latitude, '当前定位经度:', longitude);
+            //             initMap();
+            //         },
+            //         function(error) {
+            //             initMap();
+            //             // 失败回调：处理错误类型
+            //             switch(error.code) {
+            //                 case error.PERMISSION_DENIED:
+            //                     alert('用户拒绝定位授权');
+            //                     break;
+            //                 case error.POSITION_UNAVAILABLE:
+            //                     alert('无法获取位置信息');
+            //                     break;
+            //                 case error.TIMEOUT:
+            //                     alert('定位请求超时');
+            //                     break;
+            //             }
+            //         }
+            //     );
+            // } else {
+            //     initMap();
+            //     alert('当前浏览器不支持定位功能');
+            // }
+
+            console.log('当前定位纬度----:', latitude, '当前定位经度----:', longitude);
+            initMap();
+
+            // 绑定搜索框
+            const searchBox = new google.maps.places.SearchBox(document.getElementById('search-input'));
+            searchBox.addListener('places_changed', () => {
+                const places = searchBox.getPlaces();
+                if (places.length === 0) return;
+                map.fitBounds(places[0].geometry.viewport);
+
+                const location = places[0].geometry.location;
+                storeAddress = places[0].formatted_address;
+                const inputName = places[0].name;
+                console.log('查询地址的纬度:', location.lat(), '查询地址的经度:', location.lng());
+                marker.setPosition(places[0].geometry.location);
+                if(places[0].address_components != undefined && places[0].address_components != null && places[0].address_components != ''){
+                    getAddressDetails(places[0].address_components);
+                }else {
+                    getAddressDetailsBylatLng(places[0].geometry.location);
+                }
+
+                marker.addListener("click", ({ domEvent, latLng }) => {
+                const { target } = domEvent;
+                // const content = `
+                //     <div id="content" class="custom-info-window">
+                //         <div id="siteNotice"></div>
+                //         <h1 id="firstHeading" >${inputName}</h1>
+                //         <div>
+                //             <p>
+                //             {!$Label.Location_information}:<br>
+                //             {!$Label.Address}: ${places[0].formatted_address}<br>
+                //             {!$Label.Latitude}: ${location.lat()}<br>
+                //             {!$Label.Longitude}: ${location.lng()}</p>
+                //             <button class="action-button" onclick="handleConfirmLocation(${location.lat()}, ${location.lng()})">
+                //                 {!$Label.Confirm_Location}
+                //             </button>
+                //         </div>
+                //     </div>
+                // `;
+                const content = `
+                    <div id="content" class="custom-info-window">
+                        <div id="siteNotice"></div>
+                        <h1 id="firstHeading">${inputName}</h1>
+                        <div>
+                            <p>
+                                <span style="white-space: nowrap;">{!$Label.Location_information}:</span><br>
+                                <span style="white-space: nowrap;">{!$Label.Address}: ${places[0].formatted_address}</span><br>
+                                <span style="white-space: nowrap;">{!$Label.Latitude}: ${location.lat()}</span><br>
+                                <span style="white-space: nowrap;">{!$Label.Longitude}: ${location.lng()}</span>
+                            </p>
+                            <button class="action-button" onclick="handleConfirmLocation(${location.lat()}, ${location.lng()})">
+                                {!$Label.Confirm_Location}
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                // infoWindow.close();
+                infoWindow.setContent(content);
+                infoWindow.open(marker.map, marker);
+            });
+            simulateMapClick(location.lat(),location.lng());
+            });            
+        }
+
+        // 初始化google地图
+        function initMap(){
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                center: { lat:  latitude, lng: longitude } ,
+                mapId:'112233445566778899'
+            });
+            marker = new google.maps.Marker({
+                // position :{ lat: Number(latitude), lng: Number(longitude) },
+                map: map,
+                title: "当前定位",
+                gmpClickable: true,
+            });
+
+            directionsRenderer = new google.maps.DirectionsRenderer();
+            directionsRenderer.setMap(map); // 绑定渲染器到地图
+
+            geocoder = new google.maps.Geocoder();
+            placesService = new google.maps.places.PlacesService(map);
+
+            // 初始化信息窗口
+            infoWindow = new google.maps.InfoWindow();
+
+            // 绑定地图点击事件
+            map.addListener('click', (event) => {
+                console.log(event);
+                const lat = event.latLng.lat();
+                const lng = event.latLng.lng();
+                console.log('鼠标点击的纬度:', lat, '鼠标点击的经度:', lng);
+                updateMarker(lat, lng);
+
+                if(event.placeId != undefined && event.placeId != '' && event.placeId != null){
+                    const request = {
+                        placeId: event.placeId,
+                        fields: ['name', 'formatted_address', 'geometry', 'photos']
+                    };
+                    placesService.getDetails(request, (place, status) => {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+                            // 获取到地址信息后，进行处理
+                            console.log('Place name:', place.name);  // 地点名称
+                            console.log('Formatted address:', place.formatted_address);  // 地址
+                            console.log('Place geometry:', place.geometry);  // 地点坐标
+                            marker.setPosition(place.geometry.location);
+                            showInfoWindow(marker, event, place.name, place.formatted_address);
+                        }
+                    });
+
+                }else {
+                    geocoder.geocode({ location: event.latLng }, (results, status) => {
+                        if (status === 'OK' && results) {
+                            console.log(results);
+                            const address = results[0].formatted_address; // 获取完整地址‌:ml-citation{ref="6,8" data="citationList"}
+                            console.log('鼠标点击的地址:', address);
+                            marker.setPosition(results[0].geometry.location);
+                            
+                            getAddressDetails(results[0].address_components);
+                            showInfoWindow(marker, event, '', address);
+                        }
+                    });
+                }
+            });
+
+            // showShopInfo(latitude, longitude, 10);
+        }
+
+        // 点击地图，弹出信息
+        function showInfoWindow(marker, event, place, address) {
+            storeAddress = address;
+            const content = `
+                <div id="content" class="custom-info-window">
+                    <div id="siteNotice"></div>
+                    <h1 id="firstHeading" >${place}</h1>
+                    <div>
+                        <p>
+                        <span style="white-space: nowrap;">{!$Label.Location_information}:</span><br>
+                        <span style="white-space: nowrap;">{!$Label.Address}：${address}</span><br>
+                        <span style="white-space: nowrap;">{!$Label.Latitude}: ${event.latLng.lat()}</span><br>
+                        <span style="white-space: nowrap;">{!$Label.Longitude}: ${event.latLng.lng()}</span><br>
+                        <button class="action-button" onclick="handleConfirmLocation(${event.latLng.lat()}, ${event.latLng.lng()})">
+                            {!$Label.Confirm_Location}
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            infoWindow.setContent(content);
+            infoWindow.open(map, marker);
+        }
+
+        // 通过经纬度获取地址信息
+        function getAddressDetailsBylatLng(latLng){
+            geocoder.geocode({ location: latLng }, (results, status) => {
+                if (status === 'OK' && results) {
+                    console.log(results);
+                    getAddressDetails(results[0].address_components);
+                }
+            });
+        }
+
+        // 获取详细地址信息
+        function getAddressDetails(address_components){
+            addressDetails = { country: '', province: '', city: '', street: '' };
+            address_components.forEach(function(component) {
+                if (component.types.includes('country')) addressDetails.country = component.long_name;
+                if (component.types.includes('administrative_area_level_1')) addressDetails.province = component.long_name;
+                if (component.types.includes('locality') || component.types.includes('sublocality')) addressDetails.city = component.long_name;
+                if (component.types.includes('route')) addressDetails.street = component.long_name;
+            });
+            console.log('鼠标点击的地址详情:', addressDetails);
+        }
+
+        // 确认坐标点
+        function handleConfirmLocation(lat, lng){
+            console.log('wwww--lat--', lat);  // 地点名称
+            console.log('wwww--lng--', lng);  // 地点名称
+            console.log('wwww--address--', storeAddress);  // 地点名称
+            console.log('wwww--addressDetails--', addressDetails);  // 地点名称详情
+             // 当需要触发LWC方法时，发送消息
+            parent.postMessage(
+                { 
+                    action: 'location',
+                    lat: lat,
+                    lng: lng,
+                    storeAddress: storeAddress,
+                    addressDetails: addressDetails,
+                }, 
+                '*'
+            );
+        }
+
+        // 更新标记位置
+        function updateMarker(lat, lng) {
+            if (marker) marker.setMap(null); // 清除旧标记
+            marker = new google.maps.Marker({
+                position: { lat, lng },
+                map: map
+            });
+        }
+
+        //模拟点击操作
+        function simulateMapClick(lat, lng) {
+            const mockEvent = {
+              latLng: new google.maps.LatLng(lat, lng)
+            };
+            google.maps.event.trigger(map, 'click', mockEvent);
+        }
+
+        // Search for location
+        function searchLocation() {
+            const address = document.getElementById("search-box").value;
+            geocoder.geocode({ 'address': address }, function(results, status) {
+                if (status === 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                    marker.setPosition(results[0].geometry.location);
+                } else {
+                    alert("Geocode was not successful for the following reason: " + status);
+                }
+            });
+        }
+
+        // 监听 LWC 发送的消息
+        window.addEventListener('message', function(event) {
+            // 验证消息来源（替换为你的 Salesforce 域名）
+            console.log('wwwww---' + event.origin);
+            // if (event.origin !== 'https://your-domain.my.salesforce.com') return;
+            
+            // 解析消息内容
+            const message = event.data;
+            if (message.action === 'triggerVFMethod') {
+                handleMessageFromLWC(message.data);
+            }
+        });
+
+        // 定义 VF 页面方法
+        function handleMessageFromLWC(data) {
+            console.log('收到 LWC 数据:', data);
+            geocoder.geocode({ 'address': data.address }, function(results, status) {
+                if (status === 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                    if (marker) marker.setMap(null); // 清除旧标记
+                    console.log(results[0]);
+                    console.log(results[0].geometry.location.lat());
+                    console.log(results[0].geometry.location.lng());
+                    // showShopInfo(results[0].geometry.location.lat(), results[0].geometry.location.lng(), 10);
+                } else {
+                    alert("Geocode was not successful for the following reason: " + status);
+                }
+            });
+            
+        }
+    </script>
+
+    <!-- Search Input -->
+
+    <div>
+        <input class="input" style="width: 90%; margin-left: 5%; margin-right: 5%;" id="search-input" type="text" placeholder="Enter address or location"/>
+    </div>
+
+    <div id="map" style="height: 89vh; width: 100%;"></div>
+    <script>
+        // 获取语言代码，提供默认值(en)防止空值
+        let dex = ('{!TEXT($User.LanguageLocaleKey)}' || 'zh').substring(0,2); 
+        console.log('XX' + '{!TEXT($User.LanguageLocaleKey)}');
+        // 动态加载Google Maps API
+        var script = document.createElement('script');
+        script.src = 'https://maps.googleapis.com/maps/api/js?key={!$Label.GoogleMapKey}' +
+                    '&libraries=marker,places,geometry' +
+                    '&callback=initPosition' +
+                    '&language=' + dex;
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+    </script>  
+    <!-- 引入 Google Maps API -->
+    
+</html>
+</apex:page>

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "31c10d34-b72c-4459-ac6c-92a7f8d55c37",
+  "appPageId" : "e0bf1275-58c2-4fd8-9393-d738c12db8fe",
+  "configurationTags" : [ ],
+  "devName" : "Feed_Detail",
+  "id" : "441fee37-845f-4c01-9896-12390517bd52",
+  "label" : "摘要详细信息",
+  "routeType" : "feeditem-generic",
+  "type" : "route",
+  "urlPrefix" : "feed"
+}

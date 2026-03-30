@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>GB2312</encodingKey>
+    <name>巡店日报新建通知</name>
+    <style>none</style>
+    <subject>{!Daily_Inspection_Report__c.OwnerLastName}{!Daily_Inspection_Report__c.Report_Date__c}巡店日报新建通知</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

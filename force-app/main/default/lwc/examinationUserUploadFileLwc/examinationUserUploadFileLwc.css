@@ -1,0 +1,4 @@
+:host{ 
+    --sds-c-accordion-heading-font-size: 1rem;
+    --slds-c-accordion-section-spacing-inline-end: 1px;
+}

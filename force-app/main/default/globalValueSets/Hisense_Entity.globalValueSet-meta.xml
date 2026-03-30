@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>0000</fullName>
+        <default>false</default>
+        <label>0000: Deprecated</label>
+    </customValue>
+    <customValue>
+        <fullName>0001</fullName>
+        <default>false</default>
+        <label>0001</label>
+    </customValue>
+    <customValue>
+        <fullName>2021</fullName>
+        <default>false</default>
+        <label>2021:HS Europe Electronic</label>
+    </customValue>
+    <customValue>
+        <fullName>6002</fullName>
+        <default>false</default>
+        <label>6002:HS International Co.</label>
+    </customValue>
+    <customValue>
+        <fullName>6375</fullName>
+        <default>false</default>
+        <label>6375:HK  America Manufacturing Co.</label>
+    </customValue>
+    <customValue>
+        <fullName>6376</fullName>
+        <default>false</default>
+        <label>6376</label>
+    </customValue>
+    <customValue>
+        <fullName>6377</fullName>
+        <default>false</default>
+        <label>6377</label>
+    </customValue>
+    <customValue>
+        <fullName>8000</fullName>
+        <default>false</default>
+        <label>8000: HS Import/Export Co.</label>
+    </customValue>
+    <customValue>
+        <fullName>8010</fullName>
+        <default>false</default>
+        <label>8010: HS International Co.</label>
+    </customValue>
+    <customValue>
+        <fullName>8020</fullName>
+        <default>false</default>
+        <label>8020</label>
+    </customValue>
+    <customValue>
+        <fullName>8030</fullName>
+        <default>false</default>
+        <label>8030</label>
+    </customValue>
+    <customValue>
+        <fullName>8040</fullName>
+        <default>false</default>
+        <label>8040: HS International(HK)</label>
+    </customValue>
+    <customValue>
+        <fullName>8050</fullName>
+        <default>false</default>
+        <label>8050: HS International Ame</label>
+    </customValue>
+    <customValue>
+        <fullName>8060</fullName>
+        <default>false</default>
+        <label>8060: HS International(HK)(EU)</label>
+    </customValue>
+    <customValue>
+        <fullName>8070</fullName>
+        <default>false</default>
+        <label>8070: HS (QD) MEA HOLDINGS</label>
+    </customValue>
+    <customValue>
+        <fullName>8080</fullName>
+        <default>false</default>
+        <label>8080: HS (HK) MEA SALES</label>
+    </customValue>
+    <customValue>
+        <fullName>8090</fullName>
+        <default>false</default>
+        <label>8090: HS (HK) MEA MF</label>
+    </customValue>
+    <customValue>
+        <fullName>80A0</fullName>
+        <default>false</default>
+        <label>80A0: HS QD asia Holdings</label>
+    </customValue>
+    <customValue>
+        <fullName>80B0</fullName>
+        <default>false</default>
+        <label>80B0: HS Singapore Holding</label>
+    </customValue>
+    <customValue>
+        <fullName>80C0</fullName>
+        <default>false</default>
+        <label>80C0</label>
+    </customValue>
+    <customValue>
+        <fullName>80D0</fullName>
+        <default>false</default>
+        <label>80D0:HS International Co.</label>
+    </customValue>
+    <customValue>
+        <fullName>80E0</fullName>
+        <default>false</default>
+        <label>80E0:HS (QD) MEA HOLDINGS</label>
+    </customValue>
+    <customValue>
+        <fullName>80F0</fullName>
+        <default>false</default>
+        <label>80F0: 青岛海信国际商贸发展有限公司</label>
+    </customValue>
+    <customValue>
+        <fullName>80G0</fullName>
+        <default>false</default>
+        <label>80G0: 青岛海信国际商贸发展有限公司结算中心账套</label>
+    </customValue>
+    <customValue>
+        <fullName>80H0</fullName>
+        <default>false</default>
+        <label>80H0:青岛海信国际营销日本控股股份有限公司</label>
+    </customValue>
+    <customValue>
+        <fullName>80K0</fullName>
+        <default>false</default>
+        <label>80K0: Hong Kong Japan Holdings</label>
+    </customValue>
+    <customValue>
+        <fullName>80M0</fullName>
+        <default>false</default>
+        <label>80M0: 海信国际营销新加坡美洲投资有限公司</label>
+    </customValue>
+    <customValue>
+        <fullName>80N0</fullName>
+        <default>false</default>
+        <label>80N0: Hisense ASEAN</label>
+    </customValue>
+    <customValue>
+        <fullName>80P0</fullName>
+        <default>false</default>
+        <label>80P0: 青岛海信环亚控股有限公司</label>
+    </customValue>
+    <customValue>
+        <fullName>80Q0</fullName>
+        <default>false</default>
+        <label>80Q0: HITRADE (HONG KONG) CO., LIMITED</label>
+    </customValue>
+    <customValue>
+        <fullName>8110</fullName>
+        <default>false</default>
+        <label>8110: Hisense US Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8120</fullName>
+        <default>false</default>
+        <label>8120: Hisense CA Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8140</fullName>
+        <default>false</default>
+        <label>8140: Hisense MX Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8150</fullName>
+        <default>false</default>
+        <label>8150</label>
+    </customValue>
+    <customValue>
+        <fullName>8160</fullName>
+        <default>false</default>
+        <label>8160</label>
+    </customValue>
+    <customValue>
+        <fullName>8170</fullName>
+        <default>false</default>
+        <label>8170: HS USM Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8180</fullName>
+        <default>false</default>
+        <label>8180</label>
+    </customValue>
+    <customValue>
+        <fullName>8190</fullName>
+        <default>false</default>
+        <label>8190:VIDAA USA Inc.</label>
+    </customValue>
+    <customValue>
+        <fullName>8200</fullName>
+        <default>false</default>
+        <label>8200: Hisense Australia SO</label>
+    </customValue>
+    <customValue>
+        <fullName>8210</fullName>
+        <default>false</default>
+        <label>8210: Hisense New Zealand</label>
+    </customValue>
+    <customValue>
+        <fullName>8300</fullName>
+        <default>false</default>
+        <label>8300: Hisense DE Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8320</fullName>
+        <default>false</default>
+        <label>8320: Hisense RU Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8330</fullName>
+        <default>false</default>
+        <label>8330: Hisense IT Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8340</fullName>
+        <default>false</default>
+        <label>8340: Hisense ES Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8350</fullName>
+        <default>false</default>
+        <label>8350: Hisense UK Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8360</fullName>
+        <default>false</default>
+        <label>8360</label>
+    </customValue>
+    <customValue>
+        <fullName>8370</fullName>
+        <default>false</default>
+        <label>8370: Hisense IT Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8380</fullName>
+        <default>false</default>
+        <label>8380: Hisense FR Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8390</fullName>
+        <default>false</default>
+        <label>8390: Hisense CZ Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>83B0</fullName>
+        <default>false</default>
+        <label>83B0: Hisense EU R&amp;D</label>
+    </customValue>
+    <customValue>
+        <fullName>83C0</fullName>
+        <default>false</default>
+        <label>83C0</label>
+    </customValue>
+    <customValue>
+        <fullName>83D0</fullName>
+        <default>false</default>
+        <label>83D0</label>
+    </customValue>
+    <customValue>
+        <fullName>83E0</fullName>
+        <default>false</default>
+        <label>83E0: Hisense Portugal</label>
+    </customValue>
+    <customValue>
+        <fullName>8400</fullName>
+        <default>false</default>
+        <label>8400: HISENSE (MALAYSIA) S</label>
+    </customValue>
+    <customValue>
+        <fullName>8410</fullName>
+        <default>false</default>
+        <label>8410: Hisense JP Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8420</fullName>
+        <default>false</default>
+        <label>8420: Hisense ID Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8430</fullName>
+        <default>false</default>
+        <label>8430: Hisense TH Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8440</fullName>
+        <default>false</default>
+        <label>8440: HISENSE INDIA PRIVATE LIM</label>
+    </customValue>
+    <customValue>
+        <fullName>8450</fullName>
+        <default>false</default>
+        <label>8450:Hisense VN Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8460</fullName>
+        <default>false</default>
+        <label>8460: Hisense Philippines Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8470</fullName>
+        <default>false</default>
+        <label>8470: Hisense Singapore Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8500</fullName>
+        <default>false</default>
+        <label>8500: HS SA MANUFACTURING</label>
+    </customValue>
+    <customValue>
+        <fullName>8510</fullName>
+        <default>false</default>
+        <label>8510: HS SA SALES HOLDING</label>
+    </customValue>
+    <customValue>
+        <fullName>8520</fullName>
+        <default>false</default>
+        <label>8520: HISENSE MIDDLE EAST</label>
+    </customValue>
+    <customValue>
+        <fullName>8530</fullName>
+        <default>false</default>
+        <label>8530: Dubai Trading Co.</label>
+    </customValue>
+    <customValue>
+        <fullName>8540</fullName>
+        <default>false</default>
+        <label>8540: Hisense Saudi Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8610</fullName>
+        <default>false</default>
+        <label>8610: Hisense Argentina</label>
+    </customValue>
+    <customValue>
+        <fullName>8620</fullName>
+        <default>false</default>
+        <label>8620: Hisense CHILE SPA</label>
+    </customValue>
+    <customValue>
+        <fullName>8640</fullName>
+        <default>false</default>
+        <label>8640:Hisense Colombia S.A.S.</label>
+    </customValue>
+    <customValue>
+        <fullName>8650</fullName>
+        <default>false</default>
+        <label>8650:Hisense Panama S.A.</label>
+    </customValue>
+    <customValue>
+        <fullName>8660</fullName>
+        <default>false</default>
+        <label>8660: Hisense Peru Sales Org</label>
+    </customValue>
+    <customValue>
+        <fullName>8680</fullName>
+        <default>false</default>
+        <label>8680: 海信阿根廷公司销售组织</label>
+    </customValue>
+    <customValue>
+        <fullName>8910</fullName>
+        <default>false</default>
+        <label>8910: Kelon International</label>
+    </customValue>
+    <customValue>
+        <fullName>8920</fullName>
+        <default>false</default>
+        <label>8920: Hisense HA R&amp;D</label>
+    </customValue>
+    <customValue>
+        <fullName>8930</fullName>
+        <default>false</default>
+        <label>8930: Hisense TV R&amp;D</label>
+    </customValue>
+    <customValue>
+        <fullName>8940</fullName>
+        <default>false</default>
+        <label>8940</label>
+    </customValue>
+    <customValue>
+        <fullName>8950</fullName>
+        <default>false</default>
+        <label>8950</label>
+    </customValue>
+    <customValue>
+        <fullName>8960</fullName>
+        <default>false</default>
+        <label>8960</label>
+    </customValue>
+    <customValue>
+        <fullName>8970</fullName>
+        <default>false</default>
+        <label>8970</label>
+    </customValue>
+    <customValue>
+        <fullName>8999</fullName>
+        <default>false</default>
+        <label>8999: HS Virtual Co.</label>
+    </customValue>
+    <customValue>
+        <fullName>SI01</fullName>
+        <default>false</default>
+        <label>SI01</label>
+    </customValue>
+    <masterLabel>Hisense Entity</masterLabel>
+    <sorted>true</sorted>
+</GlobalValueSet>

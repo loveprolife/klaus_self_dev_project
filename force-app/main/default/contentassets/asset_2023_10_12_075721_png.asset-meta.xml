@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentAsset xmlns="http://soap.sforce.com/2006/04/metadata">
+    <isVisibleByExternalUsers>true</isVisibleByExternalUsers>
+    <language>en_US</language>
+    <masterLabel>asset_2023_10_12_075721_png</masterLabel>
+    <versions>
+        <version>
+            <number>1</number>
+            <pathOnClient>邀请使用名片扫码功能.png</pathOnClient>
+        </version>
+    </versions>
+</ContentAsset>

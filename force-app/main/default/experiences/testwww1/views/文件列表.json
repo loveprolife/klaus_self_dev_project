@@ -1,0 +1,33 @@
+{
+  "appPageId" : "e0bf1275-58c2-4fd8-9393-d738c12db8fe",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "514ea5d7-1613-40ad-b3f0-2a3bfa4a6e5f",
+  "label" : "文件列表",
+  "regions" : [ {
+    "id" : "3caead1b-5da3-496e-a2da-5a3d669acc3a",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "pageSize" : 25
+      },
+      "componentName" : "forceCommunity:filesList",
+      "id" : "344f6c29-812b-4a98-97ca-85ce9bf58110",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "47d49221-bfba-4501-ace8-e84fd8b1e099",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "31ad69b5-7ecc-49b2-9450-f1097c81bb7c",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "list-069"
+}

@@ -1,0 +1,78 @@
+<template>
+    <article class="slds-card">
+        <table>
+            <tr>
+                <td style="padding: 16px">
+                    <p>{label.PromoterHomePage_MonthTarget}</p>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: center; padding-left: 16px; padding-bottom: 16px">
+                    <span style="color: #08c988; font-size: xx-large">
+                        {userCurrency} {target} {targetShowString}
+                    </span>
+                    <!-- <lightning-input type="number" name="index" variant="label-hidden" value={target}
+                        formatter="currency" step="0.01" read-only="true"
+                        style="color: #08c988; font-size: 42px; text-align: center; display: inline-block;">
+                    </lightning-input> -->
+                </td>
+            </tr>
+        </table>
+    </article>
+    <table>
+        <tr>
+            <td style="width: 50%; height: 124px;">
+                <article class="slds-card" style="height: 100%;">
+                    <table style="height: 100%;">
+                        <tr>
+                            <td style="padding: 16px">
+                                <p>{label.PromoterHomePage_MTDSales}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; padding-left: 16px; padding-bottom: 16px" onclick={gotoDailySalesRecordList}>
+                                <span style="color:#08c988; font-size: x-large">
+                                    {userCurrency} {allSales} {salesShowString}
+                                </span>
+                                <!-- <lightning-input type="number" name="index" variant="label-hidden" value={allSales}
+                                    formatter="currency" step="0.01" read-only="true"></lightning-input> -->
+                            </td>
+                        </tr>
+                    </table>
+                </article>
+            </td>
+            <!-- <td>
+                <article class="slds-card">
+                    <table>
+                        <tr>
+                            <td style="padding: 16px">
+                                <p>MTD Retail Act Qty</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; padding-left: 16px; padding-bottom: 16px">
+                                <span style="color:#08c988; font-size: x-large">{completedSales}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </article>
+            </td> -->
+            <td style="width: 50%; height: 124px;">
+                <article class="slds-card" style="height: 100%;">
+                    <table style="height: 100%;">
+                        <tr>
+                            <td style="padding: 16px">
+                                <p>{label.PromoterHomePage_MTDCompleteRatio}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; padding-left: 16px; padding-bottom: 16px">
+                                <span style="color:#c00a00; font-size: x-large">{completionRate}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </article>
+            </td>
+        </tr>
+    </table>
+</template>

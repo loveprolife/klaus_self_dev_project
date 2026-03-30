@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "935db0d4-8c47-4dba-8cb7-3352ac03979c",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "relatedlist_01Z",
+  "id" : "b85aa1a4-01f6-4720-bf8b-dbf08f5975c4",
+  "label" : "仪表板 Related List",
+  "routeType" : "relatedlist-01Z",
+  "type" : "route",
+  "urlPrefix" : "dashboard"
+}

@@ -18,6 +18,7 @@ coverage/
 logs
 *.log
 npm-debug.log*
+retrieve_output.txt
 yarn-debug.log*
 yarn-error.log*
 

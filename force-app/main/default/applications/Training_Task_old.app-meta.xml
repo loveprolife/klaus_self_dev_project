@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <content>Training_Task_Home</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>standard-home</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>true</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>true</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Training Task old</label>
+    <navType>Standard</navType>
+    <profileActionOverrides>
+        <actionName>Tab</actionName>
+        <content>Training_Task_Home_Trainer</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>standard-home</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>Tab</actionName>
+        <content>Training_Task_Home_Trainer</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>standard-home</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>Tab</actionName>
+        <content>Training_Task_Home_Trainer</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>standard-home</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Indonesia Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store M and malaysia GM</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store M and malaysia GM</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Finance Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Finance Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand General Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand General Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Product Line</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Product Line</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_New</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_New</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store M and malaysia GM</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store M and malaysia GM</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Finance Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Finance Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand General Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand General Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Product Line</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Product Line</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_Publish</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_Publish</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store M and malaysia GM</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Indonesia Store M and malaysia GM</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Finance Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Finance Team</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand General Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand General Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Product Line</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Product Line</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Director</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Manager</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>Training_Task_View</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Training_Task__c</pageOrSobjectType>
+        <recordType>Training_Task__c.Training_View</recordType>
+        <type>Flexipage</type>
+        <profile>Thailand Sales Manager</profile>
+    </profileActionOverrides>
+    <tabs>standard-home</tabs>
+    <tabs>Training_Task__c</tabs>
+    <tabs>Training_Personnel__c</tabs>
+    <tabs>Question_Bank__c</tabs>
+    <tabs>Training_Task_Video_Connection__c</tabs>
+    <tabs>Expo_Date_Controller__c</tabs>
+    <tabs>Expo_Fields_Controller__c</tabs>
+    <tabs>Examination__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Training_Task_UtilityBar1</utilityBar>
+</CustomApplication>

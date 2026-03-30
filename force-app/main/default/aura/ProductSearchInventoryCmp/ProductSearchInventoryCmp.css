@@ -1,0 +1,16 @@
+.THIS .produtInput{
+    margin-left: 20px;
+    display: inline-block;
+    width: 30%;
+}
+.THIS .produtInput1{
+    margin-left: 20px;
+    height: 260px;
+    width: 45%;
+}
+.THIS .searchButton{
+    margin-left: 20px;
+}
+.THIS .slds-dueling-list__options{
+	height: 200px !important;
+}

@@ -1,0 +1,42 @@
+<!--
+ * @Author: WFC
+ * @Date: 2026-01-12 14:19:44
+ * @LastEditors: WFC
+ * @LastEditTime: 2026-01-13 10:34:18
+ * @Description: 
+ * @FilePath: \testuat\force-app\main\default\lwc\ssoTokenBridge\ssoTokenBridge.html
+-->
+<template>
+    <section class="slds-card slds-p-around_medium">
+        <header class="slds-m-bottom_small">
+            <h2 class="slds-text-heading_medium">SSO Token Bridge</h2>
+            <p class="slds-text-body_small slds-text-color_weak">用于桥接第三方iframe的SSO令牌获取</p>
+        </header>
+
+        <template if:true={error}>
+            <div class="slds-notify slds-notify_alert slds-theme_error slds-m-bottom_small" role="alert">
+                <span class="slds-assistive-text">error</span>
+                <h3>{error}</h3>
+            </div>
+        </template>
+
+        <template if:true={token}>
+            <div class="slds-notify slds-notify_alert slds-theme_success slds-m-bottom_small" role="status">
+                <span class="slds-assistive-text">success</span>
+                <h3>已获取 SSO Token</h3>
+            </div>
+            <div class="slds-box slds-theme_default slds-m-bottom_medium">
+                <div class="slds-text-title_caps slds-m-bottom_xx-small">SSO Token</div>
+                <code class="token">{token}</code>
+            </div>
+        </template>
+
+        <div class="iframe-wrapper slds-m-top_small">
+            <iframe src="https://mail.hisense.com" title="第三方SSO页面" onload={handleIframeLoad}></iframe>
+        </div>
+
+        <footer class="slds-m-top_small slds-text-body_small slds-text-color_weak">
+            注意：此组件作为桥接层，用于接收第三方iframe发送的令牌信息。
+        </footer>
+    </section>
+</template>

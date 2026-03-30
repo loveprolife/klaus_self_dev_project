@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>false</active>
+    <allowRecall>false</allowRecall>
+    <allowedSubmitters>
+        <type>creator</type>
+    </allowedSubmitters>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Customer__c</field>
+        <field>Customer_SAP_Code__c</field>
+        <field>Name</field>
+        <field>Approval_Limit__c</field>
+        <field>Approval_Status__c</field>
+        <field>Credit_Application_Period_days__c</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>simon.shin@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Account.Sales_Region__c</field>
+                <operation>contains</operation>
+                <value>Hisense USA,NA OEM Sales Dept.,Hisense Canada,Hisense Mexico,Hisense Panama,Hisense Colombia,Hisense Peru,Hisense Brazil,Hisense Chile,Hisense Argentina</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Regional General Manager USA</label>
+        <name>Regional_General_Manager_USA</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>wenjin@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Account.Sales_Region__c</field>
+                <operation>contains</operation>
+                <value>Hisense Australia,Hisense New Zealand,Hisense India,South Asia Office,East Asia Office</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Regional General Manager Asia-Pacific</label>
+        <name>Regional_General_Manager_Asia_Pacific</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>luoyong@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Account.Sales_Region__c</field>
+                <operation>contains</operation>
+                <value>Europe Sales Dept.,Hisense Russia - Direct Sales,Israel Office</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Regional General Manager Europe</label>
+        <name>Regional_General_Manager_Europe</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>luoyong@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Account.Sales_Region__c</field>
+                <operation>contains</operation>
+                <value>Hisense South Africa</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Regional General Manager South Africa</label>
+        <name>Regional_General_Manager_South_Africa</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>luoyong@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>Account.Sales_Region__c</field>
+                <operation>contains</operation>
+                <value>Hisense Dubai</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Regional General Manager Dubai</label>
+        <name>Regional_General_Manager_Dubai</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>hanjingjing@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Financial Risk Control Post</label>
+        <name>Financial_Risk_Control_Post</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>lixiaoqian@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>Overseas Financial Officer</label>
+        <name>Overseas_Financial_Officer</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>luoyong@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <label>General Manager of Overseas Business Department</label>
+        <name>General_Manager_of_Overseas_Business_Department</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>B2B 客户信用额度审批流程</description>
+    <emailTemplate>unfiled$public/HA_CE_Credit_Limit_Application_Email</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
+        <criteriaItems>
+            <field>Credit_Limit_Application__c.Approval_Status__c</field>
+            <operation>contains</operation>
+            <value>Draft,Rejected,Risk Post Rejected,Risk Management Committee Rejected,Insurance Company Rejected</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Customer_Category__c</field>
+            <operation>equals</operation>
+            <value>B2B</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Sales_Region__c</field>
+            <operation>contains</operation>
+            <value>Hisense USA,NA OEM Sales Dept.,Hisense South Africa,Hisense Dubai,Hisense Canada,Hisense Mexico,Hisense Panama,Hisense Colombia,Hisense Peru,Hisense Brazil,Hisense Chile,Hisense Argentina,Hisense Australia,Hisense New Zealand,Hisense India</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Account.Sales_Region__c</field>
+            <operation>contains</operation>
+            <value>South Asia Office,East Asia Office,Europe Sales Dept.,Hisense Russia - Direct Sales,Israel Office</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Update_Approval_Status_to_RR_Approving</name>
+            <type>FieldUpdate</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Update_Approval_Status_to_RR_Approving</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Credit Limit Application - B2B Customer</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>2</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>true</showApprovalHistory>
+</ApprovalProcess>

@@ -1,0 +1,319 @@
+<template>
+    <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+        class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <template if:true={isEdit}>
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={cancelEdit}>
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true" style="color:#747474">
+                        <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button>
+            </template>
+            <template if:false={isEdit}>
+                <template if:true={isShowRecordTypes}>
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={cancel}>
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true" style="color:#747474">
+                            <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Cancel and close</span>
+                    </button>
+                </template>
+                <template if:false={isShowRecordTypes}>
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={cancelNew}>
+                        <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true" style="color:#747474">
+                            <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Cancel and close</span>
+                    </button>
+                </template>
+            </template>
+
+            <template if:true={isLocked}>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-011" class="slds-modal__title slds-hyphenate">
+                        {headingString}
+                    </h1>
+                </div>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-11">
+                    <template if:true={leave}>
+                        <p>{label.Application_Leave_Locked}</p>
+                        <br />
+                        <span>{label.PromoterDailyReport_ATTACHMENT}</span>
+                        <c-upload-files-lwc data-index='0' onselectfiles={handleSelectFiles}>
+                        </c-upload-files-lwc>
+                    </template>
+
+                    <template if:false={leave}>
+                        <p>{label.Application_Locked}</p>
+                    </template>
+                </div>
+            </template>
+
+            <template if:false={isLocked}>
+                <!-- 选择Record Type -->
+                <template if:true={isShowRecordTypes}>
+                    <div class="slds-modal__header">
+                        <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                            {label.New_Application}
+                        </h1>
+                    </div>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <lightning-radio-group name="radioGroup" label="" options={typesOptions} value={recordTypeId}
+                            type="radio" onchange={handleChange}></lightning-radio-group>
+                    </div>
+                </template>
+
+                <template if:false={isShowRecordTypes}>
+                    <!-- 新建 AdditionalCheckInOut 记录 -->
+                    <template if:true={checkInOut}>
+                        <div class="slds-modal__header">
+                            <h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate">
+                                {headingString}
+                            </h1>
+                        </div>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                            <lightning-record-edit-form object-api-name="Application__c" density="Compact"
+                                record-id={recordId}>
+                                <lightning-messages></lightning-messages>
+
+                                <!-- Check Date -->
+                                <lightning-input-field field-name="CheckDate__c" data-field-name="CheckDate__c"
+                                    value={application.CheckDate__c} onchange={handleFieldChange}
+                                    onkeydown={handleKeyDown} required>
+                                </lightning-input-field>
+                                <!-- Check In Store Name -->
+                                <lightning-input-field field-name="CheckInStoreName__c"
+                                    data-field-name="CheckInStoreName__c" value={application.CheckInStoreName__c}
+                                    onchange={handleFieldChange} onkeydown={handleKeyDown}>
+                                </lightning-input-field>
+                                <!-- Refill Check In Time -->
+                                <lightning-input-field field-name="RefillCheckInTime__c"
+                                    data-field-name="RefillCheckInTime__c" onchange={handleFieldChange}
+                                    onkeydown={handleKeyDown}>
+                                </lightning-input-field>
+                                <!-- Check Out Store Name -->
+                                <lightning-input-field field-name="CheckOutStoreName__c"
+                                    data-field-name="CheckOutStoreName__c" value={application.CheckOutStoreName__c}
+                                    onchange={handleFieldChange} onkeydown={handleKeyDown}>
+                                </lightning-input-field>
+                                <!-- Refill Check Out Time -->
+                                <lightning-input-field field-name="RefillCheckOutTime__c"
+                                    data-field-name="RefillCheckOutTime__c" onchange={handleFieldChange}
+                                    onkeydown={handleKeyDown}>
+                                </lightning-input-field>
+                                <!-- Reason -->
+                                <lightning-input-field field-name="Reason__c" data-field-name="Reason__c"
+                                    value={application.Reason__c} onchange={handleFieldChange} onkeydown={handleKeyDown}
+                                    required>
+                                </lightning-input-field>
+                                <!-- Status -->
+                                <!-- <lightning-input-field field-name="Status__c" data-field-name="Status__c"
+                            value={application.Status__c} onchange={handleFieldChange}>
+                        </lightning-input-field> -->
+                                <!-- Comments -->
+                                <!-- <lightning-input-field field-name="Comments__c" data-field-name="Comments__c"
+                            value={application.Comments__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+                        </lightning-input-field> -->
+
+                            </lightning-record-edit-form>
+                        </div>
+                    </template>
+
+                    <!-- 新建 Leave 记录 -->
+                    <template if:true={leave}>
+                        <div class="slds-modal__header">
+                            <h1 id="modal-heading-03" class="slds-modal__title slds-hyphenate">
+                                {headingString}
+                            </h1>
+                        </div>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                            <lightning-record-edit-form object-api-name="Application__c" density="Compact"
+                                record-id={recordId}>
+                                <lightning-messages></lightning-messages>
+
+                                <!-- Leave Type -->
+                                <lightning-input-field field-name="LeaveType__c" data-field-name="LeaveType__c"
+                                    value={application.LeaveType__c} onchange={handleFieldChange}
+                                    onkeydown={handleKeyDown} required>
+                                </lightning-input-field>
+                                <!-- From -->
+                                <lightning-input-field field-name="From__c" data-field-name="From__c"
+                                    value={application.From__c} onchange={handleFieldChange} onkeydown={handleKeyDown}
+                                    required>
+                                </lightning-input-field>
+                                <!-- To -->
+                                <lightning-input-field field-name="To__c" data-field-name="To__c"
+                                    value={application.To__c} onchange={handleFieldChange} onkeydown={handleKeyDown}
+                                    required>
+                                </lightning-input-field>
+                                <!-- Reason -->
+                                <lightning-input-field field-name="Reason__c" data-field-name="Reason__c"
+                                    value={application.Reason__c} onchange={handleFieldChange} onkeydown={handleKeyDown}
+                                    required>
+                                </lightning-input-field>
+                                <!-- Status -->
+                                <!-- <lightning-input-field field-name="Status__c" data-field-name="Status__c"
+                            value={application.Status__c} onchange={handleFieldChange}>
+                        </lightning-input-field> -->
+                                <!-- Comments -->
+                                <!-- <lightning-input-field field-name="Comments__c" data-field-name="Comments__c"
+                            value={application.Comments__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+                        </lightning-input-field> -->
+
+                                <!-- <span style="color:red">*</span> -->
+                                <span>{label.PromoterDailyReport_ATTACHMENT}</span>
+                                <c-upload-files-lwc data-index='0' onselectfiles={handleSelectFiles}>
+                                </c-upload-files-lwc>
+                            </lightning-record-edit-form>
+                        </div>
+                    </template>
+
+                    <!-- 新建 Resignation 记录 -->
+                    <template if:true={resignation}>
+                        <div class="slds-modal__header">
+                            <h1 id="modal-heading-04" class="slds-modal__title slds-hyphenate">
+                                {headingString}
+                            </h1>
+                        </div>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-4">
+                            <lightning-record-edit-form object-api-name="Application__c" density="Compact"
+                                record-id={recordId}>
+                                <lightning-messages></lightning-messages>
+
+                                <!-- Status -->
+                                <!-- <lightning-input-field field-name="Status__c" data-field-name="Status__c"
+                            value={application.Status__c} onchange={handleFieldChange}>
+                        </lightning-input-field> -->
+                                <!-- Last Day -->
+                                <lightning-input-field field-name="LastDay__c" data-field-name="LastDay__c"
+                                    value={application.LastDay__c} onchange={handleFieldChange}
+                                    onkeydown={handleKeyDown} required>
+                                </lightning-input-field>
+                                <!-- Reason -->
+                                <lightning-input-field field-name="Reason__c" data-field-name="Reason__c"
+                                    value={application.Reason__c} onchange={handleFieldChange} onkeydown={handleKeyDown}
+                                    required>
+                                </lightning-input-field>
+                                <!-- Successor -->
+                                <template lwc:if={isSouthAfrica}>
+                                    <lightning-input-field field-name="Successor__c" data-field-name="Successor__c"
+                                        value={application.Successor__c} onchange={handleFieldChange}
+                                        onkeydown={handleKeyDown}>
+                                    </lightning-input-field>
+                                </template>
+                                <template lwc:else>
+                                    <lightning-input-field field-name="Successor__c" data-field-name="Successor__c"
+                                        value={application.Successor__c} onchange={handleFieldChange}
+                                        onkeydown={handleKeyDown} required>
+                                    </lightning-input-field>
+                                </template>
+
+                                <!-- Comments -->
+                                <!-- <lightning-input-field field-name="Comments__c" data-field-name="Comments__c"
+                            value={application.Comments__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+                        </lightning-input-field> -->
+
+                            </lightning-record-edit-form>
+                        </div>
+                    </template>
+
+                    <!-- 新建 TransferStore 记录 -->
+                    <template if:true={transferStore}>
+                        <div class="slds-modal__header">
+                            <h1 id="modal-heading-05" class="slds-modal__title slds-hyphenate">
+                                {headingString}
+                            </h1>
+                        </div>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-5">
+                            <lightning-record-edit-form object-api-name="Application__c" density="Compact"
+                                record-id={recordId}>
+                                <lightning-messages></lightning-messages>
+
+                                <!-- Status -->
+                                <!-- <lightning-input-field field-name="Status__c" data-field-name="Status__c"
+                            value={application.Status__c} onchange={handleFieldChange}>
+                        </lightning-input-field> -->
+
+                                <!-- Transfer Store -->
+                                <!-- <lightning-input-field field-name="TransferStore__c" data-field-name="TransferStore__c"
+                            value={application.TransferStore__c} onchange={handleFieldChange} required>
+                        </lightning-input-field> -->
+                                <!-- 自定义组件 -->
+                                <span style="color:red">*</span>
+                                <span>{fields.TransferStore__c}</span>
+                                <c-lookup-lwc data-field-name="TransferStore__c" obj-name="Shop__c"
+                                    op={lookupAccountFilter} onlookupupdate={lookUpChangeHandler}>
+                                </c-lookup-lwc>
+
+                                <!-- Last Day -->
+                                <lightning-input-field field-name="LastDay__c" data-field-name="LastDay__c"
+                                    value={application.LastDay__c} onchange={handleFieldChange} required>
+                                </lightning-input-field>
+
+                                <!-- Successor -->
+                                <lightning-input-field field-name="Successor__c" data-field-name="Successor__c"
+                                    value={application.Successor__c} onchange={handleFieldChange} required>
+                                </lightning-input-field>
+
+                                <!-- Comments -->
+                                <!-- <lightning-input-field field-name="Comments__c" data-field-name="Comments__c"
+                            value={application.Comments__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+                        </lightning-input-field> -->
+
+                            </lightning-record-edit-form>
+                        </div>
+                    </template>
+                </template>
+            </template>
+
+            <div class="slds-modal__footer">
+                <template if:true={isEdit}>
+                    <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={cancelEdit}>
+                        {label.Cancel}
+                    </button>
+                    <template if:false={isLocked}>
+                        <button class="slds-button slds-button_brand" onclick={saveRecord}>
+                            {label.Application_Save}
+                        </button>
+                    </template>
+                    <template if:true={isLocked}>
+                        <template if:true={leave}>
+                            <button class="slds-button slds-button_brand" onclick={saveRecord}>
+                                {label.Application_Save}
+                            </button>
+                        </template>
+                    </template>
+
+                </template>
+                <template if:false={isEdit}>
+                    <template if:true={isShowRecordTypes}>
+                        <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={cancel}>
+                            {label.Cancel}
+                        </button>
+                        <button class="slds-button slds-button_brand" onclick={nextHandler}>
+                            {label.Application_Next}
+                        </button>
+                    </template>
+                    <template if:false={isShowRecordTypes}>
+                        <button class="slds-button slds-button_neutral" aria-label="Cancel and close"
+                            onclick={cancelNew}>
+                            {label.Cancel}
+                        </button>
+                        <button class="slds-button slds-button_brand" onclick={saveRecord}>
+                            {label.Application_Save}
+                        </button>
+                    </template>
+
+                </template>
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+
+</template>

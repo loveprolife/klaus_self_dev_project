@@ -1,0 +1,48 @@
+<!--
+ * @Author: YYL
+ * @LastEditors: YYL
+-->
+<template>
+    <div class="slds-modal slds-backdrop slds-fade-in-open" style={modalHeight}>
+        <div class="slds-modal__container" style={containerStyle}>
+            <lightning-card class="slds-color__background_gray-4 pageHeader">
+                <header class = "slds-modal__header">
+                    <h2 class = "slds-modal__title slds-hyphenate slds-text-title_bold">
+                        File Upload Using Input   
+                    </h2>
+                </header>
+        
+                <div class="star-container slds-dl_horizontal slds-media_center slds-grid_align-center" >
+                    <div>
+                        <lightning-input label="" name="file uploader" onclick={handleFilesClick} onchange={handleFilesChange} type="file" accept={acceptedType}></lightning-input>
+                    </div>
+                </div>
+                <div class="star-container slds-dl_horizontal slds-media_center slds-grid_align-center" >
+                    <template if:true={isHaveFile}>
+                        <div style="padding-top: 2rem;color:green">{fileName}</div>
+                    </template>
+                    <template if:false={isHaveFile}>
+                        <div style="padding-top: 2rem;color:red">{fileName}</div>
+                    </template>
+                </div>
+                <div class="star-container slds-dl_horizontal slds-media_center slds-grid_align-center" >
+                    <div style="padding-bottom: 2rem;">
+                        <lightning-button label={UploadFile} onclick={handleSave} variant="brand"></lightning-button>
+                    </div>
+                </div>
+        
+                <template if:true={showLoadingSpinner}>
+                    <lightning-spinner alternative-text="Uploading now"></lightning-spinner>
+                </template>
+                <div class="modal-footer slds-modal__footer">
+                    <lightning-button
+                        variant="brand-outline"
+                        label={label.Training_Task_Cancel}
+                        onclick={cancel}
+                        class="slds-m-left_x-small"
+                    > </lightning-button>
+                </div>
+            </lightning-card>
+        </div>
+    </div>
+</template>

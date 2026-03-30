@@ -1,0 +1,28 @@
+<template>
+
+<lightning-card>
+        <h3 slot="title">
+           LDAP校验
+        </h3>
+       <!--  <hr> -->
+
+        <div > 
+        	<!-- <br/> -->
+        	<p class="slds-p-horizontal_small">是否进行LDAP校验？</p>
+        	<!-- <br/> -->
+        </div>
+        <template if:true={isShowSpinner}>
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+        <div slot="footer">
+               <!--  <lightning-badge label="Tag1"></lightning-badge>
+                <lightning-badge label="Tag2"></lightning-badge>
+                <lightning-badge label="Tag3"></lightning-badge> -->
+                <lightning-button class="slds-m-top_small" label="取消" onclick={handleCancel}></lightning-button>
+                &nbsp; 
+			    <lightning-button class="slds-m-top_small" label="确认" onclick={handleOk}></lightning-button>
+        </div>
+
+    </lightning-card>
+</template>

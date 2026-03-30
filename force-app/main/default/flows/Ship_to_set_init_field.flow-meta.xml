@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>区分国家</description>
+        <name>diff_country</name>
+        <label>国家</label>
+        <locationX>633</locationX>
+        <locationY>381</locationY>
+        <defaultConnector>
+            <targetReference>Get_Payment_term</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>AU</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Customer__r.Guarantor_Country_Code__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>AU</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Customer__r.Guarantor_Country_Code__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>NZ</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Sold_to</targetReference>
+            </connector>
+            <label>澳洲</label>
+        </rules>
+    </decisions>
+    <description>地址类客户：付款条件、统御科目</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>ReconciliationCustomer</name>
+        <dataType>String</dataType>
+        <expression>if(text({!$Record.Hisense_Entity__c})=&apos;8000&apos;,&apos;1122010101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8010&apos;,&apos;1122010101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8040&apos;,&apos;1122010101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8050&apos;,&apos;1122010101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8060&apos;,&apos;1122010101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8070&apos;,&apos;1122010101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8080&apos;,&apos;1122010101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8090&apos;,&apos;1122010501&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;80A0&apos;,&apos;1122019901&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;80B0&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;80F0&apos;,&apos;1122010101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;80G0&apos;,&apos;1122010101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;80K0&apos;,&apos;1122010501&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;80N0&apos;,&apos;1122010501&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;80P0&apos;,&apos;1122010501&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;80Q0&apos;,&apos;1122010501&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8110&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8120&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8140&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8170&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8200&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8210&apos;,&apos;1122020101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8300&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8320&apos;,&apos;1122020201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8330&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8340&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8350&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8370&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8380&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8390&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;83B0&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;83E0&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8400&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8410&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8420&apos;,&apos;1122020201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8430&apos;,&apos;1122020201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8440&apos;,&apos;1122020201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8450&apos;,&apos;1122020201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8460&apos;,&apos;1122020201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8470&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8500&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8510&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8520&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8530&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8540&apos;,&apos;1122020101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8610&apos;,&apos;1122019901&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8620&apos;,&apos;1122020101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8640&apos;,&apos;1122020101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8650&apos;,&apos;1122020101&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8660&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8910&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8930&apos;,&apos;1122010201&apos;,
+
+if(text({!$Record.Hisense_Entity__c})=&apos;8999&apos;,&apos;1122010201&apos;,
+
+&apos;&apos;
+
+)))))))))))))))))))))))))))))))))))))))))))))))))))))</expression>
+    </formulas>
+    <interviewLabel>Set Init Field {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Ship to set init field</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Payment_term</name>
+        <label>Get Payment term</label>
+        <locationX>828</locationX>
+        <locationY>492</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Set_ReconciliationCustomer</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>G001</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Payment_Term__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Sold_to</name>
+        <label>主户</label>
+        <locationX>469</locationX>
+        <locationY>486</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Set_init_fiedl_AU</targetReference>
+        </connector>
+        <filterLogic>1 AND ((2 AND 3) OR (4 AND 5))</filterLogic>
+        <filters>
+            <field>Customer__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Customer__r.Sold_to__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Hisense_Entity__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Hisense_Entity__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Hisense_Entity__c</field>
+            <operator>NotEqualTo</operator>
+        </filters>
+        <filters>
+            <field>Hisense_Entity_Sales__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Hisense_Entity_Sales__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Hisense_Entity_Sales__c</field>
+            <operator>NotEqualTo</operator>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Customer_Extend__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Set_init_fiedl_AU</name>
+        <label>Set init fiedl AU</label>
+        <locationX>469</locationX>
+        <locationY>634</locationY>
+        <inputAssignments>
+            <field>Payment_Term_Sales__c</field>
+            <value>
+                <elementReference>Sold_to.Payment_Term_Sales__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Payment_Term__c</field>
+            <value>
+                <elementReference>Sold_to.Payment_Term__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Reconciliation_Customer__c</field>
+            <value>
+                <elementReference>ReconciliationCustomer</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Set_ReconciliationCustomer</name>
+        <label>Set Init Field</label>
+        <locationX>827</locationX>
+        <locationY>633</locationY>
+        <inputAssignments>
+            <field>Payment_Term_Sales__c</field>
+            <value>
+                <elementReference>Get_Payment_term.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Payment_Term__c</field>
+            <value>
+                <elementReference>Get_Payment_term.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Reconciliation_Customer__c</field>
+            <value>
+                <elementReference>ReconciliationCustomer</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>515</locationX>
+        <locationY>84</locationY>
+        <connector>
+            <targetReference>diff_country</targetReference>
+        </connector>
+        <filterFormula>{!$Record.Customer__r.RecordType.DeveloperName}=&apos;Customer_Address&apos;</filterFormula>
+        <object>Customer_Extend__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

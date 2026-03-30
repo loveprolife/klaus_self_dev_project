@@ -1,0 +1,48 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false">
+	<apex:includeLightning />
+    	<script src="/lightning/lightning.out.js"></script>
+    <div id="lwc_content"></div>
+
+    <script>
+    	$Lightning.use("c:HihubDownloadAppCmp", function () {
+            $Lightning.createComponent("c:hihubDownloadLwc", {
+            	recordId : '{!$CurrentPage.parameters.id}',
+            	newTime : '{!$CurrentPage.parameters.newTime}',
+            	loseDate : '{!$CurrentPage.parameters.loseDate}',
+            }, "lwc_content", function (cmp) {});
+        });
+    </script>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <!-- <div class="vf-container">
+        <iframe 
+            src="{!URLFOR($Resource.wfc, 'down.html')}" 
+            width="100%" 
+            height="100%"
+            frameborder="0"
+            >
+        </iframe>
+    </div> -->
+
+    <!-- <style>
+        html, body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        #myIframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+        }
+    </style>
+    <iframe id="myIframe" src="{!URLFOR($Resource.hihubDownload, 'down.html')}" frameborder="0"></iframe> -->
+    
+</apex:page>

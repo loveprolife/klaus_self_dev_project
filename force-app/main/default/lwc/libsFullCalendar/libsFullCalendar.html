@@ -1,0 +1,86 @@
+<template>
+   
+    <lightning-card title="MeetingRoom" icon-name="custom:custom19">
+        <p class="slds-var-m-bottom_small">
+
+        </p>
+        <template lwc:if={MeetingRooms}>
+            <template for:each={MeetingRooms} for:item="MeetingRoom" >
+              <p key={MeetingRoom.Id}>{MeetingRoom.Name}, Capacity:{MeetingRoom.capacity__c} seats, Device:{MeetingRoom.device__c}</p>
+            </template>
+          </template>
+          <template lwc:elseif={error}>
+            <c-error-panel errors={error}></c-error-panel>
+        </template>
+    </lightning-card>
+    <lightning-card title="BookingCalendar" icon-name="custom:custom19">
+        <div class="slds-card" >
+            <div class="calendar" lwc:dom="manual"></div>
+            
+            <div class="slds-modal__footer">
+            <lightning-button label="NewBooking" variant="brand" onclick={showModal} disabled="true"></lightning-button>
+            <lightning-button label="Modify" variant="neutral" onclick={navigateNext} disabled="true"></lightning-button>
+
+             </div>
+
+            <template lwc:if={error}>
+                <c-error-panel errors={error}
+                    friendly-message="Failed to display FullCalendar"></c-error-panel>
+            </template> 
+            <template if:true={show}>
+                <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Roombooking</h1>
+                    <p class="slds-m-top_x-small">*Pls fill the "BookedBy" field with your name and phone number</p>
+                    </div>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-record-edit-form object-api-name="RoomBooking__c" density="auto" >
+                        <lightning-messages></lightning-messages>
+                        <lightning-input label="Id" disabled value={BookId}></lightning-input>
+                       
+                       <!-- <lightning-input-field field-name="Name" required="True" value={BookName}  onchange={handleNameChange}></lightning-input-field>   -->
+                        <lightning-input label="BookedBy" required="True" value={BookName} placeholder="Pls input your name and phone number" onchange={handleNameChange}></lightning-input>
+
+            <lightning-input-field field-name="Subject__c" value={BookSubject} onchange={handleSubjectChange}></lightning-input-field>
+            <lightning-input-field field-name="StartTime__c" required="True" value={BookStart} onchange={handleStartChange}></lightning-input-field>
+            
+            <p class="slds-badge">Refer to GuangzhouTime: {BookStartBJ}</p>
+            <lightning-input-field field-name="EndTime__c" value={BookEnd} required="True" onchange={handleEndChange}></lightning-input-field>
+            <p class="slds-badge">Refer to GuangzhouTime: {BookEndBJ}</p>
+            <lightning-input-field field-name="MeetingRoom__c"  required="True" value={BookRoom} onchange={handleRoomChange}></lightning-input-field>
+            
+                    </lightning-record-edit-form>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <lightning-button label="Save" variant="brand" onclick={createAccount}></lightning-button>
+                        <lightning-button label="Cancel" variant="neutral" onclick={cancel}></lightning-button> 
+                    </div>
+                    </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+
+            </template>
+            
+        </div>
+        
+            
+    </lightning-card>
+    
+<!--
+    <lightning-card title="Booking" icon-name="custom:custom19">
+        <p class="slds-var-m-bottom_small">
+
+        </p>
+        <template lwc:if={Bookings}>
+            <template for:each={Bookings} for:item="Booking" >
+              <p key={Booking.Id}>{Booking.Name}{Booking.StartTime__c}{Booking.EndTime__c}</p>
+            </template>
+          </template>
+          <template lwc:elseif={error}>
+            <c-error-panel errors={error}></c-error-panel>
+        </template>
+    </lightning-card>
+    -->
+   
+</template>

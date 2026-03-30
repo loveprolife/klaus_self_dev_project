@@ -1,0 +1,335 @@
+<template>
+    <template if:true={showCapture}>
+        <c-capture-photo-lwc is-compress={captureCompress} onselect={handleCaptureComplete}></c-capture-photo-lwc>
+    </template>
+    <!-- 自定义弹窗 -->
+    <c-modal-lwc data-id="product selection" static-mode=true title="" show-ok=true show-close=true hidden-close-icon=false onok={handleOk}>
+        <h1>{modalMsg}</h1>
+    </c-modal-lwc>
+    <!-- <div style="margin-bottom: 15px;"></div> -->
+    <template if:true={showAllPage}>
+        <div class="slds-is-relative">
+            <!-- Loading -->
+            <template if:true={isShowSpinner} >
+                <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+            </template>
+            <div class="slds-modal__header" style="padding: 0px;">
+                <lightning-card class="slds-color__background_gray-4 pageHeader" title={label.INSPECTION_REPORT_TITLE} icon-name="standard:article">
+                </lightning-card>
+            </div>
+            <div class="slds-modal__content slds-scrollable_y" style={styleContent}>
+                <lightning-card>
+                    <div style="padding-left: 10px; padding-right: 10px;">
+                        <lightning-record-edit-form object-api-name="Daily_Inspection_Report__c" layout-type="Comfy">
+                            <!-- <lightning-card>
+                                
+                            </lightning-card> -->
+
+                            <table class="slds-table_fixed-layout slds-resizable report-head"
+                            style="width: 100%; table-layout:fixed; word-wrap:break-word; position: relative; z-index: 1;">
+                                <tr>
+                                    <td style="width: 90%;"></td>
+                                    <td></td>
+                                </tr>
+                                <!-- Report Date -->
+                                <template if:false={record.Id}>
+                                   <tr>
+                                      <td style="white-space: pre-wrap; word-break: break-all;">
+                                          <lightning-icon 
+                                              style="display: inline-block;"
+                                              size="x-small"
+                                              icon-name="standard:address" 
+                                              alternative-text="Address">
+                                          </lightning-icon>
+                                          <span>{positionAddress}</span><br>
+                                          <span style="color:rgba(6, 6, 6, 0.196);">{formattedTime}</span>
+                                      </td>
+                                      <td style="text-align: right;">
+                                          <lightning-button-icon 
+                                              class="slds-var-m-right_xx-small"
+                                              icon-name="utility:refresh"  
+                                              alternative-text="Refresh" 
+                                              title="Refresh" 
+                                              onclick={geolocationGetAddress}>
+                                          </lightning-button-icon>
+                                      </td>
+                                      
+                                   </tr>
+                                </template>   
+                                <tr>
+                                    <td  colspan="2">
+                                        <span style="color:red">*</span>
+                                        <span>  
+                                            {label.Inspection_Date}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="slds-border_bottom">
+                                    <td  colspan="2">
+                                        <lightning-input-field 
+                                            data-field-name="Report_Date__c" 
+                                            field-name="Report_Date__c" 
+                                            value={record.Report_Date__c} 
+                                            variant="label-hidden"
+                                            class={recordDateClass}
+                                            read-only={recordDatereadonly}
+                                            onchange={handleChangeReportDate}>
+                                        </lightning-input-field>
+                                    </td>
+                                </tr>
+                                <!-- Store -->
+                                <tr>
+                                    <td  colspan="2">
+                                        <span style="color:red">*</span>
+                                        <span>
+                                            {label.Inspection_Store}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="slds-border_bottom">
+                                    <td  colspan="2">
+                                        <lightning-input-field 
+                                            data-field-name="Store__c" 
+                                            field-name="Store__c" 
+                                            value={record.Store__c} 
+                                            variant="label-hidden"
+                                            class={recordDateClass}
+                                            read-only={recordDatereadonly}
+                                            onchange={handleChangeShopOption}>
+                                        </lightning-input-field>
+                                        <!-- <div style="margin-left: 20px;color:rgb(184, 178, 174)">
+                                            <a onclick={goToStoreQuery}>{label.NOT_STORE}</a>
+                                        </div> -->
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <template if:true={storeDistanceInfo}>                                                                                              
+                                        <!-- 门店地址距离信息 -->
+                                        <tr style = "border-collapse: collapse;">
+                                            <td colspan="2" style="white-space: pre-wrap; word-break: break-all; border-color: transparent;"> 
+                                                <span >{storeDistanceInfo.address}</span>
+                                            </td>  
+                                        </tr>   
+                                        <tr style = "border-collapse: collapse;">
+                                           <td colspan="2" style="text-align: left; border-color: transparent;">
+                                                <span style="color:rgba(255, 123, 0, 0.939);"> {label.Distance} {storeDistanceInfo.distance} Km</span>
+                                            </td>
+                                        </tr>
+                                        <tr style = "border-collapse: separate;">
+                                           <td colspan="2" style="white-space: pre-wrap; word-break: break-all; border-color: transparent;"> 
+                                              <span style="color:rgba(6, 6, 6, 0.196);">
+                                                  {label.Coordinate_Description}
+                                              </span>
+                                           </td>
+                                        </tr>
+                                        <template if:false={record.Id}>
+                                           <tr style="text-align: left;">
+                                               <td style="border-color: transparent;">
+                                                 <lightning-button
+                                                    onclick={openLocation}
+                                                    label={label.Position_Correction}>
+                                                 </lightning-button>
+                                              </td>
+                                           </tr>
+                                        </template>
+                                        
+                                               <!-- </table> -->
+                                           <!-- </div> -->
+                                    </template>
+                                </tr>
+                                <!-- 最近一次的巡店日期 -->
+                                <!-- <tr class="slds-border_bottom">
+                                    <td colspan="2">
+                                        <c-input-read-only-lwc label={label.Inspection_Prior_Visit_Date}
+                                        value={priorVisitDate}></c-input-read-only-lwc>
+                                    </td>
+                                </tr> -->
+                                <!-- INSPECTION_REPORT_FLOORWALKER -->
+                                <!-- <tr>
+                                    <td colspan="2">
+                                    <c-input-read-only-lwc
+                                        label={label.INSPECTION_REPORT_FLOORWALKER}
+                                        value={ownerName}
+                                        ></c-input-read-only-lwc>
+                                    </td>
+                                </tr> -->
+                                <template if:true={isAustralia}>
+                                    <tr>
+                                        <td  colspan="2">
+                                            <span style="color:red">*</span>
+                                            <span>
+                                                {label.Inspection_Type}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="slds-border_bottom">
+                                        <td colspan="2">
+                                            <div class="field-wrapper">
+                                                <lightning-input-field 
+                                                    data-field-name="Inspect_Type__c" 
+                                                    field-name="Inspect_Type__c"
+                                                    value={record.Inspect_Type__c}
+                                                    variant="label-hidden" 
+                                                    onchange={handleInspectType}
+                                                    class={errorClass}
+                                                    read-only={recordDatereadonly}>
+                                                </lightning-input-field>
+                                                <template if:true={typeInvalid}>
+                                                    <div class="slds-form-element__help slds-text-color_error slds-p-left_x-small">
+                                                        {label.Inspection_Type_Tips}
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </template>
+                                
+                                <!-- Map -->
+                                <tr class="slds-border_bottom">
+                                    <td colspan="2">
+                                    <div style="margin-top: 5px;">
+                                        <span><strong>{todayDate} {nowTime}</strong></span>
+                                    </div>
+                                    <!-- <div style="margin-top: 5px;">
+                                        <table>
+                                            <tr>
+                                                <td style="width: 70%;">
+                                                <span><strong>{storeName}</strong></span>
+                                                </td>
+                                                <td >
+                                                <span style="color:red;">{storeDistance}</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div> -->
+                                    <!-- <div style="margin-top: 5px; overflow:hidden;">
+                                        <lightning-map 
+                                            zoom-level="18"
+                                            map-markers={mapMarkers}
+                                            list-view="hidden"
+                                            style="max-height: 350px; z-index: -1;"> 
+                                        </lightning-map>
+                                    </div> -->
+                                    </td>
+                                </tr>
+                                <!-- Photo -->
+                                <tr class="slds-border_bottom">
+                                    <td colspan="2">
+                                        <div class="slds-grid slds-wrap slds-m-vertical_medium" style="width:100%;margin-top:0px;">                                                                    
+                                        <div  style="width:100%;">
+                                            <div style="justify-content: space-between; display: flex;">
+                                                <div style="justify-content: center; display: flex; align-items: center;">
+                                                    {label.CheckInCheckOut_PHOTO}
+                                                </div>
+                                                <hr style="margin-top: 5px; margin-bottom: 5px;">
+                                                <div>
+                                                    <table>
+                                                        <tr>
+                                                            <td style="padding-right: 10px;">
+                                                                <!-- <template if:true={isFromPhoto}>
+                                                                    {label.INSPECTION_REPORT_From_Photo}
+                                                                </template>
+                                                                <template if:false={isFromPhoto}>
+                                                                    {label.INSPECTION_REPORT_From_Fold}
+                                                                </template> -->
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <template if:true={AndroidModel}>
+                                                                <td style="padding-right: 0px;">
+                                                                    <lightning-icon icon-name="utility:photo" alternative-text="photo" onclick={handleAndroidPhotoClick}></lightning-icon>
+                                                                </td>
+                                                            </template>
+                                                            <template if:true={iOSModel}>
+                                                                <td style="padding-right: 0px;">
+                                                                    <label for="fileInput">
+                                                                        <lightning-icon icon-name="utility:photo" alternative-text="photo"></lightning-icon>
+                                                                    </label>
+                                                                    <input id="fileInput" data-id="photo" style="display:none;" type="file" accept="image/*" capture="camera" onchange={handlephotoClick} />
+                                                                </td>
+                                                            </template>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <template if:true={attendanceShowPhoto}>
+                                            <div  style="width:100%;">
+                                                <img id="viewPhoto" name="viewPhoto" style="width: 10%;" src={attendancePhotoStream} alt="photo" onclick={handleViewPhotoClick}/>
+                                                <br/>
+                                                <lightning-icon icon-name="utility:delete" alternative-text="delete" onclick={handleDelPhotoClick} size="small"></lightning-icon>
+                                            </div>
+                                        </template>
+                                        <!-- Remark -->
+                                        <hr style="margin-top: 5px; margin-bottom: 5px;">
+                                            
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- <tr class="slds-border_bottom">
+                                    <td colspan="2">
+                                        <div class="slds-grid slds-wrap slds-m-vertical_medium" style="width:100%;margin-top:0px;">                                                                                
+                                        <hr style="margin-top: 5px; margin-bottom: 5px;">
+                                            <div  style="width:100%;">
+                                                {label.CheckInCheckOut_REMARK}
+                                            </div>
+                                            <div  style="width:100%;">
+                                                <textarea required="" placeholder={label.CheckInCheckOut_REMARK_INFO} class="slds-textarea" maxlength="100" onchange={handleRemarkInput}></textarea>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr> -->
+                                <!-- CheckItem And Create -->
+                                <tr>
+                                    <td colspan="2">
+                                        <div style="width: 100%; text-align: right; margin-top: 10px;margin-left: -10px;">
+                                            <template if:true={showCheckItemButton}>
+                                            <button type="button" class="slds-button slds-button_brand" onclick={handleShowItemIssues} style="margin-right: 10px;">{label.INSPECTION_REPORT_CHECK_ITEM_ISSUES}</button>
+                                            </template>
+                                            <button type="button" class="slds-button slds-button_brand" onclick={handleCreate}>{label.INSPECTION_REPORT_NEW}</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </lightning-record-edit-form>
+                    </div>
+                </lightning-card>
+            </div>
+            
+        </div>
+    </template>
+    <!-- CheckItem -->
+    <template if:true={showCheckItemIssues}>
+        <div class="slds-is-relative">
+            <div class="slds-modal__header" style={IssueStyle}>
+                <lightning-card class="slds-color__background_gray-4 pageHeader">
+                    <div style="justify-content: space-between; display: flex;">
+                        <div style="justify-content: center; display: flex; align-items: center;">
+                            <a style="margin-right: 15px;">
+                                <lightning-icon variant="success" icon-name="utility:chevronleft" onclick={handleCloseItemIssues}></lightning-icon>
+                                <span class="slds-assistive-text"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <c-historical-inspection-report-lwc owner-id={userId} report-date={record.Report_Date__c} store-id={record.Store__c}></c-historical-inspection-report-lwc>
+                </lightning-card>
+            </div>
+        </div>
+    </template>
+
+    <!-- Detail -->
+    <template if:true={showReportDetail}>
+        <div class="slds-is-relative">
+            <div class="slds-modal__header" style={IssueStyle}>
+                <c-new-inspector-report-detail-page-lwc owner-id={userId} report-date={record.Report_Date__c} store-id={record.Store__c} record-id={recordId} onselect={handleShowNewHistory}></c-new-inspector-report-detail-page-lwc>
+            </div>
+        </div>
+    </template>
+
+    <template if:true={openLocationPage}>
+        <c-google-map-location
+            onselect={handleHasEdit}
+            ongoback={handleCloseLocation}
+        ></c-google-map-location>
+    </template>
+</template>

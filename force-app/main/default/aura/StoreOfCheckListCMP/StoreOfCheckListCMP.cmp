@@ -1,0 +1,5 @@
+<aura:component
+    implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable"
+    access="global">
+    <c:storeOfCheckListLwc recordId="{!v.recordId}" onrefreshview="{!c.refreshview}" onclosemodal="{!c.closeModal}" />
+</aura:component>

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "270fa7ff-89c7-4a2a-9b4c-44d4de1e535d",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "relatedlist_701",
+  "id" : "e4762bd8-a8c0-4ca2-8c3d-41186bb89018",
+  "label" : "市场活动 Related List",
+  "routeType" : "relatedlist-701",
+  "type" : "route",
+  "urlPrefix" : "campaign"
+}

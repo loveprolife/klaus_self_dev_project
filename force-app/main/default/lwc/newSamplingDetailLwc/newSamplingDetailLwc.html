@@ -1,0 +1,87 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-10-29 16:41:24
+ * @LastEditors: WFC
+ * @LastEditTime: 2025-03-04 09:44:05
+ * @Description: 
+ * @FilePath: \hisense005\force-app\main\default\lwc\newSamplingDetailLwc\newSamplingDetailLwc.html
+-->
+<template>
+    <template if:true={recordId}>
+        <template if:true={isShowSpinner}>
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        </template>
+        <div class="slds-align_absolute-center slds-text-heading_medium">New Sampling Detail</div>
+        <div class="line"></div>
+        <div class="container">
+            <div class="slds-var-m-right_large" style="position: absolute; right:0; z-index:999">
+                <span style="color:Red">*</span> = Required Information
+            </div>
+            <lightning-card>
+                <div class="content-area">
+                    <lightning-record-edit-form object-api-name="Sampling_Detail__c">
+                        <lightning-messages></lightning-messages>
+                        <div class="slds-form__row">
+                            <slot class="slds-grid slds-size_1-of-1">
+                                <div class="slds-form__item slds-no-space slds-size_1-of-2 item-left">
+                                    <!-- Store -->
+                                    <lightning-input-field 
+                                        field-name='Shop__c' 
+                                        data-field-name="Shop__c" 
+                                        value={detail.Shop__c} 
+                                        disabled 
+                                        required>
+                                    </lightning-input-field>
+                                </div>
+                                <div class="slds-form__item slds-no-space slds-size_1-of-2 item-right">
+                                    <!-- Product -->
+                                    <lightning-input-field 
+                                        field-name="Product__c" 
+                                        data-field-name="Product__c"
+                                        value={detail.Product__c} 
+                                        onchange={handleFieldChange}
+                                        required>
+                                    </lightning-input-field>
+                                </div>
+                            </slot>
+                        </div>
+
+                        <div class="slds-form__row">
+                            <div class="slds-grid slds-size_1-of-1">
+                                <div class="slds-form__item slds-no-space slds-size_1-of-2 item-right">
+                                    <!-- Is_Add__c -->
+                                    <lightning-input-field 
+                                       field-name="Is_Add__c" 
+                                       data-field-name="Is_Add__c"
+                                       value={detail.Is_Add__c} 
+                                       onchange={handleFieldChange}
+                                       required>
+                                   </lightning-input-field>
+                               </div>
+                               <template if:true={isShowDisplayType}>
+                                    <div class="slds-form__item slds-no-space slds-size_1-of-2 item-left">
+                                        <lightning-combobox
+                                            style="width: 100%;"
+                                            name="DisplayType"
+                                            label="Display Type"
+                                            value={displayTypeValue}
+                                            options={displayTypeOptions}
+                                            onchange={handleChange} 
+                                            required>
+                                        </lightning-combobox>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </lightning-record-edit-form>
+                </div>            
+            </lightning-card>
+        </div>
+        <!-- 底部固定按钮 -->
+        <div class="button-footer">
+            <lightning-button label="取消" class="slds-var-m-horizontal_small" onclick={cancelHandleClick}></lightning-button>
+            <lightning-button label="保存" variant="brand" onclick={saveHandleClick}></lightning-button>
+        </div>
+
+    </template>
+</template>

@@ -1,0 +1,29 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-05-06 17:00:39
+ * @LastEditors: WFC
+ * @LastEditTime: 2024-05-16 17:25:34
+ * @Description: 
+ * @FilePath: \HisenseAll20240426\force-app\main\default\lwc\learningPlatformDetailMobileLwc\learningPlatformDetailMobileLwc.html
+-->
+<template>
+    <lightning-card>
+        <div class="slds-var-p-around_large">
+            <h3 class="slds-text-heading_medium slds-var-p-bottom_x-small">{recordName}</h3>
+            <div class="slds-text-title slds-var-p-bottom_x-small">Type: {recordType}</div>
+            <div class="slds-text-title slds-var-p-bottom_x-small">Author: {recordAuthor}</div>
+            <div class="slds-text-title slds-var-p-bottom_x-small">Upload Date: {recordUploadDate}</div>
+        </div>
+
+        <div class="slds-var-m-top_small">
+            <c-file-view-mobile-lwc
+                record-id={recordId}
+                allow-download={recordAllowDownload}
+                save-object-name="Learning_File_View_Details__c"
+                save-object-name-total="Learning_File_View_Details_Total__c"
+            ></c-file-view-mobile-lwc>
+        </div>
+        
+    </lightning-card>
+   
+</template>

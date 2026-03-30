@@ -1,0 +1,242 @@
+<template>
+    <template if:true={isShowSpinner} >
+        <lightning-spinner style={spinnerStyle} size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+    <lightning-accordion allow-multiple-sections-open="true" active-section-name={activeSections} style="margin-top: 8px;">
+        <lightning-accordion-section name="checkItem" label={label.INSPECTION_REPORT_CHECK_ITEM_ISSUES}>
+            <template if:true={inspectionReportIsNull}>
+                <div class="slds-text-align_center">{label.HISTORICAL_INSPECTION_REPORT_REPORT_NUll}</div>
+            </template>
+            <template if:false={inspectionReportIsNull}>
+                <template for:each={CheckResultInfoList} for:item="info" for:index="index">
+                    <template for:each={info.project} for:item="projectInfo">
+                        <template if:true={projectInfo.isProject}>
+                            <template for:each={projectInfo.checkItem} for:item="resultItem" for:index="index">
+                            <div key={resultItem.Id} style="margin-bottom: 16px;">
+                                <table class={resultItem.className} style="border:0">
+                                    <!-- 题目 -->
+                                    <tr>
+                                        <td style="white-space: pre-line;border:0">
+                                            <span style="color: #444444;">{resultItem.index}. Description</span>
+                                            <br />
+                                            <span style="color: #181818;font-weight: 500;">{resultItem.CheckItem__r.Description__c}</span>
+                                        </td>
+                                    </tr>
+                                    <!-- 结果 -->
+                                    <tr>
+                                        <td style="white-space: pre-line;">
+                                            <span style="color: #444444;">{checkResultInfo.Result__c}</span>
+                                            <br />
+                                            <span style="color: #181818;font-weight: 500;">{resultItem.Result__c}</span>
+                                        </td>
+                                    </tr>
+                                    <!-- 备注部分 -->
+                                    <template if:true={resultItem.CheckItem__r.HasComment__c}>
+                                        <tr>
+                                            <td style="white-space: pre-line;">
+                                                <span style="color: #444444;">{checkResultInfo.Comments__c}</span>
+                                                <br />
+                                                <span style="color: #181818;font-weight: 500;">{resultItem.Comments__c}</span><span>&nbsp;</span>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                     <!-- 附件部分 -->
+                                    <template if:true={resultItem.CheckItem__r.HasFile__c}>
+                                        <tr>
+                                            <td style="white-space: pre-line;">
+                                                <span style="color: #444444;">{label.INSPECTION_REPORT_ATTACHMENT}</span>
+                                                <br />
+                                                <c-upload-files2-lwc 
+                                                record-id={resultItem.Id}
+                                                col="3"
+                                                disabled-delete="true"
+                                                disabled-upload="true">
+                                            </c-upload-files2-lwc><span>&nbsp;</span>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </table>
+                            </div>
+                            </template>
+                        </template>
+                        <template if:false={projectInfo.isProject}>
+                            <template for:each={projectInfo.product} for:item="product">
+                                <template for:each={product.checkItem} for:item="resultItem" for:index="index">
+                                    <div key={resultItem.Id} style="margin-bottom: 16px;">
+                                        <table class={resultItem.className} style="border:0">
+                                            <!-- 题目 -->
+                                            <tr>
+                                                <td style="white-space: pre-line;border:0">
+                                                    <span style="color: #444444;">{resultItem.index}. Description</span>
+                                                    <br />
+                                                    <span style="color: #181818;font-weight: 500;">{resultItem.CheckItem__r.Description__c}</span>
+                                                </td>
+                                            </tr>
+                                            <!-- 结果 -->
+                                            <tr>
+                                                <td style="white-space: pre-line;">
+                                                    <span style="color: #444444;">{checkResultInfo.Comments__c}</span>
+                                                    <br />
+                                                    <span style="color: #181818;font-weight: 500;">{resultItem.Result__c}</span>
+                                                </td>
+                                            </tr>
+                                            <!-- 备注部分 -->
+                                            <template if:true={resultItem.CheckItem__r.HasComment__c}>
+                                                <tr>
+                                                    <td style="white-space: pre-line;">
+                                                        <span style="color: #444444;">{checkResultInfo.Comments__c}</span>
+                                                        <br />
+                                                        <span style="color: #181818;font-weight: 500;">{resultItem.Comments__c}</span>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                             <!-- 附件部分 -->
+                                            <template if:true={resultItem.CheckItem__r.HasFile__c}>
+                                                <tr>
+                                                    <td style="white-space: pre-line;">
+                                                        <span style="color: #444444;">{label.INSPECTION_REPORT_ATTACHMENT}</span>
+                                                        <br />
+                                                        <c-upload-files2-lwc 
+                                                        record-id={resultItem.Id}
+                                                        col="3"
+                                                        disabled-delete="true"
+                                                        disabled-upload="true">
+                                                    </c-upload-files2-lwc><span>&nbsp;</span>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                        </table>
+                                    </div>
+                                </template>
+                            </template>
+                           
+                        </template>
+                    </template>
+                </template>
+            </template>
+        </lightning-accordion-section>
+        <lightning-accordion-section name="ticket" label={label.PromoterDailyReport_TICKET}>
+            <!-- Added By Sunny Start -->
+            <!-- 历史Ticket -->
+            <template if:true={HistoricalTicketListIsNull}>
+                <div class="slds-text-align_center">{label.HISTORICAL_INSPECTION_REPORT_Ticket_NUll}</div>
+            </template>
+            <template if:false={HistoricalTicketListIsNull}>
+                <template for:each={historicalTicketList} for:item="ticket" for:index="index">
+                   <div key={ticket.Id} style="margin-bottom: 16px;">
+                        <table class={ticket.className} style="border:0">
+                            <tr>
+                                <td style="white-space: pre-line;border:0">
+                                    <span style="color: #444444;">{ticketFieldLabel.Name}</span>
+                                    <br />
+                                    <span style="color: #181818;font-weight: 500;">{ticket.Name}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="white-space: pre-line;">
+                                    <span style="color: #444444;">{ticketFieldLabel.Status__c}</span>
+                                    <br />
+                                    <span style="color: #181818;font-weight: 500;">{ticket.Status__c}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="white-space: pre-line;">
+                                    <span style="color: #444444;">{ticketFieldLabel.Subject__c}</span>
+                                    <br />
+                                    <span style="color: #181818;font-weight: 500;">{ticket.Subject__c}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="white-space: pre-line;">
+                                    <span style="color: #444444;">{ticketFieldLabel.Priority__c}</span>
+                                    <br />
+                                    <span style="color: #181818;font-weight: 500;">{ticket.Priority__c}</span>
+                                </td>
+                            </tr>
+                            <tr>                               
+                                <td style="white-space: pre-line;">
+                                    <span style="color: #444444;">{ticketFieldLabel.Description__c}</span>  
+                                    <br />                         
+                                    <span style="color: #181818;font-weight: 500;">{ticket.Description__c}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="white-space: pre-line;">
+                                    <span style="color: #444444;">{ticketFieldLabel.DueDate__c}</span>
+                                    <br />
+                                    <span style="color: #181818;font-weight: 500;">{ticket.DueDate__c}</span>
+                                </td>
+                            </tr>
+                            <template if:true={isShowDepartment}>
+                                <tr>
+                                    <td style="white-space: pre-line;">
+                                        <span style="color: #444444;">{ticketFieldLabel.Department__c}</span>
+                                        <br />
+                                        <span style="color: #181818;font-weight: 500;">{ticket.Department__c}</span>
+                                    </td>
+                                </tr>
+                            </template>
+                            <tr>
+                                <td style="white-space: pre-line;">
+                                    <span style="color: #444444;">{ticketFieldLabel.AssignedTo__c}</span>
+                                    <br />
+                                    <lightning-record-view-form object-api-name="Ticket__c" record-id={ticket.Id}>
+                                        <lightning-output-field field-name="AssignedTo__c" variant="label-hidden"> </lightning-output-field>
+                                    </lightning-record-view-form>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="white-space: pre-line;">
+                                    <span style="color: #444444;">{label.INSPECTION_REPORT_ATTACHMENT}</span>
+                                    <br />
+                                    <c-upload-files2-lwc record-id={ticket.Id} col="3" disabled-delete="true" disabled-upload="true"></c-upload-files2-lwc><span>&nbsp;</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </template>
+            </template>
+            <!-- Added By Sunny End -->
+        </lightning-accordion-section>
+    </lightning-accordion>
+    
+    <template if:true={isShowModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container">
+            <!-- <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{checkItemId}</h1>
+            </div> -->
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="max-height: 300px;">
+                <lightning-record-view-form
+                  density="compact"
+                  object-api-name="CheckItem__c"
+                  record-id={checkItemId}
+                >
+                    <lightning-output-field field-name="Product_Line__c"> </lightning-output-field>
+                    <lightning-output-field field-name="Project__c"> </lightning-output-field>
+                    <lightning-output-field field-name="Description__c"> </lightning-output-field>
+                    <lightning-output-field field-name="Description_CN__c"> </lightning-output-field>
+                    <lightning-output-field field-name="Description_EN__c"> </lightning-output-field>
+                    <lightning-output-field field-name="MaximumScore__c"> </lightning-output-field>
+                    <lightning-output-field field-name="IsCountInScore__c"> </lightning-output-field>
+                    <lightning-output-field field-name="IsCountInScore__c"> </lightning-output-field>
+                    <lightning-output-field field-name="HasFile__c"> </lightning-output-field>
+                    <lightning-output-field field-name="Scores_require_file__c"> </lightning-output-field>
+                    <lightning-output-field field-name="HasComment__c"> </lightning-output-field>
+                    <lightning-output-field field-name="Is_Related_To_Product__c"> </lightning-output-field>
+                </lightning-record-view-form>
+            </div>
+            <div class="slds-modal__footer">
+                <lightning-icon 
+                  icon-name="utility:close" 
+                  alternative-text="Connected" 
+                  size="xx-small" 
+                  onclick={closeModal}
+                ></lightning-icon>
+            </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+</template>

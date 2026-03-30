@@ -18,6 +18,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CurrencyIsoCode</field>
+            <table>FlowInterviewLog</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>CreatedDate</field>
             <table>FlowInterviewLog</table>
         </columns>
@@ -82,6 +87,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Id</field>
+            <table>FlowInterviewLog.FlowInterviewLogs</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CurrencyIsoCode</field>
             <table>FlowInterviewLog.FlowInterviewLogs</table>
         </columns>
         <columns>

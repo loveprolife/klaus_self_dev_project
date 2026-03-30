@@ -1,0 +1,10 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable" access="global" >
+	
+    <aura:html tag="style">
+        .slds-modal__container{
+            width: 33%;
+            max-width:33%;
+        }
+    </aura:html>
+	<c:trainingTaskEvaluationLWC recordId="{!v.recordId}" onrefreshView="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+</aura:component>

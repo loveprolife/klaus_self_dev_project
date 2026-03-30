@@ -1,0 +1,270 @@
+<apex:page id="header" showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false"
+    language="en_US" controller="InspectionPDFPageController" renderAs="pdf" contentType="application/pdf">
+
+    <head>
+        <!-- 关键：声明移动端视口 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style type="text/css" media="print">
+            @page{
+                size: A4 portrait; 
+            }
+            @media only screen and (max-width: 768px) {
+                body { height: 100vh !important; overflow: hidden; }
+            }
+            @page {
+                @top-center {
+                    content: element(header);
+                }
+                @bottom-left {
+                    content: element(footer);
+                }
+            }
+
+
+            body{
+                font-family: 'Microsoft YaHei', 'SimSun', 'Arial Unicode MS', sans-serif;
+            }
+
+            .titel {
+                font-size: 15px;
+                font-weight: normal;
+            }
+
+            .information{
+                font-weight: normal;
+                padding-top: 2%; 
+                background-color: rgb(243, 237, 237);
+                table-layout: flex;
+                width: 100%;
+            }
+
+            .td{
+                width: 25%;
+            }
+            
+            .container {
+                display: grid;
+                justify-items: center;  /* 所有项目水平居中 */
+                align-items: end;       /* 所有项目垂直底部对齐 */
+            }
+
+            .checkType{
+                padding-top: 2%;
+            }
+
+            .type{
+                font-size: 22px;
+            }
+
+            .itemType{
+                font-size: 18px;
+                font-weight: bold;
+                background-color: rgb(28, 187, 189);
+                color: rgb(255, 255, 255);
+            }
+
+            .itemDate{
+                font-size: 14px;
+            }
+
+            .outputPanelType{
+                padding-top: 1%;
+                padding-bottom: 1%;
+            }
+
+            .line {
+                border-top: 1px solid rgb(165, 165, 165); /* 上边框，宽度为2px，颜色为黑色 */
+                width: 100%; /* 横线宽度 */
+                margin-top: 30px; /* 上边距 */
+                margin-bottom: 30px; /* 上边距 */  
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div style="display:inline-block;text-align: right;width:100%;">
+                <apex:image style="width:100px;height:30px;" url="{!URLFOR($Resource.hisense_jpg,'Hisense.jpg')}"/>
+            </div>
+            <div class="titel" style="display:inline-block;color: rgb(12, 233, 237);">
+                <apex:outputText style="font-size: 16px">Store Inspection Report</apex:outputText>
+                <apex:outputLink style="padding-left:20px;font-size: 12px" value="/lightning/r/Daily_Inspection_Report__c/{!insepction.Id}/view">{!insepction.Name}</apex:outputLink>
+            </div>
+        </div>
+        <!-- 基础数据 -->
+        <div class="titel">
+            <table class="information">
+                <tr>
+                    <td style="text-align:left;">Store: </td>
+                    <td style="text-align:left;font-weight: bold;width:45%">{!insepction.Store__r.Name}</td>
+                    <td style="text-align:left;">Check in Date: </td>
+                    <td style="text-align:left;font-weight: bold">{!checkIn}</td>
+                </tr>
+                
+                <tr>
+                    <td style="text-align:left;">Channel: </td>
+                    <td style="text-align:left;font-weight: bold">{!insepction.Channel__c}</td>
+                    <td style="text-align:left;">Check Out Date: </td>
+                    <td style="text-align:left;font-weight: bold">{!checkOut}</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;">Visitor: </td>
+                    <td style="text-align:left;font-weight: bold">{!insepction.CreatedBy.Name}</td>
+                    <td style="text-align:left;">Status: </td>
+                    <td style="text-align:left;font-weight: bold">{!insepction.Status__c}</td>
+                </tr>
+                <tr>
+                    <td>Store Address:</td>
+                    <td colspan="3" style="font-weight: bold">{!insepction.Store__r.Address1__c}</td>
+                </tr>
+                <tr>
+                    <td>Distance:</td>
+                    <td colspan="3" style="font-weight: bold">{!insepction.Distance__c}</td>
+                </tr>
+                <tr>
+                    <td>Photo:</td>
+                    <td>
+                        <apex:repeat value="{!linkList}" var="imgLink">
+                            <apex:image url="{!imgLink}" style="height:140px; width:auto; max-width:100%; display: inline-block;"></apex:image>
+                        </apex:repeat>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Note:</td>
+                    <td colspan="3" style="font-weight: bold">{!insepction.Note__c}</td>
+                </tr>
+                <!-- <tr>
+                    <td>Note:</td>
+                    <td colspan="3" style="font-weight: bold">{!insepction.Note__c}</td>
+                </tr> -->
+            </table>
+        </div>
+
+        <!-- 检查大类 -->
+        <div id="message" readonly="true"></div>
+        <div class="checkType">
+            <apex:repeat value="{!outPut}" var="item">
+                <div class="line"></div>
+                <span class="type">
+                    {!item.type}
+                </span>
+                <apex:repeat value="{!item.data}" var="itemResult">
+                    <h1 class="itemType">
+                        {!itemResult.itemType}
+                    </h1>
+
+                    <!-- 四期检查项模块 -->
+                    <apex:repeat value="{!itemResult.checkResultList}" var="checkResult">
+                        <!-- <apex:outputPanel rendered="{!IF(checkResult.parent.CheckItem__r.Question_Type__c == 'Yes/No',true,false)}"> -->
+                        <apex:outputPanel rendered="{!NOT(ISNULL(checkResult.Response__c))}">
+                            <div class="outputPanelType">
+                                <div>
+                                    {!checkResult.CheckItem__r.Description__c}
+                                </div>
+                                <div>
+                                    <!-- <input type="text" value="{!checkResult.parent.Response__c}"/> -->
+                                    {!checkResult.Response__c}
+                                </div>
+                                <apex:outputPanel rendered="{!checkResult.CheckItem__r.HasComment__c}">
+                                    <div style="padding-left:5%">
+                                        Comment:{!checkResult.Comments__c}
+                                    </div>
+                                </apex:outputPanel>
+                            </div>
+                        </apex:outputPanel>
+                    </apex:repeat>
+
+                    <!-- 三期检查项模块 -->
+                    <apex:variable var="index" value="{!0}"/>  <!-- 初始化计数器 -->
+                    <apex:repeat value="{!itemResult.checkResultListT}" var="checkResult">
+                        <apex:variable var="index" value="{!index + 1}"/>  <!-- 自增 -->
+                        <apex:variable var="numValue" value="{!checkResult.Scores__c}"/> <!-- 示例数值 -->
+                        <!-- <apex:outputPanel rendered="{!IF(checkResult.parent.CheckItem__r.Question_Type__c == 'Yes/No',true,false)}"> -->
+                        <div class="outputPanelType">
+                            <div>
+                                {!index}. {!checkResult.CheckItem__r.Description__c}
+                            </div>
+                            <div class="itemDate">
+                                <apex:outputPanel rendered="{!checkResult.CheckItem__r.IsYesOrNo__c}">
+                                    <apex:outputPanel rendered="{!numValue >= 0}">
+                                        <span style="color: rgb(28, 187, 189)">Yes or No：{!checkResult.Result__c}</span>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!numValue < 0}">
+                                        <span style="color: red">Yes or No：</span>
+                                    </apex:outputPanel>
+                                </apex:outputPanel>
+                                <div>
+                                    <apex:outputPanel rendered="{!numValue >= 0}">
+                                        <span style="color: rgb(28, 187, 189)">Score：{!checkResult.Scores__c}</span>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!numValue < 0}">
+                                        <span style="color: red">Score：</span>
+                                    </apex:outputPanel>
+                                </div>
+                            </div>
+                            <apex:outputPanel rendered="{!checkResult.CheckItem__r.HasComment__c}">
+                                <div class="itemDate">
+                                    Comment：{!checkResult.Comments__c}
+                                </div>
+                            </apex:outputPanel>
+                        </div>
+                    </apex:repeat>
+                </apex:repeat>
+
+                <apex:repeat value="{!item.dataSam}" var="samResult">
+                    <h1 class="itemType">
+                        {!samResult.productLine}
+                    </h1>
+                    <apex:variable var="indexLine" value="{!0}"/>  <!-- 初始化计数器 -->
+                    <apex:repeat value="{!samResult.samplingCheckResult}" var="samInspection">
+                        <apex:variable var="indexLine" value="{!indexLine + 1}"/>  <!-- 自增 -->
+                        <div class="checkType">
+                            {!indexLine}. {!samInspection.samplingInspection.Product__r.Name}
+                        </div>
+                        <div class="itemDate">
+                            <span>Display or not：</span>
+                            <apex:outputPanel rendered="{!IF(samInspection.samplingInspection.Placement_Status__c == '展出',true,false)}">
+                                <span style="color: rgb(28, 187, 189)">{!samInspection.samplingInspection.Placement_Status__c}</span>
+                            </apex:outputPanel>
+                            <apex:outputPanel rendered="{!IF(samInspection.samplingInspection.Placement_Status__c == '未展出',true,false)}">
+                                <span style="color: red">{!samInspection.samplingInspection.Placement_Status__c}</span>
+                            </apex:outputPanel>
+                        </div>
+
+                        <div class="itemDate">
+                            <span>Description：</span>
+                            <span>{!samInspection.samplingInspection.ReRe__c}</span>
+                        </div>
+
+                        <apex:outputPanel rendered="{!NOT(ISNULL(samInspection.checkResultList))}">
+                            <apex:repeat value="{!samInspection.checkResultList}" var="checkResult">
+                                <apex:outputPanel rendered="{!NOT(ISNULL(checkResult.Response__c))}">
+                                    <div>
+                                        <div>
+                                            {!checkResult.CheckItem__r.Description__c}
+                                        </div>
+                                        <div>
+                                            {!checkResult.Response__c}
+                                        </div>
+                                        <apex:outputPanel rendered="{!checkResult.CheckItem__r.HasComment__c}">
+                                            <div style="padding-left:5%">
+                                                Comment:{!checkResult.Comments__c}
+                                            </div>
+                                        </apex:outputPanel>
+                                    </div>
+                                </apex:outputPanel>
+                            </apex:repeat>
+                        </apex:outputPanel>
+                    </apex:repeat>
+                </apex:repeat>
+            </apex:repeat>
+        </div>
+    </body>
+
+    <script >
+        window.onload = function () {
+            document.getElementById('message').innerHTML = '<h3>Children</h3>';
+        }
+    </script>
+</apex:page>

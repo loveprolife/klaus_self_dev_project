@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "f55a1199-1f38-4e9e-a98a-b7170b631870",
+  "appPageId" : "e0bf1275-58c2-4fd8-9393-d738c12db8fe",
+  "configurationTags" : [ ],
+  "devName" : "Record_Detail",
+  "id" : "c2057671-cc39-4fc2-99ec-ae655a1ed639",
+  "label" : "记录详细信息",
+  "routeType" : "detail",
+  "type" : "route",
+  "urlPrefix" : "detail"
+}

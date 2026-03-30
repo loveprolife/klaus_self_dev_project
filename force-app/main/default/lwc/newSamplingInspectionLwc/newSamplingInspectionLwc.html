@@ -1,0 +1,151 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-04-07 09:26:17
+ * @LastEditors: WFC
+ * @LastEditTime: 2024-04-16 16:58:32
+ * @Description: 
+ * @FilePath: \hisenseall-231026\force-app\main\default\lwc\trainingTasksShowPictureLwc\trainingTasksShowPictureLwc.html
+-->
+<template>
+   <div class="slds-var-p-left_medium">
+       <div>Display Standard</div>
+       <div class="slds-var-p-top_x-small">
+           <template for:each={pictureList} for:item="picture" for:index="index">
+               <span key={picture.index} class="slds-var-p-right_large">
+                   <img style="width: 10%;" src={picture.src} data-id={picture.id} data-show={picture.show} alt="" onclick={handleViewPhotoClick}/>
+                   <!-- <span style="position: absolute;">
+                       <lightning-icon 
+                           variant="success" 
+                           icon-name="utility:close"
+                           data-id={picture.id}
+                           size="x-small" 
+                           title=""
+                           onclick={handleDeleteFile}>
+                       </lightning-icon>
+                   </span> -->
+               </span>
+           </template>
+           <template if:true={status}>
+               <lightning-file-upload
+                   name="fileUploader"
+                   accept={acceptedFormats}
+                   record-id={recordId}
+                   class="uploadFilesLwc-upload"
+                   variant="label-hidden"
+                   multiple
+                   onuploadfinished={handleUploadFinished}
+               >
+               </lightning-file-upload>
+           </template>
+           <!-- <c-modal-lwc 
+               hide-close-icon=true 
+               onok={deletePicture} 
+               onclose={deleteCancel}
+               title="Delete File?"
+               ok-label="Delete"
+               close-label="Cancel"
+           >
+               Deleting a file also removes it from any records or posts it's attached to.
+           </c-modal-lwc> -->
+       </div>
+   </div>
+   
+   <template if:true={showPicture}>
+       <section style="z-index: 9998;" role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open forceContentModalPreviewPlayer">
+           <div role="document">
+               <!-- 顶部 -->
+               <div class="toolbar top fadeOut forceContentPreviewPlayerTopToolbar">
+                   <div class="slds-grid slds-grid_align-spread preview-top-toolbar">
+                       <!-- 中间按钮 -->
+                       <div class="file-preview-title"></div>
+                       <div class="file-preview-buttons slds-align_absolute-center">
+                           <template if:true={status}>
+                               <div class="forceContentPreviewerAction">
+                                   <div class="slds-truncate">
+                                       
+                                       <lightning-button 
+                                           variant="Base" 
+                                           label="View File Details" 
+                                           title="View File Details" 
+                                           icon-name="utility:info" 
+                                           class="slds-var-m-left_x-small my-button"
+                                           onclick={handleViewPicture}>
+                                       </lightning-button>
+                                   </div>
+                               </div>
+                               <div class="forceContentPreviewerAction">
+                                   <div class="slds-truncate">
+                                       <lightning-button 
+                                           variant="Base" 
+                                           label="Delete" 
+                                           title="Delete" 
+                                           icon-name="utility:delete" 
+                                           class="slds-var-m-left_x-small my-button"
+                                           onclick={handleDeletePicture}>
+                                       </lightning-button>
+                                   </div>
+                               </div>
+                           </template>
+                       </div>
+                       <div class="file-preview-close slds-var-m-left_large">
+                           <div class="forceContentPreviewerAction">
+                               <div class="slds-truncate">
+                                   <lightning-button 
+                                       variant="Base" 
+                                       label="" 
+                                       title="" 
+                                       icon-name="utility:close" 
+                                       class="my-button"
+                                       onclick={handleClosePicture}>
+                                   </lightning-button>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+               <!-- 图片 --> 
+               <div class="preview">
+                   <div class="thumbnail forceContentThumbnailPreview">
+                       <div class="loaded page tall">
+                           <img src={shopPictureSrc} alt="" class="pageImg">
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </section>
+       <div class="slds-backdrop slds-backdrop_open"></div>
+   </template>
+
+   <template if:true={showDeletePicture}>
+       <section style="z-index: 9999" role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+           <template if:true={isShowSpinner} >
+               <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+           </template>
+           <div class="slds-modal__container">
+               <div class="slds-modal__header">
+                   <h2 class="slds-text-heading_medium">
+                       Delete File?
+                   </h2>
+                   <a class="slds-button slds-button_icon slds-modal__close closeIcon slds-button_icon-bare slds-button_icon-inverse" onclick={handleCloseDeletePicture}>
+                       <lightning-icon 
+                           icon-name="utility:close" 
+                           title="Close"
+                           size="small"
+                           class="my-icon">
+                       </lightning-icon>
+                   </a>
+               </div>
+               <div class="slds-var-p-around_medium slds-grid slds-wrap slds-media_center slds-grid_align-center" style="background-color: rgb(255, 255, 255);">
+                   <div>Deleting a file also removes it from any records or posts it's attached to.</div>
+               </div>
+               <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                   <lightning-button label='Cancel' onclick={deleteCancel} class="slds-var-p-around_x-small"></lightning-button>
+                   <lightning-button variant="brand" label='Delete' onclick={deletePicture} class="slds-var-p-around_x-small"></lightning-button>
+               </div>
+           </div>
+       </section>
+       <div class="slds-backdrop slds-backdrop_open" style="z-index: 9998;"></div>
+   </template>
+
+   <div style="height:10px"></div>
+</template>

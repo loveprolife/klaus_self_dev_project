@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>GB2312</encodingKey>
+    <name>客户拜访邮件</name>
+    <style>none</style>
+    <subject>商談報告書&quot; {!Customer_Visit__c.Customer__c}{!Customer_Visit__c.Product_Line__c}{!Customer_Visit__c.Visit_Date__c}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

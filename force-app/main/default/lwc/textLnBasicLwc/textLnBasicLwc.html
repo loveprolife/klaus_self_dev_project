@@ -1,0 +1,33 @@
+<template>
+	<!-- <div class="upload-container">
+		<span style="color: white;"> {tipLabel} </span>
+		    <input type="file" accept="image/png, image/jpg, image/jpeg" onchange={handleInputChange}/>
+
+    </div> -->
+    <div class="mydiv_for">
+    	<label class="button">
+  		<span style="color: white;"> {tipLabel} </span>
+   			<input type="file" accept="image/png, image/jpg, image/jpeg" onchange={handleInputChange}/>
+		</label>
+    </div>
+
+    		<!-- <lightning-input type="file" accept = 'image/png, image/jpg, image/jpeg' message-when-type-mismatch = {errorMsg}   onchange={handleInputChange} ></lightning-input>
+
+ -->
+    
+
+    <div style="padding-top: 10px;">
+    	<template if:true={isShowBt}>
+			<lightning-button onclick={handerClick} label={btlabel}> </lightning-button>
+		</template>
+		<template if:true={isShowAllInfo}>
+			<template if:true={isShowSpinner}>
+            	<lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        	</template>
+			<div class="container">
+				<lightning-textarea class="slds-p-top_small" value={universalText} > </lightning-textarea>
+			</div>
+		</template>
+    </div>
+      
+</template>

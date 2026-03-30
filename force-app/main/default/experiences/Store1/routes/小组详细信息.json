@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "3fccea32-8bd4-488a-b93c-9260b8618eb7",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "Group_Detail",
+  "id" : "d17f85b5-f0a9-4de5-a48b-477ef2943aef",
+  "label" : "小组详细信息",
+  "routeType" : "detail-0F9",
+  "type" : "route",
+  "urlPrefix" : "group"
+}

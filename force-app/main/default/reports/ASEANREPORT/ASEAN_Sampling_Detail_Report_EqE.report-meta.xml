@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Sampling_Detail__c$Shop__c</field>
+    </columns>
+    <columns>
+        <field>Sampling_Detail__c$Name</field>
+    </columns>
+    <columns>
+        <field>Sampling_Detail__c$Product__c</field>
+    </columns>
+    <columns>
+        <field>Sampling_Detail__c$Is_Add__c</field>
+    </columns>
+    <columns>
+        <field>Sampling_Detail__c$CreatedDate</field>
+    </columns>
+    <columns>
+        <field>Sampling_Detail__c$sales_region_f__c</field>
+    </columns>
+    <columns>
+        <field>Sampling_Detail__c$ProductLine__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>ASEAN: 出样样机</description>
+    <filter>
+        <criteriaItems>
+            <column>Sampling_Detail__c$sales_region_f__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>hisense Thailand,hisense malaysia,hisense indonesia,hisense vietnam,hisense Philippines</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>ASEAN: Sampling Detail Report</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Sampling_Detail__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>Sampling_Detail__c$CreatedDate</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>Sampling_Detail__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

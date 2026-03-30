@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "b007df64-b84c-4b90-b5f9-b6c8efd430c7",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "CheckInOut__c",
+  "id" : "c56b0f82-55c3-4947-b1dd-7dc22e6b5170",
+  "label" : "CheckInOut",
+  "pageAccess" : "UseParent",
+  "routeType" : "custom-checkinout",
+  "type" : "route",
+  "urlPrefix" : "checkinout"
+}

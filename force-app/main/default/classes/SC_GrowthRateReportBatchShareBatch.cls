@@ -1,0 +1,74 @@
+global class SC_GrowthRateReportBatchShareBatch extends SC_Base implements Database.Batchable<sObject>, Database.Stateful {
+    
+    Map<String,Set<String>> summaryProductLineMap;
+
+    global SC_GrowthRateReportBatchShareBatch() {
+        super();
+    }
+
+    global SC_GrowthRateReportBatchShareBatch(String startDate, String endDate) {
+        super(startDate, endDate);
+    }
+
+    global Database.QueryLocator start(Database.BatchableContext bc) {
+        Date sd = Date.valueOf(this.startDate);
+        Date ed = Date.valueOf(this.endDate);
+
+        this.salesList = Database.query(this.salesQuery 
+            + ' AND LastModifiedDate >= :sd '
+            + ' AND LastModifiedDate < :ed ALL ROWS');
+
+        this.customerIdSet = new Set<String>();
+        for(Sales__c sales: this.salesList){
+            this.customerIdSet.add(sales.Customer__c);
+        }
+
+        this.summaryProductLineMap = new Map<String,Set<String>>();
+
+        for(Customer_Product_Line__c cProLine : 
+                [SELECT Id,Name,Management_Customer_Branch_Company__c,
+                    Product_Line_Name__c,Parent_Product_Line__c 
+                  FROM Customer_Product_Line__c 
+                  WHERE Management_Customer_Branch_Company__c IN:customerIdSet]) {
+
+            String key = cProLine.Management_Customer_Branch_Company__c + cProLine.Product_Line_Name__c;
+            if(summaryProductLineMap.containsKey(key)){
+                summaryProductLineMap.get(key).add(cProLine.Product_Line_Name__c);
+            }else{
+                summaryProductLineMap.put(key,new Set<String>{cProLine.Product_Line_Name__c});
+            }
+        }
+
+        return Database.getQueryLocator(
+                [
+                SELECT Id,Management_Customer__c,Product_Line__c,OwnerId,Year__c,Month__c 
+                FROM Growth_Rate_Report_Obj__c 
+                WHERE Management_Customer__c in:customerIdSet
+                ]);
+    }
+
+    global void execute(Database.BatchableContext BC, list<Sobject> scope) {
+        SalesShareService service = new SalesShareService();
+        service.shareData(
+            scope, 
+            this.updatedList(),
+            customerIdSet,
+            this.summaryProductLineMap,
+            'Growth_Rate_Report_Obj__Share',
+            'Management_Customer__c',
+            'Product_Line__c');
+
+        service.removeShare(
+            scope,
+            this.deletedList(),
+            summaryProductLineMap,
+            'Growth_Rate_Report_Obj__Share',
+            'Management_Customer__c',
+            'Product_Line__c');
+    }
+
+    global void finish(Database.BatchableContext BC) {
+        SC_PlannedCompletionRateReportShareBatch ss = new SC_PlannedCompletionRateReportShareBatch(this.startDate,this.endDate);
+        Database.executeBatch(ss);
+    }
+}

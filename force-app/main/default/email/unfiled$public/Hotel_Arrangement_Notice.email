@@ -1,0 +1,15 @@
+Dear {!Hotel_Booked_Info__c.Guest_Name_CN__c}
+<br/>
+<br/>
+<p>您已成功登记在137届广交会的入住酒店，已为您预留{!Hotel_Booked_Info__c.In_Hotel_Date__c} - {!Hotel_Booked_Info__c.Out_Hotel_Date__c} 的房间。</p>
+<p>您可在抵达后持身份证/护照前往酒店前台办理入住，住宿费需由您在入住时自行支付。离店时请在前台开具发票，随差旅费报销。 </p>
+<br/>
+<p>酒店名称：桔子酒店(佛山顺德华侨城欢乐海岸PLUS店)</p>
+<p>地址：佛山市顺德区欢乐大道3号欢乐广场3栋1层</p>
+<br/>
+<p>You have successfully registered for the hotel accommodation during the 137th Canton Fair. A room has been reserved for you from {!Hotel_Booked_Info__c.In_Hotel_Date__c} to {!Hotel_Booked_Info__c.Out_Hotel_Date__c} .</p>
+<p>Upon arrival in Shunde, you can check in at the hotel front desk with your passport.  </p>
+<p>When you leave Shunde, please check out at the front desk and request an invoice for travel expense reimbursement. </p>
+<br/>
+<p>Hotel Name:  Orange Hotel (Foshan Shunde OCT Harbour PLUS)</p>
+<p>Address:1st Floor, Building 3, Happy Plaza, No. 3 Happy Avenue, Shunde District, Foshan City</p>

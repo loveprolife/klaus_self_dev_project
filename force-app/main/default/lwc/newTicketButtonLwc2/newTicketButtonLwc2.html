@@ -1,0 +1,127 @@
+<template>
+
+    <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+
+<lightning-modal-header label="New Ticket"></lightning-modal-header>
+<lightning-modal-body>
+    <lightning-record-edit-form object-api-name="Ticket__c" density="Compact">
+        <!-- Subject -->
+        <lightning-input-field field-name='Subject__c' data-field-name="Subject__c" variant="label-stacked" value={ticket.Subject__c} onchange={handleFieldChange} onkeydown={handleKeyDown} required>
+        </lightning-input-field>
+        <!-- Description -->
+        <lightning-input-field field-name='Description__c' data-field-name="Description__c" variant="label-stacked" value={ticket.Description__c} onchange={handleFieldChange} onkeydown={handleKeyDown} required>
+        </lightning-input-field>
+        <!-- Store -->
+        <lightning-input-field field-name='Store__c' data-field-name="Store__c" variant="label-stacked" value={ticket.Store__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+        </lightning-input-field>
+        <!-- Status -->
+        <lightning-input-field field-name='Status__c' required data-field-name="Status__c" variant="label-stacked" value={ticket.Status__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+        </lightning-input-field>
+        <!-- Priority -->
+        <lightning-input-field field-name='Priority__c' required data-field-name="Priority__c" variant="label-stacked" value={ticket.Priority__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+        </lightning-input-field>
+        <!-- Category -->
+
+        <lightning-record-edit-form record-id={currentUserId} object-api-name="User">
+            <lightning-input-field field-name='Sales_Region__c' data-field-name="Sales_Region__c" variant="label-hidden" style="display: none;">
+            </lightning-input-field>
+            <lightning-input-field field-name='Category__c' required data-field-name="Category__c" variant="label-stacked" value={ticket.Category__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+            </lightning-input-field>
+        </lightning-record-edit-form>
+
+        <!-- Product -->
+        <template if:true={isShowProduct}>
+                <template if:true={isSouthAfrica}>
+                    <label class="slds-form-element__label">
+                        <abbr class="slds-required" title="required">*</abbr></label>
+                </template>
+        <label class="slds-form-element__label">{fields.Product__c}</label>
+
+        <a style="margin-left: 3rem;">
+            <lightning-icon variant="success" icon-name="utility:dash" size="x-small" title="" onclick={deleteProductValue}>
+            </lightning-icon>
+            <span class="slds-assistive-text"></span>
+        </a>
+        <lightning-input-field field-name='Product__c' data-field-name="Product__c" variant="label-hidden" value={ticket.Product__c} onchange={handleFieldChange} onkeydown={handleKeyDown} readonly>
+        </lightning-input-field>
+        </template>
+        <template if:true={isShowProductSearch}>
+                <table>
+                    <tr>
+                        <td style="width: 100%;">
+                            <c-lookup-lwc name="onProduct" obj-name="Product__c" op={lookupFilter}
+                                onlookupupdate={handleChangeProductOption}>
+                            </c-lookup-lwc>
+                        </td>
+                    </tr>
+                </table>
+            </template>
+        <template if:true={isShowProduct}>
+                <!-- SeriesNum -->
+                <lightning-input-field field-name='SeriesNum__c' data-field-name="SeriesNum__c" variant="label-stacked"
+                    value={ticket.SeriesNum__c} onchange={handleFieldChange} onkeydown={handleKeyDown}>
+                </lightning-input-field>
+            </template>
+        <!-- </template> -->
+        <!-- Due Date -->
+
+        <lightning-input-field field-name="DueDate__c" data-field-name="DueDate__c" variant="label-stacked" value={ticket.DueDate__c} onchange={handleFieldChange} required>
+        </lightning-input-field>
+        <br />
+        <lightning-radio-group options={regis} variant="label-hidden" value={regisValue} type="button" onchange={handleRegisChange}></lightning-radio-group>
+        <template if:true={isShowDepartment}>
+                <!-- Department -->
+                <label class="slds-form-element__label">{fields.Department__c}</label>
+
+                <!-- <lightning-helptext content={label.INSPECTION_REPORT_MSG_DEPARTMENT_USER} class="slds-m-left_xx-small">
+                </lightning-helptext> -->
+                <lightning-record-edit-form record-id={currentUserId} object-api-name="User">
+                    <lightning-input-field field-name='Sales_Region__c' data-field-name="Sales_Region__c"
+                        variant="label-hidden" style="display: none;">
+                    </lightning-input-field>
+                    <lightning-input-field field-name='Department__c' data-field-name="Department__c"
+                        variant="label-hidden" value={ticket.Department__c} onchange={handleFieldChange}
+                        onkeydown={handleKeyDown}>
+                    </lightning-input-field>
+                </lightning-record-edit-form>
+
+                <lightning-spinner alternative-text="Loading" size="large"
+                    if:true={departmentSpinner}></lightning-spinner>
+                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right"
+                    role="none">
+                    <template for:each={departmentUres} for:item="serecord" for:index="i" if:false={departmentSpinner}>
+                        <span key={serecord.Id}>
+                            <lightning-pill label={serecord.Name} name={i} onremove={removeRecord}>
+                                <lightning-icon icon-name="standard:user" alternative-text={serecord.Email}>
+                                </lightning-icon>
+                            </lightning-pill>
+                        </span>
+                    </template>
+        </div>
+        </template>
+
+        <template if:false={isShowDepartment}>
+                <c-lwc-multi-lookup label-name="Filter by email/recipient" object-api-name="User"
+                    field-api-names="Id,Name" filter-field-api-name="Name" icon-name="standard:user"
+                    onretrieve={selectItemEventHandler} onremove={deleteItemEventHandler}>
+                </c-lwc-multi-lookup>
+            </template>
+        <!-- Attachment -->
+        <label class="slds-form-element__label">{label.PromoterDailyReport_ATTACHMENT}</label>
+        <c-upload-files3-lwc data-index={ticket.index} onselectfiles={handleSelectFiles}></c-upload-files3-lwc>
+
+    </lightning-record-edit-form>
+</lightning-modal-body>
+<lightning-modal-footer class="my-modal-footer">
+    <!-- Cancel Button -->
+    <lightning-button label="Cancel" title="Non-primary action" onclick={cancelHandleClick} class="slds-m-left_x-small">
+    </lightning-button>
+    <!-- Save & New -->
+    <!-- Save Button -->
+    <lightning-button variant="brand" label="Save" title="Primary action" onclick={saveHandleClick} class="slds-m-left_x-small"></lightning-button>
+</lightning-modal-footer>
+
+</template>

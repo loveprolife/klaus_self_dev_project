@@ -1,0 +1,33 @@
+{
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "e49b4725-012b-48ab-8835-39a9c73c5e95",
+  "label" : "潜在客户检查",
+  "regions" : [ {
+    "id" : "38432d0d-b856-43d7-930f-671c3d01c832",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "objectApiName" : "Lead"
+      },
+      "componentName" : "runtime_pipeline_inspector:pipelineInspectorHomeExperienceContainer",
+      "id" : "060d2a54-4115-4a7e-9213-2986d0986ac0",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "2a75e79e-cf6b-43f7-a383-76d30cdf5cd8",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e2494446-0c81-4254-b7ad-03db30f2e7aa",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "lead-inspection"
+}

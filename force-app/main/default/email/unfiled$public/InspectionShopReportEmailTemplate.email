@@ -1,0 +1,3 @@
+Hi All
+
+      {!Daily_Inspection_Report__c.OwnerLastName}{!Daily_Inspection_Report__c.Report_Date__c}巡店日报已新建，巡店计划编号为：{!Daily_Inspection_Report__c.Name}

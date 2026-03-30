@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Australia</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Australia</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>AU_FIN_M</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8200: Hisense Australia SO</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CA_Add</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CA Add</label>
+        <sharedTo>
+            <role>Canada_FIN</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8120: Hisense CA Sales Org</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>CA_Add_SM</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>CA Add SM</label>
+        <sharedTo>
+            <roleAndSubordinates>Canada_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Canada</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8120: Hisense CA Sales Org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Canada</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Japan_ADD</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Japan ADD</label>
+        <sharedTo>
+            <roleAndSubordinates>JP_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Japan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8410: Hisense JP Sales Org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Japan</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Malaysia_Add</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Malaysia Add</label>
+        <sharedTo>
+            <roleAndSubordinates>MY_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8400: HISENSE (MALAYSIA) S</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Malaysia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Malaysia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Add_Philippines</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Add Philippines</label>
+        <sharedTo>
+            <roleAndSubordinates>Philippine_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Philippines</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8460: Hisense Philippines Sales Org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Philippines</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Address_USA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Share Address USA</label>
+        <sharedTo>
+            <roleAndSubordinates>USA_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense USA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8110: Hisense US Sales Org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>USA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Singapore_Add</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Singapore Add</label>
+        <sharedTo>
+            <roleAndSubordinates>Singapore_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Singapore</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8470: Hisense Singapore Sales Org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Singapore</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>South_Africa_Add</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>South Africa Add</label>
+        <sharedTo>
+            <roleAndSubordinates>South_Africa_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>South Africa</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8510: HS SA SALES HOLDING,8500: HS SA MANUFACTURING</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Thailand_Address</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Thailand Address</label>
+        <sharedTo>
+            <roleAndSubordinates>Thailand_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8430: Hisense TH Sales Org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Thailand</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>Thailand</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>JP_Share_2</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>JP Share 2</label>
+        <sharedTo>
+            <role>JP_SALES_HP</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>JP_SALES_HP</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

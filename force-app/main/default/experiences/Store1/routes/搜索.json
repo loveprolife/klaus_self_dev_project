@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "54ee6eaa-118b-4367-9fdd-b37bd7be77ac",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "Search",
+  "id" : "d72b99c4-76f6-42f7-8d38-30bf10039fba",
+  "label" : "搜索",
+  "pageAccess" : "UseParent",
+  "routeType" : "global-search",
+  "type" : "route",
+  "urlPrefix" : "global-search"
+}

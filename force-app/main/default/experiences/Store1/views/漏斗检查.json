@@ -1,0 +1,33 @@
+{
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "6cf00a2e-5906-41ee-8804-bc132cb9a122",
+  "label" : "漏斗检查",
+  "regions" : [ {
+    "id" : "81518154-194f-41b3-8bac-ad65fa90104f",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "objectApiName" : "Opportunity"
+      },
+      "componentName" : "runtime_pipeline_inspector:pipelineInspectorHomeExperienceContainer",
+      "id" : "c0365b8e-aa88-4426-869e-fb4aba44c2cf",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f50e44cb-aca0-4370-adb1-12911649babe",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "8130c21f-d077-47ff-a9cc-abdb0470fdfd",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "pipeline-inspection"
+}

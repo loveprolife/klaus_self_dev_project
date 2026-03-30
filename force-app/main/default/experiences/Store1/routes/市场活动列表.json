@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "20562525-e653-46aa-9fa2-367af24cac43",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "Campaign_List",
+  "id" : "b01876a9-ef77-4266-b343-893c5e38ab59",
+  "label" : "市场活动列表",
+  "routeType" : "list-701",
+  "type" : "route",
+  "urlPrefix" : "campaign"
+}

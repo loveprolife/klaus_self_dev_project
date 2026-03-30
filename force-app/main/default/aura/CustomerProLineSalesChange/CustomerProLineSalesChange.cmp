@@ -1,0 +1,50 @@
+<aura:component controller="CustomerProLineSalesChangeController" implements="force:appHostable" access="global">
+    <aura:attribute name="salesList1" type="List"/>
+    <aura:attribute name="salesList2" type="List"/>
+    <aura:attribute name="userList" type="List"/>
+    <aura:attribute name="pageLabelList" type="List"/>
+    <aura:attribute name='oldUserId' Type='String' />
+    <aura:attribute name='oldUserName' Type='String' />
+    <aura:attribute name='targetUserId' Type='String' />
+
+    <aura:handler name="init" value="{!this }" action="{!c.init }"/>
+    
+    <div class="container">
+        <lightning:card>
+            <aura:set attribute="title">
+                <lightning:icon iconName="standard:product_transfer" size="big"/>
+                <span style="margin-left: 20px">{!v.pageLabelList[0]}</span>
+            </aura:set>
+
+            <br/>
+            <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
+                <aura:iteration items="{!v.salesList1}" var="i" indexVar="index">
+                <lightning:recordEditForm aura:id="recordViewForm"
+                                          recordId="{!i.Id}"
+                                          objectApiName="Customer_Product_Line__c" >
+                <lightning:messages />
+            
+                <lightning:inputField  id="{!index}" fieldName="Old_Sales__c" onchange="{!c.change1}"/>
+                 
+                </lightning:recordEditForm>
+                </aura:iteration>
+            </div>
+            
+            <div class="slds-p-bottom_large slds-p-left_large" style="width:500px">
+                <aura:iteration items="{!v.salesList2}" var="j" indexVar="index">
+                <lightning:recordEditForm aura:id="recordViewForm"
+                                          recordId="{!j.Id}"
+                                          objectApiName="Customer_Product_Line__c" >
+                <lightning:messages />
+            
+                <lightning:inputField  id="{!index}" fieldName="New_Sales__c" onchange="{!c.change2}"/>
+                 
+                </lightning:recordEditForm>
+                </aura:iteration>
+            </div>
+
+            <lightning:button onclick="{!c.changeSales}" class="confirmButton" variant="brand" label="{!$Label.c.Common_Button_Confirm}" />
+        </lightning:card> 
+        <br/>
+    </div>  
+</aura:component>

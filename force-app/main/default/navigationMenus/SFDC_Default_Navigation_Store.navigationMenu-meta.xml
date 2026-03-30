@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NavigationMenu xmlns="http://soap.sforce.com/2006/04/metadata">
+    <container>Store</container>
+    <containerType>Network</containerType>
+    <label>Default Navigation</label>
+    <navigationMenuItem>
+        <label>Store Map</label>
+        <position>1</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/storemap</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <defaultListViewId>My_Region_Stores</defaultListViewId>
+        <label>Store</label>
+        <position>2</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>Shop__c</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <defaultListViewId>All</defaultListViewId>
+        <label>Inspeciton</label>
+        <position>3</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>Daily_Inspection_Report__c</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <defaultListViewId>All_Plans</defaultListViewId>
+        <label>Inspection Plan</label>
+        <position>4</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>Inspection_Shop_Plan__c</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <defaultListViewId>All</defaultListViewId>
+        <label>Ticket</label>
+        <position>5</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>SalesGoal__c</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <defaultListViewId>All_Reports</defaultListViewId>
+        <label>Daily Report</label>
+        <position>6</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>Promoter_Daily_Report__c</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>CheckInOut</label>
+        <position>7</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>/checkinout</target>
+        <type>InternalLink</type>
+    </navigationMenuItem>
+</NavigationMenu>

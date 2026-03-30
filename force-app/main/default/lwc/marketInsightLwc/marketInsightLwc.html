@@ -1,0 +1,212 @@
+<template>
+
+    <template if:false={isEmpty}>
+        <template if:true={isShowSpinner}>
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        </template>
+        <!-- <c-modal-lwc data-id="product selection" static-mode=true title="" show-ok=true show-close=true
+            hidden-close-icon=false onok={handleOk}>
+            <h1>{label.PromoterDailyReport_DeleteReminder}</h1>
+        </c-modal-lwc> -->
+        <template for:each={recordList} for:item="item" for:index="index">
+            <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-resizable marketInsightTable"
+                key={item.index}>
+                <tbody>
+                    <!-- Brand -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>{fields.Brands__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <!-- <lightning-record-edit-form object-api-name="MarketInsight__c" density="Compact">
+                                <lightning-input-field variant="label-hidden" field-name='Brand__c'
+                                    data-field-name="Brand__c" data-index={index} name={index} value={item.Brand__c}
+                                    onchange={inputChangeHandler} read-only={viewMode} >
+                                </lightning-input-field>
+                            </lightning-record-edit-form> -->
+
+                            <!-- 自定义组件 -->
+                            <c-lookup-lwc data-index={index} data-field-name="Brands__c" obj-name="Brand__c"
+                                op={lookupBrandFilter} record-id={item.Brands__c} read-only={viewMode}
+                                onlookupupdate={lookUpChangeHandler}></c-lookup-lwc>
+                        </td>
+                    </tr>
+                    <!-- Product Line -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>{fields.ProductLine__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <template lwc:if={viewMode}>
+                                <lightning-formatted-text value={item.ProductLine__c}
+                                    readonly></lightning-formatted-text>
+                            </template>
+                            <template lwc:else>
+                                <lightning-record-edit-form object-api-name="MarketInsight__c" density="Compact">
+                                    <lightning-input-field variant="label-hidden" field-name='ProductLine__c'
+                                        data-field-name="ProductLine__c" data-index={index} name={index}
+                                        value={item.ProductLine__c} onchange={inputChangeHandler}>
+                                    </lightning-input-field>
+                                </lightning-record-edit-form>
+                            </template>
+
+                        </td>
+                    </tr>
+                    <!-- Product -->
+                    <template if:false={isChile}>
+                        <template lwc:if={item.isShowProduct}>
+                            <tr>
+                                <td class="tdOne">
+                                    <span>{fields.Product__c}</span>
+                                </td>
+                                <td class="tdTwo">
+                                    <lightning-input variant="label-hidden" field-name='Product__c'
+                                        data-field-name="Product__c" data-index={index} name={index}
+                                        value={item.Product__c} onchange={inputChangeHandler} type="text"
+                                        read-only={viewMode}>
+                                    </lightning-input>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>
+
+                    <!-- Share -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>{fields.Share__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <!-- <lightning-input variant="label-hidden" field-name='Share'
+                                data-field-name="Share" data-index={index} name={index} value={item.Share}
+                                onchange={inputChangeHandler} formatter="percent" step="0.01" type="number" max="1" min="0">
+                            </lightning-input> -->
+                            <lightning-record-edit-form object-api-name="MarketInsight__c" density="Compact">
+                                <lightning-input-field variant="label-hidden" field-name='Share__c'
+                                    data-field-name="Share__c" data-index={index} name={index} value={item.Share__c}
+                                    onchange={inputChangeHandler} onkeydown={handleKeyDown} read-only={viewMode}>
+                                </lightning-input-field>
+                            </lightning-record-edit-form>
+                        </td>
+                    </tr>
+                    <!-- Quantity -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>{fields.Quantity__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <lightning-input variant="label-hidden" field-name='Quantity__c'
+                                data-field-name="Quantity__c" data-index={index} name={index} value={item.Quantity__c}
+                                onchange={inputChangeHandler} type="number" read-only={viewMode}>
+                            </lightning-input>
+                        </td>
+                    </tr>
+                    <!-- Sales(K) -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>{fields.Sales__c}</span>
+                            <span>(K)</span>
+                            <lightning-helptext content="Enter the brand's total sales for the day"
+                                class="slds-m-left_xx-small">
+                            </lightning-helptext>
+                        </td>
+                        <td class="tdTwo">
+                            <!-- <lightning-record-edit-form object-api-name="MarketInsight__c" density="Compact">
+                                <lightning-input-field variant="label-hidden" field-name='Sales__c'
+                                    data-field-name="Sales" data-index={index} name={index} value={item.Sales}
+                                    onchange={inputChangeHandler}>
+                                </lightning-input-field>
+                            </lightning-record-edit-form> -->
+                            <lightning-input type="number" name="index" variant="label-hidden" value={item.Sales}
+                                formatter="currency" step="0.01" data-index={index} data-field-name="Sales"
+                                onchange={inputChangeHandler} read-only={viewMode}></lightning-input>
+                            <!-- <lightning-record-edit-form object-api-name="MarketInsight__c" density="Compact">
+                                <lightning-input-field variant="label-hidden" field-name='Sales__c'
+                                    data-field-name="Sales__c" data-index={index} name={index} value={item.Sales__c}
+                                    onchange={inputChangeHandler}>
+                                </lightning-input-field>
+                            </lightning-record-edit-form> -->
+                            <!-- <lightning-input variant="label-hidden" field-name='Sales__c' data-field-name="Sales__c"
+                                data-index={index} name={index} value={item.Sales__c} onchange={inputChangeHandler}
+                                type="number">
+                            </lightning-input> -->
+                        </td>
+                    </tr>
+                    <!-- Average Price -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>{fields.AveragePrice__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <template lwc:if={item.isShowAverage}>
+                                <lightning-record-edit-form object-api-name="MarketInsight__c" density="Compact">
+                                    <lightning-input-field variant="label-hidden" field-name='AveragePrice__c'
+                                        data-field-name="AveragePrice__c" data-index={index} name={index}
+                                        value={item.averagePrice} readonly="true">
+                                    </lightning-input-field>
+                                </lightning-record-edit-form>
+                            </template>
+                            <template lwc:else>
+                                <lightning-formatted-text value='-' readonly="true"></lightning-formatted-text>
+                            </template>
+
+                        </td>
+                    </tr>
+
+                    <!-- Attachments -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>{label.PromoterDailyReport_ATTACHMENT}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <c-upload-files-lwc parent-id={recordId} record-id={item.Id} data-index={item.index}
+                                onselectfiles={handleSelectFiles} disabled-delete={viewMode} disabled-upload={viewMode}>
+                            </c-upload-files-lwc>
+                        </td>
+                    </tr>
+                    <template if:false={viewMode}>
+                        <tr>
+                            <td class="tdOne">
+                                <span>{label.PromoterDailyReport_ACTIONS}</span>
+                            </td>
+                            <td class="tdTwo">
+                                <div>
+                                    <div style="float: left;">
+                                        <a>
+                                            <lightning-icon variant="success" icon-name="utility:dash" size="x-small"
+                                                title="" data-index={index} onclick={itemRemoveHandler}>
+                                            </lightning-icon>
+                                            <span class="slds-assistive-text"></span>
+                                        </a>
+                                    </div>
+                                    <div style="float: right;">
+                                        <a>
+                                            <lightning-icon variant="success" icon-name="utility:add" size="x-small"
+                                                title="" data-index={index} onclick={itemAddHandler}>
+                                            </lightning-icon>
+                                            <span class="slds-assistive-text"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- <a style="margin-right: 4rem;">
+                                <lightning-icon variant="success" icon-name="utility:dash" size="x-small" title=""
+                                    data-index={index} onclick={itemRemoveHandler}>
+                                </lightning-icon>
+                                <span class="slds-assistive-text"></span>
+                            </a>
+                            <a style="margin-right: 4rem;">
+                                <lightning-icon variant="success" icon-name="utility:add" size="x-small" title=""
+                                    data-index={index} onclick={itemAddHandler}>
+                                </lightning-icon>
+                                <span class="slds-assistive-text"></span>
+                            </a> -->
+                            </td>
+                        </tr>
+                    </template>
+
+                </tbody>
+            </table>
+        </template>
+
+    </template>
+
+</template>

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "e9c78075-d9a2-4f5e-a840-7ac02ccb8f36",
+  "appPageId" : "a6e85b47-d163-48e0-b17a-ab8a6204fc60",
+  "configurationTags" : [ ],
+  "devName" : "Forgot_Password",
+  "id" : "06a45b37-a1e0-4df5-8f81-a582e738cf38",
+  "label" : "忘记密码",
+  "routeType" : "forgot-password",
+  "type" : "route",
+  "urlPrefix" : "ForgotPassword"
+}

@@ -1,0 +1,144 @@
+<template>
+	
+	<template if:false={showPersonInfo}>
+		<lightning-card title="" style="background-color: rgb(254, 254, 254);">
+			<!-- <div class="slds-modal__header" > -->
+			<template if:true={isShowSpinner}>
+				<lightning-spinner size="medium" variant="brand"></lightning-spinner>
+			</template>
+				<!-- <template if:false={isShowSpinner}> -->
+					<div style="padding-left: 18px;">
+					 <c-text-ln-basic-lwc ongetbusinesscardinfo ={onGetBusinessCardInfo} text-ln-type = {textLnTypeStr} onstartscan = {onHandlerStartScan}> </c-text-ln-basic-lwc>
+				</div>
+						<!-- </template> -->
+			<!-- </div> -->
+
+
+			<div class="slds-modal__content modalBody menu">
+				<div class="slds-grid slds-wrap slds-m-vertical_medium">
+					
+				<div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_12-of-12 slds-p-horizontal_small">  
+	
+					<lightning-record-edit-form  object-api-name={objectApiName} onsuccess={handleRecordCreated}>
+						 <lightning-messages> 一些信息 some message</lightning-messages>
+						 <!-- <div class="slds-grid">
+							<div class="slds-col slds-size_1-of-2"> -->
+								<!-- <lightning-input-field field-name={EXHIBITION_MANGEMENT}  onchange={handlerExpoId} required></lightning-input-field> -->
+								<!-- 更改为pick list, 默认值为正在进行或还未开始的展会 -->
+								<lightning-combobox label="Expo Id" name="ExpoId__c" data-field-name="ExpoId__c" value={recordInfo.ExpoId__c} 
+									options={exhibitionOptions} onchange={inputChangeHandler} required>
+								</lightning-combobox>
+						
+								<lightning-input-field field-name={LAST_NAME_CN} value={lastNameCN}  onchange={handleLastNameCN} ></lightning-input-field>
+								<lightning-input-field field-name={LAST_NAME_EN} value={lastNameEN}  onchange={handleLastNameEN} ></lightning-input-field>
+								<lightning-input-field field-name={FIRST_NAME_CN} value={firstNameCN}  onchange={handerFirstNameCN} ></lightning-input-field>
+								<lightning-input-field field-name={FIRST_NAME_EN} value={firstNameEN}  onchange={handerFirstNameEN} ></lightning-input-field>
+								<lightning-input-field field-name={COMPANY_CN} value={companyCN}  onchange={handerCompanyCN} ></lightning-input-field>
+								<lightning-input-field field-name={COMPANY_EN} value={companyEN}  onchange={handerCompanyEN} ></lightning-input-field>
+	
+								<!-- 新增区组信息 -->
+								<!-- 所属国家/市场 -->
+								<!-- <lightning-input-field field-name="Country__c"  data-field-name="Country__c" value={recordInfo.Country__c}  onchange={inputChangeHandler} ></lightning-input-field> -->
+								<!-- <lightning-input-field field-name="CountryRegionEN__c"  data-field-name="CountryRegionEN__c" value={recordInfo.CountryRegionEN__c}  onchange={inputChangeHandler} ></lightning-input-field> -->
+	
+								<lightning-input-field field-name="Region__c"  data-field-name="Region__c" value={recordInfo.Region__c}  onchange={inputChangeHandler} ></lightning-input-field>
+								<lightning-combobox name="CountryRegionCN__c" data-field-name="CountryRegionCN__c" label={fields.CountryRegionCN__c} value={recordInfo.CountryRegionCN__c} options={countryOptions} onchange={inputChangeHandler}></lightning-combobox>
+	
+								<!-- 品牌偏好 -->
+								<lightning-input-field field-name="BrandPreferenceCN__c" data-field-name="BrandPreferenceCN__c" value={recordInfo.BrandPreferenceCN__c}  onchange={inputChangeHandler} ></lightning-input-field>
+								<!-- <lightning-input-field field-name="BrandPreferenceEN__c" data-field-name="BrandPreferenceEN__c" value={recordInfo.BrandPreferenceEN__c}  onchange={inputChangeHandler} ></lightning-input-field> -->
+	
+								<!-- 产品偏好 -->
+								<lightning-input-field field-name="ProductInterestCN__c" data-field-name="ProductInterestCN__c" value={recordInfo.ProductInterestCN__c}  onchange={inputChangeHandler} ></lightning-input-field>
+								<!-- <lightning-input-field field-name="ProductInterestEN__c" data-field-name="ProductInterestEN__c" value={recordInfo.ProductInterestEN__c}  onchange={inputChangeHandler} ></lightning-input-field> -->
+	
+							<!-- </div>
+							<div class="slds-col slds-size_1-of-2"> -->
+								<lightning-input-field field-name={TELEPHONE} value={telphone}  onchange={handerTelphone} ></lightning-input-field>
+								<lightning-input-field field-name={EMAIL} value={email}  onchange={handerEmail} ></lightning-input-field>
+								<lightning-input-field field-name={WORL_TEL} value={wordTel}  onchange={handerWorkTel} ></lightning-input-field>
+								<lightning-input-field field-name={QQ_WECHAT_NUMBER} value={qqWechatNumber}  onchange={handerQqWechatNumber} ></lightning-input-field>
+								<lightning-input-field field-name={FAX} value={fax}  onchange={handerFax} ></lightning-input-field>
+								<lightning-input-field field-name={DUTY} value={duty}  onchange={handerDuty} ></lightning-input-field>
+								<lightning-input-field field-name={URL} value={url}  onchange={handerUrl} ></lightning-input-field>
+								<lightning-input-field field-name={ADDRESS} value={address}  onchange={handerAddress} ></lightning-input-field>
+								<lightning-input-field field-name={DEPARTMENT} value={department}  onchange={handerDepartment}></lightning-input-field>
+								<!-- readonly = "true" -->
+								<lightning-input-field field-name={IS_PRESENT} value={isMyStylePresent}  onchange={handerIsPresent} check = {isMyStylePresent}></lightning-input-field>
+								<!-- 隐藏在页面 -->
+								<lightning-input-field field-name={AGREE_PRIVATE_POLICY} value={agreePrivatePolicy}  style = "display: none;"></lightning-input-field>
+								<lightning-input-field field-name={AGREE_STORED} value={agreeStored}  style = "display: none;"></lightning-input-field>
+	
+						   <!--  </div>
+						</div> -->
+						
+						<!-- <div class="slds-m-top_medium">
+							<lightning-button
+								class="slds-m-top_small"
+								label="Cancel"
+								onclick={handleReset}
+							></lightning-button>
+							<lightning-button
+								class="slds-m-top_small"
+								type="submit"
+								label="Save Record"
+								onerror={handleError}
+							></lightning-button>
+						</div> -->
+	
+					   <!--  <lightning-button
+							class="slds-m-top_small"
+							type="submit"
+							label="Create new"
+						>
+						</lightning-button> -->
+					</lightning-record-edit-form>
+					<div class="slds-m-top_medium">
+							<lightning-button
+								class="slds-m-top_small"
+								label={resetLabel}
+								variant="neutral"
+								onclick={handleReset}
+							></lightning-button>
+						   <!--  <lightning-button
+								class="slds-m-top_small"
+								label="Cancel"
+								onclick={handleCancel}
+							></lightning-button> -->
+							&nbsp;
+							<lightning-button
+								class="slds-m-top_small"
+								label={saveLabel}
+								variant="brand"
+								onclick={handleCreated}
+							></lightning-button>
+						</div>
+					<!-- <lightning-record-edit-form object-api-name="Company_3rd__c">
+							<lightning-input-field field-name="hq_info_country__c" onchange={handleChangeCountry} value={hqInfoCountry}> </lightning-input-field>
+						</lightning-record-edit-form> -->
+					   </div>
+				</div>
+			</div>
+	
+	   
+	
+			 <!-- <div class="modal-footer slds-modal__footer slds-size_1-of-1"> -->
+				<!-- <div class=""> -->
+				   <!--  <lightning-button label='重置'  class="slds-p-around_x-small"></lightning-button>
+					<lightning-button variant="brand" label='确认'  class="slds-p-around_x-small"></lightning-button> -->
+				<!-- </div> -->
+			<!-- </div> -->
+	
+	
+		</lightning-card>
+	</template>
+	
+
+	<template if:true={showPersonInfo}>
+		<lightning-card  title="现场接待人员信息">
+			<P class="slds-p-horizontal_small" style="white-space: pre-wrap;">{personInfo}</P>
+            <lightning-button slot="footer" class="slds-m-top_small" label="继续录入" variant="brand-outline" onclick={handleBack} style="margin-right: 10px;"></lightning-button>
+            <lightning-button slot="footer" class="slds-m-top_small" label="查看客户信息" variant="brand-outline" onclick={handleConfirm}></lightning-button>
+        </lightning-card>
+	</template>
+</template>

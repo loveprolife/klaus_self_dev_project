@@ -5,9 +5,10 @@
     <enableActivityAnalyticsPref>false</enableActivityAnalyticsPref>
     <enableEACForEveryonePref>false</enableEACForEveryonePref>
     <enableInboxActivitySharing>false</enableInboxActivitySharing>
-    <enableInsightsInTimeline>true</enableInsightsInTimeline>
-    <enableInsightsInTimelineEacStd>false</enableInsightsInTimelineEacStd>
+    <enableInsightsInTimeline>false</enableInsightsInTimeline>
+    <enableInsightsInTimelineEacStd>true</enableInsightsInTimelineEacStd>
     <provisionProductivityFeatures>false</provisionProductivityFeatures>
+    <relationshipGraphPref>true</relationshipGraphPref>
     <s2XSvcAccEmail>false</s2XSvcAccEmail>
-    <syncInternalEvents>true</syncInternalEvents>
+    <syncInternalEvents>false</syncInternalEvents>
 </EACSettings>

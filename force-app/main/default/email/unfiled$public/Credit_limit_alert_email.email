@@ -1,0 +1,9 @@
+"""各位
+ 
+以下の取引先の与信限度使用率が50%を超えていることに注意してください。""
+
+取引先: [{!Account.Name}]
+与信限度: [{!Account.SAP_Credit_Limit__c}]
+使用済み与信限度:[{!Account.Used_Credit_Limit__c}]
+
+システムURL: [{!Account.Link}]

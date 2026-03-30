@@ -1,0 +1,29 @@
+:host{ 
+    --sds-c-accordion-heading-font-size: 1rem;
+    --slds-c-accordion-section-spacing-inline-end: 0px;
+}
+:host .detailHeight{
+    --sds-c-textarea-sizing-min-height: 200px;
+}
+
+.slds-modal__container {
+	width: 90%;
+    max-width: 90%;
+}
+
+.cursor :hover {
+    cursor: pointer;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+td {
+    white-space: normal !important;
+    word-break: break-word !important;
+    /* max-width: 150px;  */
+    /* 固定宽度示例 */
+    overflow-wrap: anywhere !important;
+}

@@ -1,0 +1,43 @@
+<!--
+ * @Author: WFC
+ * @Date: 2025-07-30 16:38:13
+ * @LastEditors: WFC
+ * @LastEditTime: 2025-08-05 09:41:23
+ * @Description: 
+ * @FilePath: \testuat\force-app\main\default\lwc\uploadFilesNoRecordId\uploadFilesNoRecordId.html
+-->
+<template>
+    <div class="slds-grid slds-gutters slds-var-p-left_small slds-var-p-top_small">
+        <template for:each={filesInfo} for:item="record" for:index="index">
+            <div key={record} class="slds-is-relative slds-var-p-right_medium slds-var-m-right_large">
+                <template lwc:if={record.isImage}>
+                    <img src={record.base64} data-index={index} style="max-width: 200px;"/>
+                </template>
+                <template lwc:else>
+                    <div>
+                        <lightning-icon class="slds-align_absolute-center" icon-name={record.iconName} size="x-large" alternative-text="icon"></lightning-icon>
+                        <div class="slds-text-color_success">{record.name}</div>
+                    </div>
+                </template>
+                <lightning-icon
+                        style="position: absolute; top: 0; right: 0"
+                        variant="error" 
+                        icon-name="utility:close" 
+                        size="x-small" 
+                        data-index={index}
+                        onclick={handleDeleteFile}>
+                </lightning-icon>
+            </div>
+        </template>
+    </div>
+    <lightning-input 
+        label="" 
+        type="file" 
+        name="file uploader" 
+        onclick={handleFilesClick} 
+        onchange={handleFilesChange} 
+        multiple
+        >
+    </lightning-input>
+    
+</template>

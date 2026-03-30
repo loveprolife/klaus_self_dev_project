@@ -1,0 +1,31 @@
+<aura:component controller="QuotePDFGenerationController" access="global" implements = "force:lightningQuickActionWithoutHeader,force:hasRecordId" >
+	
+	<aura:attribute name="recordId" type="String" />
+	<aura:attribute name="pdfUrl" type="String"/>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+	<!-- 确认是否生成PDF的页面 -->
+	<!-- <div class="hidden" id="ensureWindow"> -->
+	<div class="visibile" id="ensureWindow">
+		<div style="text-align: center;border-bottom: 1px solid; padding-bottom: 20px; margin-bottom: 20px;">
+			<h2 class="title slds-text-heading--medium" >Print PDF</h2><!-- {!$Label.c.createServiceReport} -->
+		</div>
+		<div style="text-align: center; font-size: 22px;">
+			{!$Label.c.Quote_Print_PDF_Confirm}
+		</div>
+		<button style="float:right;margin-left:.5rem;" class="slds-button slds-button--brand slds-button slds-button--brand" type="button" value="Comfirm" onclick="{!c.admit}">
+			<span >{!$Label.c.Common_Button_Confirm}</span>
+		</button>
+		<button style="float:right;border-color: rgb(221, 219, 218);background-color: rgb(255, 255, 255);border: 1px solid rgb(221, 219, 218);color: rgb(62, 62, 60);" class="slds-button slds-button--brand slds-button slds-button--brand" type="button" value="Cancel" onclick="{!c.cancel}">
+			<span >{!$Label.c.Common_Button_Cancel}</span>
+		</button>
+	</div>
+
+	<!-- 链接PDF页面 -->
+	<iframe  class="hidden" style="position: absolute;top:0;left: 0;" src="{! v.pdfUrl}"  width="100%" height="100%" frameBorder="0" id="PDFframe"/>
+
+	<!-- PDF右上角的“X”关闭窗口的功能 -->
+	<div class="hiden" style="position: absolute;top:0;right:-60px;" onclick="{!c.cancel}" id="closeFrame">
+		<lightning:buttonIcon iconName="utility:close"  variant="border-inverse" title="close" alternativeText="Close modal"/>
+	</div>
+
+</aura:component>

@@ -1,0 +1,96 @@
+<aura:component controller="QuoteAddProductController"
+implements="flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId" 
+access="global" >
+
+<!-- <ltng:require styles="{!$Resource.enlargeModalWindow + '/enlargeModalWindow.css'}" /> -->
+<!-- 主记录ID -->
+<aura:attribute name="recordId" type="Id" />
+<!-- 判断值 -->
+<aura:attribute name="isSaved" type="Boolean" required="true" description="" default="false" access="private"/>
+<aura:attribute name="isEditable" type="Boolean" required="true" default="false" access="private" />
+<!-- 初始化数据 -->
+<aura:attribute name="thisQuote" type="Object" />
+<aura:attribute name="productColumns" type="List"/>
+<aura:attribute name="productListData" type="List"/>
+<aura:attribute name="pageLabelList" type="List"/>
+
+<aura:attribute name="selectedRowsCount" type="Integer" default="0"/>
+
+<aura:attribute name="productLinePicklists" type="List" />
+<aura:attribute name="productStatusPicklists" type="List" />
+<aura:attribute name="deliveryFormPicklists" type="List" />
+<aura:attribute name="costTypePicklists" type="List" />
+<!-- 搜索产品filter -->
+<aura:attribute name="labelN" type="String" />
+<aura:attribute name="labelT" type="String" />
+<aura:attribute name="labelL" type="String" />
+<aura:attribute name="nameLabel" type="String" required="false" default="Please input product name first"/>
+    
+<aura:attribute name="alertMessage" type="String" />
+<aura:attribute name="proIdString" type="String" />
+<aura:attribute name="selectedProductListData" type="Quote_Product__c[]"/>
+
+
+<aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+<style>
+    .slds-modal__container {
+    max-width: 120rem !important;
+    width:90% !important;
+    }
+</style>
+
+<!-- 选择产品 -->
+
+	<div>
+		<h2 class="title slds-text-heading--medium" >
+		<!-- Search Product -->
+		{!v.pageLabelList[0]}
+		</h2>
+	</div>
+	<aura:renderIf isTrue="{!v.isEditable}">
+		<div>
+			<div class="select_box">
+				<!-- 选择product line -->
+			 	<p class="text_select"><!-- Product Line -->{!v.pageLabelList[1]}</p>
+			 	<div id="type_select">
+			 		<lightning:select aura:id="productLine" name="select1" value="{!v.labelL}" onchange="{!c.searchProduct}">
+				        <aura:iteration items="{!v.productLinePicklists}" var="it">
+							<ui:inputSelectOption label="{!it.label}" text="{!it.value}"/>
+						</aura:iteration>
+				    </lightning:select>			 	
+				</div>
+				&nbsp;&nbsp;	 	
+			</div>
+			<!-- 输入产品名进行搜索 -->
+			<p class="text_select"><!-- Product Name -->{!v.pageLabelList[2]}</p>
+		 	<div id="name_search">
+			 	<div class="label-wrap">
+			 		<input style="font-size: 12px;font: inherit;" name="nameInput" class="label" type="text" placeholder="{!v.nameLabel}" value="" />
+			 	</div>
+			 	<div style="display: block;height:5px;"/>
+			</div>
+			<input class="select_admit" type="button" value="{!$Label.c.Common_Button_Search}" onclick="{!c.searchProduct}"></input>
+		</div>
+	    <h1 class="slds-m-vertical_small"><!-- Selected Rows -->{!v.pageLabelList[3]}: {! v.selectedRowsCount }</h1>
+	    <lightning:datatable data="{! v.productListData }"
+	                             columns="{! v.productColumns }"
+	                             keyField="id"
+	                             hideCheckboxColumn="false"
+	                             showRowNumberColumn="true"
+	                             onrowselection="{! c.updateSelectedText }"/>
+		<!-- 选中产品进行编辑 -->
+		<input class="assign_admit" type="button" value="{!$Label.c.Common_Button_Save}" onclick="{!c.selectSubmit}"></input>
+	</aura:renderIf>
+	<aura:renderIf isTrue="{!!v.isEditable}">
+        <lightning:card class="alertMessage">
+	        <aura:set attribute="title">
+	            <lightning:icon iconName="utility:warning" size="big" variant="error"/>
+	            {!v.alertMessage}
+	        </aura:set>
+	    </lightning:card>
+    </aura:renderIf>
+	<!-- 取消 -->
+	<input class="assign_cancel" type="button" value="{!$Label.c.Common_Button_Cancel}" onclick="{!c.assignCancel}"></input>
+
+
+</aura:component>

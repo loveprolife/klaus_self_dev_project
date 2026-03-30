@@ -1,0 +1,272 @@
+<template>
+    <!-- 详情页面 -->
+    <template if:true={isDetailPage}>
+        <lightning-card>
+            <h3 style="text-align: center;font-size: 1.5rem; 
+            font-weight: bold;">
+                部门审批
+            </h3>
+            <!--  <hr> -->
+
+            <div>
+                <lightning-layout
+                    style="padding-left: 10px; padding-right: 10px;border-bottom:1px solid #DCDCDC;">
+                    <lightning-layout-item padding="around-small" size="3">
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="6">
+                        <!-- <lightning-input label="一级审批人(部门长或分公司领导)" name="oneApp" type="text" onchange={changeData} style="width: 300px;" placeholder="请输入LDAP账号，一般为邮箱@之前的部分"></lightning-input> -->
+                        <lightning-select label="大区" name="areaApp" onchange={changeData} options={areaList} style="width: 300px;" ></lightning-select>
+                        <lightning-select label="部门" name="deapApp" onchange={changeData} options={deapList} style="width: 300px;" ></lightning-select>
+                        <lightning-select label="审批状态" name="statusApp" onchange={changeData} options={statusList} style="width: 300px;" ></lightning-select>
+                        <lightning-select label="一级审批人(部门长或分公司领导)" name="oneApp" onchange={changeData} options={approverOneList} style="width: 300px;"></lightning-select>
+                        <lightning-select label="二级审批人(分管领导)" name="twoApp" onchange={changeData} options={approverList} style="width: 300px;" ></lightning-select>
+                        <lightning-textarea label="处理意见" name="opinion" onchange={changeData} placeholder="请输入处理意见" maxlength="150"></lightning-textarea>
+                        <br>
+                        <div class="slds-scrollable_x" style="height: 230px;overflow-y: auto;">
+                            <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-resizable"
+                                style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <td style="width: 3rem;">
+                                            <lightning-input type="checkbox" data-id="checkBoxAll"
+                                                        onchange={selectAllQuoteProducts}></lightning-input>
+                                        </td>
+                                        <th >姓名</th>
+                                        <!-- <th >证件类型</th>                                 -->
+                                        <th >审批状态</th>
+                                        <th >部门</th>
+                                        <th >电话</th>
+                                        <th >邮箱</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={dataList} for:item=intRe for:index="index">
+                                        <tr key={intRe.index}>
+                                            <td>
+                                                <lightning-input type="checkbox" value={intRe.Id} data-field-name={intRe.Certificate_Type__c}
+                                                                onchange={selectData} checked={intRe.isSelect}>
+                                                            </lightning-input>
+                                            </td>
+                                            <td class="slds-cell-wrap">
+                                                {intRe.Name_CN__c}
+                                            </td>
+                                            <!-- <td class="slds-cell-wrap">
+                                                {intRe.Certificate_Type__c}
+                                            </td> -->
+                                            <td>
+                                                {intRe.Approval_Status__c}
+                                            </td>
+                                            <td class="slds-cell-wrap">
+                                                {intRe.Department_Name__c}
+                                            </td>
+                                            <td class="slds-cell-wrap">
+                                                {intRe.Phone__c}
+                                            </td>                                        
+                                            <td class="slds-cell-wrap">
+                                                {intRe.Email__c}
+                                            </td>
+                                            
+                                        </tr>
+                                    </template>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item padding="around-small" size="3">
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+            <template if:true={isShowSpinner}>
+                <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+            </template>
+
+            <div slot="footer">
+                <lightning-button class="slds-m-top_small" label="取消" onclick={cancel}></lightning-button>
+                &nbsp;
+                <lightning-button class="slds-m-top_small" label="确定" onclick={saveData}></lightning-button>
+            </div>
+
+        </lightning-card>
+    </template>
+
+
+
+    <!-- 列表视图 -->
+    <template if:false={isDetailPage}>
+        <lightning-card>
+            <h3 style="text-align: center;font-size: 1.5rem; 
+            font-weight: bold;">
+                部门审批
+            </h3>
+            <!--  <hr> -->
+
+            <div>
+                <lightning-layout
+                    style="padding-left: 10px; padding-right: 10px;border-bottom:1px solid #DCDCDC;">
+                    <lightning-layout-item padding="around-small" size="3">
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="6">
+                        <!-- <lightning-input label="一级审批人(部门长或分公司领导)" name="oneApp" type="text" onchange={changeData} style="width: 300px;" placeholder="请输入LDAP账号，一般为邮箱@之前的部分"></lightning-input> -->
+                        <lightning-select label="所属展会" name="expoApp" onchange={changeExpo} options={expoList} style="width: 300px;" ></lightning-select>
+                        
+                        <template if:true={isChooseExpo}>
+                            <lightning-select label="大区" name="areaApp" onchange={changeData} options={areaList} style="width: 300px;" ></lightning-select>
+                            <lightning-select label="部门" name="deapApp" onchange={changeData} options={deapList} style="width: 300px;" ></lightning-select>
+                            <lightning-select label="审批状态" name="statusApp" onchange={changeData} options={statusList} style="width: 300px;" ></lightning-select>
+                        </template>
+                        <!-- <lightning-select label="一级审批人" name="oneApp" onchange={changeData} options={approverOneList} style="width: 300px;" placeholder="请输入LDAP账号，一般为邮箱@之前的部分"></lightning-select> -->
+                        <!-- <template if:true={checkResult.productLookup}>
+                            <template if:false={lookupHidden}> -->
+                                <table>
+                                    <tr>
+                                        <td>
+                                      一级审批人
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                  <a style="margin-right: 3rem;">
+                                                                     <lightning-icon variant="success"
+                                                                        icon-name="utility:dash" size="x-small" title=""
+                                                                        data-index={index} onclick={handleDelete}>
+                                                                     </lightning-icon>
+                                                                     <span class="slds-assistive-text"></span>
+                                                                  </a>
+                                        </td>
+                                    </tr>                              
+                                    <tr>
+                                        <td style="width: 90%;">
+                                            <lightning-input
+                                                type="text"
+                                                value={inputValue}
+                                                >
+                                            </lightning-input>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                       <td style="width: 91%;">
+                                          <c-account-look-up-lwc
+                                               name="onRegistrations"
+                                               placeholder="请输入LDAP账号，一般为邮箱@之前的部分"
+                                               data-index={index}
+                                               obj-name="Exhibition_OA_Second_Approver__c" 
+                                               no-show-select-record="true"
+                                               op={lookupUserFilter} 
+                                               onlookupupdate={handleChangeOption}
+                                               onchildvalue={handleChildValue}>
+                                            </c-account-look-up-lwc>
+                                       </td>
+                                    </tr>
+                                    
+                                </table>
+                           <!-- <lightning-combobox
+                                label="一级审批人"
+                                name="oneApp"
+                                options={approverList}
+                                value={selectedApprover}
+                                onchange={handleComboboxChange}
+                                placeholder="选择一级审批人"
+                                style="width: 300px;">
+                            </lightning-combobox>
+                            <div>
+                                <label>已选审批人：</label>
+                                <span>{selectedApproversString}</span>
+                            </div>
+                            <lightning-button
+                                label="删除最后一个"
+                                onclick={handleDeleteLast}
+                                variant="destructive"
+                                style="margin-top: 10px;"
+                                disabled={isDeleteButtonDisabled}>
+                            </lightning-button>
+                        <br> -->
+                          <lightning-select label="二级审批人" name="twoApp" onchange={changeData} options={approverList} style="width: 300px;" ></lightning-select>
+                          <lightning-textarea label="处理意见" name="opinion" onchange={changeData} placeholder="请输入处理意见" maxlength="150"></lightning-textarea>
+                        <br>
+                        <div class="slds-scrollable_x" style="height: 230px;overflow-y: auto;">
+                            <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-resizable"
+                                style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <td style="width: 3rem;">
+                                            <lightning-input type="checkbox" data-id="checkBoxAll"
+                                                        onchange={selectAllQuoteProducts}></lightning-input>
+                                        </td>
+                                        <!-- <th >姓名</th>
+                                        <th >部门</th>
+                                        <th >电话</th>
+                                        <th >审批状态</th>
+                                        <th >邮箱</th> -->
+                                        <th >姓名</th>
+                                        <!-- <th >证件类型</th>                                 -->
+                                        <th >审批状态</th>
+                                        <th >部门</th>
+                                        <th >电话</th>
+                                        <th >邮箱</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template for:each={dataList} for:item=intRe for:index="index">
+                                        <tr key={intRe.index}>
+                                            <td>
+                                                <lightning-input type="checkbox" value={intRe.Id}
+                                                                onchange={selectData} checked={intRe.isSelect}>
+                                                            </lightning-input>
+                                            </td>
+                                            <td class="slds-cell-wrap">
+                                                {intRe.Name_CN__c}
+                                            </td>
+                                            <!-- <td class="slds-cell-wrap">
+                                                {intRe.Certificate_Type__c}
+                                            </td> -->
+                                            <td>
+                                                {intRe.Approval_Status__c}
+                                            </td>
+                                            <td class="slds-cell-wrap">
+                                                {intRe.Department_Name__c}
+                                            </td>
+                                            <td class="slds-cell-wrap">
+                                                {intRe.Phone__c}
+                                            </td>                                        
+                                            <td class="slds-cell-wrap">
+                                                {intRe.Email__c}
+                                            </td>
+                                           
+                                        </tr>
+                                    </template>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </lightning-layout-item>
+
+
+
+
+                    <lightning-layout-item padding="around-small" size="3">
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+            <template if:true={isShowSpinner}>
+                <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+            </template>
+
+            <div slot="footer">
+                <lightning-button class="slds-m-top_small" label="返回" onclick={handercancel}></lightning-button>
+                &nbsp;
+                <lightning-button class="slds-m-top_small" label="确定" onclick={handlesaveData}></lightning-button>
+            </div>
+
+        </lightning-card>
+    </template>
+
+
+
+
+
+
+
+
+
+</template>

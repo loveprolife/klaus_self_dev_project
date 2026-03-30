@@ -1,0 +1,674 @@
+<template>
+    <div class="slds my-container" style="width: 100%;">
+        <template if:true={isShowSpinner} >
+            <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+        </template>
+        <template if:false={isPc}>
+            <lightning-card>
+                <span title="" style="color: red;"> {label.Mobiletip} </span>
+            </lightning-card>
+        </template>
+        <!-- 固定页眉 -->
+        <template if:true={isPc}>
+            <div>
+                <template if:true={ShopPlanData}>
+                    <div class="headDive" style=" top: 0; background: white; z-index: 1;">
+                        <!-- 月计划基础信息 -->
+                        <div class="slds-grid" style="background-color: #f8f8f8;">
+                            <!-- <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small" style="">
+                                <lightning-input type="text" label={label.PlanNumber} disabled="true" value={ShopPlanData.Name} style="padding-left: 1px;
+                                padding-right: 1px;"></lightning-input>
+                            </div> -->
+                            <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small">
+                                <!-- <lightning-combobox
+                                    name="progress"
+                                    label={label.Floorwalker}
+                                    placeholder="Please select a floorwalker"
+                                    value={selectedFloorwalkerId}
+                                    options={floorwalkers} 
+                                    dropdown-alignment="auto" 
+                                    onchange={floorwalkerChange}>
+                                </lightning-combobox> -->
+                                <!-- 带输入框的搜索框 -->
+                                <c-searchable-combobox 
+                                    label={label.Floorwalker}
+                                    value={selectedFloorwalkerName}
+                                    options={floorwalkers} 
+                                    onchange={floorwalkerChange}
+                                    required="true">
+                                </c-searchable-combobox>
+                            </div>
+                            
+                            <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small">
+                                <template if:true={showEditInput}>
+                                    <lightning-combobox
+                                        name="progress"
+                                        label={label.PlanYear}
+                                        placeholder={label.PickPlanYear}
+                                        value={ShopPlanData.Inspection_Year__c}
+                                        options={yearsOptions} dropdown-alignment="auto" required onchange={yearChange}>
+                                    </lightning-combobox>
+                                </template>
+            
+                                <template if:false={showEditInput}>
+                                    <lightning-input type="text" label={label.PlanYear} disabled="true" value={ShopPlanData.Inspection_Year__c}></lightning-input>
+                                </template>
+            
+                            </div>
+                            <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small">
+                                <template if:true={showEditInput}>
+                                    <lightning-combobox
+                                    name="progress"
+                                    label={label.PlanMonth}
+                                    placeholder={label.PickPlanMonth}
+                                    value={ShopPlanData.Inspection_Month__c}
+                                    options={monthOptions} dropdown-alignment="auto" required onchange={monthChange}></lightning-combobox>
+                                </template>
+                                <template if:false={showEditInput}>
+                                    <lightning-input type="text" label={label.PlanMonth} disabled="true" value={ShopPlanData.Inspection_Month__c}></lightning-input>
+                                </template>
+                            </div>
+                            <!-- Week -->
+                            <!-- <div class="slds-col slds-size_1-of-12 slds-var-p-horizontal_x-small">
+                                <template if:true={showEditInput}>
+                                    <lightning-combobox
+                                    name="progress"
+                                    label='Week'
+                                    value={ShopPlanData.week}
+                                    options={weekOptions} dropdown-alignment="auto" onchange={weekChange}></lightning-combobox>
+                                </template>
+                                <template if:false={showEditInput}>
+                                    <lightning-input type="text" label='Week' disabled="true" value={ShopPlanData.week}></lightning-input>
+                                </template>
+                            </div> -->
+                            <!-- Store Level -->
+                            <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small">
+                                <template if:true={showEditInput}>
+                                    <!-- <lightning-combobox
+                                    name="progress"
+                                    label={label.ShopLevel}
+                                    value={storeLevelOptionValue}
+                                    options={storeLevelOptions.data} dropdown-alignment="auto" onchange={storeLevelChange}></lightning-combobox> -->
+                                    <lightning-record-edit-form object-api-name="Dictionary__c">
+                                        <lightning-input-field
+                                            style="display: none;"                        
+                                            field-name="Sales_Region_Picklist__c"
+                                            data-field-name="Sales_Region_Picklist__c"
+                                            value={salesRegion}
+                                            >
+                                        </lightning-input-field>
+                                        <lightning-input-field
+                                            style="padding: 0;"                              
+                                            field-name="Store_Level__c"
+                                            data-field-name="Store_Level__c"
+                                            value={storeLevelOptionValue}
+                                            onchange={storeLevelChange}
+                                            >
+                                        </lightning-input-field>
+                                    </lightning-record-edit-form>
+                                </template>
+                                
+                                <template if:false={showEditInput}>
+                                    <lightning-input type="text" label={label.ShopLevel} disabled="true" value={storeLevelOptionValue}></lightning-input>
+                                </template>
+                            </div>
+
+                            <!-- button -->
+                            <div class="slds-col slds-size_4-of-12 slds-var-p-horizontal_x-small">
+                                <div>
+                                    <label class="slds-form-element__label">
+                                    <span>&nbsp;</span>
+                                    </label>
+                                </div>
+                                <div class="slds-float_right">
+                                    <!-- <template if:true={showApprove}>
+                                        <lightning-button variant="brand" label={label.Approve} onclick={approvePlan}  slot="actions" style="margin-left: 5px;"></lightning-button>
+                                    </template>
+                                    <template if:true={showApprove}>
+                                        <lightning-button variant="brand" label={label.Reject} onclick={rejectPlan}  slot="actions" style="margin-left: 5px;"></lightning-button>
+                                    </template>
+                                    <template if:true={showRecall}>
+                                        <lightning-button variant="brand" label={label.Recall} onclick={recallPlan}  slot="actions" style="margin-left: 5px;"></lightning-button>
+                                    </template>
+                                    <template if:true={showSubmit}>
+                                        <lightning-button variant="brand" label={label.Submit} onclick={submitPlan}  slot="actions" style="margin-left: 5px;"></lightning-button>
+                                    </template>
+                                    <template if:true={showSaveButton}>
+                                        <lightning-button variant="brand" label={label.Save} onclick={savePlan}  slot="actions" style="margin-left: 5px;"></lightning-button>
+                                    </template> -->
+                                    <lightning-button variant="brand" label={label.Save} onclick={savePlan}  slot="actions" style="margin-left: 5px;"></lightning-button>
+                                    <lightning-button variant="neutral" label={label.Return} onclick={cancel} slot="actions" style="margin-left: 5px;"></lightning-button>
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="slds-grid" style="background-color: #f8f8f8;">
+                            <!-- <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small">
+                                <lightning-input type="text" label={statusLabel} disabled="true" value={ShopPlanData.Status__c} ></lightning-input>
+                            </div> -->
+
+                            <!-- 新增校验搜索框 -->
+                            <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small">
+                                <lightning-combobox
+                                    name="progress"
+                                    label={label.Channel_Name}
+                                    value={customerOptionValue}
+                                    options={customerFilter} dropdown-alignment="auto" onchange={customerChange}></lightning-combobox>
+                            </div>
+                            <!-- 新增校验渠道和城市搜索框 20241104 YYL-->
+                            <!-- <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small">
+                                <lightning-combobox
+                                    name="progress"
+                                    label={label.Channel_Name}
+                                    value={channelOptionValue}
+                                    options={channelFilter} dropdown-alignment="auto" onchange={channelChange}></lightning-combobox>
+                            </div> -->
+                            <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small">
+                                <lightning-combobox
+                                    name="progress"
+                                    label={label.GridName}
+                                    value={gridOptionValue}
+                                    options={griddingFilter} dropdown-alignment="auto" onchange={gridChange}></lightning-combobox>
+                            </div>
+                            <!-- 新增校验渠道和城市搜索框 20241104 YYL-->
+                            <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small">
+                                <lightning-combobox
+                                    name="progress"
+                                    label={label.City}
+                                    value={cityOptionValue}
+                                    options={cityFilter} dropdown-alignment="auto" onchange={cityChange}></lightning-combobox>
+                            </div>
+                            <!-- Store Name -->
+                            <div class="slds-col slds-size_2-of-12 slds-var-p-horizontal_x-small">
+                                <div class="slds-is-relative" onkeyup={handleKeyUp}>
+                                    <lightning-input 
+                                        type="text" 
+                                        label={label.ShopName}
+                                        value={storeNameOptionValue}
+                                        onchange={storeNameChange}
+                                    ></lightning-input>
+                                    <div style="position: absolute; right:2px; bottom:7px; cursor: pointer">
+                                        <lightning-icon icon-name='utility:search' alternative-text='search' size='x-small' title='search' onclick={handlerSearchStoreName}></lightning-icon>
+                                    </div>
+                                </div>
+                                <!-- <lightning-combobox
+                                    name="progress"
+                                    label={label.ShopName}
+                                    value={storeNameOptionValue}
+                                    options={storeNameFilter} dropdown-alignment="auto" onchange={storeNameChange}></lightning-combobox> -->
+                            </div>
+                            <!-- 新增刷新Customer Name 和 Grid Name 筛选框按钮 20241029 YYL -->
+                            <div class="slds-col slds-size_1-of-12 slds-var-p-horizontal_x-small">
+                                <div>
+                                    <label class="slds-form-element__label">
+                                    <span>&nbsp;</span>
+                                    </label>
+                                </div>
+                                <div >
+                                    <lightning-button variant="neutral" label={label.Reset} onclick={refresh} slot="actions" style="margin-left: 5px;"></lightning-button>
+                                </div>
+                            </div>
+
+                            <div class="slds-col slds-size_1-of-12 slds-var-p-horizontal_x-small">
+                                <template lwc:if={ShopPlanData.Approver1__c}>
+                                    <lightning-input type="text" label={approve1Label} value={ShopPlanData.Approver1__r.Name} disabled></lightning-input>
+                                </template>
+                            </div>
+                            <div class="slds-col slds-size_1-of-12 slds-var-p-horizontal_x-small">
+                                <template lwc:if={ShopPlanData.Approver2__c}>
+                                    <lightning-input type="text" label={approve2Label} value={ShopPlanData.Approver2__r.Name} disabled></lightning-input>
+                                </template>
+                            </div>
+                            <!-- <div class="slds-col slds-size_4-of-12 slds-var-p-horizontal_x-small"></div> -->
+                        </div>
+                        <!-- 计数区 -->
+                        <template if:true={dayOptions}>
+                            <div style="background-color: #f8f8f8;">
+                                <div class="slds-grid slds-var-p-top_small slds-var-p-left_small">
+                                    <div class="slds-var-m-right_large">
+                                        {label.Inspection_Task_Planned_Store}&nbsp; 
+                                        <span class="slds-text-color_success slds-text-title_bold">{planStoreNum}/{totalStoreNum}</span>
+                                    </div>
+                                    <div class="slds-var-m-left_large">
+                                        {label.Inspection_Task_Number}&nbsp;
+                                        <span class="slds-text-color_success slds-text-title_bold">{taskCompletedTotal}/{taskTotal}</span>
+                                    </div>
+                                    <div class="slds-col_bump-left">
+                                    <img src={IconGreen} width="20px">
+                                    <span class="slds-var-m-left_xx-small">{label.Inspection_Task_Plan_Visit}</span>
+                                    </div>
+                                    <div class="slds-var-m-left_medium">
+                                        <img src={IconBlue} width="20px">
+                                        <span class="slds-var-m-left_xx-small">{label.Inspection_Task_Actual_Visit}</span>
+                                    </div>
+                                    <div class="slds-var-m-left_medium">
+                                        <img src={IconOrange}  width="20px">
+                                        <span class="slds-var-m-left_xx-small">{label.Inspection_Task_Unscheduled_Visit}</span>
+                                    </div>
+                                    <div class="slds-var-m-left_medium slds-var-m-right_small slds-list_horizontal">
+                                        <div class="slds-align_absolute-center" style="width: 17px; height:17px; background-color: rgb(246 200 200)"></div>
+                                        <span class="slds-var-m-left_xx-small">{label.Exceed_Timelimit}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                        <!--Approval comments -->
+                        <template lwc:if={approvalConfirm}>
+                            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                                
+                                <div class="slds-modal__container">
+                                    <!-- <div class="slds-modal__header">Comments</div> -->
+                                    <div style="background-color: white; padding: 10px;">
+                                        <lightning-textarea type="textarea" label={label.Comments} value={comments} onchange={commentChange} required={isApprove}></lightning-textarea>
+                                    </div>
+                                    <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                                        <template lwc:if={isApprove}>
+                                            <lightning-button slot="action" label={label.Reject} onclick={confirmReject} class="slds-var-p-around_x-small" variant="brand"></lightning-button>
+                                        </template>
+                                        <template lwc:else>
+                                            <lightning-button slot="action" label={label.Approve} onclick={confirmApprove} class="slds-var-p-around_x-small" variant="brand"></lightning-button>
+                                        </template>
+                                        <lightning-button slot="action" label={label.Return} onclick={closeModal2} class="slds-var-p-around_x-small"></lightning-button>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="slds-backdrop slds-backdrop_open"></div>
+                        </template>
+                    </div>
+                </template>
+                <div class="my-content">
+                    <div style="margin-top: 0rem;">
+                        <template if:false={showDuplecation}>
+                            <div class="slds-modal__header" style="padding: 0px;">
+                                <template if:true={dayOptions}>
+                                    <div class=" slds-col slds-size_1-of-1" style="width: 100%;" >
+                                        <table class="slds-table_bordered highlight-table" style="table-layout:fixed;">
+                                            <thead class="my-thead" style="position: sticky; top: 0; background: white;">
+                                                <tr>
+                                                    <th class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" style="width: 3%; text-align: center;">
+                                                        {label.Order}
+                                                    </th>
+            
+                                                    <th class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" style="width: 10%;padding-top: 0.5rem;padding-bottom: 0.5rem;">
+                                                        {label.Channel_Name}
+                                                    </th>
+
+                                                    <th class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" style="width: 10%;padding-top: 0.5rem;padding-bottom: 0.5rem;">
+                                                        {label.ShopName}
+                                                    </th>
+
+                                                    <th class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" style="width: 4%;padding-top: 0.5rem;padding-bottom: 0.5rem;">
+                                                        {label.ShopLevel}
+                                                    </th>
+
+                                                    <template for:each={dayOptions} for:item="day" for:index="index">
+                                                        <template if:false={day.isWeekend}>
+                                                            <th class="slds-border_right slds-border_bottom" 
+                                                                style="width: 1.7%;text-align: center;border-color: rgb(217, 219, 221);" key={day.value}
+                                                                data-col={day.label}>
+                                                                <div style="font-size: 10px;">
+                                                                    {day.label}
+                                                                </div>
+                                                                <div style="font-size: 10px;">
+                                                                    {day.week}
+                                                                </div>
+                                                            </th>
+                                                        </template>
+                                                        <template if:true={day.isWeekend}>
+                                                            <th class="slds-border_right slds-border_bottom" 
+                                                                style="width: 1.7%;text-align: center;border-color: rgb(217, 219, 221);background-color: rgb(217 219 221 / 48%);" key={day.value}
+                                                                data-col={day.label}>
+                                                                <div style="font-size: 10px;">
+                                                                    {day.label}
+                                                                </div>
+                                                                <div style="font-size: 10px;">
+                                                                    {day.week}
+                                                                </div>
+                                                            </th>
+                                                        </template>
+                                                    </template>
+                                                    <th class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" 
+                                                        style="width: 4%;border-color: rgb(217, 219, 221);word-wrap: break-word;">
+                                                        <div style="font-size: 10px;">
+                                                            {label.Inspection_Task_Total_Plan}&nbsp;({visitedQuantitySum})
+                                                        </div>
+                                                        <!-- <div style="font-size: 10px;">
+                                                            <div class="checkbox-container">
+                                                                <div class="checkmark"></div>
+                                                            </div>
+                                                            〇 &nbsp;&nbsp; 
+                                                            ({visitedQuantitySum})
+                                                        </div> -->
+                                                    </th>
+                                                    <th class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" style={style2}>
+                                                        <div style="border-color: rgb(217, 219, 221);word-wrap: break-word;">
+                                                            <div style="font-size: 10px;">
+                                                                {label.Inspection_Task_Planned_Unscheduled}&nbsp;({unVisitedQuantitySum}/{unscheduledQuantitySum})
+                                                            </div>
+                                                            <!-- <div style="font-size: 10px;">
+                                                                ●/▲ &nbsp;&nbsp; 
+                                                                ({unVisitedQuantitySum}/{unscheduledQuantitySum})
+                                                            </div> -->
+                                                        </div>
+                                                    </th>
+                                                    <!-- <th style="width: 1.1%;"></th> -->
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <template for:each={monthplans} for:item="plans" for:index="index">
+                                                    <tr key={plans.planNum} class="slds-hint-parent">
+                                                        <td class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" style="width: 3%;text-align: center;">{plans.planNum}</td>
+
+                                                        <td class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" style="padding-top: 0.5rem;padding-bottom: 0.5rem;width: 10%;">
+                                                            {plans.shopOwner}
+                                                        </td>
+
+                                                        <td class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" style="padding-top: 0.5rem;padding-bottom: 0.5rem;width: 10%;">
+                                                            {plans.shopName}
+                                                        </td>
+
+                                                        <td class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" style="padding-top: 0.5rem;padding-bottom: 0.5rem;width: 6%;">
+                                                            {plans.shopLevel}
+                                                        </td>
+                                                        
+                                                        <template for:each={plans.dayOptions} for:item="day">
+                                                            <!-- 计划监控 -->
+                                                            <template if:true={day.isExceedTimelimit}>
+                                                                <td class="slds-border_right slds-border_bottom" style="border-color: rgb(217, 219, 221);width: 1.7%;text-align: center; background-color: rgb(255 220 220);" 
+                                                                    name={day.taskAndDate} data-status={day.status1} key={day.index} abbr ={plans.isBackup} 
+                                                                    data-task={day.taskId}
+                                                                    data-isplan={day.isPlan}
+                                                                    onclick={createInspectionShopTask}
+                                                                    data-col={day.index}
+                                                                    data-tempid={day.tempId}
+                                                                    onmouseover={handleMouseOver}
+                                                                    >
+                                                                    <!-- {day.status1} -->
+                                                                    <template if:true={day.isPlan}>
+                                                                        <img src={IconGreen} width="20px" name={day.taskAndDate}  data-status={day.status1} abbr ={plans.isBackup} key={day.index}
+                                                                            data-task={day.taskId}
+                                                                            data-isplan={day.isPlan}
+                                                                            onclick={createInspectionShopTask}
+                                                                            ondblclick={showTooltipViw}
+                                                                            data-col={day.index}
+                                                                            data-tempid={day.tempId}
+                                                                            onmouseover={handleMouseOver}
+                                                                        >
+                                                                    </template>
+                                                                    <template if:true={day.isActual}>
+                                                                        <img src={IconBlue} width="20px" name={day.taskAndDate}  data-status={day.status1} abbr ={plans.isBackup} key={day.index} 
+                                                                            data-task={day.taskId}
+                                                                            data-isplan={day.isPlan}
+                                                                            onclick={createInspectionShopTask}
+                                                                            ondblclick={showTooltipViw}
+                                                                            data-col={day.index}
+                                                                            data-tempid={day.tempId}
+                                                                            onmouseover={handleMouseOver}
+                                                                        >
+                                                                    </template>
+                                                                    <template if:true={day.isUnscheduled}>
+                                                                        <img src={IconOrange} width="20px" name={day.taskAndDate}  data-status={day.status1} abbr ={plans.isBackup} key={day.index}
+                                                                            data-task={day.taskId}
+                                                                            data-isplan={day.isPlan}
+                                                                            onclick={createInspectionShopTask}
+                                                                            ondblclick={showTooltipViw}
+                                                                            data-col={day.index}
+                                                                            data-tempid={day.tempId}
+                                                                            onmouseover={handleMouseOver}
+                                                                        >
+                                                                    </template>
+                                                                </td>
+                                                            </template>
+                                                            <template if:false={day.isExceedTimelimit}>
+                                                                <template if:false={day.isWeekend}>
+                                                                    <td class="slds-border_right slds-border_bottom" style="border-color: rgb(217, 219, 221);width: 1.7%;text-align: center;" 
+                                                                        name={day.taskAndDate} data-status={day.status1} key={day.index} abbr ={plans.isBackup} 
+                                                                        data-task={day.taskId}
+                                                                        data-isplan={day.isPlan}
+                                                                        onclick={createInspectionShopTask}
+                                                                        data-col={day.index}
+                                                                        data-tempid={day.tempId}
+                                                                        onmouseover={handleMouseOver}
+                                                                        >
+                                                                        <!-- {day.status1} -->
+                                                                        <template if:true={day.isPlan}>
+                                                                            <img src={IconGreen} width="20px" name={day.taskAndDate}  data-status={day.status1} abbr ={plans.isBackup} key={day.index}
+                                                                                data-task={day.taskId}
+                                                                                data-isplan={day.isPlan}
+                                                                                onclick={createInspectionShopTask}
+                                                                                ondblclick={showTooltipViw}
+                                                                                data-col={day.index}
+                                                                                data-tempid={day.tempId}
+                                                                                onmouseover={handleMouseOver}
+                                                                            >
+                                                                        </template>
+                                                                        <template if:true={day.isActual}>
+                                                                            <img src={IconBlue} width="20px" name={day.taskAndDate}  data-status={day.status1} abbr ={plans.isBackup} key={day.index} 
+                                                                                data-task={day.taskId}
+                                                                                data-isplan={day.isPlan}
+                                                                                onclick={createInspectionShopTask}
+                                                                                ondblclick={showTooltipViw}
+                                                                                data-col={day.index}
+                                                                                data-tempid={day.tempId}
+                                                                                onmouseover={handleMouseOver}
+                                                                            >
+                                                                        </template>
+                                                                        <template if:true={day.isUnscheduled}>
+                                                                            <img src={IconOrange} width="20px" name={day.taskAndDate}  data-status={day.status1} abbr ={plans.isBackup} key={day.index}
+                                                                                data-task={day.taskId}
+                                                                                data-isplan={day.isPlan}
+                                                                                onclick={createInspectionShopTask}
+                                                                                ondblclick={showTooltipViw}
+                                                                                data-col={day.index}
+                                                                                data-tempid={day.tempId}
+                                                                                onmouseover={handleMouseOver}
+                                                                            >
+                                                                        </template>
+                                                                    </td>
+                                                                </template>
+                                                                <template if:true={day.isWeekend}>
+                                                                    <td class="slds-border_right slds-border_bottom" style="border-color: rgb(217, 219, 221);width: 1.7%;text-align: center; background-color: rgb(217 219 221 / 48%);" 
+                                                                        name={day.taskAndDate}  data-status={day.status1} abbr ={plans.isBackup} key={day.index} 
+                                                                        data-task={day.taskId}
+                                                                        data-isplan={day.isPlan}
+                                                                        onclick={createInspectionShopTask}
+                                                                        data-col={day.index}
+                                                                        data-tempid={day.tempId}
+                                                                        onmouseover={handleMouseOver}
+                                                                        >
+                                                                        <!-- {day.status1} -->
+                                                                        <template if:true={day.isPlan}>
+                                                                            <img src={IconGreen} width="20px" name={day.taskAndDate}  data-status={day.status1} abbr ={plans.isBackup} key={day.index} 
+                                                                                data-task={day.taskId}
+                                                                                data-isplan={day.isPlan}
+                                                                                onclick={createInspectionShopTask}
+                                                                                ondblclick={showTooltipViw}
+                                                                                data-col={day.index}
+                                                                                data-tempid={day.tempId}
+                                                                                onmouseover={handleMouseOver}
+                                                                            >
+                                                                        </template>
+                                                                        <template if:true={day.isActual}>
+                                                                            <img src={IconBlue} width="20px" name={day.taskAndDate}  data-status={day.status1} abbr ={plans.isBackup} key={day.index}
+                                                                                data-task={day.taskId}
+                                                                                data-isplan={day.isPlan}
+                                                                                onclick={createInspectionShopTask}
+                                                                                ondblclick={showTooltipViw}
+                                                                                data-col={day.index}
+                                                                                data-tempid={day.tempId}
+                                                                                onmouseover={handleMouseOver}
+                                                                            >
+                                                                        </template>
+                                                                        <template if:true={day.isUnscheduled}>
+                                                                            <img src={IconOrange} width="20px" name={day.taskAndDate}  data-status={day.status1} abbr ={plans.isBackup} key={day.index}
+                                                                                data-task={day.taskId}
+                                                                                data-isplan={day.isPlan}
+                                                                                onclick={createInspectionShopTask}
+                                                                                ondblclick={showTooltipViw}
+                                                                                data-col={day.index}
+                                                                                data-tempid={day.tempId}
+                                                                                onmouseover={handleMouseOver}
+                                                                            >
+                                                                        </template>
+                                                                    </td>
+                                                                </template>  
+                                                            </template>
+                                                            
+                                                        </template>
+                                                        <td class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" style="width: 6%;border-color: rgb(217, 219, 221);text-align: center;" >
+                                                            {plans.plannedQuantity}
+                                                        </td>
+                                                        <td class="slds-border_right slds-border_bottom slds-var-p-left_xx-small" style="width: 5%;border-color: rgb(217, 219, 221);text-align: center;" >
+                                                            {plans.actualQuantity}/{plans.unscheduledQuantity}
+                                                        </td>
+                                                    </tr>
+                                                </template>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+
+     <!-- 图片预览 -->
+    <template if:true={isViewImgOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container ">
+                <div class="slds-modal__header">
+                    <h2 class="slds-text-heading--medium">
+                        {label.ViewImage}
+                    </h2>
+                </div>
+                <div class="slds-modal__content modalBody menu">
+                        <!-- <lightning-formatted-rich-text value={viewImg}></lightning-formatted-rich-text>  -->
+                        <div style="border: 1px solid rgb(221, 219, 218);margin-left: 10px;margin-right: 10px;margin-top: 10px;">
+                        <lightning-card title={label.Preview} icon-name="utility:image">
+                            <img src={viewImg}> 
+                        </lightning-card>
+                    </div>
+                </div>
+                <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                    <lightning-button slot="action" label={label.Return} onclick={closeViewModal} class="slds-p-around_x-small"></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- 查看/编辑图片 -->
+    <template if:true={showPhotoPage}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container ">
+                
+                <div class="slds-modal__header">
+                    <h2 class="slds-text-heading--medium">
+                        {label.ViewImage}
+                    </h2>
+                </div>
+
+                <div class="slds-modal__content modalBody menu">
+                    <div class="slds-scrollable slds-col slds-size_2-of-2 slds-var-p-horizontal_x-small" style="width: 100%;overflow-y: scroll;margin-top: 10px;">
+                        <table class="slds-table slds-table_bordered">
+                            <tr>
+                                <td style="width: 5%;">{label.Order}</td>
+                                <td style="width:65%;">{label.Description}</td>
+                                <td style="width:30%;">{label.Picture}</td>
+                            </tr>
+                        </table>
+                    </div>    
+                    <div class="slds-scrollable slds-col slds-size_2-of-2 slds-var-p-horizontal_x-small" style={heightTable}>
+                        <table class="slds-table slds-table_bordered">
+                            <tbody>
+                            <template for:each={sampleImages} for:item="images" for:index="index">
+                                <tr key={images.index}>
+                                    <td style="width: 5%;">
+                                        {images.index}    
+                                    </td>
+
+                                    <td style="width: 65%;">
+                                        <lightning-textarea max-length="131072" data-record="ReRe__c" value={images.sampleImages.ReRe__c} disabled></lightning-textarea>  
+                                    </td>
+
+                                    <td style="width: 30%;">
+                                        <img src={images.sampleImages.Sample_Images__c} onclick={viewImag} name={images.sampleImages.Sample_Images__c} data-record={index}>  
+                                    </td>
+                                </tr>
+                            </template>
+                            </tbody>
+                        </table>
+                    </div>    
+                </div>
+                <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                    <lightning-button slot="action" label={label.Return} onclick={closeviewImgMethod} class="slds-p-around_x-small"></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- 是否保存确认页面 -->
+    <template if:true={showCheckSave}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container ">
+                <template if:true={isShowSpinner} >
+                    <lightning-spinner alternative-text="Loading" size="medium" variant="brand"></lightning-spinner>
+                </template>
+                <div class="slds-modal__header">
+                    <h2 class="slds-text-heading--medium">
+                        {label.SaveTheChanges}
+                    </h2>
+                </div>
+                <div class="slds-modal__content modalBody menu">
+                    <div class="slds-align_absolute-center slds-text-heading_medium" style="height:100px;">
+                        {label.IsSaveTheChanges}
+                    </div>   
+                </div>
+                <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                    <lightning-button slot="action" label={label.AbortSavingJump} onclick={notSave} class="slds-p-around_x-small"></lightning-button>
+                    <lightning-button slot="action" variant="brand" label={label.SavingJump} onclick={saveAndJump} class="slds-p-around_x-small"></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- 创建任务页面 -->
+    <div if:true={showTooltipFlag} class="custom-tooltip" style={modalOpenStyle}>
+        <template if:true={isShowNoteSpinner} >
+            <lightning-spinner alternative-text="Loading" size="xx-small"></lightning-spinner>
+        </template>
+        <button title="Close" onclick={closeModal} style="position: absolute; top: 0px; right: 0px; z-index: 1;">
+                <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+        </button>
+        <div class="slds-modal__header">
+            <h2 class="slds-text-heading_medium">{label.Add_Note}</h2>
+        </div>
+        <div class="slds-modal__content slds-var-p-around_small">
+            <lightning-record-edit-form object-api-name="Inspection_Shop_Task__c" layout-type="Compact">
+                <div class="slds-grid slds-grid_vertical" id="modal-content-id-2">
+                    <div class="slds-col">
+                        <lightning-input-field field-name="Shop__c" data-id="disableData" onchange={handleFiledChange} value={task.Shop__c} disabled> </lightning-input-field>   
+                    </div> 
+                    <div class="slds-col">
+                        <lightning-input-field field-name="Inspection_Date__c" data-id="disableData" onchange={handleFiledChange} value={task.Inspection_Date__c} disabled> </lightning-input-field>   
+                    </div>
+                    <div class="slds-col">
+                        <lightning-input-field field-name="Note__c" data-id="disableData" onchange={handleFiledChange} value={task.Note__c} disabled={showDisable}> </lightning-input-field>   
+                    </div>
+                </div>
+            </lightning-record-edit-form>
+        </div>
+        <template if:true={showButton}>
+            <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+                <lightning-button slot="action" variant="brand" label={label.Save} onclick={saveNote} class="slds-p-around_x-small"></lightning-button>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,30 @@
+<aura:component controller="CustomerAddressButtonHandlerController" 
+implements="flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId" 
+access="global">
+<!-- 主记录ID -->
+<aura:attribute name="recordId" type="Id" />
+<aura:attribute name="result" type="Object" />
+<aura:attribute name="showSpinner" type="Boolean" default="false"/>
+<aura:attribute name="isSubmitted" type="Boolean" required="true" description="" default="false" access="private"/>
+<aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+    <aura:if isTrue="{!v.showSpinner}">
+        <lightning:spinner variant="brand" size="large" alternativeText="Loading" />
+    </aura:if>
+    <div>
+		<h2 class="title slds-text-heading--medium" >
+		{!$Label.c.Customer_Sync_To_SAP_Title}
+		</h2>
+	</div>
+    <lightning:card class="alertMessage">
+        <aura:set attribute="title">
+            <lightning:icon iconName="utility:warning" size="big" variant="error"/>
+            {!v.result.msg}
+        </aura:set>
+    </lightning:card>
+    <aura:renderIf isTrue="{!!v.isSubmitted}">
+		<input class="assign_admit" type="button" value="{!$Label.c.Common_Button_Confirm}" onclick="{!c.selectSubmit}"></input>
+	</aura:renderIf>
+	<!-- 取消 -->
+	<input class="assign_cancel" type="button" value="{!$Label.c.Common_Button_Cancel}" onclick="{!c.assignCancel}"></input>
+	
+</aura:component>

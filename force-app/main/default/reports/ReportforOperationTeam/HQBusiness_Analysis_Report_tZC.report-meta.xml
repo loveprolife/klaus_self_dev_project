@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>IF(Revenue_Statement_Report__c.N_Year_Planned_Accumulated_Revenue_US__c:SUM=0, 0, Revenue_Statement_Report__c.N_Year_Actual_Accumulated_Revenue_USD__c:SUM / Revenue_Statement_Report__c.N_Year_Planned_Accumulated_Revenue_US__c:SUM)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Planned VS Actual</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <aggregates>
+        <calculatedFormula>IF(Revenue_Statement_Report__c.Actual_Revenue_Same_Period_USD__c:SUM = 0, 0, (Revenue_Statement_Report__c.N_Year_Actual_Accumulated_Revenue_USD__c:SUM /Revenue_Statement_Report__c.Actual_Revenue_Same_Period_USD__c:SUM )-1)</calculatedFormula>
+        <datatype>percent</datatype>
+        <developerName>FORMULA2</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>Year-on-Year</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Revenue_Statement_Report__c$N_Year_Planned_Accumulated_Revenue_US__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Revenue_Statement_Report__c$N_Year_Actual_Accumulated_Revenue_USD__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Revenue_Statement_Report__c$Actual_Revenue_Same_Period_USD__c</field>
+    </columns>
+    <currency>USD</currency>
+    <description>[HQ]Business Analysis Report</description>
+    <filter>
+        <criteriaItems>
+            <column>Revenue_Statement_Report__c$Month__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>3</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Revenue_Statement_Report__c$Year__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>2019</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Revenue_Statement_Report__c$Product_Line__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Revenue_Statement_Report__c$Sales_Region__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>[HQ]Business Analysis Report</name>
+    <params>
+        <name>co</name>
+        <value>0</value>
+    </params>
+    <reportType>Business_Analysis_Report__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Revenue_Statement_Report__c$Cooperate_Start_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

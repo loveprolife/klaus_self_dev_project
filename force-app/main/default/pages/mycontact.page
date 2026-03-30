@@ -1,0 +1,8 @@
+<apex:page standardController="contact">
+    <apex:pageBlock title="Parent Account">
+        <apex:outputLink value="{!URLFOR($Page.mycontact,null, 
+                [id='003A800000SttYdIAJ'])}">wfc
+                </apex:outputLink>
+    </apex:pageBlock>
+    <apex:detail relatedList="false"/>
+</apex:page>

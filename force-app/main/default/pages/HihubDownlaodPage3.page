@@ -1,0 +1,426 @@
+<apex:page showHeader="false" sidebar="false" 
+           standardStylesheets="false"
+           applyHtmlTag="true"
+           applyBodyTag="false"
+           contentType="text/html; charset=UTF-8"
+           docType="html-5.0">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, user-scalable=no"
+		/>
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="google-site-verification" content="gnKmGdk1M-ywsiDsXy2JAJAZvul7xMHH5PD8MOPaHxU" />
+		<title>HI HUB</title>
+		<style>
+			body,
+			h1,
+			h2,
+			h3,
+			em,
+			span,
+			a,
+			td,
+			form,
+			input,
+			select,
+			textarea {
+				margin: 0;
+				padding: 0;
+				font-family: "PingFang SC", "Noto Sans SC", "Noto Sans TC", "Noto Sans JP", "Noto Sans KR", "Microsoft YaHei", sans-serif;
+			}
+			body {
+				color: #000;
+				height: 100%;
+				background: #fff;
+				background-image: url({!URLFOR($Resource.hihubDownload, 'resources/bg-app.png')});
+				height: 100vh;
+				overflow: hidden;
+				background-size: 100% 100%;
+				background-repeat: no-repeat;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			img {
+				border: none;
+			}
+			a {
+				text-decoration: none;
+				outline: none;
+				-webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+			}
+			div {
+				height: auto;
+			}
+			.wrapper {
+				height: 100%;
+			}
+			.content {
+				height: 100%;
+				position: relative;
+			}
+			.content img {
+				max-width: 100%;
+			}
+
+			.show-tips {
+				width: 100%;
+				background: #fff;
+				padding: 20px 30px;
+				display: none;
+			}
+			.show-tips p {
+				font-size: 18px;
+				font-family: \5FAE\8F6F\96C5\9ED1;
+				color: #000;
+				font-weight: bold;
+				line-height: 30px;
+			}
+			.jiantou {
+				position: absolute;
+				right: 12px;
+				top: 12px;
+			}
+
+			.divone {
+				background-image: url({!URLFOR($Resource.hihubDownload, 'resources/bg-mobile.png')};
+				background-repeat: no-repeat;
+				text-align: center;
+				margin: 0 auto;
+				background-size: 100%;
+			}
+			.alert {
+				position: fixed;
+				font-size: 12px;
+				top: 2em;
+				left: 50%;
+				height: 3em;
+				line-height: 3em;
+				width: 16em;
+				background-color: rgb(255, 165, 64);
+				z-index: 200;
+				margin-left: -8em;
+				border-radius: 5px;
+				text-align: center;
+				display: none;
+			}
+			.back-img {
+				width: 100%;
+				height: auto;
+			}
+			.display-flex-row {
+				display: flex;
+				flex-direction: row;
+			}
+			.display-flex-column {
+				display: flex;
+				flex-direction: column;
+			}
+			.flex-center {
+				justify-content: center;
+				align-items: center;
+			}
+			.showTips {
+				width: 100%;
+				position: relative;
+				display: none;
+			}
+			.showTips2 {
+				width: 100%;
+        		height: 100%;
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: center;
+        		padding-top: 132px;
+			}
+			.showTips2 .back-img {
+				width: 65.6%;
+				height: auto;
+				margin-top: -80px;
+			}
+			.showTips2 .btn-box {
+				margin-top: 50px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				width: 240px;
+			}
+			.box-down, .box-down a{
+				width: 105px;
+				height: 105px;
+				background: #FFFFFF;
+				box-shadow: 0px 4px 20px 0px rgba(192,239,237,0.31);
+				border-radius: 100px 100px 100px 100px;
+				border: 1px solid #E8FFFB;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+			}
+			.box-down .display-flex-row {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.box-down img {
+				height: 24px;
+				width: 24px;
+			}
+			.box-down span{
+				font-weight: 500;
+				font-size: 14px;
+				color: #1D2129;
+				line-height: 20px;
+				padding-top: 10px;
+			}
+
+			.hisense-logo{
+				width: 96px;
+				height: 16px;
+			}
+			.logo-box{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-top: 24px;
+			}
+			.logo-box img{
+				width: 60px;
+				height: 60px;
+			}
+			.logo-box span{
+				font-weight: bold;
+				font-size: 20px;
+				color: #1D2129;
+				text-align: center;
+				padding-left: 10px;
+			}
+			.sample{
+				width: 220px;
+				height: 220px;
+				margin-top: 50px;
+			}
+			
+			@media screen and (max-width: 767px) {
+				.pc{
+				display: none !important;
+				}
+			}
+			/* PC端增强样式 */
+			@media screen and (min-width: 768px) {
+				body {
+					background-image: url({!URLFOR($Resource.hihubDownload, 'resources/bg-pc.png')});
+				}
+				.mobile{
+					display: none !important;
+				}
+				.pc{
+					display: flex;
+					flex-direction: row;
+					margin-left: 14.58%;
+					padding-top: 0 !important;
+				}
+				.sample{
+					width: 360px;
+					height: 360px;
+					margin-top: 0 !important;
+				}
+
+				.right-box{
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					align-items: flex-start;
+					/* padding-top: 16px; */
+					margin-left: 110px;
+					padding-bottom: 4px;
+				}
+				.hisense-logo{
+					width: 120px;
+					height: 20px;
+				}
+				.logo-box{
+					margin-top: 30px;
+				}
+				.logo-box .logo{
+					width: 70px;
+					height: 70px;
+				}
+				.logo-box span{
+					font-weight: bold;
+					font-size: 32px;
+					color: #1D2129;
+					text-align: center;
+					line-height: 39px;
+					padding-left: 20px;
+				}
+				.btn-box{
+					margin-top: 80px !important;
+					width: auto !important;
+				}
+				.box-down a{
+					display: none;
+				}
+				.box-down img.after{
+					width: 0;
+					height: 0;
+				}
+				.box-down:hover{
+					border-radius: 16px;
+					overflow: hidden;
+					transition: all 0.3s;
+				}
+				.box-down:hover img.before{
+					display: none;
+				}
+				.box-down:hover span{
+					display: none;
+				}
+				.box-down:hover img.after{
+					width: 95%;
+					height: 95%;
+					transition: all .4s;
+					display: block;
+				}
+				.box-down, .box-down a{
+					width: 120px;
+					height: 120px;
+					flex-shrink: 0;
+					cursor: pointer;
+				}
+				.box-down + .box-down{
+					margin-left: 40px;
+				}
+			}
+		</style>
+
+		<apex:includeScript value="{!URLFOR($Resource.hihubDownload, 'resources/jquery-1.8.2.min.js')}"/>
+		<!-- <script type="text/javascript" src="{!URLFOR($Resource.hihubDownload, 'resources/jquery-1.8.2.min.js')}" ></script> -->
+		<script>
+			function was_download() {
+				const data_ = {
+				baseInfo: {
+					user_login_id: 'download', // 用户登录id账号，LDAP用户传ldap账号，非ldap账号传系统定义的用户账号，用户登录后必须传入
+					user_anon_id: 'download', // 访客唯一标识，每个唯一的访问者必须分配一个不同的ID，这个ID在分配后不建议更改，至少保证在一次会话内不会更改
+					user_is_ldap: false, // 标识用户是否是LDAP用户，用户登录后必须传入
+					site_id: "1362", // 站点site_id
+				},
+					event: [
+						{
+							// url: `${import.meta.env.VITE_APP_DOMAIN}/${toPage?.route}`, // 页面url
+							title: `app下载`, // 页面标题
+							time: new Date().getTime(), // 事件的触发日期时间，请传时间戳(毫秒与秒级都可以)，系统自动转换
+							event_code: "my_download_ck", // 事件编码
+						},
+					],
+				};
+			}
+
+			// 获取屏幕宽度
+			function getPageWidth() {
+				return Math.max(
+					document.body.scrollWidth,
+					document.documentElement.scrollWidth,
+					document.body.offsetWidth,
+					document.documentElement.offsetWidth,
+					document.documentElement.clientWidth
+				);
+			}
+
+			function is_weixin() {
+				var ua = navigator.userAgent.toLowerCase();
+				if (
+					ua.match(/MicroMessenger/i) == "micromessenger" ||
+					(ua.match(/(iphone|ipod|ios|ipad)/i) &&
+						ua.indexOf("safari") < 0 &&
+						ua.indexOf("uni-app") < 0)
+				) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			function is_ios() {
+				if (navigator.userAgent.match(/(iPhone|iPod|ios|iPad)/i)) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+
+			// 绑定点击下载
+			function bindFun() {
+				$("#iPhoneDowns").off("click").bind("click", function () {
+				window.location.href =
+					"https://apps.apple.com/us/app/hisense-hub/id6756991479";
+				});
+				$("#andriodDowns").off("click").bind("click", function () {
+				window.location.href =
+					"https://hihub-slo.hisense.com/minio/hiws/app/hihub.apk";
+				});
+					}
+			$(function() {
+				// 页面加载完成后执行的代码
+				bindFun();
+			});
+					
+		</script>
+	</head>
+	<body>
+		<div class="showTips2 mobile">
+			<img class="hisense-logo" src="{!URLFOR($Resource.hihubDownload, 'resources/hisense.png')}" />
+			<div class="logo-box">
+				<img class="logo" src="{!URLFOR($Resource.hihubDownload, 'resources/logo.png')}" />
+				<span>Hi Hub</span>
+			</div>
+			<img class="sample" src="{!URLFOR($Resource.hihubDownload, 'resources/sample.png')}" />
+			<div class="display-flex-row down-a btn-box">
+				<div class="box-down flex-center"  id="iPhoneDowns">
+				<img src="{!URLFOR($Resource.hihubDownload, 'resources/ios_icon.png')}" />
+				<span>iOS</span>
+				</div>
+				<div class="box-down flex-center" id="andriodDowns">
+				<img  src="{!URLFOR($Resource.hihubDownload, 'resources/android_icon.png')}" />
+				<span>Android</span>
+				</div>
+			</div>
+		</div>
+
+    	<div class="showTips2 pc">
+			<img class="sample" src="{!URLFOR($Resource.hihubDownload, 'resources/sample@2x.png')}" />
+			<div class="right-box">
+				<img class="hisense-logo" src="{!URLFOR($Resource.hihubDownload, 'resources/hisense.png')}" />
+				<div class="logo-box">
+				<img class="logo" src="{!URLFOR($Resource.hihubDownload, 'resources/logo.png')}" />
+				<span>Hi Hub</span>
+				</div>
+				<div class="display-flex-row down-a btn-box">
+				<div class="box-down flex-center">
+					<img class="before" src="{!URLFOR($Resource.hihubDownload, 'resources/ios_icon.png')}" />
+					<img class="after" src="{!URLFOR($Resource.hihubDownload, 'resources/downloadUrl.png')}" />
+					<span>iOS</span>
+				</div>
+				<div class="box-down flex-center">
+					<img class="before" src="{!URLFOR($Resource.hihubDownload, 'resources/android_icon.png')}" />
+					<span>Android</span>
+					<img class="after" src="{!URLFOR($Resource.hihubDownload, 'resources/downloadUrl.png')}" />
+				</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="alert">请用苹果手机进行下载!</div> -->
+		<input type="hidden" id="projectCode" value="hisense" />
+	</body>
+</html>
+
+</apex:page>

@@ -1,0 +1,6 @@
+<messaging:emailTemplate subject="Interface Error Notification" recipientType="User" relatedToType="InterfaceLog__c">
+<messaging:plainTextEmailBody >
+Congratulations!
+This is your new Visualforce Email Template.
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

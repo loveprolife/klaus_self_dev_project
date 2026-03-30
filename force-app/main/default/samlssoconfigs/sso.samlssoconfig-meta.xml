@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamlSsoConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <identityLocation>SubjectNameId</identityLocation>
+    <identityMapping>FederationId</identityMapping>
+    <issuer>https://sso.hisense.com/esc-sso/idp</issuer>
+    <loginUrl>https://sso.hisense.com/esc-sso/idp/profile/SAML2/Redirect/SSO</loginUrl>
+    <name>Hisense Username</name>
+    <oauthTokenEndpoint>https://hisenseint--testuat.sandbox.my.salesforce.com/services/oauth2/token?so=00DA8000004BDqs</oauthTokenEndpoint>
+    <redirectBinding>true</redirectBinding>
+    <requestSignatureMethod>1</requestSignatureMethod>
+    <requestSigningCertId>0P1GB000006Z4X4</requestSigningCertId>
+    <salesforceLoginUrl>https://hisenseint--testuat.sandbox.my.salesforce.com?so=00DA8000004BDqs</salesforceLoginUrl>
+    <samlEntityId>https://hisenseint.my.salesforce.com</samlEntityId>
+    <samlVersion>SAML2_0</samlVersion>
+    <singleLogoutBinding>PostBinding</singleLogoutBinding>
+    <singleLogoutUrl>https://sso.hisense.com/esc-sso/idp/profile/SAML2/POST/SLO</singleLogoutUrl>
+    <useConfigRequestMethod>false</useConfigRequestMethod>
+    <useSameDigestAlgoForSigning>true</useSameDigestAlgoForSigning>
+    <userProvisioning>false</userProvisioning>
+    <validationCert>MIIDDTCCAfWgAwIBAgIUCT/6P5U8iedtf7lcODho8KQlowwwDQYJKoZIhvcNAQEL
+BQAwFjEUMBIGA1UEAwwLMTAuMTAuMS4xNTkwHhcNMjIwNzE1MDQzMjUyWhcNNDIw
+NzE1MDQzMjUyWjAWMRQwEgYDVQQDDAsxMC4xMC4xLjE1OTCCASIwDQYJKoZIhvcN
+AQEBBQADggEPADCCAQoCggEBAIf5LinOu2wnQkeq7gOzKMCEGv49mWrFmn3hYSB0
+oM6ezJ7DTy05J7avRtGMU9DIGP2fygDvkVDlfU8QPaZKqjHrAd7Sp64oVuf6qBnT
+3fjoI2cgHFHNzXIan2muCuZ8dfZTJD8xirnKOfi35LCNfncWItfIzsSPKbk0qIAB
++N111YbATSdQRHZngpMYJfEspLS1uJfpRkGyCwyZSgQJzjo6wwz2Rt296ArAzXLO
+YgaCHKfsWkaTyZ8f6J0BfP/xAkmpzX9nAORZxKZMo29BwfJddXDml84sXIpFR0fT
+4P8fnztfdKO+DW+2VQ4Wc4NdpVSlDQ1OuC2Nh8tVzXwG3KkCAwEAAaNTMFEwHQYD
+VR0OBBYEFEYrPvs41u1WcM9Xn3nn/dERbbwZMDAGA1UdEQQpMCeCCzEwLjEwLjEu
+MTU5hhgxMC4xMC4xLjE1OS9pZHAvbWV0YWRhdGEwDQYJKoZIhvcNAQELBQADggEB
+ABxDpN+Q/V6fh3kJZn4xb5PqlgDbbNVxJI1BqUUr8/kL0mz3n+ZURioQ00+demNy
+xFoqde9fsQl8uP9VOVUfmvMxH4TeHmPn5HznA/cDNLm9MeIy5UieBmP7FZKT0/0N
+lUEaAszkZqfsQKIIH/5bZY14LEUauBtS/Gjn2+6pKWDeYDyFJaD4dYM6X/vqVReZ
+0oO/8Lg3R3Kp1E+BIwnDnCCrNyvMO+GBz2TXMK5gLGdXirzMyVIOkth6W1Iizkkc
+isgZdL+GwuoFAcPVHQIdsMmIRkeoOkAsfDRbyihUJLDoI4ZaI9yR+2tdpoRlWgwK
+7iAeVhsfveyI815T/G8PQ2k=</validationCert>
+</SamlSsoConfig>

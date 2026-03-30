@@ -1,0 +1,49 @@
+{
+  "appPageId" : "e0bf1275-58c2-4fd8-9393-d738c12db8fe",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "d877f733-7592-4963-9a68-21e92fdfa3a1",
+  "label" : "仪表板详细信息",
+  "regions" : [ {
+    "id" : "ddb15a32-1525-4e25-9094-74a656adf1ae",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "height" : "1065",
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "37e99e90-5a69-4c0e-b8a5-dee77e7ae2e3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "2c3c25bd-1155-490e-8859-c9f69594e4e5",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "25c7bd31-aa35-456b-ab89-68ebe3967d68",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "8b319f7c-07dc-498f-aa60-556da3e55213",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c02891f5-5db6-467a-8690-94ae038fef96",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-01Z"
+}

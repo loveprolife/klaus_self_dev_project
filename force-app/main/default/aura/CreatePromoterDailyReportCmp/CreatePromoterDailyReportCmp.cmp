@@ -1,0 +1,41 @@
+<!--
+  @description       : 
+  @author            : chenpeng@deloitte.com.cn
+  @group             : 
+  @last modified on  : 12-16-2021
+  @last modified by  : chenpeng@deloitte.com.cn
+-->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride" 
+                access="global" controller="CreatePromoterDailyReportCmpController">
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="isThailand" type="String" />
+    <aura:attribute name="isHisenseIII" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:html tag="style">
+        .slds-modal__container{
+            width: 66.7%;
+            max-width:66.7%;
+        }
+    </aura:html>
+
+    <!-- <aura:if isTrue="{!v.isHisenseIII}">
+        <c:newPromoterDailyReportLwc onrefreshview="{!c.refreshView}" onclosemodal="{!c.closeModal}" oncreateNewData="{!c.createNewData}"/>
+        <aura:set attribute="else">
+            <c:promoterDailyReport onrefreshview="{!c.refreshView}" onclosemodal="{!c.closeModal}" oncreateNewData="{!c.createNewData}"/>
+        </aura:set>
+    </aura:if> -->
+    <aura:if isTrue="{!v.isThailand == 'yes'}">
+        <c:newPromoterDailyReportThailandLwc onrefreshview="{!c.refreshView}" onclosemodal="{!c.closeModal}" oncreateNewData="{!c.createNewData}"/>
+    </aura:if>
+    <aura:if isTrue="{!v.isThailand == 'no'}">
+        <aura:if isTrue="{!v.isHisenseIII == 'yes'}">
+            <c:newPromoterDailyReportLwc onrefreshview="{!c.refreshView}" onclosemodal="{!c.closeModal}" oncreateNewData="{!c.createNewData}"/>
+        </aura:if>
+        <aura:if isTrue="{!v.isHisenseIII == 'no'}">
+            <c:promoterDailyReport onrefreshview="{!c.refreshView}" onclosemodal="{!c.closeModal}" oncreateNewData="{!c.createNewData}"/>
+        </aura:if>
+        <aura:if isTrue="{!AND(v.isHisenseIII != 'no',v.isHisenseIII != 'yes')}">
+            <lightning:spinner alternative-text="Loading" size="small" style="height: 50%;"></lightning:spinner>
+        </aura:if>
+    </aura:if>
+</aura:component>

@@ -1,0 +1,6 @@
+<apex:page showHeader="false" lightningStylesheets="true">
+	<apex:includeLightning />
+    	<script src="/lightning/lightning.out.js"></script>
+    <div id="lwc_content"></div>
+    
+</apex:page>

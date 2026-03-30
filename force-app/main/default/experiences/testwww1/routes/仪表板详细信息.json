@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "d877f733-7592-4963-9a68-21e92fdfa3a1",
+  "appPageId" : "e0bf1275-58c2-4fd8-9393-d738c12db8fe",
+  "configurationTags" : [ ],
+  "devName" : "Dashboard_Detail",
+  "id" : "65ebfc1e-ff36-49a8-8d0f-89016fa86415",
+  "label" : "仪表板详细信息",
+  "routeType" : "detail-01Z",
+  "type" : "route",
+  "urlPrefix" : "dashboard"
+}

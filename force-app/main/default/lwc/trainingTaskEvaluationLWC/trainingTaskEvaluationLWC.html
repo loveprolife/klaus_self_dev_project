@@ -1,0 +1,75 @@
+<!--
+ * @Author: WFC
+ * @Date: 2023-06-15 09:18:29
+ * @LastEditors: WFC
+ * @LastEditTime: 2023-07-10 15:09:58
+ * @Description: 
+ * @FilePath: \Hitest_2022\force-app\main\default\lwc\trainingTaskEvaluationLWC\trainingTaskEvaluationLWC.html
+-->
+<template>
+    <template if:true={showPage}>
+        <lightning-card title="Training Task Evaluation" icon-name='custom:custom62'>
+            <template if:true={isShowSpinner}>
+                <lightning-spinner alternative-text="Loading" size="medium"  variant="brand"></lightning-spinner>
+            </template>
+            
+            <div style="background: white;padding-left: 16px;border-radius: 6px;">
+                <template if:true={isHaveEvaluation}>
+                    <div style="height: 200px;">
+                        <div style="margin-top: 10px;">
+                            <lightning-formatted-text value={trainingTaskEvaluation}></lightning-formatted-text>
+                        </div>
+                    
+                        <div style="margin-top: 10px;">
+                            <lightning-textarea max-length="131072" label="Evaluate" name="input1" onchange={reportDataChange} required value={trainingTaskEvaluationReply} ></lightning-textarea>
+                            <!-- <lightning-record-edit-form object-api-name="Training_Task_Evaluation_Reply__c" record-id={recordId}>
+                                <lightning-input-field field-name="Reply__c" required onchange={reportDataChange}></lightning-input-field>
+                            </lightning-record-edit-form> -->
+                        </div>
+                    </div>
+                </template>
+                <template if:false={isHaveEvaluation}>
+                    <div style="height: 200px; color:rgb(187, 52, 52); text-align: center; line-height: 200px;">  
+                        <!-- 培训任务没有需要评价的内容! -->
+                        {label.Nothing_To_Evaluate}
+                    </div>
+                </template>
+
+                <div class="modal-footer slds-modal__footer" style="margin-top: 40px;">
+                    <lightning-button
+                        variant="brand-outline"
+                        label="Cancel"
+                        onclick={cancel}
+                        class="slds-m-left_x-small"
+                    > </lightning-button>
+                    <template if:true={isHaveEvaluationReply}>
+                        <lightning-button
+                            variant="destructive"
+                            label="Delete"
+                            onclick={handleConfirm}
+                            class="slds-m-left_x-small"
+                        ></lightning-button>
+                    </template>
+
+                    <template if:true={isCanSave}>
+                        <lightning-button
+                            variant="brand"
+                            label=" Save "
+                            onclick={saveEvaluationReply}
+                            class="slds-m-left_x-small"
+                        ></lightning-button>
+                    </template>
+                    <template if:false={isCanSave}>
+                        <lightning-button
+                            variant="brand"
+                            label="Save"
+                            class="slds-m-left_x-small"
+                            disabled
+                        ></lightning-button>
+                    </template>
+                    
+                </div>
+            </div>
+        </lightning-card>
+    </template>
+</template>

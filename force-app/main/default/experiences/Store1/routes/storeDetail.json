@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "83c9e352-ac8a-4d80-9c9f-1d15549b55a2",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "Store_Detail__c",
+  "id" : "cfa2b6fa-aa77-47ac-9617-02108dc7b566",
+  "label" : "Store Detail",
+  "objectApiName" : "Shop__c",
+  "routeType" : "detail-a26",
+  "type" : "route",
+  "urlPrefix" : "shop"
+}

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "8e127f91-cb01-4d55-91a5-065d690c0480",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "relatedlist_500",
+  "id" : "e6d44c21-fee6-49f5-9bf1-e1f653c2df32",
+  "label" : "个案 Related List",
+  "routeType" : "relatedlist-500",
+  "type" : "route",
+  "urlPrefix" : "case"
+}

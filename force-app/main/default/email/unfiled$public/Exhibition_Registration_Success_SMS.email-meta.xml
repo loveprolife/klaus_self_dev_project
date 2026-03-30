@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>员工报名成功 - 短信</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Exhibition Registration Success SMS</name>
+    <style>none</style>
+    <subject>Your info is received</subject>
+    <textOnly>Dear {!Internal_Registration__c.Name}，
+
+
+您的{!Internal_Registration__c.Exhibition_Id__c}参加申请已收到!
+
+您的申请审核通过后，方可预订酒店、接机、会议室等资源（若有）。请留意后续邮件、短信通知。
+
+
+Your request is well received.
+
+After approved, you could reserve a hotel, meeting room and shuttle bus. Please watch for updates of approval.
+
+
+If you have any questions, do not hesitate to reach out to us via email at  wangfang19@hisense.com
+
+The exhibition coordination team of the {!Internal_Registration__c.Exhibition_Name_EN__c}</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

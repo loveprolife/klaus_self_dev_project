@@ -1,0 +1,53 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+              <div class="slds-media__figure slds-list_horizontal">
+                  <div class="slds-var-p-top_xx-small slds-var-p-right_small">
+                      <lightning-icon 
+                      icon-name='standard:record' 
+                      alternative-text='record' 
+                      size='medium' 
+                      title='Learning Platform'
+                  ></lightning-icon>
+                  </div>
+                  <div class="slds-media__body slds-align-middle" >
+                      <span>Learning Platform</span>
+                      <span class="slds-page-header__title">{recordName}</span>
+                  </div>
+              </div>
+            </header>
+          </div>
+    </article>
+
+    <div class="slds-var-m-top_small">
+        <lightning-card>
+            <lightning-record-view-form record-id={recordId} object-api-name="Learning_Platform_Management__c">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_1-of-2 slds-var-p-left_large slds-var-p-right_large">
+                        <lightning-output-field class="slds-border_bottom" field-name="Name"> </lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-var-p-left_large slds-var-p-right_large">
+                        <lightning-output-field  class="slds-border_bottom" field-name="Type__c"> </lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-var-p-left_large slds-var-p-right_large">
+                        <lightning-output-field  class="slds-border_bottom" field-name="Author__c"> </lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2 slds-var-p-left_large slds-var-p-right_large">
+                        <lightning-output-field  class="slds-border_bottom" field-name="Upload_Date__c"> </lightning-output-field>
+                    </div> 
+                </div>
+            </lightning-record-view-form>
+        </lightning-card>
+    </div>
+
+    
+    <div class="slds-var-m-top_small">
+        <c-file-view-lwc
+            record-id={recordId}
+            allow-download={recordAllowDownload}
+            save-object-name="Learning_File_View_Details__c"
+            save-object-name-total="Learning_File_View_Details_Total__c"
+        ></c-file-view-lwc>
+    </div>
+</template>

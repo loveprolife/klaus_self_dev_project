@@ -1,0 +1,252 @@
+<template>
+    <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+    <lightning-card class="slds-var-m-bottom_large" title="PhotoDownloadZip">
+        <!-- <lightning-record-edit-form  object-api-name="Promoter_Daily_Report__c"> -->
+            <div class="slds-grid slds-gutters slds-var-m-left_small slds-var-m-right_small">
+                <div class="slds-col">
+                    <lightning-input 
+                        class="date-format-hide"
+                        type="date" 
+                        name="inputDateStart" 
+                        label={label.Star_Date}
+                        value={dateStart}
+                        onchange={handleDateStartChange}
+                        required
+                    ></lightning-input>
+                </div>
+                <div class="slds-col">
+                    <lightning-input 
+                        class="date-format-hide"
+                        type="date" 
+                        name="inputDateEnd" 
+                        data-id='dateEnd'
+                        label={label.End_Date}
+                        value={dateEnd}
+                        onchange={handleDateEndChange}
+                        required
+                    ></lightning-input>
+                </div>
+
+                <div class="slds-col">
+                    <label class="slds-form-element__label" for="store-lookup">{label.PHOTO_OWNER}</label>
+                    <lightning-helptext content={label.OWNER_HELP_TEXT}></lightning-helptext>                        
+                        <lightning-combobox
+                            name="inputWalker"
+                            value={walkerId}
+                            variant='label-hidden'
+                            options={walkerOptions}
+                            onchange={handleWalkerChange}
+                        ></lightning-combobox>                    
+                </div>
+                <div class="slds-col">
+                    <label class="slds-form-element__label" for="store-lookup">{label.Channel}</label>
+                    <lightning-helptext content={label.CHANNEL_HELP_TEXT}></lightning-helptext>
+                        <lightning-combobox
+                            name="inputChannel"
+                            value={channelId}
+                            variant='label-hidden'
+                            options={channelOptions}
+                            onchange={handleChannelChange}
+                            disabled={channelEdit}
+                    ></lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <div class="slds-form-element">
+                        <!-- <span style="color:red;">*</span> -->
+                        <label class="slds-form-element__label" for="store-lookup">{label.Store}</label>
+                        <lightning-helptext content={label.STORE_HELP_TEXT}></lightning-helptext>
+                        <c-lookup-lwc 
+                            name="store"
+                            data-index={index} 
+                            obj-name="Shop__c" 
+                            op={lookupStoreFilter} 
+                            record-id={shopId} 
+                            onlookupupdate={handleShopChange}
+                            drop-down-style="max-height: 5rem;"
+                            class="custom-lookup"
+                        ></c-lookup-lwc>
+                    </div>
+                </div>
+                <div class="slds-col slds-clearfix">
+                    <!-- <lightning-button 
+                        class="slds-float_right slds-var-p-top_large slds-var-p-left_medium"
+                        variant="brand" 
+                        label="更新.."
+                        onclick={handleProcessCheckResults}
+                    ></lightning-button> -->
+                    <template if:true={isCanDownload}>
+                        <lightning-button 
+                            class="slds-float_right slds-var-p-top_large slds-var-p-left_medium"
+                            variant="brand" 
+                            label={label.PhotoDownloadZip}
+                            onclick={handleDownload} 
+                        ></lightning-button>
+                    </template>
+                    <template if:false={isCanDownload}>
+                        <lightning-button 
+                            class="slds-float_right slds-var-p-top_large slds-var-p-left_medium"
+                            variant="brand" 
+                            label={label.PhotoDownloadZip}
+                            disabled
+                        ></lightning-button>
+                    </template>
+                
+                    <template if:true={isCanSearch}>
+                        <lightning-button 
+                            class="slds-float_right slds-var-p-top_large slds-var-p-left_medium"
+                            variant="brand" 
+                            label={label.DOWN_SEARCH}
+                            onclick={handleClickSearch} 
+                        ></lightning-button>
+                    </template>
+                    <template if:false={isCanSearch}>
+                        <lightning-button 
+                            class="slds-float_right slds-var-p-top_large slds-var-p-left_medium"
+                            variant="brand" 
+                            label={label.DOWN_SEARCH} 
+                            disabled
+                        ></lightning-button>
+                    </template>
+                    
+                    <!-- <template if:true={isUpdate}>
+                        <lightning-button 
+                            class="slds-float_right slds-var-p-top_large slds-var-p-left_medium"
+                            variant="brand" 
+                            label={label.Photo_Refresh}
+                            onclick={handleProcessCheckResults} 
+                        ></lightning-button>
+                    </template>
+                    <template if:false={isUpdate}>
+                        <lightning-button 
+                            class="slds-float_right slds-var-p-top_large slds-var-p-left_medium"
+                            variant="brand" 
+                            label={label.Photo_Refresh}
+                            disabled
+                        ></lightning-button>
+                    </template> -->
+                </div>
+                <!-- <div class="slds-col slds-clearfix">
+                    <template if:true={isCanDownload}>
+                        <lightning-button 
+                            class="slds-float_right slds-var-p-top_large slds-var-p-left_medium"
+                            variant="brand" 
+                            label="DownloadZip" 
+                            onclick={handleClickDownloadZip} 
+                        ></lightning-button>
+                    </template>
+                    <template if:false={isCanDownload}>
+                        <lightning-button 
+                            class="slds-float_right slds-var-p-top_large slds-var-p-left_medium"
+                            variant="brand" 
+                            label="DownloadZip" 
+                            disabled
+                        ></lightning-button>
+                    </template>
+                
+                    <template if:true={isCanSearch}>
+                        <lightning-button 
+                            class="slds-float_right slds-var-p-top_large slds-var-p-left_medium"
+                            variant="brand" 
+                            label="Search" 
+                            onclick={handleClickSearch} 
+                        ></lightning-button>
+                    </template>
+                    <template if:false={isCanSearch}>
+                        <lightning-button 
+                            class="slds-float_right slds-var-p-top_large slds-var-p-left_medium"
+                            variant="brand" 
+                            label="Search" 
+                            disabled
+                        ></lightning-button>
+                    </template>
+                    <template if:true={isLoading}>
+                        <lightning-progress-ring 
+                            class="slds-float_right slds-var-p-top_large slds-var-p-top_large slds-var-p-left_medium"
+                            value={isLoadingProgess} 
+                            variant="base-autocomplete" 
+                            size="large">
+                        </lightning-progress-ring>
+                        <span class="slds-float_right slds-var-p-top_x-large">生成文件进度：{isLoadingProgess}%</span>
+                    </template>
+                    
+                </div> -->
+              </div>
+        <!-- </lightning-record-edit-form> -->
+        <!-- <lightning-card>
+            <ul>
+                <template for:each={result} for:item="dateInfo" for:index="index">
+                    <li key={dateInfo.dateInfo} class="slds-var-p-around_small">
+                        
+                        <template if:true={dateInfo.show}>
+                            <strong>{dateInfo.dateInfo}</strong> 
+                            <ul>
+                                                       
+                                <template for:each={dateInfo.dateDocument} for:item="itemTypeGroup" for:index="indexDocument">
+                                <li key={itemTypeGroup.itemType} class="slds-var-p-around_small">
+                                    <strong>{itemTypeGroup.itemType}</strong> 
+                                    <ul>
+                                        <template for:each={itemTypeGroup.checkResults} for:item="checkResult" for:index="indexResult">
+                                            <li key={checkResult.checkResult.Id} class="slds-var-p-around_small">
+                                                <span>{checkResult.checkItem}</span>
+                                                <span class="slds-var-p-left_x-small" style="font-weight: bold;">{checkResult.checkItemResponse}</span>
+                                                <c-file-view-lwc
+                                                    record-id={checkResult.checkResult.PhotoId__c}
+                                                    allow-download={recordAllowDownload}
+                                                    save-log={recordAllowDownload}
+                                                ></c-file-view-lwc>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </li>
+                                </template>
+
+                            </ul>
+                        </template>
+                
+                    </li>
+                </template>
+            </ul>
+        </lightning-card> -->
+    <lightning-card>
+        <div slot="title">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="12" padding="around-small" class="slds-align_absolute-right">
+                    <div class="slds-text-heading_small">Total: {totalRecords}</div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <ul class="scroll-container" style="height: 690px; overflow-y: auto;">
+            <template for:each={displayedRecords} for:item="dateInfo" for:index="index">
+                <li key={dateInfo.dateInfo} class="slds-var-p-around_small">
+                    <template if:true={dateInfo.show}>
+                        <strong>{dateInfo.dateInfo}</strong> 
+                        <ul>
+                            <template for:each={dateInfo.dateDocument} for:item="itemTypeGroup" for:index="indexDocument">
+                                <li key={itemTypeGroup.itemType} class="slds-var-p-around_small">
+                                    <strong>{itemTypeGroup.itemType}</strong> 
+                                    <ul>
+                                        <template for:each={itemTypeGroup.checkResults} for:item="checkResult" for:index="indexResult">
+                                            <li key={checkResult.checkResult.Id} class="slds-var-p-around_small">
+                                                <span>{checkResult.checkItem}</span>
+                                                <span class="slds-var-p-left_x-small" style="font-weight: bold;">{checkResult.checkItemResponse}</span>
+                                                <c-file-view-lwc
+                                                    record-id={checkResult.checkResult.PhotoId__c}
+                                                    allow-download={recordAllowDownload}
+                                                    save-log={recordAllowDownload}
+                                                ></c-file-view-lwc>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </li>
+                            </template>
+                        </ul>
+                    </template>
+                </li>
+            </template>
+        </ul>
+    </lightning-card>
+
+    </lightning-card>
+</template>

@@ -1,0 +1,20 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-04-03 11:11:32
+ * @LastEditors: WFC
+ * @LastEditTime: 2024-04-03 11:14:00
+ * @Description: 
+ * @FilePath: \hisenseall-231026\force-app\main\default\aura\TrainingTaskCreatePageCmp\TrainingTaskCreatePageCmp.cmp
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride" access="global" >
+
+    <aura:html tag="style">
+        .slds-modal__container{
+            width: 60%;
+            max-width:60%;
+        }
+    </aura:html>
+
+    <c:trainingTaskCreatePageLwc onrefreshView="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+
+</aura:component>

@@ -1,0 +1,404 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" applyBodyTag="false" applyHtmlTag="false" language="zh_CN"  controller="QuotePDFPageController" renderAs="pdf" >
+
+<head>
+    <style> 
+       @page{
+            margin-top: 0cm;
+            margin-left: 0cm;
+            margin-right: 0cm;
+            margin-bottom: 0cm;
+            size: A4 portrait; 
+        }  
+        .out_box{
+            font-family: Arial Unicode MS;!important
+        }
+        .header{
+            text-align:center;
+            color: #00AA88;
+            font-size: 2.5em;
+            font-weight: bold;
+            font-family: sans-serif;
+            font-style: italic;
+        }
+        .out_box .content{
+            /*border:2px solid #111;*/
+            padding:6px 2px 6px 2px;
+            font-size:12px; 
+        }
+        .out_box table{
+            border-collapse: collapse;
+            width: 100%;            
+        }
+        .out_box table tr{
+            padding-left: 5px;
+            /*height:40px;*/
+            /*page-break-inside:avoid;*/
+        }
+        .out_box table td{
+            border:1px solid #111;
+            padding-left: 2px; 
+        }
+        .out_box table td.bankStyle{
+            padding-left: 100px;
+            font-family: sans-serif;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .out_box table td.boldFont{
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+        .out_box table td.boldCenter{
+            font-family: sans-serif;
+            font-weight: bold;
+            text-align:center;
+        }
+        .out_box table td.signatureStyle{
+            font-family: sans-serif;
+            font-style: italic;
+            font-weight: bold;
+        }
+        .out_box table td.italic{
+            font-family: sans-serif;
+            font-style: italic;
+        }
+    </style> 
+</head>
+<form>
+    <div class="out_box">
+        <div class="header"> 
+            <apex:image url="{!URLFOR($Resource.hisense_jpg,'Hisense.jpg')}"/>
+        </div> 
+        <div class="content">
+            <table>
+                <!-- //Proforma   Invoice -->
+                <tr style="text-align:center;width: 100%;" >
+                    <td colspan="8" style="font-family: sans-serif;font-weight: bold;font-size: 2em" >
+                        Proforma   Invoice
+                    </td>
+                </tr>
+
+                <tr >
+                    <td colspan="5" class="boldFont">
+                        To
+                    </td>
+                    <td colspan="1" class="boldFont">
+                        Issuing date
+                    </td>
+                    <td colspan="2">
+                        {!issuingDate}
+                    </td>
+                </tr>
+
+                 <tr >
+                    <td colspan="1" class="boldFont">
+                        Buyer
+                    </td>
+                    <td colspan="4">
+                        {!thisQuote.Buyer__c}
+                    </td>
+                    <td colspan="3">
+                    </td>
+                </tr>
+
+                 <tr >
+                    <td colspan="1" class="boldFont">
+                        Address
+                    </td>
+                    <td colspan="4">
+                        {!thisQuote.Buyer_Address__c}
+                    </td>
+                    <td colspan="1" class="boldFont">
+                        P/I No.
+                    </td>
+                    <td colspan="2">
+                        {!thisQuote.P_I_No__c}
+                    </td>
+                </tr>
+
+                 <tr >
+                    <td colspan="1" class="boldFont">
+                        Attn
+                    </td>
+                    <td colspan="4">
+                        {!thisQuote.Buyer_Attendess__c}
+                    </td>
+                    <td colspan="3">
+                        
+                    </td>
+                </tr>
+
+                 <tr >
+                    <td colspan="1" class="boldFont">
+                        E-mail
+                    </td>
+                    <td colspan="4">
+                        {!thisQuote.Buyer_E_mail__c}
+                    </td>
+                    <td colspan="3">
+                        
+                    </td>
+                    <!-- <td colspan="1" class="boldFont">
+                        Reference:  P/O No.
+                    </td>
+                    <td colspan="2">
+                        {!thisQuote.Reference_P_O_No__c}
+                    </td> -->
+                </tr>
+
+                 <tr >
+                    <td colspan="1" class="boldFont">
+                        Tel
+                    </td>
+                    <td colspan="4">
+                        {!thisQuote.Buyer_Tel__c}
+                    </td>
+                    <td colspan="1" class="boldFont">
+                        Agreement No. 
+                    </td>
+                    <td colspan="2">
+                        {!thisQuote.Agreement_No__c}
+                    </td>
+                </tr>
+
+                 <tr >
+                    <td colspan="1" class="boldFont">
+                        Fax
+                    </td>
+                    <td colspan="4">
+                        {!thisQuote.Buyer_Fax__c}
+                    </td>
+                    <td colspan="3">
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="8"></td>
+                </tr>
+            
+                <!-- //repeat lines -->
+                <tr style="text-align: center;">
+                    <td class="boldFont">
+                        Brand 
+                    </td>
+                    <td class="boldFont">
+                        Customer's Model
+                    </td>
+                    <td class="boldFont">
+                        Factory's Model
+                    </td>
+                    <td class="boldFont">
+                        Type/Feature
+                    </td>
+                    <td class="boldFont">
+                        Quantity (Set)
+                    </td>
+                    <td class="boldFont">
+                        Number of Containers
+                    </td>
+                    <td class="boldFont">
+                        Unit Price(USD/Set)
+                    </td>
+                    <td class="boldFont">
+                        Amount(USD)=Unit Price*Quantity
+                    </td>
+                </tr>
+                
+                <!-- 报价产品信息----》动态获取 -->
+                <apex:repeat value="{!thisQuote.Quote_Products__r}" var="quoteItem">
+                    <tr>
+                        <td style="text-align: center;">{!quoteItem.Brand__c}</td>
+                        <td style="text-align: center;">{!quoteItem.Customer_s_Model__c}</td>
+                        <td style="text-align: center;">{!quoteItem.Product__r.Name}</td>
+                        <td style="text-align: center;">{!quoteItem.Type_Feature__c}</td>
+                        <td style="text-align: center;">{!quoteItem.Quantity__c}</td>
+                        <td style="text-align: center;">{!quoteItem.Number_of_Containers__c}</td>
+                        <td style="text-align: center;"><apex:outputField value="{!quoteItem.Unit_Sell_In_Price__c}"/></td>
+                        <td style="text-align: center;"><apex:outputField value="{!quoteItem.Total_Sell_Price__c}"/></td>
+                    </tr>
+               
+                </apex:repeat>
+                <tr>
+                    <td colspan="8"></td>
+                </tr>
+                <tr >
+                    <td colspan="1" class="boldCenter">
+                        Item
+                    </td>
+                    <td colspan="6" class="boldCenter">
+                        content
+                    </td>
+                    <td colspan="1">
+                        
+                    </td>
+                </tr>
+
+                <tr >
+                    <td>
+                        Other Fee
+                    </td>
+                    <td colspan="6">
+                        
+                    </td>
+                    <td style="text-align: center;">
+                        <apex:outputField value="{!thisQuote.Other_Fee__c}"/>
+                    </td>
+                </tr>
+                <tr >
+                    <td >
+                        Discount
+                    </td>
+                    <td colspan="6">
+                        
+                    </td>
+                    <td style="text-align: center;">
+                        -<apex:outputField value="{!thisQuote.Discount__c}"/>                   
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td class="boldCenter">Total</td>
+                    <td class="boldCenter">
+                    </td>
+                    <td class="boldCenter">
+                    </td>
+                    <td class="boldCenter"> </td>
+                    <td class="boldCenter"> {!totalQuantity} </td>
+                    <td class="boldCenter"> {!totalNumberOfContainers}</td>
+                    <td class="boldCenter"> </td>
+                    <td class="boldCenter"><apex:outputField value="{!thisQuote.Total_Price__c}"/></td>
+                </tr>
+                <tr>
+                    <td colspan="8" class="boldFont">Remarks: {!thisQuote.Quotation_Description__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="8"></td>
+                </tr>
+                <tr>
+                    <td colspan="8" class="boldFont">Other Terms and Conditions:</td>
+                </tr>
+                <tr>
+                    <td colspan="2">1.Trade Term</td>
+                    <td colspan="6">{!thisQuote.Trade_Term__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">2.Delivery Time</td>
+                    <td colspan="6">
+                        <apex:outputText value="{0,date,yyyy'-'MM'-'dd}">
+                            <apex:param value="{!thisQuote.Delivery_Time__c}"/> 
+                        </apex:outputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">3.Payment Term</td>
+                    <td colspan="6">{!thisQuote.Other_Payment_Terms__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">4.Packing</td>
+                    <td colspan="6">{!thisQuote.Packing__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">5.Loading/Destination Port</td>
+                    <td colspan="6">From {!thisQuote.Port_of_Loading__c} To {!thisQuote.Port_of_Destination__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">6.Country of Origin</td>
+                    <td colspan="6">{!thisQuote.Country_of_Origin__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="8">7.Bank Reference </td>
+
+                </tr>
+                <!-- 银行引用 6个字段 start-->
+                <tr>
+                    <td colspan="3" class="bankStyle">Beneficiary</td>
+                    <td colspan="5" class="italic">{!thisQuote.Beneficiary__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="bankStyle">Beneficiary Address</td>
+                    <td colspan="5" class="italic">{!thisQuote.Beneficiary_Address__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="bankStyle">Bank</td>
+                    <td colspan="5" class="italic">{!thisQuote.Bank__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="bankStyle">Bank's Address</td>
+                    <td colspan="5" class="italic">{!thisQuote.Bank_s_Address__c}</td>
+
+                </tr>
+                <tr>
+                    <td colspan="3" class="bankStyle">SWIFT CODE</td>
+                    <td colspan="5" class="italic">{!thisQuote.SWIFT_CODE__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="bankStyle">Account NO.</td>
+                    <td colspan="5" class="italic">{!thisQuote.Account_No__c}</td>
+                </tr>
+                <!-- 银行引用 6个字段 end-->
+
+
+                <tr>
+                    <td colspan="2">8.Certification &amp; Inspection</td>
+                    <td colspan="6">{!thisQuote.Certification_Inspection__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">9.Validity period</td>
+                    <td colspan="6">{!thisQuote.Validity_period__c}</td>
+                </tr>
+                <tr>
+                    <td colspan="8">10.This PI is the final effective instrument to each purchase and binding both parties signature</td>
+                </tr>
+
+                <tr>
+                    <td colspan="4" class="italic">
+                        For and on behalf of 
+                    </td>
+                    <td colspan="4" class="italic">
+                        For and on behalf of 
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" rowspan="5">
+                        Additonal Terms: {!thisQuote.Additonal_Terms__c}
+                    </td>
+                    <td colspan="4" class="boldFont">
+                         Seller: {!thisQuote.Seller__c}  
+                    </td>
+                </tr>
+                <tr>
+                     
+                    <td colspan="4" class="boldFont">
+                         Address: {!thisQuote.Seller_Address__c}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="boldFont">
+                         Attn: {!thisQuote.Seller_Attendess__c}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="boldFont">
+                         E-mail: {!thisQuote.Seller_E_mail__c}
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td colspan="4" class="boldFont">
+                         Tel: {!thisQuote.Seller_Tel__c}
+                    </td>
+                </tr>
+                <tr style="height: 100px;vertical-align: top;">
+                    <td colspan="4" rowspan="3" class="signatureStyle">
+                        Buyer's Authorized Signature:
+                    </td>
+                    <td colspan="4" rowspan="3" class="signatureStyle">
+                         Seller's Authorized Signature:
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</form>
+</apex:page>

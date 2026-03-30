@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>零售经理在巡店员日报中评价后，发送给巡店员的通知</description>
+    <encodingKey>GB2312</encodingKey>
+    <name>零售经理回复促销员邮件提醒</name>
+    <style>none</style>
+    <subject>日報へのコメント</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

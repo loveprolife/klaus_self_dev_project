@@ -1,0 +1,48 @@
+{
+  "appPageId" : "7b972165-e0bd-4e39-99f3-157df1fc756c",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "9ed669ea-0602-45ba-9d10-4a56482db083",
+  "label" : "Home",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "surveyName" : "X137_cf_survey"
+      },
+      "componentName" : "forceCommunity:surveyCommunity",
+      "id" : "cf09fef4-74ed-4734-8b0f-89f2410a293f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "d59e5a03-5d15-459c-8b03-adc6913a0a4e",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "id" : "6e54bc7b-19c4-4c52-a53b-00a70ea81752",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "9eaa0d09-e8a1-449f-a493-df74721f9394",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Home"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "1465de22-9d63-49f2-bf3d-13738ea43d24",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "0d218e4c-4759-4b18-a245-6815bbeb439d",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "home"
+}

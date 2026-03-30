@@ -21,12 +21,72 @@
     <tabs>standard-Feed</tabs>
     <tabs>standard-CollaborationGroup</tabs>
     <tabs>standard-File</tabs>
-    <tabs>District__c</tabs>
+    <tabs>SAP_Sales_Actual__c</tabs>
+    <tabs>Issue_Ticket__c</tabs>
+    <tabs>SAP_Sales_Actual_Plan__c</tabs>
+    <tabs>Customer_Management__c</tabs>
+    <tabs>Customer_Information__c</tabs>
+    <tabs>Rep_Project_Pipeline__c</tabs>
+    <tabs>Notes__c</tabs>
+    <tabs>Project__c</tabs>
+    <tabs>Project_Equipment__c</tabs>
+    <tabs>Customer_Order_Report__c</tabs>
+    <tabs>Ecss_Customer_Info__c</tabs>
+    <tabs>Expo_Purpose__c</tabs>
+    <tabs>Expo_Menu_Controller__c</tabs>
+    <tabs>Product_line_Detail__c</tabs>
+    <tabs>Expo_Date_Controller__c</tabs>
+    <tabs>Expo_Fields_Controller__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>LightningSalesConsole_UtilityBar</utilityBar>
     <workspaceConfig>
         <mappings>
-            <tab>District__c</tab>
+            <tab>Customer_Information__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Customer_Management__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Customer_Order_Report__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Ecss_Customer_Info__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Expo_Date_Controller__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Expo_Fields_Controller__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Expo_Menu_Controller__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Expo_Purpose__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Issue_Ticket__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Notes__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Product_line_Detail__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Project_Equipment__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Project__c</tab>
+        </mappings>
+        <mappings>
+            <tab>Rep_Project_Pipeline__c</tab>
+        </mappings>
+        <mappings>
+            <tab>SAP_Sales_Actual_Plan__c</tab>
+        </mappings>
+        <mappings>
+            <tab>SAP_Sales_Actual__c</tab>
         </mappings>
         <mappings>
             <tab>standard-Account</tab>

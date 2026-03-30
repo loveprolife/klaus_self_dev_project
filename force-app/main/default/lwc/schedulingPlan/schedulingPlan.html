@@ -1,0 +1,310 @@
+<template>
+    <!-- Loading -->
+    <template if:true={isShowSpinner} >
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+    <div class="slds-box slds-theme_shade">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_2-of-12" style="padding: 10px;">
+                <lightning-combobox
+                label={schedulingPlanlabel.Year__c}
+                value={year}
+                options={yearsOptions}
+                onchange={handleYearChange} 
+            ></lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_2-of-12" style="padding: 10px;">
+                <lightning-combobox
+                label={schedulingPlanlabel.Month__c}
+                value={month}
+                options={monthOptions}
+                onchange={handleMonthChange} 
+                ></lightning-combobox>
+            </div>
+            <div class="slds-col slds-size_2-of-12" style="padding: 10px;">
+                <button 
+                    style="margin-top: 20px;"
+                    class="slds-button slds-button_brand" 
+                    onclick={handleDownloadTemplate}>
+                    Download Template
+                </button>
+            </div>
+            <div class="slds-col slds-size_6-of-12" style="padding: 10px;">
+                <div class="slds-text-align_right">
+                    <label for="fileInput">
+                        <lightning-icon 
+                          icon-name="action:upload" 
+                          alternative-text="Connected" 
+                          size="small" 
+                          title="Upload CSV"
+                          variant="inverse"
+                        ></lightning-icon>
+                    </label>
+                    <input 
+                        style="display: none;"
+                        id="fileInput"
+                        type="file" 
+                        accept=".csv" 
+                        value={filePath}
+                        onchange={handleInputClick} />
+                </div>
+            </div>
+            <template if:true={isAdmin}>
+                <div class="slds-col slds-size_1-of-6" style="padding: 10px;">
+                    <lightning-combobox
+                    label={userlabel.Sales_Region__c}
+                    value={selectedSalesRegion}
+                    options={salesRegionOptios}
+                    onchange={handleSalesRegionChange} 
+                    ></lightning-combobox>
+                </div>
+            </template>
+            <div class="slds-col slds-size_2-of-6" style="padding: 10px;">
+                <!-- <lightning-combobox
+                    label={responsiblePersonlabel.Shop_Name__c}
+                    value={selectedStore}
+                    options={storeOptions}
+                    onchange={handleStoreChange} 
+                ></lightning-combobox> -->
+                <!-- <lightning-record-picker
+                    label={responsiblePersonlabel.Shop_Name__c}
+                    placeholder="Search Store..."
+                    object-api-name="Shop__c"
+                    filter={storeFilter}
+                    onchange={handleStoreChange}
+                    value={selectedStore}
+                >
+                </lightning-record-picker> -->
+                {responsiblePersonlabel.Shop_Name__c}
+                <c-lookup-lwc 
+                    name="storeLookup"
+                    obj-name="Shop__c" 
+                    op={storeFilter}
+                    onlookupupdate={storeLookupSelect}
+                >
+                </c-lookup-lwc>
+            </div>
+            <div class="slds-col slds-size_2-of-6" style="padding: 10px;">
+                <!-- <lightning-combobox
+                    label={responsiblePersonlabel.Principal__c}
+                    value={selectedUser}
+                    options={userOptions}
+                    onchange={handleUserChange} 
+                ></lightning-combobox> -->
+                <!-- <lightning-record-picker
+                    label={responsiblePersonlabel.Principal__c}
+                    placeholder="Search User..."
+                    object-api-name="User"
+                    filter={userFilter}
+                    onchange={handleUserChange}
+                    value={selectedUser}
+                >
+                </lightning-record-picker> -->
+                {responsiblePersonlabel.Principal__c}
+                <c-lookup-lwc 
+                   name="userLookup"
+                   obj-name="User" 
+                   op={userFilter} 
+                   onlookupupdate={userLookupSelect}
+                >
+                </c-lookup-lwc>
+
+            </div>
+            <div class="slds-col slds-size_1-of-6" style="padding: 10px;">
+                <button 
+                    style="margin-top: 20px;"
+                    class="slds-button slds-button_brand" 
+                    onclick={handleSearchClick}>
+                    Search
+                </button>
+            </div>
+
+        </div>
+
+        <template if:true={checkStoreAndUser}>
+            <div class="slds-text-align_right">〇&nbsp;{schedulingTaskStatus.Scheduled}&nbsp;/&nbsp;╳&nbsp;{schedulingTaskStatus.OnLeave}</div>
+            <div class="slds-scrollable slds-col slds-size_1-of-1 slds-theme_default" style="width: 100%;overflow-y: scroll;" >
+                <table class="slds-table_bordered" style="table-layout:fixed;">
+                    <thead>
+                        <tr>
+                            <th style="width: 3%;">
+
+                            </th>
+                            <th style="width: 10%;padding-top: 0.5rem;padding-bottom: 0.5rem;">
+                                {responsiblePersonlabel.Shop_Name__c}
+                            </th>
+                            <th style="width: 10%;padding-top: 0.5rem;padding-bottom: 0.5rem;">
+                                {responsiblePersonlabel.Principal__c}
+                            </th>
+                            <template for:each={dateTh} for:index="index" for:item="dTh">
+                                <template if:false={dTh.isWeekend}>
+                                    <th style="width: 2%;border-left: 1.5px solid;text-align: center;border-color: rgb(217, 219, 221);" key={dTh.date}>
+                                        <div style="font-size: 10px;">
+                                            {dTh.date}
+                                        </div>
+                                        <div style="font-size: 10px;">
+                                            {dTh.week}
+                                        </div>
+                                    </th>
+                                </template>
+                                <template if:true={dTh.isWeekend}>
+                                    <th style="width: 2%;text-align: center;border-left: 1.5px solid;border-color: rgb(217, 219, 221);background-color: rgb(217 219 221 / 48%);" key={dTh.value}>
+                                        <div style="font-size: 10px;">
+                                            {dTh.date}
+                                        </div>
+                                        <div style="font-size: 10px;">
+                                            {dTh.week}
+                                        </div>
+                                    </th>
+                                </template>
+                            </template>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={responsiblePersons} for:item="rp">
+                            <tr key={rp.Id}>
+                                <template if:true={rp.isSelectedStore}>
+                                    <template if:true={rp.isSelectedUser}>
+                                        <td></td>
+                                        <td class="slds-cell-wrap" style="padding-top: 0.5rem;padding-bottom: 0.5rem;width: 10%;">
+                                            {rp.Shop_Name__r.Name}
+                                        </td>
+                                        <td class="slds-cell-wrap" style="padding-top: 0.5rem;padding-bottom: 0.5rem;width: 10%;">
+                                            {rp.Principal__r.Name}
+                                        </td>
+                                        <template for:each={rp.tasks} for:item="task">
+                                            <template if:false={task.isWeekend}>
+                                                <td style="border-left: 1.5px solid;border-color: rgb(217, 219, 221);width: 2%;text-align: center;" 
+                                                key={task.index}
+                                                data-ymd={task.ymd}
+                                                data-rpid={rp.Id}
+                                                data-taskid={task.taskId}
+                                                onclick={handleDateClick}>
+                                                    {task.status}
+                                                </td>
+                                            </template>
+                                            <template if:true={task.isWeekend}>
+                                                <td style="border-left: 1.5px solid;border-color: rgb(217, 219, 221);width: 2%;text-align: center; background-color: rgb(217 219 221 / 48%);" 
+                                                key={task.index}
+                                                data-ymd={task.ymd}
+                                                data-rpid={rp.Id}
+                                                data-taskid={task.taskId}
+                                                onclick={handleDateClick}>
+                                                    {task.status}
+                                                </td>
+                                            </template>
+                                        </template>
+                                    </template>
+                                </template>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+    </div>
+
+    <template if:true={isShowModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <!-- Loading -->
+            <template if:true={isShowSpinner} >
+                <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+            </template>
+
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{selectedStoreName}&nbsp;-&nbsp;{selectedUserName}</h1>
+                </div>
+                <!-- <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="max-height: 300px;"> -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" >
+                    <lightning-record-edit-form
+                    density="compact"
+                    object-api-name="SchedulingTask__c"
+                    >
+                        <div class="slds-grid slds-wrap">
+                            
+                            <div class="slds-col slds-size_7-of-8">
+                                <lightning-input-field 
+                                    field-name="Scheduling_Date__c" 
+                                    value={taskRecord.Scheduling_Date__c} 
+                                    disabled> 
+                                </lightning-input-field>
+
+                                <lightning-input-field 
+                                    field-name="Responsible_person__c" 
+                                    value={taskRecord.Responsible_person__c} 
+                                    disabled> 
+                                </lightning-input-field>
+
+                                <lightning-input-field 
+                                    field-name="Store__c" 
+                                    value={taskRecord.Store__c} 
+                                    disabled> 
+                                </lightning-input-field>
+
+                                <lightning-input-field 
+                                    field-name="User__c" 
+                                    value={taskRecord.User__c} 
+                                    disabled> 
+                                </lightning-input-field>
+
+                                <lightning-input-field 
+                                    field-name="Status__c" 
+                                    value={taskRecord.Status__c} 
+                                    disabled> 
+                                </lightning-input-field>
+                            </div>
+                            <!-- <lightning-input-field 
+                                field-name="IsImport__c" 
+                                value={taskRecord.IsImport__c} 
+                                disabled> 
+                            </lightning-input-field> -->
+
+                            <div class="slds-col slds-size_7-of-8">
+                                <lightning-input-field 
+                                    field-name="Application__c" 
+                                    value={taskRecord.Application__c} 
+                                    disabled> 
+                                </lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-size_1-of-8" style="text-align:center;">
+                                <template if:true={taskRecord.Application__c}>
+                                    <lightning-icon 
+                                    icon-name="action:record" 
+                                    size="x-small" 
+                                    variant="inverse"
+                                    onclick={handleApplicationClick}
+                                    ></lightning-icon>
+                                </template>
+                            </div>
+
+                            <div class="slds-col slds-size_7-of-8">
+                                <lightning-input-field 
+                                    field-name="Promoter_Attendance_Rule__c" 
+                                    value={taskRecord.Promoter_Attendance_Rule__c} 
+                                    onchange={handlePromoterAttendanceRuleChange}
+                                    required> 
+                                </lightning-input-field>
+                            </div>
+                        </div>
+                    </lightning-record-edit-form>
+                </div>
+                <div class="slds-modal__footer">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-3" style="text-align:left;">
+                            <template if:true={taskRecord.Id}>
+                                <button class="slds-button slds-button_destructive" onclick={handleDeleteClick}>{label.Delete}</button>
+                            </template> 
+                        </div>
+                        <div class="slds-col slds-size_2-of-3">
+                            <button class="slds-button slds-button_neutral" onclick={handleCancelClick}>{label.Return}</button>
+                            <button class="slds-button slds-button_brand" onclick={handleSaveClick}>{label.Save}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+</template>

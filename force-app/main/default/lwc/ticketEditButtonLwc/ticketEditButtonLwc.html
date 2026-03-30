@@ -1,0 +1,85 @@
+<template>
+
+    <template if:true={recordId}>
+        <template if:true={isShowSpinner}>
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        </template>
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <h1 class="slds-modal__title">Edit</h1>
+            </div>
+            <div class="slds-modal__content">
+                <lightning-record-edit-form object-api-name="Ticket__c" density="Compact">
+                    <lightning-messages></lightning-messages>
+
+                    <!-- Status -->
+                    <!-- <span>{fields.Status__c}</span>
+                    <lightning-input-field field-name='Status__c' data-field-name="Status__c" variant="label-hidden" value={ticket.Status__c}
+                        onchange={handleFieldChange} onkeydown={handleKeyDown} disabled={readonly}>
+                    </lightning-input-field> -->
+
+                    <lightning-combobox name="progress" label={fields.Status__c} value={ticket.Status__c}
+                        placeholder="Select Progress" options={options} onchange={handleChange} disabled={readonly}>
+                    </lightning-combobox>
+
+                    <!--chile Department -->
+                    <template if:true={isChile}>
+                        <!-- Department -->
+                        <span>{fields.Department__c}</span>
+                        <lightning-helptext content={label.INSPECTION_REPORT_MSG_DEPARTMENT_USER}
+                            class="slds-m-left_xx-small">
+                        </lightning-helptext>
+                        <lightning-input-field field-name='Department__c' data-field-name="Department__c"
+                            variant="label-hidden" value={ticket.Department__c} onchange={handleFieldChange}
+                            disabled={readonly} onkeydown={handleKeyDown}>
+                        </lightning-input-field>
+                        <!-- Assigned to -->
+                        <!-- <span>{fields.AssignedTo__c}</span>
+                        <c-lookup-lwc name="onUser" data-index={index} obj-name="User" op={lookupUserFilter}
+                            record-id={ticket.AssignedTo__c} read-only={readonly}
+                            onlookupupdate={handleTicketAssignedToChange}>
+                        </c-lookup-lwc> -->
+                        <!-- Assigned to -->
+
+                        <span>{fields.AssignedTo__c}</span>
+                        <lightning-helptext content={label.INSPECTION_REPORT_MSG_DEPARTMENT_USER}
+                            class="slds-m-left_xx-small">
+                        </lightning-helptext>
+                        <lightning-input-field field-name="AssignedTo__c" data-field-name="AssignedTo__c"
+                            variant="label-hidden" value={ticket.AssignedTo__c} onchange={handleFieldChange}
+                            disabled={readonly}>
+                        </lightning-input-field>
+
+                    </template>
+
+                    <template if:false={isChile}>
+                        <span>{fields.AssignedTo__c}</span>
+                        <lightning-input-field field-name="AssignedTo__c" data-field-name="AssignedTo__c"
+                            variant="label-hidden" value={ticket.AssignedTo__c} onchange={handleFieldChange}
+                            disabled={readonly}>
+                        </lightning-input-field>
+                    </template>
+                    <!-- Assigned to -->
+
+
+                    <!-- Newest Feedback -->
+                    <span>{fields.Newest_Feedback__c}</span>
+                    <lightning-input-rich-text field-name='Newest_Feedback__c' data-field-name="Newest_Feedback__c"
+                        value={ticket.Newest_Feedback__c} onchange={handleFieldChange} onkeydown={handleKeyDown}
+                        disabled={readonly}>
+                    </lightning-input-rich-text>
+                </lightning-record-edit-form>
+            </div>
+            <div class="slds-modal__footer">
+                <lightning-button label="cancel" title="Non-primary action" onclick={cancel}
+                    class="slds-m-left_x-small">
+                </lightning-button>
+                <template if:true={displaySaveButton}>
+                    <lightning-button variant="brand" label="Save" title="Primary action" onclick={yes}
+                        class="slds-m-left_x-small"></lightning-button>
+                </template>
+            </div>
+        </div>
+
+    </template>
+</template>

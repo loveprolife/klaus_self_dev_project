@@ -1,0 +1,109 @@
+<!--
+ * @Author: Rain
+ * @Date: 2022-04-24 15:45:09
+ * @LastEditors: Rain
+ * @LastEditTime: 2022-04-26 21:44:41
+ * @Description: 
+-->
+<template>
+    <div>
+        <lightning-card class="slds-color__background_gray-4 pageHeader" title={label.signInfoForm} icon-name="custom:custom35">
+            <div slot="actions">
+                <div>
+                    <div style="margin-left:5px;display:inline-block;">
+                        <lightning-button variant="brand" label={label.cancle} onclick={handleClose} ></lightning-button>
+                    </div>
+                    <div style="margin-left:5px;display:inline-block;">
+                        <lightning-button variant="brand" label={label.signApply} onclick={handleSubmit} ></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+        <div  style="margin-bottom: 15px;" ></div>
+        <lightning-card class="slds-color__background_gray-4">
+            <div class="slds-col slds-size_3-of-6 slds-p-horizontal_x-small">
+                    <lightning-combobox
+                    name="date"
+                    label={label.signDate}
+                    placeholder="请选择日期"
+                    value={selectedDate}
+                    options={dateOptions} dropdown-alignment="auto" required onchange={dateChange}></lightning-combobox>
+            </div>
+            <div  style="margin-bottom: 15px;" ></div>
+            <div style="width: 100%; height: 100%; overflow-x: scroll; overflow-y: scroll;">
+                <lightning-record-edit-form object-api-name="Supplementary_Information__c" layout-type="Compact">
+                    <table>
+                        <!-- title -->
+                        <tr class="slds-box slds-theme_shade">
+                            <td class="slds-cell-wrap slds-border_right slds-p-vertical_x-small slds-col slds-size_1-of-6">
+                                <div class="slds-align_absolute-center">
+                                    {label.signType}
+                                </div>
+                            </td>
+                            <td class="slds-cell-wrap slds-border_right slds-col slds-size_3-of-6">
+                                <div class="slds-align_absolute-center">
+                                    {label.shopName}
+                                </div>
+                            </td>
+                            <td class="slds-cell-wrap slds-col slds-size_2-of-6">
+                                <div class="slds-align_absolute-center">
+                                    {label.signDate}
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- 出勤 -->
+                        <tr class="slds-border_bottom">
+                            <td class="slds-cell-wrap slds-col slds-size_1-of-6">
+                                <div class="slds-align_absolute-center">
+                                    <input type="checkbox" name="options" id="checkbox-unique-id-81" value="checkbox-unique-id-81" onchange={handleSignInCBChange} />
+                                    <label class="slds-checkbox__label slds-m-left_xx-small" for="checkbox-unique-id-81">
+                                        <span class="slds-checkbox_faux"></span>
+                                        <span class="slds-form-element__label">{label.signIn}</span>
+                                    </label>
+                                </div>
+                            </td>
+                            <td class="slds-cell-wrap slds-col slds-size_3-of-6">
+                                <div class="slds-align_absolute-center slds-p-horizontal_small">
+                                    <lightning-input-field field-name="Shop__c" data-id="inShop" onchange={handleFiledChange} name="inShop" value={recordDetail.inShop} required={checkInBoxFieldValue}></lightning-input-field>
+                                </div>
+                                
+                            </td>
+                            <td class="slds-cell-wrap slds-col slds-size_2-of-6">
+                                <div class="slds-align_absolute-center slds-p-horizontal_small">
+                                    <lightning-input-field field-name="Supplementary_SignIn_Time__c" data-id="signInTime" onchange={handleFiledChange} name="signInTime" value={recordDetail.signInTime} required={checkInBoxFieldValue}></lightning-input-field>
+                                </div>
+                                    
+                            </td>
+                        </tr>
+
+                        <!-- 退勤 -->
+                        <tr>
+                            <td class="slds-cell-wrap slds-col slds-size_1-of-6">
+                                <div class="slds-align_absolute-center">
+                                    <input type="checkbox" name="options" id="checkbox-unique-id-82" value="checkbox-unique-id-81" onchange={handleSignOutCBChange} />
+                                    <label class="slds-checkbox__label slds-m-left_xx-small" for="checkbox-unique-id-82">
+                                        <span class="slds-checkbox_faux"></span>
+                                        <span class="slds-form-element__label">{label.signOut}</span>
+                                    </label>
+                                </div>
+                                
+                            </td>
+                            <td class="slds-cell-wrap slds-col slds-size_3-of-6">
+                                <div class="slds-align_absolute-center slds-p-horizontal_small">
+                                    <lightning-input-field field-name="Shop__c" data-id="outShop" onchange={handleFiledChange} name="outShop" value={recordDetail.outShop} required={checkOutBoxFieldValue}></lightning-input-field>
+                                </div>
+                            </td>
+                            <td class="slds-cell-wrap slds-col slds-size_2-of-6">
+                                <div class="slds-align_absolute-center slds-p-horizontal_small">
+                                    <lightning-input-field field-name="Supplementary_SignOut_Time__c" data-id="signOutTime" onchange={handleFiledChange} name="signOutTime" value={recordDetail.signOutTime} required={checkOutBoxFieldValue}></lightning-input-field>
+                                </div>
+                                    
+                            </td>
+                        </tr>
+                    </table>
+                </lightning-record-edit-form>
+            </div>
+        </lightning-card>
+    </div>
+</template>

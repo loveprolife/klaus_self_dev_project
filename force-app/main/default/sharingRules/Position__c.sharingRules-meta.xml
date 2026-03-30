@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Customer_management_department</fullName>
+        <accessLevel>Edit</accessLevel>
+        <description>客户管理部有编辑岗位权限</description>
+        <label>客户管理部</label>
+        <sharedTo>
+            <group>Customer_management_department</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Activity__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

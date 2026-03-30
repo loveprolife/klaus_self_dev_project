@@ -1,0 +1,95 @@
+:host{
+    --sds-c-accordion-heading-font-size: 1rem;
+    --slds-c-accordion-section-spacing-inline-end: 0px;
+    --sds-c-textarea-sizing-min-height: 140px;
+}
+.forceContentModalPreviewPlayer {
+    background-color: rgba(0, 0, 0, .6);
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+.forceContentModalPreviewPlayer .toolbar.top.fadeOut {
+    opacity: 1;
+    top: 0;
+}
+.forceContentModalPreviewPlayer .toolbar {
+    white-space: nowrap;
+    font-size: 0.8125rem;
+    color:  white;
+    position: fixed;
+    z-index: 1;
+}
+
+.forceContentPreviewPlayerTopToolbar {
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 3.75rem;
+    display: flex;
+    display: -moz-flex;
+    align-items: center;
+    padding: 0 , 0.75rem;
+    background-color:  rgba(0, 0, 0, .6);
+}
+
+.slds-grid--align-spread {
+    justify-content: space-between;
+}
+
+.forceContentPreviewerAction {
+    position: relative;
+    display: inline-block;
+}
+
+.forceContentPreviewPlayerTopToolbar .file-preview-close {
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+}
+
+.forceContentModalPreviewPlayer .preview {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.forceContentThumbnailPreview {
+    height: 100%;
+}
+
+.forceContentModalPreviewPlayer .preview .thumbnail .page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.forceContentModalPreviewPlayer .preview .thumbnail .page img.pageImg {
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+.slds-modal__header .slds-modal__close {
+    position: absolute;
+    top: -2.5rem;
+    right: -0.5rem;
+    margin-left: 0;
+    bottom: 0;
+}
+
+.my-icon{
+    --slds-c-icon-color-foreground-default: white;
+}
+
+.my-button{
+    --slds-c-button-text-color: white;
+}

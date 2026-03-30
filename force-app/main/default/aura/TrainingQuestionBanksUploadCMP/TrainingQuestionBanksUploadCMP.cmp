@@ -1,0 +1,18 @@
+<!--
+ * @Author: WFC
+ * @Date: 2023-07-07 17:01:46
+ * @LastEditors: WFC
+ * @LastEditTime: 2023-07-27 11:06:42
+ * @Description: 
+ * @FilePath: \Hitest_2022\force-app\main\default\aura\TrainingQuestionBanksUploadCMP\TrainingQuestionBanksUploadCMP.cmp
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable,lightning:isUrlAddressable" access="global" >
+	
+	<aura:html tag="style">
+        .slds-modal__container{
+            width: 33%;
+            max-width:33%;
+        }
+    </aura:html>
+	<c:trainingQuestionBanksUploadLWC recordId="{!v.recordId}" onrefreshView="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+</aura:component>

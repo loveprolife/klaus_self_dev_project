@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Báo cáo hàng ngày của nhân viên tiếp thị</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Báo cáo hàng ngày của nhân viên tiếp thị</value>
+    </caseValues>
+    <nameFieldLabel>Báo cáo hàng ngày của nhân viên tiếp thị</nameFieldLabel>
+</CustomObjectTranslation>

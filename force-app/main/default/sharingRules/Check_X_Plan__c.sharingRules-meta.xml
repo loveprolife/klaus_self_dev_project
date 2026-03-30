@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>East_Africa_Hisense_X_Plan_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>East Africa Hisense X Plan Sharing Rule</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>East_Africa_Office_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>East Africa Office</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Egypt_Hisense_X_Plan_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Egypt Hisense X Plan Sharing Rule</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Egypt_Office_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Egypt Office</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Saudi_Hisense_X_Plan_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Saudi Hisense X Plan Sharing Rule</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Saudi_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Saudi</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>West_Africa_Hisense_X_Plan_Sharing_Rule</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>West Africa Hisense X Plan Sharing Rule</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>West_Africa_Office_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense West Africa</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>X</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>Dubai Hisense X Plan Sharing Rule</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Dubai_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Dubai</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

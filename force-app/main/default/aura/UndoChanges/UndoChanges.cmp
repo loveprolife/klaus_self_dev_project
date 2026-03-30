@@ -1,0 +1,29 @@
+<aura:component controller="UndoChangesController"
+implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable" 
+access="global">
+
+    <!-- 主记录ID -->
+    <aura:attribute name="recordId" type="Id" />
+    <!-- 初始化数据 -->
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+    <aura:attribute name="result" type="Object" />
+    <aura:attribute name="showSpinner" type="Boolean" default="false"/>
+   
+    <aura:if isTrue="{!v.showSpinner}">
+            <lightning:spinner size="large" alternativeText="Loading" />
+    </aura:if>
+    <div>
+        <h2 class="title slds-text-heading--medium" >
+            {!$Label.c.Undo_Changes_Title}
+        </h2>
+    </div>
+    <lightning:card class="alertMessage">
+        <aura:set attribute="title">
+            <lightning:icon iconName="utility:warning" size="big" variant="error"/>
+            {!v.result.msg}
+        </aura:set>
+    </lightning:card>
+    <input class="assign_admit" type="button" value="{!$Label.c.Common_Button_Confirm}" onclick="{!c.selectSubmit}"></input>
+    <!-- 取消 -->
+    <input class="assign_cancel" type="button" value="{!$Label.c.Common_Button_Cancel}" onclick="{!c.assignCancel}"></input>
+</aura:component>

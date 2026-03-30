@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Bulk Picklist Export" icon-name="standard:picklist">
+        <div class="slds-p-horizontal_medium">
+            <lightning-textarea
+                name="objects"
+                label="Object API Names (comma separated)"
+                placeholder="Account,Contact,MyObj__c"
+                value={objectNames}
+                onchange={handleChange}>
+            </lightning-textarea>
+
+            <div class="slds-m-top_medium">
+                <lightning-button
+                    variant="brand"
+                    label="Download CSV"
+                    onclick={download}>
+                </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

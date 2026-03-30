@@ -1,0 +1,24 @@
+<apex:page standardController="Training_Task_User__c" recordSetVar="Training Task Users" showHeader="false">
+    <apex:includeLightning />
+    <div id="lightning" />
+    <script>
+        var selectedList = [];
+    </script>
+    <apex:repeat value="{!selected}" var="selectedItem">
+        <script>
+            selectedList.push('{!selectedItem}');
+        </script>
+    </apex:repeat>
+    <script>
+        $Lightning.use("c:TrainingTaskUserApp", function () {
+            $Lightning.createComponent("c:TrainingTaskUserAuraComponent",
+                { selectedIds: selectedList },
+                'lightning',
+                function (cmp) {
+
+                }
+            );
+        });
+
+    </script>
+</apex:page>

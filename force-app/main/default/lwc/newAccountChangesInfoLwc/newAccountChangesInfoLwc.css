@@ -1,0 +1,12 @@
+.line {
+    border-top: 1px solid rgb(165, 165, 165); /* 上边框，宽度为2px，颜色为黑色 */
+    width: 100%; /* 横线宽度 */
+    margin-top: 30px; /* 上边距 */
+    margin-bottom: 30px; /* 上边距 */  
+}
+
+
+/*Add the class name below to the lightning-icon element.*/
+.custom-icon-forward { 
+    --slds-c-icon-color-foreground-default: #2e844a;
+}

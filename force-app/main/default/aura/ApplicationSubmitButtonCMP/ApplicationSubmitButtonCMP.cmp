@@ -1,0 +1,12 @@
+<aura:component
+    implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes,lightning:isUrlAddressable"
+    access="global">
+    
+    <aura:html tag="style">
+    </aura:html>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:handler name="render" value="{!this}" action="{!c.onRender}"/>
+    <aura:attribute name="url" type="String"/>
+    <c:applicationSubmitButtonLwc recordId="{!v.recordId}" onrefreshview="{!c.refreshview}" onclosemodal="{!c.closeModal}" />
+</aura:component>

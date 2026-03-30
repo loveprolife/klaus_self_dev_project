@@ -1,0 +1,106 @@
+<template>
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label">
+        <thead>
+          <tr class="slds-line-height_reset">
+            <!-- Trainer  -->
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Trainer">Trainer</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate">{attendance.Trainer__c}</div>
+            </th>
+          </tr>
+          <!-- Customer -->
+          <tr class="slds-line-height_reset">
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Customer">Customer</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate">{customerName}</div>
+            </th>
+          </tr>
+          <!-- Name of Store Manager -->
+          <tr class="slds-line-height_reset">
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Name of Store Manager">Name of Store Manager</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate">{attendance.Name_of_Store_Manager__c}</div>
+            </th>
+          </tr>
+          <!-- Name of BA -->
+          <tr class="slds-line-height_reset">
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Name of BA">Name of BA</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate">{attendance.Name_of_BA__c}</div>
+            </th>
+          </tr>
+          <!-- Name of FSPs -->
+          <tr class="slds-line-height_reset">
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Name of FSPs">Name of FSPs</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate">{attendance.Name_of_FSPs__c}</div>
+            </th>
+          </tr>
+          <!-- Product Features Sales Skill -->
+          <tr class="slds-line-height_reset">
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Product Features Sales Skill">Product Features Sales Skill</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate">{attendance.Product_Features_Sales_Skill__c}</div>
+            </th>
+          </tr>
+          <!-- Promotion Focus -->
+          <tr class="slds-line-height_reset">
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Promotion Focus">Promotion Focus</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate">{attendance.Promotion_Focus__c}</div>
+            </th>
+          </tr>
+          <!-- Marketing Display Condition -->
+          <tr class="slds-line-height_reset">
+            <th class="" scope="col">
+              <div class="slds-truncate" title="Trainer">Marketing Display Condition</div>
+            </th>
+            <th class="" scope="col">
+              <div class="slds-truncate">{attendance.Marketing_display_condition__c}</div>
+            </th>
+          </tr>
+          <!-- Display Pictures -->
+          <template if:true={isShowImage}>
+            <tr class="slds-line-height_reset">
+              <th class="" scope="col">
+                <div class="slds-truncate" title="Trainer">Display Pictures</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate">
+                  <img src={attendance.Display_Pictures__c} width="200px" height="100px">
+                </div>
+              </th>
+            </tr>
+          </template>
+          <!-- Second Show -->
+          <template if:true={isShowVideo}>
+            <tr class="slds-line-height_reset">
+              <th class="" scope="col">
+                <div class="slds-truncate" title="Trainer">Second Show</div>
+              </th>
+              <th class="" scope="col">
+                <div class="slds-truncate">
+                  <video controls preload="auto" width="100px" height="200px" src={attendance.Second_Show__c}>
+                      Second Show
+                  </video>
+                </div>
+              </th>
+            </tr>
+          </template>
+        </thead>
+    </table>
+</template>

@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "91d2fb3f-b827-4340-8d2a-2df482f1d2f4",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "Error",
+  "id" : "6a98fb84-a752-4a95-a3bc-85a8fbbd41a5",
+  "label" : "错误",
+  "pageAccess" : "UseParent",
+  "routeType" : "error",
+  "type" : "route",
+  "urlPrefix" : "error"
+}

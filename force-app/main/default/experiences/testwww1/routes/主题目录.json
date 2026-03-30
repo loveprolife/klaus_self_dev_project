@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "f13e4f72-3a7e-47e1-a404-43b04ca1d89d",
+  "appPageId" : "e0bf1275-58c2-4fd8-9393-d738c12db8fe",
+  "configurationTags" : [ ],
+  "devName" : "Topic_Catalog",
+  "id" : "ce172d9c-9299-4c31-996f-f5af3b7af7a2",
+  "label" : "主题目录",
+  "pageAccess" : "UseParent",
+  "routeType" : "topic-catalog",
+  "type" : "route",
+  "urlPrefix" : "topiccatalog"
+}

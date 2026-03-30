@@ -1,0 +1,6 @@
+.slds-form-element__help {
+    display: none !important;
+}
+.field-wrapper {
+    position: relative;
+}

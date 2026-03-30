@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>RoomBooking__c.Subject__c</field>
+    </columns>
+    <columns>
+        <field>RoomBooking__c.MeetingRoom__c</field>
+    </columns>
+    <columns>
+        <field>RoomBooking__c.StartTime__c</field>
+    </columns>
+    <columns>
+        <field>RoomBooking__c.EndTime__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_NAME</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>New RoomBookings Report（disuse）</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$RoomBooking__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>RoomBooking__c.EndTime__c</dateColumn>
+        <endDate>2024-04-30</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-04-01</startDate>
+    </timeFrameFilter>
+</Report>

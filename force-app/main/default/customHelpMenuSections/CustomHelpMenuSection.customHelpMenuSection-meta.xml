@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomHelpMenuSection xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customHelpMenuItems>
+        <linkUrl>http://hiit.hisense.com/bpp/ultrabpp/view.action?mode=NEW&amp;baseSchema=HIIT_ITSM_INCIDENT&amp;busTypePid=8a93a9dd70ff47c101713dda8cef3cf4&amp;busTypeLevel=C</linkUrl>
+        <masterLabel>HiIT提报问题(HiIT Question Ticket)</masterLabel>
+        <sortOrder>1</sortOrder>
+    </customHelpMenuItems>
+    <customHelpMenuItems>
+        <linkUrl>https://hisenseint.my.salesforce.com/speedtest.jsp</linkUrl>
+        <masterLabel>系统性能测试/System Performance Test</masterLabel>
+        <sortOrder>2</sortOrder>
+    </customHelpMenuItems>
+    <customHelpMenuItems>
+        <linkUrl>http://hiit.hisense.com/bpp/itsmui/page/myWorkBench/index.jsp?workType=myCreateListSystem&amp;isOutLink=15&amp;busTypePid=8a93a9dd70ff47c101713dda8cef3cf4%23</linkUrl>
+        <masterLabel>HiIT查询问题(HiIT Ticket Check)</masterLabel>
+        <sortOrder>3</sortOrder>
+    </customHelpMenuItems>
+    <masterLabel>HiIT System Link</masterLabel>
+</CustomHelpMenuSection>

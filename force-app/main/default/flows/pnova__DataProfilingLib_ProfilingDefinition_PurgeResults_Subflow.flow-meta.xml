@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <description>... this sub-flow encapsulates the logic used to purge all the profiling results for a specified profiling definition.  We use this subflow to automate the deletion of profiling results records for a given profiling definition.</description>
+    <environments>Default</environments>
+    <label>Cuneiform: Profiling Definition: Purge Results: Sub Flow</label>
+    <processType>AutoLaunchedFlow</processType>
+</Flow>

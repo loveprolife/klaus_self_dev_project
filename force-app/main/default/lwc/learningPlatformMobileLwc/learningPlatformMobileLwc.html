@@ -1,0 +1,114 @@
+<template>
+    <template if:true={isShowSpinner}>
+        <lightning-spinner alternative-text="Loading" size="medium"  variant="brand"></lightning-spinner>
+    </template>
+    <!-- <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure slds-list_horizontal">
+            <div class="slds-var-p-top_xx-small slds-var-p-right_small">
+                <lightning-icon 
+                icon-name='standard:work_step_template' 
+                alternative-text='work_step_template' 
+                size='medium' 
+                title='Learning Platform'
+            ></lightning-icon>
+            </div>
+            <div class="slds-media__body slds-align-middle" >
+                <span class="slds-page-header__title">Learning Platform</span>
+            </div>
+        </div>
+      </header>
+    </div> -->
+
+    <div class="slds-card__body">
+        <lightning-record-edit-form object-api-name="Learning_Platform_Management__c">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-2 slds-var-p-left_medium lgc-bg">
+                    <lightning-input-field field-name="Name" value={title} onchange={handleName}> </lightning-input-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-var-p-right_medium lgc-bg">
+                    <lightning-input-field field-name="Author__c" value={author} onchange={handleAuthor}> </lightning-input-field>
+                </div>
+
+                <div class="slds-col slds-size_1-of-2 slds-var-p-left_medium lgc-bg">
+                    <lightning-input-field field-name="Type__c" value={type} onchange={handleType}> </lightning-input-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-var-p-right_medium lgc-bg">
+                    <div class="slds-var-p-left_xx-small slds-var-p-right_xx-small">
+                        <lightning-select
+                            name="allowDownload"
+                            label="Allow Download"
+                            value={allowDownload}
+                            options={optionsAllowDownload}
+                            onchange={handleAllowDownload}
+                        ></lightning-select>
+                    </div>
+                </div>
+
+                <div class="slds-col slds-size_1-of-2 slds-var-p-left_medium lgc-bg">
+                    <lightning-input class="slds-var-p-left_xx-small slds-var-p-right_xx-small" type="date" name="startDate" label="Upload Time(Start)" value={startDate} onchange={handleStartDate}></lightning-input>
+                    <template if:true={isShowStartError}>
+                        <div class="slds-text-color_error slds-var-p-left_x-small">The start time must be less than the end time</div>
+                    </template>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-var-p-right_medium lgc-bg">
+                    <lightning-input class="slds-var-p-left_xx-small slds-var-p-right_xx-small" type="date" name="endDate" label="Upload Time(End)" value={endDate} onchange={handleEndDate}></lightning-input>
+                    <template if:true={isShowEndError}>
+                        <div class="slds-text-color_error slds-var-p-left_x-small">The end time must be greater than the start time</div>
+                    </template>
+                </div>
+                
+                <div class="slds-col slds-size_1-of-2 slds-var-p-left_medium lgc-bg">
+                    <div class="slds-var-p-top_large slds-var-p-left_xx-small slds-var-p-right_xx-small">
+                        <lightning-button
+                        class=""
+                        label="Clear"
+                        stretch
+                        onclick={handleClear}
+                        ></lightning-button>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-var-p-right_medium lgc-bg">
+                    <div class="slds-var-p-top_large slds-var-p-left_xx-small slds-var-p-right_xx-small">
+                        <lightning-button
+                            class=""
+                            variant="brand"
+                            onclick={handleSearch}
+                            label="Search"
+                            stretch
+                        ></lightning-button>
+                    </div>
+                </div>
+            </div>
+        </lightning-record-edit-form>
+
+        
+        <div class="slds-var-p-around_large">
+            <template if:true={isHaveData}>
+                <ul>
+                    <template for:each={data} for:item=item for:index="index">
+                        <li key={item.index}  class="slds-var-p-top_medium slds-border_bottom" data-id={item.Id} onclick={learningPlatformView}>
+                            <h3 class="slds-text-heading_medium slds-var-p-bottom_x-small">
+                                <span class="">{item.Name}</span>
+                            </h3>
+                            <div class="slds-text-title slds-var-p-bottom_x-small">
+                                <span>Type: {item.Type__c}</span>
+                                <span class="slds-var-p-left_small">Author: {item.Author__c}</span>
+                            </div>
+                            <div class="slds-text-title slds-var-p-bottom_x-small">
+                                <span>Upload Date: {item.Upload_Date__c}</span>
+                            </div>
+                            
+                        </li>
+                
+                    </template>
+                </ul>
+                
+            </template>
+
+            <template if:true={isHaveTips}>
+                <div class="slds-text-align_center" style="padding-top: 4rem">No item to display.</div>
+            </template>
+        </div>
+    </div>
+</template>

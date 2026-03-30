@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>客户清洗设置唯一值</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>Key</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Customer_Code__c} + {!$Record.Customer_Name__c}</expression>
+    </formulas>
+    <interviewLabel>Customer Cleaning Set Key {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Customer Cleaning Set Key</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Set_Key</name>
+        <label>Set Key</label>
+        <locationX>777</locationX>
+        <locationY>379</locationY>
+        <inputAssignments>
+            <field>Key__c</field>
+            <value>
+                <elementReference>Key</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Set_Key</targetReference>
+        </connector>
+        <object>Customer_Cleaning__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

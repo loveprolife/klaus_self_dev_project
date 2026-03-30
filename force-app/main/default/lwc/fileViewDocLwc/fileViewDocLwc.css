@@ -1,0 +1,11 @@
+.my-icon{
+    --slds-c-icon-color-foreground-default: white;
+}
+
+img.pageImg {
+    background-color: var(--slds-g-color-neutral-base-100, white);
+}
+
+.page {
+    border: 3px dashed transparent;
+}

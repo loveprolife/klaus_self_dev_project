@@ -1,0 +1,8 @@
+<p style="font-family:Times New Roman;font-size: 0.875em;">Dear {!Internal_Registration__c.Name_CN__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">答谢晚餐将于18:30开始，地点为国际中心35楼自助餐厅，欢迎您前往就餐。</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">此外，我们还精心准备了游园体验活动，将于19:00在国际中心35+咖啡厅开启，诚邀您前往体验！</p>
+<br/>
+<p style="font-family:Times New Roman;font-size: 0.875em;">Dear {!Internal_Registration__c.Name_CN__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">The Appreciation Dinner will start at 18:30 in the Buffet Restaurant on the 35th floor of the International Center. Welcome to attend the dinner. </p>
+
+<p style="font-family:Times New Roman;font-size: 0.875em;">In addition, we have also prepared traditional cultural activities that will begin at 19:00 in the 35+ Café of the International Center. We cordially invite you to join us!</p>

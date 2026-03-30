@@ -1,0 +1,25 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-05-06 14:40:27
+ * @LastEditors: WFC
+ * @LastEditTime: 2024-05-22 13:39:27
+ * @Description: 
+ * @FilePath: \HisenseAll20240426\force-app\main\default\aura\LearningPlatformCmp\LearningPlatformCmp.cmp
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable,lightning:isUrlAddressable" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="isPc" type="boolean" default="false"  />
+    <aura:html tag="style">
+        .slds-modal__container{
+            width: 100%;
+            max-width:100%;
+        }
+    </aura:html>  
+    <aura:if isTrue="{!v.isPc == true}" >
+        <c:learningPlatformLwc onrefreshview="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+    </aura:if>
+    <aura:if isTrue="{!v.isPc == false}">
+        <c:learningPlatformMobileLwc onrefreshview="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+    </aura:if>
+    
+</aura:component>

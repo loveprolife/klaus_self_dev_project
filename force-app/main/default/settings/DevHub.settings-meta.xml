@@ -3,8 +3,4 @@
     <enableALMDevopsCorePref>false</enableALMDevopsCorePref>
     <enableALMSimpleDeployDataPref>false</enableALMSimpleDeployDataPref>
     <enableALMSimpleDeployPref>false</enableALMSimpleDeployPref>
-    <enableDevOpsCenter>false</enableDevOpsCenter>
-    <enableDevOpsCenterGA>false</enableDevOpsCenterGA>
-    <enableScratchOrgManagementPref>false</enableScratchOrgManagementPref>
-    <enableShapeExportPref>false</enableShapeExportPref>
 </DevHubSettings>

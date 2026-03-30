@@ -1,0 +1,17 @@
+.date-format-hide .slds-form-element__help{
+    display: none;
+}
+.date-format-hide .slds-show{
+    display:block;
+}
+.custom-combobox {
+    width: 100%; /* 确保宽度一致 */
+}
+
+.custom-lookup {
+    width: 100%; /* 确保宽度一致 */
+}
+
+.right-align {
+    text-align: right;
+}

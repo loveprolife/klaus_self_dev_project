@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SSO Token Proxy</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        #loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        #proxyFrame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        #output {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #f0f8ff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 300px;
+            z-index: 1000;
+            font-size: 12px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">正在加载外部站点...</div>
+    <iframe id="proxyFrame"></iframe>
+    <div id="output" style="display:none;"></div>
+
+    <script>
+        // 从 URL 查询参数获取目标地址
+        const urlParams = new URLSearchParams(window.location.search);
+        const targetUrl = urlParams.get('target');
+        console.log('wwwwffff-----' + targetUrl);
+        if (!targetUrl) {
+            document.getElementById('loading').innerText = '错误：未提供目标 URL';
+            throw new Error('Missing target URL parameter');
+        }
+        console.log('wwwwffff-----1111');
+        const frame = document.getElementById('proxyFrame');
+        const loadingDiv = document.getElementById('loading');
+        const outputDiv = document.getElementById('output');
+
+        // 设置 iframe 的 src
+        frame.src = targetUrl;
+
+        // 监听 iframe 加载完成事件
+        frame.onload = function() {
+            loadingDiv.style.display = 'none';
+            // 尝试读取 cookie
+            readAndDisplayCookie();
+        };
+
+        // 监听来自 iframe 的 postMessage
+        window.addEventListener('message', function(event) {
+            // 安全校验：检查来源
+            if (event.origin !== targetUrl.split('/').slice(0, 3).join('/')) {
+                console.warn('收到非目标域消息:', event.origin);
+                return;
+            }
+
+            // 如果是 token 数据，则回传给父页面
+            if (event.data && event.data.type === 'ssoToken') {
+                // 将 token 发送回父页面（即 LWC 组件）
+                window.parent.postMessage(event.data, window.location.origin);
+            }
+        });
+
+        // 读取 cookie 并在页面上显示
+        function readAndDisplayCookie() {
+            console.log('wwwwffff-----2222');
+            // 读取 cookie 函数
+            function readCookie(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+            }
+
+            // 尝试读取 ssoLoginToken
+            const token = readCookie('ssoLoginToken');
+            if (token) {
+                outputDiv.innerText = '检测到 ssoLoginToken:\n' + token;
+                outputDiv.style.display = 'block';
+                // 同时发送给父页面
+                window.parent.postMessage({
+                    type: 'ssoToken',
+                    ssoLoginToken: token
+                }, window.location.origin);
+            } else {
+                outputDiv.innerText = '未找到 ssoLoginToken cookie';
+                outputDiv.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>

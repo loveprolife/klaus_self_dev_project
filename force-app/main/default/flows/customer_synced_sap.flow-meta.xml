@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Customer_Record_Types</name>
+        <label>Customer Record Types</label>
+        <locationX>771</locationX>
+        <locationY>583</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Sap_Code_is_not_Null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.SAP_Customer_Code__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Type_Customer</targetReference>
+            </connector>
+            <label>Sap Code is not Null</label>
+        </rules>
+    </decisions>
+    <description>添加赋值Ecss_Flag__c</description>
+    <environments>Default</environments>
+    <interviewLabel>客户类型同步 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>客户类型同步customer synced sap</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Set_Ecss_Flag</name>
+        <label>Set Ecss Flag</label>
+        <locationX>778</locationX>
+        <locationY>376</locationY>
+        <connector>
+            <targetReference>Customer_Record_Types</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Ecss_Flag__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Type_Customer</name>
+        <label>Type Customer</label>
+        <locationX>447</locationX>
+        <locationY>583</locationY>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <stringValue>0120o0000017UVvAAM</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>651</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Set_Ecss_Flag</targetReference>
+        </connector>
+        <object>Account</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

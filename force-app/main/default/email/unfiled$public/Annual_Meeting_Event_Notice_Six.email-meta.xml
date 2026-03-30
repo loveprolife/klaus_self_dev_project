@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>年会活动通知主题6</description>
+    <encodingKey>GB2312</encodingKey>
+    <name>Annual Meeting Event Notice Six</name>
+    <style>none</style>
+    <subject>温馨提示：诚邀您参与答谢晚宴及游园体验活动！You are cordially invited to join the Appreciation Dinner and traditional cultural activities!</subject>
+    <textOnly>Dear {!Internal_Registration__c.Name_CN__c}，
+
+答谢晚餐将于18:30开始，欢迎您前往国际中心35楼就餐。
+此外，我们还精心准备了游园体验活动，将于19:00在国际中心35+咖啡厅开启，诚邀您前往体验！
+
+Dear {!Internal_Registration__c.Name_CN__c},
+
+The Appreciation Dinner will start at 18:30 in the Buffet Restaurant on the F35 of the International Center. Welcome to attend the dinner.
+
+We have also prepared a traditional cultural tour that will begin at 19:00 in the 35+ Café. We cordially invite you to join us!</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

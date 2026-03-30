@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>TV</fullName>
+        <default>false</default>
+        <label>TV</label>
+    </customValue>
+    <customValue>
+        <fullName>AC</fullName>
+        <default>false</default>
+        <label>AC</label>
+    </customValue>
+    <customValue>
+        <fullName>WM</fullName>
+        <default>false</default>
+        <label>WM</label>
+    </customValue>
+    <customValue>
+        <fullName>Mobile</fullName>
+        <default>false</default>
+        <label>Mobile</label>
+    </customValue>
+    <customValue>
+        <fullName>Refrigerator</fullName>
+        <default>false</default>
+        <label>Refrigerator</label>
+    </customValue>
+    <customValue>
+        <fullName>Freezer</fullName>
+        <default>false</default>
+        <label>Freezer</label>
+    </customValue>
+    <customValue>
+        <fullName>Laser TV</fullName>
+        <default>false</default>
+        <label>Laser TV</label>
+    </customValue>
+    <customValue>
+        <fullName>LCAC</fullName>
+        <default>false</default>
+        <label>LCAC</label>
+    </customValue>
+    <customValue>
+        <fullName>Small Domestic Home Appliances</fullName>
+        <default>false</default>
+        <label>Small Domestic Home Appliances</label>
+    </customValue>
+    <customValue>
+        <fullName>Cooking</fullName>
+        <default>false</default>
+        <label>Cooking</label>
+    </customValue>
+    <customValue>
+        <fullName>Dishwasher</fullName>
+        <default>false</default>
+        <label>Dishwasher</label>
+    </customValue>
+    <customValue>
+        <fullName>Sound Bar</fullName>
+        <default>false</default>
+        <label>Sound Bar</label>
+    </customValue>
+    <customValue>
+        <fullName>Hitachi Commercial AC</fullName>
+        <default>false</default>
+        <label>Hitachi Commercial AC</label>
+    </customValue>
+    <customValue>
+        <fullName>Medical Device</fullName>
+        <default>false</default>
+        <label>Medical Device</label>
+    </customValue>
+    <customValue>
+        <fullName>B-Monitor</fullName>
+        <default>false</default>
+        <label>B-Monitor</label>
+    </customValue>
+    <customValue>
+        <fullName>All</fullName>
+        <default>false</default>
+        <label>All</label>
+    </customValue>
+    <customValue>
+        <fullName>BG-Others</fullName>
+        <default>false</default>
+        <label>BG-Others</label>
+    </customValue>
+    <customValue>
+        <fullName>Commercial display</fullName>
+        <default>false</default>
+        <label>Commercial display</label>
+    </customValue>
+    <customValue>
+        <fullName>MP</fullName>
+        <default>false</default>
+        <label>MP</label>
+    </customValue>
+    <customValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </customValue>
+    <customValue>
+        <fullName>Medical utltrasound</fullName>
+        <default>false</default>
+        <label>Medical utltrasound</label>
+    </customValue>
+    <customValue>
+        <fullName>Smart City</fullName>
+        <default>false</default>
+        <label>Smart City</label>
+    </customValue>
+    <customValue>
+        <fullName>WineCabi</fullName>
+        <default>false</default>
+        <label>WineCabi</label>
+    </customValue>
+    <customValue>
+        <fullName>CF</fullName>
+        <default>false</default>
+        <label>CF</label>
+    </customValue>
+    <customValue>
+        <fullName>HeatPump</fullName>
+        <default>false</default>
+        <label>HeatPump</label>
+    </customValue>
+    <customValue>
+        <fullName>CAC</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CAC</label>
+    </customValue>
+    <customValue>
+        <fullName>CE</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>CE</label>
+    </customValue>
+    <customValue>
+        <fullName>HA</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>HA</label>
+    </customValue>
+    <masterLabel>Product Line</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

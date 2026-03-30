@@ -1,0 +1,4 @@
+Dear User,
+  {!Credit_Limit_Application__c.Name} Credit Limit Application process need your approval. You can click below link to approve! 
+
+  {!Credit_Limit_Application__c.Link}

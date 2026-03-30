@@ -1,0 +1,5 @@
+Dear : 
+
+The SAP cost revenue data cannot find the corresponding customer product line. Please click the link blow to view the details in the system: 
+
+{!InterfaceLog__c.Link}

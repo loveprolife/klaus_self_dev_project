@@ -1,3 +1,1161 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata"/>
-
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>AU_FIN</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>AU FIN</label>
+        <sharedTo>
+            <role>AU_FIN_M</role>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Australia,Hisense New Zealand</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>New Zealand,Australia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Argentina_Account_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Argentina Account Sharing</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Argentina_Store_Manager</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Argentina</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>B2B_luoyong</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>B2B luoyong</label>
+        <sharedTo>
+            <group>B2B_Customer</group>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Commercial Display Customer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Customer_Record_Type_Name__c</field>
+            <operation>equals</operation>
+            <value>B2B_customer</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Canada_Account_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Canada Account Sharing</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Canada_Store_Manager</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Canada</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Canada_account_share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Canada account share</label>
+        <sharedTo>
+            <group>Canada_SM_EHAB_MAZIYU</group>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>notEqual</operation>
+            <value>Hisense Canada</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8120: Hisense CA Sales Org</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Canada_customer_share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Canada customer share</label>
+        <sharedTo>
+            <roleAndSubordinates>Canada_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Canada</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Canada</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8120: Hisense CA Sales Org</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Commercial_Display_Customer</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Commercial Display Customer</label>
+        <sharedTo>
+            <group>Commercial_Display_Customer</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Commercial Display Customer</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Japan_Account_Share</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>日本客户share零售经理</label>
+        <sharedTo>
+            <group>Japan_All_Sales_Person</group>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8410: Hisense JP Sales Org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Japan</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Japan_Address</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Japan Address</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>JP_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Japan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Japan</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Japan_Customer_Share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>日本客户共享</label>
+        <sharedTo>
+            <group>Japan_All_Customer</group>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Japan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8410: Hisense JP Sales Org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Japan</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Legal_User</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>法务权限</description>
+        <label>Legal User</label>
+        <sharedTo>
+            <role>Hisense_Legal_Staff</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value></value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Malaysia_Address</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>马来西亚地址类客户</description>
+        <label>Malaysia Address</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>MY_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Malaysia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Malaysia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Mexico_Account_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Mexico Account Sharing</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Mexico_Store_Manager</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Mexico</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Mexico_Factory_Finance_Team</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Mexico Factory Finance Team</label>
+        <sharedTo>
+            <role>Mexico_FAC_FIN</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8150,8170: HS USM Sales Org,8180</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Philippines_Address</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Philippines Address</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Philippine_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Philippines</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Philippines</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>SA_Management</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>SA_Management</label>
+        <sharedTo>
+            <role>SouthAfrica_Mobile_PL</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense South Africa</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>SD_PL_Management</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>SD_PL_Management</label>
+        <sharedTo>
+            <group>SALES_DEPARTMENT_PL</group>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>7</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>8</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>9</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>10</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>11</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>ShareAllAccountToliyoubo</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>ShareAllAccountToliyoubo</label>
+        <sharedTo>
+            <group>HQ_Group</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Name</field>
+            <operation>notEqual</operation>
+            <value>NULL</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_Chile</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Account Chile</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Chile_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Chile</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_ForUSA</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Account USA</label>
+        <sharedTo>
+            <roleAndSubordinates>USA_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense USA</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8110: Hisense US Sales Org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>USA</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_HP_Malaysia</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Account HP Malaysia</label>
+        <sharedTo>
+            <roleAndSubordinates>MY_Sales_HP_M</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Malaysia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Malaysia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8400: HISENSE (MALAYSIA) S</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_India</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Account India</label>
+        <sharedTo>
+            <role>India_DIR</role>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8440: HISENSE INDIA PRIVATE LIM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity_Sales__c</field>
+            <operation>equals</operation>
+            <value>8440: HISENSE INDIA PRIVATE LIM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>India</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_Indonesia</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Account Indonesia</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Indonesia_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Indonesia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_Saudi</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Account Saudi</label>
+        <sharedTo>
+            <roleAndSubordinates>Saudi_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Saudi</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Saudi Arabia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_Singapore</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Account Singapore</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Singapore_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Singapore</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8470: Hisense Singapore Sales Org</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_SouthAfrica</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Account SouthAfrica</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>SouthAfrica_CE_HA_SM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense South Africa</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Account_United_Arab_Emirates</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Account United Arab Emirates</label>
+        <sharedTo>
+            <role>Dubai_FIN</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>United Arab Emirates</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Brand_SouthAfrica1</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Brand SouthAfrica1</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>SouthAfrica_Ops_Regional_Manager_For_GP_NW_LP_MP</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Brand</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Brand_SouthAfrica2</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Brand SouthAfrica2</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>SouthAfrica_Ops_Regional_Manager_WC_EC_FS_KZN</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Brand</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_HP_Japan</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>日本客户共享-售后服务部</label>
+        <sharedTo>
+            <group>Japan_JP_Sales</group>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Japan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8410: Hisense JP Sales Org</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Japan</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_Store_Malaysia</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share Store Malaysia</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Malaysia_Retail_Director</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Malaysia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Share_ustomerJapan</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Share ustomerJapan</label>
+        <sharedTo>
+            <role>JP_FIN</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Japan</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Hisense_Entity__c</field>
+            <operation>equals</operation>
+            <value>8410: Hisense JP Sales Org</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>South_Africa_Account_Sharing</fullName>
+        <accessLevel>Read</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Read</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>South Africa Account Sharing</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>SouthAfrica_Market_Manager</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense South Africa</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>South_Africa_Address</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>南非地址类客户</description>
+        <label>South Africa Address</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>South_Africa_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>South Africa</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Thailand_customer_share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Thailand customer share</label>
+        <sharedTo>
+            <role>Thailand_FIN</role>
+        </sharedTo>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Thailand</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>VP_Dubai_Ismail</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <description>印度客户共享给VP Dubai（Ismail）</description>
+        <label>印度客户共享-VP Dubai（Ismail）</label>
+        <sharedTo>
+            <group>VP_Dubai_ismail_alhurani</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense India</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Vietnam_Account_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Vietnam Account Sharing</label>
+        <sharedTo>
+            <roleAndSubordinatesInternal>Vietnam_Office_GM</roleAndSubordinatesInternal>
+        </sharedTo>
+        <criteriaItems>
+            <field>Sales_Region__c</field>
+            <operation>equals</operation>
+            <value>Hisense Vietnam</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>add_share</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>add share India</label>
+        <sharedTo>
+            <roleAndSubordinates>India_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>India</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>add_share_Australia</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>add share Australia</label>
+        <sharedTo>
+            <roleAndSubordinates>AU_GM</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>New Zealand,Australia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>add_share_Chile</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>add share Chile</label>
+        <sharedTo>
+            <roleAndSubordinates>Chile_GM</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Chile</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>add_share_Colombia</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>add share Colombia</label>
+        <sharedTo>
+            <roleAndSubordinates>ZF_Colombia_Office_GM</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Colombia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>add_share_Indonesia</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>add share Indonesia</label>
+        <sharedTo>
+            <roleAndSubordinates>Indonesia_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Indonesia</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>add_share_Mexico</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>add share Mexico</label>
+        <sharedTo>
+            <roleAndSubordinates>Mexico_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Mexico</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>add_share_Spain</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>add share Spain</label>
+        <sharedTo>
+            <roleAndSubordinates>Spain_GM</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Spain</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>add_share_Thailand</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>add share Thailand</label>
+        <sharedTo>
+            <roleAndSubordinates>Thailand_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Thailand</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>add_share_UK</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>add share UK</label>
+        <sharedTo>
+            <roleAndSubordinates>UK_GM</roleAndSubordinates>
+        </sharedTo>
+        <booleanFilter>1 AND 2</booleanFilter>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>United Kingdom</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>add_share_United_Arab_Emirates</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>add share United Arab Emirates</label>
+        <sharedTo>
+            <roleAndSubordinates>Dubai_GM</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>United Arab Emirates</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>add_share_Vietnam</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>add share Vietnam</label>
+        <sharedTo>
+            <roleAndSubordinates>Vietnam_Office_GM</roleAndSubordinates>
+        </sharedTo>
+        <criteriaItems>
+            <field>RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Customer Address（Ship To）</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Guarantor_Country_Code__c</field>
+            <operation>equals</operation>
+            <value>Vietnam</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingOwnerRules>
+        <fullName>Mexico_Hitachi_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <accountSettings>
+            <caseAccessLevel>None</caseAccessLevel>
+            <contactAccessLevel>Edit</contactAccessLevel>
+            <opportunityAccessLevel>None</opportunityAccessLevel>
+        </accountSettings>
+        <label>Mexico Hitachi Sharing</label>
+        <sharedTo>
+            <role>Mexico_Hitachi_SM</role>
+        </sharedTo>
+        <sharedFrom>
+            <role>Mexico_Hitachi_SM</role>
+        </sharedFrom>
+    </sharingOwnerRules>
+</SharingRules>

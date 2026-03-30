@@ -1,0 +1,19 @@
+<!--
+ * @Author: WFC
+ * @Date: 2023-11-14 10:29:08
+ * @LastEditors: WFC
+ * @LastEditTime: 2023-11-14 10:29:17
+ * @Description: 
+ * @FilePath: \hisenseall-231026\force-app\main\default\aura\InventoryUploadCmp\InventoryUploadCmp.cmp
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable,lightning:isUrlAddressable" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:attribute name="objectLoad" type="String" />
+	<aura:html tag="style">
+        .slds-modal__container{
+            width: 33%;
+            max-width:33%;
+        }
+    </aura:html>
+	<c:dailySalesUploadLwc recordId="{!v.recordId}" objectLoad="{!v.objectLoad}" onrefreshView="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+</aura:component>

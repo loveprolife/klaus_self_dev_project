@@ -1,0 +1,18 @@
+<!--
+ * @Author: WFC
+ * @Date: 2022-07-07 17:19:41
+ * @LastEditors: WFC
+ * @LastEditTime: 2022-07-07 17:19:54
+ * @Description: 
+ * @FilePath: \Hitest\force-app\main\default\aura\RestoreCustomer\RestoreCustomer.cmp
+-->
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable" access="global" >
+	
+	<aura:html tag="style">
+        .slds-modal__container{
+            width: 34%;
+            max-width:34%;
+        }
+    </aura:html>
+	<c:restoreCustomerLWC recordId="{!v.recordId}" onrefreshview="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+</aura:component>

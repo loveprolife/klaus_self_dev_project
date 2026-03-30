@@ -1,0 +1,55 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+                <lightning-icon icon-name="custom:custom11" title="custom11" size="small"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+              <h2 class="slds-card__header-title">
+                <span>{TicketInfo.Label}</span>
+              </h2>
+            </div>
+          </header>
+        </div>
+
+        <!-- <div style="overflow-x: auto;"> -->
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered" aria-labelledby="element-with-table-label other-element-with-table-label" 
+            style="width: 100%;">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th style="width: 70%;">
+                            <div class="slds-truncate">{TicketInfo.Subject__c}</div>
+                        </th>
+                        <th style="width: 30%;">
+                            <div class="slds-truncate">{TicketInfo.DueDate__c}</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={ticketData} for:item="item" for:index="index">
+                        <tr class="slds-hint-parent" key={item.Id} data-id={item.Id} onclick={reportOnClick}>
+                            <td style="white-space: normal; word-break: break-all;">
+                                {item.Subject__c}
+                            </td>
+                            <td>
+                                {item.DueDate__c}
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+            
+            <div style="padding: 16px; text-align:right">
+                <a onclick={moreOnClick}>
+                    <span style="font-size: medium;">{label.CheckInCheckOut_More}</span>
+                    <lightning-icon variant="success" icon-name="utility:chevronright" size="x-small" title="more"
+                        data-name="newPromoterDailyReportLwc" onclick={moreOnClick}>
+                    </lightning-icon>
+                    <span class="slds-assistive-text"></span>
+                </a>
+            </div>
+        <!-- </div> -->
+  
+      </article>
+</template>

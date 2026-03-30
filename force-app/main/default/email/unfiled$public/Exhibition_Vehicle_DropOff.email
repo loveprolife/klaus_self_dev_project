@@ -1,0 +1,30 @@
+<p style="font-family:Times New Roman;font-size: 0.875em;">Dear {!Exhibition_Vehical_Booking__c.Internal_Registration__c} 您好!</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">感谢您来参加137届广交会。我们已根据您的去程航班为您安排送机车辆，详细信息如下：
+</p>
+<br/>
+<p style="font-family:Times New Roman;font-size: 0.875em;">车牌号：{!Exhibition_Vehical_Booking__c.Return_Vehicle_Num__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">司机：{!Exhibition_Vehical_Booking__c.Return_Driver__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">司机电话：{!Exhibition_Vehical_Booking__c.Return_Driver_Phone__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">发车时间：{!Exhibition_Vehical_Booking__c.Return_Use_Time__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">上车地点：{!Exhibition_Vehical_Booking__c.Return_Pick_Up_Point__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">下车地点：{!Exhibition_Vehical_Booking__c.Return_Pick_Off_Point__c}</p>
+<br />
+<p style="font-family:Times New Roman;font-size: 0.875em;">如您有任何疑问，请联系陈文静（手机：13727477703 邮箱：chenwenjing@hisense.com）
+</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">谢谢！
+</p>
+<br />
+
+<p style="font-family:Times New Roman;font-size: 0.875em;">Dear {!Exhibition_Vehical_Booking__c.Internal_Registration__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">Thank you for attending the  137 Canton Fair. We have arranged a drop-off vehicle for you according to your itinerary, details are as follows:</p>
+<br/>
+<p style="font-family:Times New Roman;font-size: 0.875em;">Vehicle Number:{!Exhibition_Vehical_Booking__c.Return_Vehicle_Num__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">Driver：{!Exhibition_Vehical_Booking__c.Return_Driver__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">Driver's Phone Number:{!Exhibition_Vehical_Booking__c.Return_Driver_Phone__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">Departure time：{!Exhibition_Vehical_Booking__c.Return_Use_Time__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">Pick up location:{!Exhibition_Vehical_Booking__c.Return_Pick_Up_Point__c}</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">Drop off location:{!Exhibition_Vehical_Booking__c.Return_Pick_Off_Point__c}</p>
+<br />
+<p style="font-family:Times New Roman;font-size: 0.875em;">If you have any questions, please contact Chenwenjing at 13727477703 or chenwenjing@hisense.com</p>
+<p style="font-family:Times New Roman;font-size: 0.875em;">Thank  you  for  attending.
+</p>

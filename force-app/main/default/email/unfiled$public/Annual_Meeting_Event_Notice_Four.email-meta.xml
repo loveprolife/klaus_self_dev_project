@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>年会活动通知主题4</description>
+    <encodingKey>GB2312</encodingKey>
+    <name>Annual Meeting Event Notice Four</name>
+    <style>none</style>
+    <subject>温馨提示：21日年度营销会议及班车时间 Reminder: 2025 Annual Marketing Meeting and bus schedule on the 21st</subject>
+    <textOnly>Dear {!Internal_Registration__c.Name_CN__c}，
+
+2025年度营销会议将于明早8:30继续进行，地点仍为国际中心L2会议室。提醒您佩戴嘉宾证前往。
+大巴车将从海天酒店接您前往国际中心，发车时间：21日8:00，发车地点：海天金融中心酒店正门。
+
+Dear {!Internal_Registration__c.Name_CN__c},
+
+The 2025 Annual Marketing Meeting will continue tomorrow morning at 8:30 in the Meeting Hall of Hisense International Center. Kindly remind you to wear your Guest Card.
+
+A bus will take you from the Haitian Financial Center Hotel to the International Center, departing at 8:00 on the 21st from the hotel main entrance.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

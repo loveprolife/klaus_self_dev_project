@@ -1,0 +1,55 @@
+<!--
+ * @Author: WFC
+ * @Date: 2024-11-20 11:35:04
+ * @LastEditors: WFC
+ * @LastEditTime: 2025-02-20 16:45:19
+ * @Description: 
+ * @FilePath: \hisense005\force-app\main\default\lwc\excelUploadLwc\excelUploadLwc.html
+-->
+<template>
+    <lightning-card class="slds-color__background_gray-4 pageHeader">
+        <header class = "slds-modal__header">
+            <h2 class = "slds-modal__title slds-hyphenate slds-text-title_bold">
+                {objectLoad} Upload
+            </h2>
+        </header>
+        <template if:true={isdownLoad}>
+            <div class="star-container slds-dl_horizontal slds-media_center slds-grid_align-center" >
+                <div style="padding-top: 30px;padding-bottom: 2rem;">
+                    <lightning-button label='Template Download' onclick={handleFilesDownLoad} variant="brand"></lightning-button>
+                </div>
+            </div>
+        </template>
+
+        <div class="star-container slds-dl_horizontal slds-media_center slds-grid_align-center" >
+            <div>
+                <lightning-input label="" name="file uploader" onclick={handleFilesClick} onchange={handleFilesChange} type="file" accept={acceptedType}></lightning-input>
+            </div>
+        </div>
+        <div class="star-container slds-dl_horizontal slds-media_center slds-grid_align-center" >
+            <template if:true={isHaveFile}>
+                <div style="padding-top: 2rem;color:green">{fileName}</div>
+            </template>
+            <template if:false={isHaveFile}>
+                <div style="padding-top: 2rem;color:red">{fileName}</div>
+            </template>
+        </div>
+        <div class="star-container slds-dl_horizontal slds-media_center slds-grid_align-center" >
+            <div style="padding-top: 4px;padding-bottom: 2rem;">
+                <lightning-button label={UploadFile} onclick={handleSave} disabled={disableButton} variant="brand"></lightning-button>
+            </div>
+        </div>
+        
+        <template if:true={showLoadingSpinner}>
+            <lightning-spinner alternative-text="Uploading now"></lightning-spinner>
+        </template>
+        <div class="modal-footer slds-modal__footer">
+            <lightning-button
+                variant="brand-outline"
+                label="Back"
+                onclick={back}
+                class="slds-m-left_x-small"
+            > </lightning-button>
+        </div>
+    </lightning-card>
+</template>

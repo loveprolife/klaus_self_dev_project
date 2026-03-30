@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject>Supervisor_Promoter_Attendance__c</baseObject>
+    <category>other</category>
+    <deployed>true</deployed>
+    <description>墨西哥日报Report Type</description>
+    <label>墨西哥日报Report Type</label>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Supervisor_Store__c.RecordType</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Supervisor</displayNameOverride>
+            <field>Supervisor_Store__c.Supervisor__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Channel</displayNameOverride>
+            <field>Supervisor_Store__c.Channel_item__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Category</displayNameOverride>
+            <field>Promoter__c.Department__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Check in/out Count</displayNameOverride>
+            <field>Sum_Attendance__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Early Exits Count</displayNameOverride>
+            <field>Sum_Early_Check_out__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Late Count</displayNameOverride>
+            <field>Sum_Late_Check_in__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Promoter Count</displayNameOverride>
+            <field>Sum_Promoter__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Promoter__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Attendance__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Check_out_Status__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Check_in_Status__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Promoter__c.IsActive</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Statistical_Date__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sales_Region__c</field>
+            <table>Supervisor_Promoter_Attendance__c</table>
+        </columns>
+        <masterLabel>Supervisor &amp; Promoter &amp; Attendance</masterLabel>
+    </sections>
+</ReportType>

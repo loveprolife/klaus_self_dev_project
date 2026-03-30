@@ -1,0 +1,790 @@
+<template>
+   <template if:true={showCapture}>
+   <c-capture-photo-lwc is-compress={captureCompress} onselect={handleCaptureComplete}></c-capture-photo-lwc>
+   </template>
+   <div class="slds-is-relative">
+   <!-- Loading -->
+   <template if:true={isShowSpinner} >
+   <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+   </template>
+   <!-- 自定义弹窗 -->
+   <c-modal-lwc data-id="product selection" static-mode=true title="" show-ok=true show-close=true hidden-close-icon=false onok={handleOk}>
+   <h1>{modalMsg}</h1>
+   </c-modal-lwc>
+   <!-- <div class="slds-modal__header" style="padding: 0px;">
+   <lightning-card class="slds-color__background_gray-4 pageHeader" title={label.PromoterDailyReport_TICKET} icon-name="standard:article">
+   <template if:true={isTitleShowButton}>
+   <div slot="actions">
+   <template if:false={isEditPage}>
+      <div style="margin-left:5px;display:inline-block;">
+         <button class="slds-button slds-button_brand" onclick={handleEdit}>{label.INSPECTION_REPORT_EDIT}</button>
+      </div>
+   </template>
+   <template if:true={isEditPage}>
+      <div style="margin-left:5px;display:inline-block;">
+         <lightning-button label="Cancel" title="Non-primary action" onclick={cancelHandleClick}
+         class="slds-m-left_x-small"></lightning-button>
+         </div>
+         <div style="margin-left:5px;display:inline-block;">
+         <lightning-button variant="brand" label="Save" title="Primary action" onclick={handleSave}
+         class="slds-m-left_x-small"></lightning-button>
+      </div>
+   </template>
+</div>
+</template>
+</lightning-card>
+</div> -->
+   <div class="container full-height">
+      <div class="slds-modal__header" style="padding: 0px;">
+         <lightning-card class="slds-color__background_gray-4 pageHeader" title={label.PromoterDailyReport_TICKET} icon-name="standard:article">
+            <template if:true={isTitleShowButton}>
+            <div slot="actions">
+               <template if:false={isEditPage}>
+                  <div style="margin-left:5px;display:inline-block;">
+                     <!-- <button class="slds-button slds-button_brand" onclick={handleEdit}>{label.INSPECTION_REPORT_EDIT}</button> -->
+                     <lightning-button class="slds-var-p-right_x-small backButton" variant="Neutral" label={label.INSPECTION_REPORT_BACK} onclick={handleBack}>
+                     </lightning-button>
+                     <!-- <lightning-button class="my-brand" variant="brand" label={label.INSPECTION_REPORT_EDIT} onclick={handleEdit}>
+                     </lightning-button> -->
+                  </div>
+               </template>
+               <template if:true={isEditPage}>
+                     <div style="margin-left:5px;display:inline-block;">
+                     <!-- <lightning-button variant="brand" label="Save" title="Primary action" onclick={handleSave}
+                     class="slds-m-left_x-small"></lightning-button> -->
+                     <lightning-button  class="slds-var-p-right_x-small backButton" variant="Neutral" label={label.INSPECTION_REPORT_BACK} onclick={handleBack}>
+                     </lightning-button>
+                     <lightning-button class="my-brand" variant="brand" label={label.INSPECTION_REPORT_SAVE} onclick={handleSave}>
+                     </lightning-button>
+                  </div>
+               </template>
+
+            
+         </div>
+         </template>
+         </lightning-card>
+      </div>
+            <!-- 标准的水平线 -->
+            <!-- <hr class="thin-line" style="margin: 0;"/> -->
+      <div class="slds-modal__content slds-scrollable_y" style={styleContent}>
+         <template if:true={isShowBody}>
+
+      <!-- <div style="padding-left: 10px; padding-right: 10px;"> -->
+      <!-- <lightning-record-edit-form object-api-name="Daily_Inspection_Report__c">
+         <table class="slds-table_bordered slds-table_fixed-layout slds-resizable report-head"
+         style="width: 100%; table-layout:fixed; word-wrap:break-word; position: relative; z-index: 1;">
+            <tr>
+               <td style="width: 33%;"></td>
+               <td></td>
+            </tr>
+         <template if:false={record.Id} >
+            <tr>
+               <td colspan="2">
+                  <div style="width: 100%; text-align: right; margin-top: 10px;margin-left: -10px;">
+                     <button type="button" class="slds-button slds-button_brand" onclick={handleCreate}>{label.INSPECTION_REPORT_NEW}</button>
+                  </div>
+               </td>
+            </tr>
+         </template>
+         </table>
+      </lightning-record-edit-form> -->
+      <!-- </div> -->
+            <template if:true={record.Id} >
+               <div style="margin-top: 15px; ">
+
+                  <!-- Ticket  -->
+                  <lightning-accordion allow-multiple-sections-open onsectiontoggle={handleTicketSectionToggle} active-section-name={activeTicketSections}>
+                     <!-- Closed -->
+                     <lightning-accordion-section name="closed" label={label.INSPECTION_REPORT_TICKET_HISTORY} style="display: inline;">                        
+                        <template for:each={ticketClosedInfo} for:item="ticketClosed" for:index="index">
+                        <table class={ticketClosed.className} 
+                        style="width: 100%;border: 0;" key={ticketClosed.key}>
+                           <tbody>
+                           <template if:true={ticketClosed.Name}>
+                              <tr>
+                                 <td colspan="2">
+                                    <c-input-read-only-lwc
+                                       label={TicketInfo.Name}
+                                       value={ticketClosed.Name}
+                                       ></c-input-read-only-lwc>
+                                    <!-- Ticket Number -->
+                                 </td>
+                              </tr>
+
+                           </template>
+                           <template if:true={ticketClosed.ClosedDailyInspectionReport__c}>
+                              <tr>
+                                 <td colspan="2">
+                                    <lightning-record-edit-form object-api-name="Ticket__c">
+                                       <lightning-input-field 
+                                          field-name="ClosedDailyInspectionReport__c" 
+                                          label={TicketInfo.ClosedDailyInspectionReport__c}
+                                          data-field-name="ClosedDailyInspectionReport__c" 
+                                          data-index={index} 
+                                          value={ticketClosed.ClosedDailyInspectionReport__c}
+                                          disabled="true">
+                                       </lightning-input-field>
+                                    </lightning-record-edit-form>
+                                 </td>
+                              </tr>
+                           </template>
+                           <tr>
+                              <td colspan="2">
+                                 <c-input-read-only-lwc
+                                 label={TicketInfo.Subject__c}
+                                 value={ticketClosed.Subject__c}
+                                 ></c-input-read-only-lwc>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td colspan="2">
+                                 <c-input-read-only-lwc
+                                 label={TicketInfo.Description__c}
+                                 value={ticketClosed.Description__c} 
+                                 ></c-input-read-only-lwc>
+                              </td>
+                           </tr>
+
+                           <!--  BY lizunxing 20240102 -->
+                              <tr>
+                                 <td colspan="2">
+                                 <c-input-read-only-lwc
+                                 label={TicketInfo.Category__c}
+                                 value={ticketClosed.Category__c} 
+                                 ></c-input-read-only-lwc>
+                                 </td>
+                              </tr>
+                              
+                           
+                           <template if:true={ticketClosed.isShowProduct}>
+                              <tr>
+                                 <td colspan="2">
+                                    <c-input-read-only-lwc
+                                    label={TicketInfo.Product__c}
+                                    value={ticketClosed.Product__c} 
+                                    ></c-input-read-only-lwc>
+                                 </td>
+                              </tr>
+                           </template>
+                           <template if:true={ticketClosed.isShowProduct}>
+                              <tr>
+                                 <td colspan="2">
+                                    <c-input-read-only-lwc
+                                    label={TicketInfo.SeriesNum__c}
+                                    value={ticketClosed.SeriesNum__c} 
+                                    ></c-input-read-only-lwc>
+                                 </td>
+                              </tr>
+                           </template>
+                           <tr>
+                              <td colspan="2">
+                                 <template if:false={isEditPage}>
+                                    <c-input-read-only-lwc
+                                    label={TicketInfo.Status__c}
+                                    value={ticketClosed.Status__c} 
+                                    ></c-input-read-only-lwc>
+                                 </template>
+                                 <template if:true={isEditPage}>
+                                    <lightning-combobox 
+                                       variant="label-hidden" 
+                                       data-field-name="Status__c" 
+                                       data-index={index} 
+                                       data-type="closed"
+                                       name="progress"
+                                       label={TicketInfo.Status__c} 
+                                       value={ticketClosed.Status__c}                               
+                                       onchange={handleTicketConfirmChange}
+                                       options={confirmTaskOptions.data}
+                                       read-only={isFieldReadOnly}>
+                                    </lightning-combobox>
+                                 </template>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td colspan="2">
+                                 <c-input-read-only-lwc
+                                 label={TicketInfo.Priority__c}
+                                 value={ticketClosed.Priority__c} 
+                                 ></c-input-read-only-lwc>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td colspan="2">
+                                 <c-input-read-only-lwc
+                                 label={TicketInfo.Description__c}
+                                 value={ticketClosed.Description__c} 
+                                 ></c-input-read-only-lwc>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td colspan="2">
+                                 <c-input-read-only-lwc
+                                 label={TicketInfo.DueDate__c}
+                                 value={ticketClosed.DueDate__c} 
+                                 ></c-input-read-only-lwc>
+                              </td>
+                           </tr>
+                           <!-- added by Sunny about chile department start-[20231026] -->
+                           <template if:true={isShowDepartment}>
+                              <tr>
+                                 <td colspan="2">
+                                    <c-input-read-only-lwc
+                                    label={TicketInfo.Department__c}
+                                    value={ticketClosed.Department__c} 
+                                    ></c-input-read-only-lwc>
+                                 </td>
+                              </tr>
+                           </template>
+                           <!-- added by Sunny about chile department end-[20231026] -->
+                           <tr>
+                              <td colspan="2">
+                                 <template if:true={ticketClosed.AssignedTo__c} >
+                                    <span >{TicketInfo.AssignedTo__c}</span>
+                                    <br/>
+                                    <c-lookup-lwc 
+                                       name="AssignedTo__c"
+                                       data-index={index} 
+                                       obj-name="Ticket__c" 
+                                       label={TicketInfo.AssignedTo__c}
+                                       record-id={ticketClosed.AssignedTo__c} 
+                                       read-only="true">
+                                    </c-lookup-lwc>
+                                 </template>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td colspan="2">
+                                 <span >{label.INSPECTION_REPORT_ATTACHMENT}</span>
+                                 <br/>
+                                 <c-upload-files2-lwc 
+                                    parent-id={record.Id} 
+                                    data-recordid={index} 
+                                    data-type='ticketClosed' 
+                                    record-id={ticketClosed.Id} 
+                                    onselectfiles={handleSelectFiles}
+                                    disabled-delete="true"
+                                    disabled-upload="true">
+                                 </c-upload-files2-lwc>
+                              </td>
+                           </tr>
+                        </tbody>
+                        </table>
+                        </template>
+                     </lightning-accordion-section>
+                     <!-- Open -->
+                     <lightning-accordion-section name="open" label={label.INSPECTION_REPORT_TICKET_NEW} style="display: inline;">
+                        <template if:true={isEditPage}>
+                           <a onclick={addTicket} slot="actions" style="margin-left: 1.5rem;margin-right: 0.5rem;">
+                              <!-- <button type="button" class="slds-button slds-button_brand">NEW</button> -->
+                              <lightning-button label="Add" class="my-brand" variant="brand" size="xx-small"></lightning-button>
+                              <span class="slds-assistive-text"></span>
+                           </a>
+                        </template>
+                        <template for:each={ticketOpenInfo} for:item="ticketOpen" for:index="index">
+                           <div key={ticketOpen.Id}>
+                              <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-resizable marketInsightTable ticketTable table-even" 
+                                 style="width: 100%;" key={ticketOpen.key}>
+
+                                 <template if:true={ticketOpen.Name}>
+                                    <tr>
+                                       <td colspan="2">
+                                          <c-input-read-only-lwc
+                                          label={TicketInfo.Name}
+                                          value={ticketOpen.Name}
+                                          ></c-input-read-only-lwc>
+                                       </td>
+                                    </tr>
+
+                                 </template>
+                                 <template if:true={ticketOpen.ClosedDailyInspectionReport__c}>
+                                    <tr>
+                                       <template if:false={isEditPage}>
+                                          <td colspan="2">
+                                             <c-input-read-only-lwc label={TicketInfo.ClosedDailyInspectionReport__c} value={ticketOpen.ClosedDailyInspectionReport__c}></c-input-read-only-lwc>
+                                          </td>
+                                       </template>
+                                       <template if:false={isEditPage}>
+                                          <td  colspan="2">{TicketInfo.ClosedDailyInspectionReport__c}<br/>
+                                             <lightning-record-edit-form object-api-name="Ticket__c">
+                                                <lightning-input-field 
+                                                   field-name="ClosedDailyInspectionReport__c" variant="label-hidden"
+                                                   data-field-name="ClosedDailyInspectionReport__c" data-index={index} 
+                                                   value={ticketOpen.ClosedDailyInspectionReport__c} disabled="true">
+                                                </lightning-input-field>
+                                             </lightning-record-edit-form>
+                                          </td>
+                                       </template>
+                                    </tr>
+                                 </template>
+                                 <!--  BY lizunxing 20240102 -->
+                                 <tr>
+                                    <template if:false={isEditPage}>
+                                       <td colspan="2">
+                                          <c-input-read-only-lwc label={TicketInfo.Subject__c} value={ticketOpen.Subject__c}></c-input-read-only-lwc>
+                                       </td>
+                                    </template>
+                                    <template if:true={isEditPage}>
+                                       <td colspan="2">
+                                          <span style="color:red;">*</span>
+                                          <template if:true={submit}>
+                                             <template if:false={ticketOpen.Subject__c}>
+                                                <span style="color:red">{TicketInfo.Subject__c}</span>
+                                             </template>
+                                             <template if:true={ticketOpen.Subject__c}>
+                                                <span>{TicketInfo.Subject__c}</span>
+                                             </template>
+                                       </template>
+                                       <template if:false={submit}>
+                                             <span>{TicketInfo.Subject__c}</span>
+                                       </template>
+                                    
+                                          <!-- <span style="color:red;">*</span>{TicketInfo.Subject__c} -->
+                                          <br/>
+                                          <!-- Modified By Sunny Start -->
+                                          <template lwc:if={ticketOpen.SystemGeneration__c}>
+                                             &nbsp;&nbsp;{ticketOpen.Subject__c}
+                                          </template>
+                                          <template lwc:else>
+                                             <lightning-input 
+                                                variant="label-hidden" data-field-name="Subject__c" 
+                                                data-index={index} label="Subject__c" 
+                                                value={ticketOpen.Subject__c} onchange={handleTicketSubjectChange}
+                                                read-only={isFieldReadOnly}>
+                                             </lightning-input>
+                                          </template>
+                                          <!-- Modified By Sunny End -->
+                                       </td>
+                                    </template>
+                                 </tr>
+                                 <tr>
+                                    <template if:false={isEditPage}>
+                                       <td colspan="2">
+                                          <c-input-read-only-lwc label={TicketInfo.Description__c} value={ticketOpen.Description__c}></c-input-read-only-lwc>
+                                       </td>
+                                    </template>
+                                    <template if:true={isEditPage}>
+                                       <td colspan="2">
+                                          <!-- <span style="color:red;">*</span> -->
+                                          {TicketInfo.Description__c}
+                                          <br/>
+                                          <lightning-textarea 
+                                                variant="label-hidden" data-field-name="Description__c" 
+                                                data-index={index} label="Description__c" value={ticketOpen.Description__c} 
+                                                onchange={handleTicketDescriptionChange} read-only={isFieldReadOnly}>
+                                          </lightning-textarea>
+                                       </td>
+                                    </template>
+                                 </tr>
+                                 <tr>
+                                    <template if:false={isEditPage}>
+                                       <td colspan="2">
+                                          <c-input-read-only-lwc label={TicketInfo.Category__c} value={ticketOpen.Category__c}></c-input-read-only-lwc>
+                                       </td>
+                                    </template>
+                                    <template if:true={isEditPage}>
+                                       <td  colspan="2">
+                                          <!-- <span style="color:red;">*</span> -->
+                                          <!-- <template if:true={submit}>
+                                             <template if:false={ticketOpen.Category__c}>
+                                                <span style="color:red">{TicketInfo.Category__c}</span>
+                                             </template>
+                                             <template if:true={ticketOpen.Category__c}>
+                                                <span>{TicketInfo.Category__c}</span>
+                                             </template>
+                                       </template>
+                                       <template if:false={submit}>
+                                             <span>{TicketInfo.Category__c}</span>
+                                       </template> -->
+                                       <span>{TicketInfo.Category__c}</span>
+                                          <br/>
+                                          <lightning-combobox 
+                                             variant="label-hidden" data-field-name="Category__c" 
+                                             data-index={index} data-type="open" name="progress"
+                                             label="Category__c" value={ticketOpen.Category__c} 
+                                              onchange={handleTicketCategoryChange}
+                                             options={CategoryTaskOptions.data} read-only={isFieldReadOnly}>
+                                          </lightning-combobox>
+                                       </td>
+                                    </template>
+                                 </tr>
+                              
+                                 <template if:true={ticketOpen.isShowProduct}>
+                                    <tr>
+                                       <template if:false={isEditPage}>
+                                          <td colspan="2">
+                                             <c-input-read-only-lwc label={TicketInfo.Product__c} value={ticketOpen.Product__c}></c-input-read-only-lwc>
+                                          </td>
+                                       </template>
+                                       <template if:true={isEditPage}>
+                                          <td colspan="2">
+                                             {TicketInfo.Product__c}
+                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                             <a style="margin-right: 3rem;">
+                                                <!-- <lightning-icon variant="success" icon-name="utility:dash" size="x-small"
+                                                   title="" data-index={index} onclick={deleteProductValue}>
+                                                </lightning-icon> -->
+                                                <span class="slds-assistive-text"></span>
+                                             </a>
+                                             <br/>
+                                             <c-lookup-lwc 
+                                                name="onProduct" data-index={index} 
+                                                obj-name="Product__c" op={lookupFilter} search-key={ticketOpen.Product__c} read-only={isFieldReadOnly}
+                                                onlookupupdate={handleChangeProductOptionTicket}>
+                                             </c-lookup-lwc>
+                                          </td>
+                                       </template>
+                                    </tr>
+                                    <!-- <template if:true={ticketOpen.isShowProductSearch}> -->
+                                       <!-- <tr>
+                                          <td style="display: block;" colspan="2">
+                                             <c-lookup-lwc 
+                                                name="onProduct" data-index={index} 
+                                                obj-name="Product__c" op={lookupFilter} read-only={isFieldReadOnly} 
+                                                onlookupupdate={handleChangeProductOptionTicket}>
+                                             </c-lookup-lwc>
+                                          </td>
+                                       </tr> -->
+                                    <!-- </template> -->
+                                 
+                                 </template>
+                                 <template if:true={ticketOpen.isShowProduct}>
+                                    <tr>
+                                       <template if:false={isEditPage}>
+                                          <td colspan="2">
+                                             <c-input-read-only-lwc label={TicketInfo.SeriesNum__c} value={ticketOpen.SeriesNum__c}></c-input-read-only-lwc>
+                                          </td>
+                                       </template>
+                                       <template if:true={isEditPage}>
+                                          <td colspan="2">
+                                             {TicketInfo.SeriesNum__c}
+                                             <br/>
+                                          <!-- </td>
+                                          <td style="display: block;" colspan="2"> -->
+                                             <!-- Modified By Sunny Start -->
+                                             <template lwc:if={ticketOpen.SystemGeneration__c}>
+                                                {ticketOpen.SeriesNum__c}
+                                             </template>
+                                             <template lwc:else>
+                                                <lightning-input 
+                                                   variant="label-hidden" data-field-name="SeriesNum__c" 
+                                                   data-index={index} label="SeriesNum__c" 
+                                                   value={ticketOpen.SeriesNum__c} onchange={handleTicketSeriesNumChange}
+                                                   read-only={isFieldReadOnly}>
+                                                </lightning-input>
+                                             </template>
+                                             <!-- Modified By Sunny End -->
+                                          </td>
+                                       </template>
+                                    </tr>
+                                 </template>
+                              
+                                 <template if:true={ticketOpen.Name}>
+                                 
+                                    <tr>
+                                       <template if:false={isEditPage}>
+                                          <td colspan="2">
+                                             <c-input-read-only-lwc label={TicketInfo.Status__c} value={ticketOpen.Status__c}></c-input-read-only-lwc>
+                                          </td>
+                                       </template>
+                                       <template if:true={isEditPage}>
+                                          <td colspan="2">{TicketInfo.Status__c}
+                                             <br/>
+                                             <lightning-combobox 
+                                                   variant="label-hidden" data-field-name="Status__c" data-index={index} data-type="open"
+                                                   name="progress" label="Status__c" value={ticketOpen.Status__c} 
+                                                    onchange={handleTicketConfirmChange}
+                                                   options={confirmTaskOptions.data} read-only={isFieldReadOnly}>
+                                             </lightning-combobox>
+                                          </td>
+                                       </template>
+                                    </tr>
+                                 </template>
+                                 <tr>
+                                    <template if:false={isEditPage}>
+                                       <td colspan="2">
+                                          <c-input-read-only-lwc label={TicketInfo.Priority__c} value={ticketOpen.Priority__c}></c-input-read-only-lwc>
+                                       </td>
+                                    </template>
+                                    <template if:true={isEditPage}>
+                                       <td colspan="2">
+                                          {TicketInfo.Priority__c}
+                                          <br/>
+                                       <!-- </td>
+                                       <td style="display: block;" colspan="2"> -->
+                                          <lightning-combobox 
+                                             variant="label-hidden" data-field-name="Priority__c" 
+                                             data-index={index} data-type="open" name="progress" 
+                                             label="Priority__c" value={ticketOpen.Priority__c} 
+                                             placeholder={label.Ticket_Select_Progress}
+                                             onchange={handleTicketPriorityChange}
+                                             options={priorityTaskOptions.data} read-only={isFieldReadOnly}>
+                                          </lightning-combobox>
+                                       </td>
+                                    </template>
+                                 </tr>
+                                 <tr>
+                                    <template if:false={isEditPage}>
+                                       <td colspan="2">
+                                          <c-input-read-only-lwc label={TicketInfo.DueDate__c} value={ticketOpen.DueDate__c}></c-input-read-only-lwc>
+                                       </td>
+                                    </template>
+                                    <template if:true={isEditPage}>
+                                       <td colspan="2">
+                                          <span style="color:red;">*</span>
+                                          <template if:true={submit}>
+                                             <template if:false={ticketOpen.DueDate__c}>
+                                                <span style="color:red">{TicketInfo.DueDate__c}</span>
+                                             </template>
+                                             <template if:true={ticketOpen.DueDate__c}>
+                                                <span>{TicketInfo.DueDate__c}</span>
+                                             </template>
+                                       </template>
+                                       <template if:false={submit}>
+                                             <span>{TicketInfo.DueDate__c}</span>
+                                       </template>
+
+                                          <br/>
+                                          <!-- Due Date -->
+                                       <!-- </td>
+                                       <td style="display: block;" colspan="2"> -->
+                                          <lightning-record-edit-form object-api-name="Ticket__c">
+                                             <ligthning if:false={ticketOpen.oldActivityDateShow}>
+                                                <lightning-input-field 
+                                                   field-name="DueDate__c" variant="label-hidden"
+                                                   data-field-name="DueDate__c" data-index={index} 
+                                                   value={ticketOpen.DueDate__c} disabled={isFieldReadOnly}
+                                                   onchange={handleTicketActivityDateChange} required>
+                                                </lightning-input-field>
+                                             </ligthning>
+                                             <ligthning if:true={ticketOpen.oldActivityDateShow}>
+                                                <lightning-input-field 
+                                                   field-name="DueDate__c" variant="label-hidden"
+                                                   data-field-name="DueDate__c" data-index={index} 
+                                                   value={ticketOpen.DueDate__c} disabled={isFieldReadOnly}
+                                                   onchange={handleTicketActivityDateChange} required>
+                                                </lightning-input-field>
+                                             </ligthning>
+                                          </lightning-record-edit-form>
+                                       </td>
+                                    </template>
+                                 </tr>
+                                 <!-- added by Sunny about chile department start-[20231026] -->
+                                 <!-- <template if:true={isShowDepartment}> -->
+                                    <tr>
+                                       <template if:false={isEditPage}>
+                                          <td colspan="2">
+                                             <c-input-read-only-lwc label={TicketInfo.Department__c} value={ticketOpen.Department__c}></c-input-read-only-lwc>
+                                          </td>
+                                       </template>
+                                       <template if:true={isEditPage}>
+                                          <td  colspan="2">
+                                             {TicketInfo.Department__c}
+                                             <lightning-helptext content={label.INSPECTION_REPORT_MSG_DEPARTMENT_USER}
+                                                class="slds-m-left_xx-small">
+                                             </lightning-helptext>
+                                             <br/>
+                                          <!-- </td>
+                                          <td style="display: block;" colspan="2"> -->
+                                             <lightning-record-edit-form object-api-name="Ticket__c">
+                                                <lightning-input-field 
+                                                   field-name="Department__c" variant="label-hidden"
+                                                   data-field-name="Department__c" data-index={index} 
+                                                   onchange={handleTicketDepartmentChange}
+                                                   value={ticketOpen.Department__c}>
+                                                </lightning-input-field>
+                                             </lightning-record-edit-form>
+                                          </td>
+                                       </template>
+                                    </tr>
+                                 <!-- </template> -->
+                                 <!-- added by Sunny about chile department end-[20231026] -->
+                                 <tr>
+                                    <td colspan="2">
+                                    <!-- <td style="display: block;" colspan="2"> -->
+                                    
+                                       <template if:false={ticketOpen.Department__c}>
+                                          <span style="color:red;">*</span>
+                                       </template>
+                                    
+                                       <template if:true={submit}>
+                                          <template if:false={ticketOpen.AssignedTo__c}>
+                                             <span style="color:red">{TicketInfo.AssignedTo__c}</span>
+                                          </template>
+                                          <template if:true={ticketOpen.AssignedTo__c}>
+                                             <span>{TicketInfo.AssignedTo__c}</span>
+                                          </template>
+                                    </template>
+                                    <template if:false={submit}>
+                                          <span>{TicketInfo.AssignedTo__c}</span>
+                                    </template>
+                                 
+
+                                       <template if:true={isShowDepartment}>
+                                          <lightning-helptext content={label.INSPECTION_REPORT_MSG_DEPARTMENT_USER}
+                                             class="slds-m-left_xx-small">
+                                          </lightning-helptext>
+                                       </template>
+                                       <!-- Assigned To -->
+                                       <br/>
+                                       <c-lookup-lwc 
+                                          name="onUser"
+                                          data-index={index} 
+                                          obj-name="User" 
+                                          op={lookupUserFilter} 
+                                          record-id={ticketOpen.AssignedTo__c} 
+                                          read-only={isFieldReadOnly} 
+                                          onlookupupdate={handleTicketAssignedToChange}
+                                          drop-down-style="max-height: 5rem;">
+                                       </c-lookup-lwc>
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td colspan="2">
+                                       {label.INSPECTION_REPORT_ATTACHMENT}
+                                    <br/>
+                                    <!-- </td>
+                                    <td style="display: block;" colspan="2"> -->
+                                       <c-upload-files3-lwc 
+                                          parent-id={record.Id} data-recordid={index} 
+                                          data-type='ticketOpen' record-id={ticketOpen.Id} 
+                                          onselectfiles={handleSelectFiles}
+                                          disabled-delete={isFieldReadOnly}
+                                          disabled-upload={isFieldReadOnly}>
+                                       </c-upload-files3-lwc>
+                                    </td>
+                                 </tr>
+                                 <template if:true={isEditPage}>
+                                    <tr>
+                                       <td colspan="2">
+                                          {label.INSPECTION_REPORT_ACTION}
+                                          <br/>
+                                          <!-- <template if:false={ticketOpen.Id}> -->
+                                             <!-- <a style="margin-right: 3rem;">
+                                                <lightning-icon variant="success" icon-name="utility:clear" size="small" title="" data-index={index} onclick={deleteTicket}></lightning-icon>
+                                                <span class="slds-assistive-text"></span>
+                                             </a> -->
+                                          <!-- </template> -->
+                                          <!-- <a style="margin-right: 3rem;">
+                                             <lightning-icon variant="success" icon-name="utility:new" size="small" title="" onclick={addTicket}></lightning-icon>
+                                             <span class="slds-assistive-text"></span>
+                                          </a> -->
+                                          <a style="margin-right: 3rem;">
+                                             <button
+                                                style="background-color: #7F7F7F; color: white !important; min-width: 60px; height: 35px; border-radius: 4px;border: 1px solid #7F7F7F;"
+                                                data-index={index}
+                                                onclick={deleteTicket}>Delete
+                                             </button>
+                                             <span class="slds-assistive-text"></span>
+                                         </a>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          <a style="margin-right: 3rem;">
+                                             <button
+                                                style="background-color: #25665E; color: white !important; min-width: 60px; height: 35px; border-radius: 4px;border: 1px solid #25665E;"
+                                                data-index={index}
+                                                onclick={addTicket}>Add
+                                             </button>
+                                            
+                                             <!-- <button
+                                                 class="my-brand"
+                                                 label="Add"
+                                                 variant="brand"
+                                                 size="xx-small"
+                                                 data-index={index}
+                                                 onclick={addTicket}>
+                                             </button> -->
+                                             <span class="slds-assistive-text"></span>
+                                         </a>
+                                       </td>
+                                    </tr>
+                                 </template>
+                                 <!-- <template if:true={isEditPage}> -->
+                                    <!-- <tr>
+                                        <td colspan="2">
+                                            {label.INSPECTION_REPORT_ACTION}
+                                            <br/>
+                                            <a style="margin-right: 3rem;">
+                                                <lightning-button
+                                                    class="my-brand custom-button"
+                                                    label="Delete"
+                                                    variant="neutral" 
+                                                    size="small"
+                                                    data-index={index}
+                                                    style="background-color: #7F7F7F; color: white; min-width: 100px; height: 40px;"
+                                                    onclick={deleteTicket}>
+                                                </lightning-button>
+                                                <span class="slds-assistive-text"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a style="margin-right: 3rem;">
+                                                <lightning-button
+                                                    class="my-brand custom-button"
+                                                    label="Add"
+                                                    variant="brand"
+                                                    size="small"
+                                                    data-index={index}
+                                                    style="min-width: 100px; height: 40px;" 
+                                                    onclick={addTicket}>
+                                                </lightning-button>
+                                                <span class="slds-assistive-text"></span>
+                                            </a>
+                                        </td>
+                                    </tr> -->
+                                    <!-- <lightning-button-group>
+                                       <lightning-button
+                                           label="Delete"
+                                           variant="base"
+                                           size="small"
+                                           style="background-color: #7F7F7F; color: white;"
+                                           onclick={deleteTicket}>
+                                       </lightning-button>
+                                       <lightning-button
+                                           label="Add"
+                                           variant="brand"
+                                           size="small"
+                                           onclick={addTicket}>
+                                       </lightning-button>
+                                    </lightning-button-group> -->
+                                 <!-- </template> -->
+
+                                 <!-- <template if:true={isEditPage}>
+                                    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+                                        <lightning-button
+                                            class="my-button delete-button"
+                                            label="Delete"
+                                            variant="base"
+                                            size="small"
+                                            onclick={deleteTicket}>
+                                        </lightning-button>
+                                        <lightning-button
+                                            class="my-button"
+                                            label="Create"
+                                            variant="brand"
+                                            size="small"
+                                            onclick={addTicket}>
+                                        </lightning-button>
+                                    </div>
+                                </template> -->
+                                
+                              </table>
+                              <div style="margin-top: 20px; margin-bottom: 20px; height: 0;"></div>
+                           </div>
+                        </template>
+                     </lightning-accordion-section> 
+                  </lightning-accordion>
+               </div>
+            </template>
+
+         </template>
+      </div>
+   <!-- </lightning-card> -->
+   </div>
+</div>
+
+
+</template>

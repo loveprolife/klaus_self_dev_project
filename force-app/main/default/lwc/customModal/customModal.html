@@ -1,0 +1,35 @@
+<!--
+ * @Author: WFC
+ * @Date: 2026-03-26 16:39:27
+ * @LastEditors: WFC
+ * @LastEditTime: 2026-03-27 10:13:03
+ * @Description: 
+ * @FilePath: \testuat\force-app\main\default\lwc\customModal\customModal.html
+-->
+<template>
+    <lightning-modal-header label={header} class="my-modal-header"></lightning-modal-header>
+    <lightning-modal-body> 
+        <div class="slds-var-p-around_small">
+            <div>{body}</div>
+            <template for:each={reportData} for:item="report">
+                <div key={report.id} class="slds-var-m-top_small">
+                    <span>{report.label}</span>
+                    <span class="slds-text-title_bold">{report.value}</span>
+                </div>
+            </template>
+        </div>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <template for:each={options} for:item="option">
+            <lightning-button
+                key={option.id}
+                label={option.label}
+                class='slds-button {option.className}'
+                icon-name={option.iconName}
+                variant={option.variant}
+                onclick={handleOptionClick}
+                data-id={option.id}
+            ></lightning-button>
+        </template>
+    </lightning-modal-footer>
+</template>

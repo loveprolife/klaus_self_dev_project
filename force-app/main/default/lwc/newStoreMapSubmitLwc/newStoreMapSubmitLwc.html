@@ -1,0 +1,57 @@
+<template>
+    <!-- 页面主体，背景为白色 -->
+    <div class="slds-m-around_medium" style="background-color: #FFFFFF; min-height: 100vh; padding: 1rem;">
+        <!-- 人员信息 -->
+        <div>
+            <div style="font-weight: bold;">Person</div>
+            <div>
+                <div if:false={readly}>
+                    <c-sub-user-look-up onlookupupdate={subUserChange} placeholder="Search..."
+                        default-record-id={userId} s-object-api-name="SubUser__c" required="true" class="look-up">
+                    </c-sub-user-look-up>
+                </div>
+                <div if:true={readly}>
+                    {userName}
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- 门店信息 -->
+        <hr />
+        <div>
+            <div style="font-weight: bold;">Store</div>
+            <div>
+                <div style="word-wrap: break-word;">
+                    {shopName}
+                </div>
+
+            </div>
+        </div>
+        <hr />
+        <!-- 邮箱信息 -->
+        <div>
+            <div style="font-weight: bold;">E-mail</div>
+            <div>
+                <div>
+                    {Email}
+                </div>
+
+            </div>
+        </div>
+        <hr if:true={readly} />
+        <div if:true={readly} style="text-align: center;word-wrap: break-word;">
+            If your personnel information is incorrect, please contact the Salesforce administrator change it.
+            (yuhui9@hisense.com).
+        </div>
+
+        <br />
+        <!-- 按钮 -->
+        <div class="slds-m-top_medium" style="text-align: center;">
+            <!-- <lightning-button label="Edit" onclick={handleEdit} class="slds-m-right_small" >
+            </lightning-button> -->
+            <lightning-button variant="brand" label="Confirm" onclick={handleSubmit} if:false={readly}>
+            </lightning-button>
+        </div>
+    </div>
+</template>

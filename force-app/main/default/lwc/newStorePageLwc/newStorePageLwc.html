@@ -1,0 +1,459 @@
+<template>
+    <div class="divView">
+        <lightning-card title={accountTitle} icon-name={accountIconName}>
+            <template if:true={isShowSpinner}>
+                <lightning-spinner alternative-text="Loading" size="medium" variant="brand" style="z-index: 99;"></lightning-spinner>
+            </template>
+            <lightning-button slot="actions" class="slds-var-m-left_x-small" label="Cancel" onclick={closeModal}></lightning-button>
+            <lightning-button slot="actions" class="slds-var-m-left_x-small" label="Save & New" onclick={handleSaveAndNew}></lightning-button>
+            <lightning-button slot="actions" class="slds-var-m-left_x-small" variant="brand" label="Save" onclick={handleSave}></lightning-button>
+            <lightning-accordion class="example-accordion slds-var-m-left_large slds-var-m-right_medium" allow-multiple-sections-open  onsectiontoggle={handleSectionToggle} active-section-name={activeSections}>
+                <div class="slds-var-m-around_small"></div>
+                <lightning-record-edit-form object-api-name="Shop__c" class="account_view_from" record-type-id={recordTypeId} record-id={recordId}>
+                    <lightning-messages></lightning-messages> 
+                    <div class="slds-text-title_bold slds-var-p-left_xx-small">
+                            <!-- 基本信息 -->
+                            <!-- {label.Customer_Basic_Information} -->
+                             Store Basic Information
+                    </div>
+                    
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                               
+                                field-name="Sales_Region__c"
+                                data-field-name="Sales_Region__c" 
+                                onchange={handleChange}
+                                value={record.Sales_Region__c}
+                                required
+                                disabled={salesRegionReadonly}
+                                >
+                            </lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small slds-var-p-left_xx-small">
+                                <!-- <lightning-input-field
+                                    
+                                    field-name="Shop_Code__c"
+                                    data-field-name="Shop_Code__c"
+                                    placeholder="This field is calculated upon save"
+                                    >
+                                </lightning-input-field> -->
+                                <lightning-input
+                                    class="slds-var-p-right_xx-small" 
+                                    label="Shop Code"
+                                    value={record.Shop_Code__c}
+                                    disabled
+                                    placeholder="This field is calculated upon save"
+                                >
+                                </lightning-input>
+                        </div>
+
+                         <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field
+                                
+                                field-name="Name"
+                                data-field-name="Name" 
+                                onchange={handleChange}
+                                value={record.Name}
+                                required
+                                >
+                            </lightning-input-field>
+                       </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field
+                                
+                                field-name="Shop_Code_Text__c"
+                                data-field-name="Shop_Code_Text__c" 
+                                onchange={handleChange}
+                                value={record.Shop_Code_Text__c}
+                                >
+                            </lightning-input-field>                     
+                       </div>
+                      
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                                    
+                                    field-name="Shop_Level__c"
+                                    data-field-name="Shop_Level__c" 
+                                    onchange={handleChange}
+                                    value={record.Shop_Level__c}
+                                    >
+                            </lightning-input-field>
+                        </div>
+                        <template if:true={customChannelOne}>
+                            <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                                <label class="slds-form-element__label" for="customer-lookup">Channel</label>
+                                <c-lookup-lwc 
+                                    name="customer"
+                                    data-index={index} 
+                                    obj-name="Account" 
+                                    op={lookupChannelFilter} 
+                                    record-id={channelId} 
+                                    onlookupupdate={handleChannelChange}
+                                    drop-down-style="max-height: 5rem;"
+                                    class="custom-lookup"
+                                ></c-lookup-lwc>
+                            </div>
+                        </template>
+                        <template if:false={customChannelOne}>
+                            <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                                <lightning-input-field                                
+                                    field-name="Account__c"
+                                    data-field-name="Account__c" 
+                                    onchange={handleChange}
+                                    value={record.Account__c}                                
+                                    >
+                                </lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2 slds-var-p-right_small slds-var-p-left_xx-small channelItem">
+                            <!--ChannelAllFilter/lookupChannelAll-->
+                                <!-- <lightning-input-field                                
+                                    field-name="Channel_item__c"
+                                    data-field-name="Channel_item__c" 
+                                    onchange={handleChange}
+                                    value={record.Channel_item__c}                                
+                                    >
+                                </lightning-input-field> -->
+                                <c-lookup-lwc
+                                    name="Channel_item__c"
+                                    data-index={index} 
+                                    obj-name="Channel_item__c" 
+                                    op={lookupChannelAll} 
+                                    record-id={record.Channel_item__c} 
+                                    onlookupupdate={handleSapCodeChange}
+                                    drop-down-style="max-height: 5rem;"
+                                    class="custom-lookup"
+                                    show-label=true
+                                    label="Channel"
+                                ></c-lookup-lwc>
+                            </div>
+                        </template>                        
+                        
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small slds-var-p-left_xx-small">
+                            <!-- <lightning-input-field                                
+                                field-name="Channel_Name__c"
+                                data-field-name="Channel_Name__c" 
+                                placeholder="This field is calculated upon save"
+                                disabled
+                                >
+                            </lightning-input-field> -->
+                            <lightning-input
+                                class="slds-var-p-right_xx-small"                        
+                                label="Channel Name"
+                                value={record.Channel_Name__c}
+                                disabled
+                                placeholder="This field is calculated upon save"
+                            >
+                            </lightning-input>
+                        </div>
+                        <!-- <div class="slds-col slds-size_1-of-2 slds-var-p-right_small  slds-var-p-left_xx-small"> -->
+                            <!-- <lightning-input-field
+                                
+                                field-name="Account__c"
+                                data-field-name="Account__c" 
+                                onchange={handleChange}
+                                value={record.Account__c}
+                                required
+                                >
+                            </lightning-input-field> -->
+                            <!-- <span style="color:red;">*</span> -->
+                            <!-- <label class="slds-form-element__label" for="customer-lookup">SAP Code</label>
+                            <c-lookup-lwc 
+                                name="Account"
+                                data-index={index} 
+                                obj-name="Account" 
+                                op={lookupSapCodeFilter} 
+                                record-id={sapCodeId} 
+                                onlookupupdate={handleSapCodeChange}
+                                drop-down-style="max-height: 5rem;"
+                                class="custom-lookup"
+                            ></c-lookup-lwc> -->
+                        <!-- </div> -->
+                        
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                                    
+                                    field-name="CurrencyIsoCode"
+                                    data-field-name="CurrencyIsoCode" 
+                                    onchange={handleChange}
+                                    value={record.CurrencyIsoCode}
+                                    >
+                            </lightning-input-field>
+                        </div>
+                        
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                               
+                                field-name="Grid__c"
+                                data-field-name="Grid__c" 
+                                onchange={handleChange}
+                                value={record.Grid__c}
+                                >
+                            </lightning-input-field>                    
+                        </div>
+                    </div>
+                    <div class="noline"></div>
+                    <div class="slds-text-title_bold slds-var-p-left_xx-small">
+                        Address Information
+                    </div>
+                    <div class="slds-grid slds-wrap">
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                               
+                                field-name="Country__c"
+                                data-field-name="Country__c" 
+                                onchange={handleChange}
+                                value={record.Country__c}
+                                >
+                            </lightning-input-field>                    
+                        </div>
+                        
+                            <!-- <template if:true={showAddressFlag}> -->
+                                <template if:false={provincePickListShow}>
+                                    <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                                        <lightning-input-field                               
+                                            field-name="Province_State__c"
+                                            data-field-name="Province_State__c" 
+                                            value={record.Province_State__c}
+                                            onchange={handleChange}
+                                            >
+                                        </lightning-input-field>                      
+                                    </div>
+                                </template>
+                                <template if:true={provincePickListShow}>
+                                    <div class="slds-col slds-size_1-of-2 slds-var-p-right_small AccountProvince">
+                                        <!-- <lightning-input-field field-name="Province_State__c" required onchange={handleAccountFieldChange}></lightning-input-field> -->
+                                        <c-account-look-up-lwc
+                                            class="AccountLookUp"
+                                            label="Province/State" 
+                                            record-id={record.Province_State__c}
+                                            show-label=true
+                                            data-field-name="Province_State__c" 
+                                            obj-name="Country_State__c"
+                                            is-required={isProvinceRequired}
+                                            op={lookupCountryState} 
+                                            onlookupupdate={lookUpChangeProvinceStateHandler}
+                                        >
+                                        </c-account-look-up-lwc>
+                                    </div>
+                                </template>
+                            <!-- </template>                             -->
+                        
+                        <!-- Region__c -->
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                                
+                                field-name="Region__c"
+                                data-field-name="Region__c" 
+                                value={record.Region__c}
+                                onchange={handleChange}
+                                >
+                            </lightning-input-field>
+                        </div>
+                        <!-- Suburb__c -->
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                                
+                                field-name="Suburb__c"
+                                data-field-name="Suburb__c" 
+                                value={record.Suburb__c}
+                                onchange={handleChange}
+                                >
+                            </lightning-input-field>
+                        </div>
+
+                        <!-- Sub_Region__c -->
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                                
+                                field-name="Sub_Region__c"
+                                data-field-name="Sub_Region__c" 
+                                value={record.Sub_Region__c}
+                                onchange={handleChange}
+                                >
+                            </lightning-input-field>
+                        </div>
+                        <!-- City__c -->
+                        <div class="slds-col slds-size_6-of-12 slds-var-p-right_small">
+                            <lightning-input-field                                
+                                field-name="City__c"
+                                data-field-name="City__c" 
+                                value={record.City__c}
+                                onchange={handleChange}
+                                >
+                            </lightning-input-field>                   
+                        </div>
+
+                        <div class="slds-col slds-size_5-of-12 slds-var-p-right_small">
+                            <lightning-input-field                                
+                                field-name="Address1__c"
+                                data-field-name="Address1__c" 
+                                value={record.Address1__c}
+                                onchange={handleChange}
+                                required
+                                >
+                            </lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-12 slds-var-p-right_small">
+                            <lightning-icon icon-name="standard:address" 
+                                            alternative-text="Address" 
+                                            title="Address"
+                                            class="icon-adjustment"
+                                            onclick={openLocation}>
+                            </lightning-icon>
+                        </div> 
+                        <!-- Address2 -->
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                                
+                                field-name="Address2__c"
+                                data-field-name="Address2__c" 
+                                value={record.Address2__c}
+                                onchange={handleChange}
+                                >
+                            </lightning-input-field>
+                        </div>
+
+                        <!-- <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                                <lightning-input-field                                
+                                    field-name="Shop_Center_Location__c"
+                                    data-field-name="Shop_Center_Location__c" 
+                                    value={record.Shop_Center_Location__c}
+                                    onchange={handleChange}
+                                    >
+                                </lightning-input-field>           
+                        </div> -->
+                        <!-- <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <lightning-input
+                                        type="number"
+                                        step="0.000001"
+                                        label="Latitude"
+                                        value={latitude}
+                                        readonly>
+                                    </lightning-input>
+                                </div>
+                                <div class="slds-col">
+                                    <lightning-input
+                                        type="number"
+                                        step="0.000001"
+                                        label="Longitude"
+                                        value={longitude}
+                                        readonly>
+                                    </lightning-input>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small slds-var-p-left_xx-small">
+                            <div class="slds-grid slds-gutters">
+                                <div class="slds-col">
+                                    <lightning-input type="decimal" label="Latitude" value={latitude} onchange={handleLatitudeChange}></lightning-input>
+                                </div>
+                                <div class="slds-col">
+                                    <lightning-input type="decimal" label="Longitude" value={longitude} onchange={handleLongitudeChange}></lightning-input>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Postal__c -->
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                                
+                                field-name="Postal__c"
+                                data-field-name="Postal__c" 
+                                value={record.Postal__c}
+                                onchange={handleChange}
+                                >
+                            </lightning-input-field>
+                        </div>
+                    </div>
+
+                    <div class="noline"></div>
+                    <div class="slds-text-title_bold slds-var-p-left_xx-small">
+                        Others Information
+                    </div>
+                    <div class="slds-grid slds-wrap">
+                        <!-- Region_Type__c -->
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                                
+                                field-name="Region_Type__c"
+                                data-field-name="Region_Type__c" 
+                                value={record.Region_Type__c}
+                                onchange={handleChange}
+                                >
+                            </lightning-input-field>
+                        </div>
+                        <!-- Metro_Type__c -->
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                                
+                                field-name="Metro_Type__c"
+                                data-field-name="Metro_Type__c" 
+                                value={record.Metro_Type__c}
+                                onchange={handleChange}
+                                >
+                            </lightning-input-field>
+                        </div>
+
+                        
+                        <!-- Storage_Location__c -->
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field                                
+                                field-name="Storage_Location__c"
+                                data-field-name="Storage_Location__c" 
+                                value={record.Storage_Location__c}
+                                onchange={handleChange}
+                                >
+                            </lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">          
+                                <lightning-input-field                                
+                                    field-name="Entering_Status__c"
+                                    data-field-name="Entering_Status__c" 
+                                    value={record.Entering_Status__c}
+                                    onchange={handleChange}
+                                    >
+                                </lightning-input-field>
+                        </div> 
+
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                            <lightning-input-field
+                                
+                                field-name="Store_No_from_Account__c"
+                                data-field-name="Store_No_from_Account__c" 
+                                onchange={handleChange}
+                                value={record.Store_No_from_Account__c}
+                                >
+                            </lightning-input-field>                     
+                       </div>                      
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                                <lightning-input-field                                
+                                    field-name="Booth_Size__c"
+                                    data-field-name="Booth_Size__c" 
+                                    value={record.Booth_Size__c}
+                                    onchange={handleChange}
+                                    >
+                                </lightning-input-field>
+                        </div>
+                        
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                                <lightning-input-field                                
+                                    field-name="Type__c"
+                                    data-field-name="Type__c" 
+                                    value={record.Type__c}
+                                    onchange={handleChange}
+                                    >
+                                </lightning-input-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small"></div>
+                        <div class="slds-col slds-size_1-of-2 slds-var-p-right_small">
+                                <lightning-input-field
+                                    field-name="Exhibition_Format__c"
+                                    data-field-name="Exhibition_Format__c" 
+                                    value={record.Exhibition_Format__c}
+                                    onchange={handleChange}
+                                    >
+                                </lightning-input-field>
+                        </div>
+                    </div>
+                </lightning-record-edit-form>
+            </lightning-accordion>
+        </lightning-card>
+    </div>
+    <template if:true={openLocationPage}>
+        <c-google-map-location
+            onselect={handleHasEdit}
+            ongoback={handleCloseLocation}
+            onrefreshdata={handleRefreshData}>
+        ></c-google-map-location>
+    </template>
+</template>

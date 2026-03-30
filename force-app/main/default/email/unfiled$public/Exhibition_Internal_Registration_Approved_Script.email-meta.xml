@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>false</available>
+    <description>展会内部员工 审批通过就发成功邀请函脚本</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Exhibition  Internal Registration Approved Script</name>
+    <style>none</style>
+    <subject>展会报名成功【再次提醒补充行程信息！】</subject>
+    <textOnly>尊敬的{0}，
+
+您提交的资料经项目组及公司内部审核通过，将于{1}现场参加{2}展会，敬请留意后续参展事项的相关通知，谢谢。
+行程信息补填地址：{3}
+登陆遇到问题咨询 崔杰 cuijie3@hisense.com
+
+{2}展会项目组</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

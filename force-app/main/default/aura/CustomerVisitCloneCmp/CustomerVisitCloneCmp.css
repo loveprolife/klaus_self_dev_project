@@ -1,0 +1,55 @@
+.THIS .title{
+    text-align: center;
+    line-height: 32px;
+    padding-bottom:20px;
+    border-bottom: 1px solid  #54698d;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+.THIS.alertMessage h2{
+    text-align: center;
+}
+.THIS.alertMessage h2 span{
+    font-family: 'Salesforce Sans',Arial,sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+}
+.THIS.alertMessage .slds-truncate{
+    white-space: normal;
+}
+.THIS.assign_admit{
+    float:right;
+    margin-top: 20px;
+    margin-left: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid rgb(221, 219, 218);
+    -webkit-transition: border .15s linear;
+    transition: border .15s linear;
+    background-color: rgba(27, 82, 151, 1.0);
+    border-color: rgba(27, 82, 151, 1.0);
+    color: rgb(255, 255, 255);
+    border-radius: .25rem;
+    line-height: 1.875rem;
+}
+.THIS.assign_cancel{
+    float:right;
+    margin-top: 20px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid rgb(221, 219, 218);
+    -webkit-transition: border .15s linear;
+    transition: border .15s linear;
+    border-color: rgb(221, 219, 218);
+    background-color: rgb(255, 255, 255);
+    border-radius: .25rem;
+    line-height: 1.875rem;
+}
+.THIS .assign_admit:hover,.THIS.assign_cancel:hover{
+    background-color: #e7edf4;
+    cursor: pointer;
+}

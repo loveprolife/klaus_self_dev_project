@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <allowRecall>true</allowRecall>
+    <allowedSubmitters>
+        <type>owner</type>
+    </allowedSubmitters>
+    <approvalPageFields>
+        <field>Name</field>
+        <field>Owner</field>
+    </approvalPageFields>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>liuxinglin1@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.Department</field>
+                <operation>equals</operation>
+                <value>Brown Goods</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Customer_Visit__c.Product_Line__c</field>
+                <operation>equals</operation>
+                <value>TV</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Sales Director</label>
+        <name>Tep_1</name>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>liuxinglin1@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <criteriaItems>
+                <field>User.Department</field>
+                <operation>equals</operation>
+                <value>Brown Goods</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Customer_Visit__c.Product_Line__c</field>
+                <operation>equals</operation>
+                <value>Laser TV,Sound Bar</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Sales Director</label>
+        <name>Sales_Director</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>luna.nortje@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>User.Department</field>
+                <operation>equals</operation>
+                <value>Sales</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Customer_Visit__c.Product_Line__c</field>
+                <operation>equals</operation>
+                <value>TV,AC,WM,Mobile,Refrigerator,Freezer,Laser TV,LCAC,Small Domestic Home Appliances,Cooking,Dishwasher,Sound Bar</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Sales Director</label>
+        <name>Tep_3</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>liyindan@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>User.Department</field>
+                <operation>equals</operation>
+                <value>White goods</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Customer_Visit__c.Product_Line__c</field>
+                <operation>equals</operation>
+                <value>AC,WM,Refrigerator,Freezer,LCAC,Small Domestic Home Appliances,Cooking,Dishwasher</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Sales Director</label>
+        <name>Tep_4</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>wesley.naidoo@hisense.co.za</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>User.Department</field>
+                <operation>equals</operation>
+                <value>Mobile</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Customer_Visit__c.Product_Line__c</field>
+                <operation>equals</operation>
+                <value>Mobile</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Sales Director</label>
+        <name>Tep_5</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>jiangxucong@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>User.Department</field>
+                <operation>equals</operation>
+                <value>Export</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Customer_Visit__c.Product_Line__c</field>
+                <operation>equals</operation>
+                <value>TV,AC,WM,Mobile,Refrigerator,Freezer,Laser TV,LCAC,Small Domestic Home Appliances,Cooking,Dishwasher,Sound Bar</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Sales Director</label>
+        <name>Tep_6</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>lujieying@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>User.Department</field>
+                <operation>equals</operation>
+                <value>EC</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Customer_Visit__c.Product_Line__c</field>
+                <operation>equals</operation>
+                <value>TV,AC,WM,Mobile,Refrigerator,Freezer,Laser TV,LCAC,Small Domestic Home Appliances,Cooking,Dishwasher,Sound Bar</value>
+            </criteriaItems>
+        </entryCriteria>
+        <ifCriteriaNotMet>GotoNextStep</ifCriteriaNotMet>
+        <label>Sales Director</label>
+        <name>Tep_7</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <approvalStep>
+        <allowDelegate>false</allowDelegate>
+        <assignedApprover>
+            <approver>
+                <name>liuxinglin1@hisense.com</name>
+                <type>user</type>
+            </approver>
+            <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
+        </assignedApprover>
+        <entryCriteria>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>User.Department</field>
+                <operation>equals</operation>
+                <value>Sales</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Customer_Visit__c.Product_Line__c</field>
+                <operation>equals</operation>
+                <value>Laser TV,Sound Bar</value>
+            </criteriaItems>
+        </entryCriteria>
+        <label>Sales Director 2</label>
+        <name>Tep_8</name>
+        <rejectBehavior>
+            <type>RejectRequest</type>
+        </rejectBehavior>
+    </approvalStep>
+    <description>南非客户拜访申请流程</description>
+    <emailTemplate>unfiled$public/Customer_Visit_Email</emailTemplate>
+    <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
+    <entryCriteria>
+        <booleanFilter>1 AND 14 AND ((2 AND 3) OR (4 AND 5) OR (6 AND 7) OR (8 AND 9) OR (10 AND 11) OR (12 AND 13))</booleanFilter>
+        <criteriaItems>
+            <field>User.Profile</field>
+            <operation>startsWith</operation>
+            <value>South Africa</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Department</field>
+            <operation>equals</operation>
+            <value>Brown goods</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Customer_Visit__c.Product_Line__c</field>
+            <operation>equals</operation>
+            <value>TV,Laser TV,Sound Bar</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Department</field>
+            <operation>equals</operation>
+            <value>Sales</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Customer_Visit__c.Product_Line__c</field>
+            <operation>equals</operation>
+            <value>TV,AC,WM,Mobile,Refrigerator,Freezer,Laser TV,LCAC,Small Domestic Home Appliances,Cooking,Dishwasher,Sound Bar</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Department</field>
+            <operation>equals</operation>
+            <value>White goods</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Customer_Visit__c.Product_Line__c</field>
+            <operation>equals</operation>
+            <value>AC,WM,Refrigerator,Freezer,LCAC,Small Domestic Home Appliances,Cooking,Dishwasher</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Department</field>
+            <operation>equals</operation>
+            <value>Mobile</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Customer_Visit__c.Product_Line__c</field>
+            <operation>equals</operation>
+            <value>Mobile</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Department</field>
+            <operation>equals</operation>
+            <value>Export</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Customer_Visit__c.Product_Line__c</field>
+            <operation>equals</operation>
+            <value>TV,AC,WM,Mobile,Refrigerator,Freezer,Laser TV,LCAC,Small Domestic Home Appliances,Cooking,Dishwasher,Sound Bar</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.Department</field>
+            <operation>equals</operation>
+            <value>EC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Customer_Visit__c.Product_Line__c</field>
+            <operation>equals</operation>
+            <value>TV,AC,WM,Mobile,Refrigerator,Freezer,Laser TV,LCAC,Small Domestic Home Appliances,Cooking,Dishwasher,Sound Bar</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Customer_Visit__c.Approval_Status__c</field>
+            <operation>equals</operation>
+            <value>Draft,Rejected</value>
+        </criteriaItems>
+    </entryCriteria>
+    <finalApprovalActions>
+        <action>
+            <name>Approval_Status_Approval</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>customer_visit_approved</name>
+            <type>Alert</type>
+        </action>
+    </finalApprovalActions>
+    <finalApprovalRecordLock>true</finalApprovalRecordLock>
+    <finalRejectionActions>
+        <action>
+            <name>Approval_Status_Rejection</name>
+            <type>FieldUpdate</type>
+        </action>
+        <action>
+            <name>customer_visit_reject</name>
+            <type>Alert</type>
+        </action>
+    </finalRejectionActions>
+    <finalRejectionRecordLock>false</finalRejectionRecordLock>
+    <initialSubmissionActions>
+        <action>
+            <name>Approval_Status_Submit</name>
+            <type>FieldUpdate</type>
+        </action>
+    </initialSubmissionActions>
+    <label>Customer Visit for SA</label>
+    <nextAutomatedApprover>
+        <useApproverFieldOfRecordOwner>false</useApproverFieldOfRecordOwner>
+        <userHierarchyField>Manager</userHierarchyField>
+    </nextAutomatedApprover>
+    <processOrder>1</processOrder>
+    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <showApprovalHistory>false</showApprovalHistory>
+</ApprovalProcess>

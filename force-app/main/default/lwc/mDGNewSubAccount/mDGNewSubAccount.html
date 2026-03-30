@@ -1,0 +1,69 @@
+<!--
+ * @Author: WFC
+ * @Date: 2025-01-09 13:56:15
+ * @LastEditors: WFC
+ * @LastEditTime: 2025-02-05 10:48:34
+ * @Description: 
+ * @FilePath: \testuat\force-app\main\default\lwc\mDGNewSubAccount\mDGNewSubAccount.html
+-->
+<template>
+    <lightning-spinner alternative-text="Loading" size="medium" if:true={isShowSpinner}></lightning-spinner>
+    <lightning-button label="New Sub Account" onclick={handleShowSection}></lightning-button>
+    <template if:true={showSection}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={handleCloseSection}>
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true" style="color:#747474">
+                        <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                    </svg>
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate slds-text-heading_medium" tabindex="-1">{label.New_Sub_Account_Title}</h1>
+                </div>
+                <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+                    <lightning-record-edit-form object-api-name="Account">
+                        <!-- 分户主户 -->
+                        <lightning-input-field 
+                            field-name="ParentCustomerOfSubAcc__c" 
+                            value={parentCustomerOfSubAcc} 
+                            onchange={handleParentCustomerOfSubAccChange}
+                            required> 
+                        </lightning-input-field>
+                        <!-- 分户类型 -->
+                        <lightning-input-field 
+                            field-name="Sub_account_type__c" 
+                            value={subAccountType} 
+                            onchange={handleSubAccountTypeChange}
+                            required> 
+                        </lightning-input-field>
+                        <!-- 分户原因 -->
+                        <lightning-input-field 
+                            field-name="Reasons_for_customer_segmentation__c" 
+                            value={reasonsCustomerSegmentation} 
+                            onchange={handleReasonsCustomerSegmentationChange}
+                            required> 
+                        </lightning-input-field>
+                        <!-- 分户信贷规则 -->
+                        <template if:false={isHaveCreditManagement}>
+                            <lightning-input-field 
+                                field-name="Credit_Management__c" 
+                                value={creditManagement} 
+                                onchange={handleCreditManagementChange}
+                                required> 
+                            </lightning-input-field>
+                        </template>
+                    </lightning-record-edit-form>
+                    <template if:true={errorMessage}>
+                        <p class="slds-text-color_error slds-var-m-left_xx-small">{errorMessage}</p>
+                    </template>
+                </div>
+                <div class="slds-modal__footer">
+                    <lightning-button class="slds-var-m-top_small" label={label.Button_Back} onclick={handleCloseSection}></lightning-button>
+                    <lightning-button class="slds-var-m-top_small slds-var-m-left_small" label={label.Button_Next} variant="brand" onclick={handleNext}></lightning-button>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+</template>

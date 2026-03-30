@@ -1,0 +1,20 @@
+<!--
+ * @Author: WFC
+ * @Date: 2025-11-27 09:45:08
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2026-01-27 11:00:53
+ * @Description: 
+ * @FilePath: \testuat\force-app\main\default\lwc\qbiEmbed\qbiEmbed.html
+-->
+<template>
+    <lightning-card title={cardTitle} icon-name={iconName} class="card--full">
+        <div class="frame-wrap">
+            <iframe class="qbi-frame" src={computedSrc} title="QBI Report" frameborder="0" allow="fullscreen"></iframe>
+        </div>
+        <template if:true={showFooter}>
+            <div class="slds-p-around_small slds-text-body_small slds-text-color_weak">
+                注意：如果页面未能正常加载，请联系管理员添加 CSP Trusted Site 或确认目标站点允许被 iframe 嵌入。
+            </div>
+        </template>
+    </lightning-card>
+</template>

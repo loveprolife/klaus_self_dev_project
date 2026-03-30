@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "5f598a29-326f-401e-a56c-141293b80f99",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "Inspection_Detail__c",
+  "id" : "500be4c6-fc58-432a-aebe-61905f170f1d",
+  "label" : "Inspection Detail",
+  "objectApiName" : "Daily_Inspection_Report__c",
+  "routeType" : "detail-a1a",
+  "type" : "route",
+  "urlPrefix" : "daily-inspection-report"
+}

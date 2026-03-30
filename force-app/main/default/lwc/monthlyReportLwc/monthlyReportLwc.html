@@ -1,0 +1,163 @@
+<template>
+
+    <div data-id="maincontent" class="slds-is-relative">
+        <!-- 页眉  -->
+        <template if:true={isShowSpinner}>
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        </template>
+        <c-modal-lwc data-id="product selection" static-mode=true title="" show-ok=true show-close=true
+            hidden-close-icon=false onok={handleOk}>
+            <h1>{modalMsg}</h1>
+        </c-modal-lwc>
+
+
+        <!-- 页面右上角按钮 -->
+        <div class="slds-modal__header" style="padding: 0px;">
+            <lightning-card class="slds-color__background_gray-4 pageHeader" title={label.Monthly_Report_Title}
+                icon-name="standard:article">
+                <div slot="actions">
+                    <template if:true={haveRecordId}>
+                        <template if:false={isEditPage}>
+                            <div style="margin-left:5px;display:inline-block;">
+                                <button class="slds-button slds-button_brand"
+                                    onclick={handleEdit}>{label.INSPECTION_REPORT_EDIT}</button>
+                            </div>
+                        </template>
+                        <template if:true={isEditPage}>
+                            <div style="margin-left:5px;display:inline-block;">
+                                <button class="slds-button slds-button_brand"
+                                    onclick={handleSave}>{label.PromoterDailyReport_SAVE}</button>
+                            </div>
+                        </template>
+                    </template>
+                </div>
+            </lightning-card>
+        </div>
+
+        <div class="slds-modal__content slds-scrollable_y" style={styleContent}>
+            <div style="margin-bottom: 15px;"></div>
+
+            <lightning-card>
+                <!-- 月报信息 -->
+                <div style="position: relative;z-index: 1;">
+                    <lightning-record-edit-form object-api-name="Market__c">
+                        <div style="width: 100%;">
+                            <table
+                                class="slds-table slds-table_bordered slds-table_fixed-layout slds-resizable marketInsightTable"
+                                style="width: 100%; table-layout:fixed; word-wrap:break-word;">
+                                <tr>
+                                    <td style="width: 33%;"></td>
+                                    <td></td>
+                                </tr>
+                                <template if:false={hiddenPart}>
+                                    <tr>
+                                        <td style="width: 33%;">
+                                            {label.PromoterDailyReport_OWNER}
+                                        </td>
+                                        <td style="padding: 0px;">
+                                            <lightning-input class={viewStyle} type="text" variant="label-hidden"
+                                                data-field-name-id="Owner_text__c" value={monthlyReport.Owner_text__c}
+                                                read-only="true">
+                                            </lightning-input>
+                                        </td>
+                                    </tr>
+                                </template>
+                                <template if:true={monthlyReport.Id}>
+                                    <tr>
+                                        <td>
+                                            <span style="color:red">*</span>
+                                            {reportFields.Name}
+                                        </td>
+                                        <td style="padding: 0px;">
+                                            <lightning-input class={viewStyle} style="font-size: 5px;" type="text"
+                                                variant="label-hidden" data-field-name-id="Name"
+                                                value={monthlyReport.Name} read-only="true">
+                                            </lightning-input>
+                                        </td>
+                                    </tr>
+                                </template>
+                                <tr>
+                                    <td colspan="2" style="padding: 0px;">
+                                        <div style="width: 100%;">
+                                            <lightning-combobox class={recordDateClass} label={reportFields.Months__c}
+                                                data-field-name="Months__c" value={monthlyReport.Months__c}
+                                                options={monthlsOptionList} onchange={inputChangeHandler}
+                                                read-only={recordDatereadonly} required>
+                                            </lightning-combobox>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="padding: 0px;">
+                                        <div style="width: 100%;">
+                                            <lightning-combobox class={recordDateClass} label={reportFields.Shop__c}
+                                                data-field-name="Shop__c" value={monthlyReport.Shop__c}
+                                                options={storeOptionList} onchange={inputChangeHandler}
+                                                read-only={recordDatereadonly} required>
+                                            </lightning-combobox>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <template if:false={monthlyReport.Id}>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div class="errorMessage"
+                                                style="color:rgb(7, 7, 7);width: 100%;white-space:pre-wrap;">
+                                            </div>
+                                            <div
+                                                style="width: 100%; text-align: right; margin-top: 10px;margin-left: -10px;">
+                                                <lightning-button variant="brand" label={label.PromoterDailyReport_NEW}
+                                                    onclick={handleNew} slot="actions"></lightning-button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </table>
+                        </div>
+                    </lightning-record-edit-form>
+                </div>
+
+                <!-- 各模块 -->
+                <template lwc:if={haveRecordId}>
+                    <div style="z-index: -1;">
+                        <lightning-accordion allow-multiple-sections-open onsectiontoggle={handleSectionToggle}
+                            active-section-name={activeSections}>
+                            <template for:each={displayUnitList} for:item="item" for:index="index">
+                                <lightning-accordion-section key={item.name} name={item.name} label={item.label}>
+                                    <template if:true={isEditPage}>
+                                        <template if:true={item.isCanAdd}>
+                                            <a onclick={handleAddItem} slot="actions" style="margin-right: 0.5rem;"
+                                                data-unit-name={item.name}>
+                                                <lightning-icon variant="success" icon-name="utility:add" size="small"
+                                                    title="">
+                                                </lightning-icon>
+                                                <span class="slds-assistive-text"></span>
+                                            </a>
+                                        </template>
+                                    </template>
+                                    <c-cmp-loader-lwc lwc-name={item.loaderName} para={loaderPara}
+                                        data-unit-name={item.name} onload={handleLoad} onsavedata={handleSaveData}
+                                        events="savedata">
+                                    </c-cmp-loader-lwc>
+                                    <!-- <c-cmp-loader-lwc lwc-name={item.loaderName} para={loaderPara} onload={handleLoad}
+                                    onsavedata={ticketSaveData} oncheckdata={ticketCheckDate}
+                                    events="savedata,checkdata">
+                                </c-cmp-loader-lwc> -->
+                                    <!-- <c-store-view-lwc record-id={record.Id} data-id="Store View selection" onsavedata={storeViewSaveData} oncheckdata={storeViewCheckData} view-mode={viewMode}></c-store-view-lwc> -->
+
+                                </lightning-accordion-section>
+                            </template>
+                        </lightning-accordion>
+                    </div>
+
+                </template>
+
+
+            </lightning-card>
+
+        </div>
+
+
+    </div>
+    <c-new-check-in-check-out-auto-l-w-c></c-new-check-in-check-out-auto-l-w-c>
+</template>

@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "2d355efe-2218-4cd4-a7e8-50f08aab6f06",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "File_List",
+  "id" : "d65fedc3-42e5-422c-91b2-d56680b96845",
+  "label" : "文件列表",
+  "routeType" : "list-069",
+  "type" : "route",
+  "urlPrefix" : "contentdocument"
+}

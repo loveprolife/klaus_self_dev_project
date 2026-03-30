@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <content>SA_Dashboard</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>standard-home</pageOrSobjectType>
+    </actionOverrides>
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>SA Dashboard</label>
+    <navType>Standard</navType>
+    <tabs>Mobile_Home1</tabs>
+    <tabs>Mobile_Home</tabs>
+    <tabs>standard-AnalyticsDataManager</tabs>
+    <tabs>standard-home</tabs>
+    <tabs>Ecss_Customer_Info__c</tabs>
+    <tabs>Expo_Purpose__c</tabs>
+    <tabs>Expo_Menu_Controller__c</tabs>
+    <tabs>Product_line_Detail__c</tabs>
+    <tabs>Expo_Date_Controller__c</tabs>
+    <tabs>Expo_Fields_Controller__c</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>SA_Dashboard_UtilityBar</utilityBar>
+</CustomApplication>

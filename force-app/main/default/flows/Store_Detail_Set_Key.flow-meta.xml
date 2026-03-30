@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Store Detail表设置外键key</description>
+    <environments>Default</environments>
+    <formulas>
+        <name>SetKey</name>
+        <dataType>String</dataType>
+        <expression>{!$Record.Sample_Display__c} + &apos;-&apos; + {!$Record.Store__c}</expression>
+    </formulas>
+    <interviewLabel>Store Detail Set Key {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Store Detail Set Key</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Key</name>
+        <label>Update Key</label>
+        <locationX>776</locationX>
+        <locationY>368</locationY>
+        <inputAssignments>
+            <field>Key__c</field>
+            <value>
+                <elementReference>SetKey</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Update_Key</targetReference>
+        </connector>
+        <object>Store_Detail__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

@@ -1,0 +1,950 @@
+<!--
+  @description       : 
+  @author            : chenpeng@deloitte.com.cn
+  @group             : 
+  @last modified on  : 03-14-2022
+  @last modified by  : chenpeng@deloitte.com.cn
+-->
+<template>
+    <div data-id="maincontent">
+    <!-- 页眉 -->
+    <!-- <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template> -->
+    <lightning-card class="slds-color__background_gray-4 pageHeader" title={label.PromoterDailyReportLabel} icon-name="standard:article">
+        <div slot="actions">
+            <lightning-button variant="neutral" label={label.PromoterDailyReport_ALL_REPORT} onclick={handleReturn} slot="actions"></lightning-button>
+            <template if:true={isAllowEdit}>
+                <div style="margin-left:5px;display:inline-block;">
+                    <lightning-button variant="brand" label={label.PromoterDailyReport_SAVE_REPORT} onclick={handleSave} slot="actions"></lightning-button>
+                </div>
+            </template>
+        </div>
+
+    </lightning-card>
+
+    <div  style="margin-bottom: 15px;" ></div>
+    
+    <lightning-card>
+
+        <template if:true={isShowSpinner}>
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        </template>
+
+        <!-- 确定跳转页面 -->
+        <template if:true={isShowChangeConfirm}>
+            <section class="slds-modal slds-fade-in-open"  style="background-color: rgb(24 24 24 / 50%);">
+                <div class="slds-modal__container ">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading--medium">
+                            {label.PromoterDailyReport_CONFIRM_SAVE}
+                        </h2>
+                        <lightning-button-icon class="slds-modal__close" icon-name="utility:close"  alternative-text="Settings" variant="border-inverse" size="medium" title="Close" onclick={handleChangeConfirmCloseModal}></lightning-button-icon>
+                    </div>
+
+                    <div class = "slds-modal__content slds-p-around_medium">
+                        <div class="slds-card__body">
+                            <lightning-record-view-form object-api-name = "Promoter_Daily_Report__c" record-id={existRecordId}>
+                                <div class="slds-grid slds-wrap slds-m-vertical_medium">
+                                    {label.PromoterDailyReport_HAS_CHANGE}
+                                </div>
+                            </lightning-record-view-form>
+                        </div>
+                        <div class="slds-card__footer" >
+                            <lightning-button name="new-with-defaults" class="slds-m-around_medium" 
+                            label={label.PromoterDailyReport_DISCARD}  onclick={handleJumpPage}></lightning-button>
+                            <lightning-button name="new-with-defaults" class="slds-m-around_medium"  type="submit" variant="brand" 
+                            label={label.PromoterDailyReport_SAVE_JUMP} onclick={handleSaveRecordJumpPage}></lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+       </template>
+
+        <!-- 确定调整页面 -->
+        <div class="slds-modal__content" style="padding-top:0px;">
+            <lightning-record-edit-form object-api-name = "Promoter_Daily_Report__c" record-id={recordId}>
+                <div class="slds-grid slds-wrap slds-m-vertical_medium">
+                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                        <!-- input-field不支持自定义的输入时验证，只能在保存时判断 -->
+                        <template if:true={isResetInput}>
+                            <lightning-input-field data-field-name-id="Report_Date__c" field-name="Report_Date__c" value={reportDate} onchange={handleReportDateChange} required></lightning-input-field>
+                        </template>
+                        <template if:false={isResetInput}>
+                            <lightning-input-field data-field-name-id="Report_Date__c" field-name="Report_Date__c" value={reportDate} onchange={handleReportDateChange} required></lightning-input-field>
+                        </template>
+                    </div>
+                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                        <!--<lightning-input type="text" label="促销员" value={ownerId} read-only="true"></lightning-input>-->
+                        <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-size_1-of-1" style="padding-left:4px;padding-right:4px;">
+                            <label class="slds-form-element__label">
+                                {label.PromoterDailyReport_PROMOTER}
+                            </label>
+                            <lightning-input-field variant="label-hidden" field-name="OwnerId" data-field-name-id="OwnerId" required>  </lightning-input-field>
+                        </div>
+                        
+                    </div>
+                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                        <template if:true={isResetInput}>
+                            <lightning-input-field field-name="Shop__c" data-field-name-id="Shop__c" value={shopId} onchange={handleShopIdChange} required> </lightning-input-field>
+                        </template>
+                        <template if:false={isResetInput}>
+                            <lightning-input-field field-name="Shop__c" data-field-name-id="Shop__c" value={shopId} onchange={handleShopIdChange} required> </lightning-input-field>
+                        </template>
+                    </div>
+                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                        <template if:true={isResetInput}>
+                            <lightning-input-field field-name="Product_Line__c" data-field-name-id="Product_Line__c" value={productLine} onchange={handleProductLineChange}> </lightning-input-field>
+                        </template>
+                        <template if:false={isResetInput}>
+                            <lightning-input-field field-name="Product_Line__c" data-field-name-id="Product_Line__c" value={productLine} onchange={handleProductLineChange}> </lightning-input-field>
+                        </template>
+                    </div>
+                    <template if:true ={recordId}>
+                        <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                            <lightning-output-field field-name="Name"> </lightning-output-field>
+                        </div>
+                    </template>
+                    <template if:false ={recordId}>
+                        <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_12-of-12 slds-p-horizontal_small">
+                            <div class="errorMessage" style="color:rgb(7, 7, 7)">
+                                {label.PromoterDailyReport_WITHOUT_REPORT}
+                                <template if:false={isAllowEdit}>
+                                    ，{label.PromoterDailyReport_NOT_ALLOW_EDIT}
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </lightning-record-edit-form>
+            <template if:true={isAllowEdit}>
+                <lightning-accordion allow-multiple-sections-open onsectiontoggle={handleSectionToggle} active-section-name={activeSections}>
+                    <lightning-accordion-section name="weeklyReportQuestions" label={label.PromoterDailyReport_WEEK_PROBLEM} >
+                        <lightning-icon variant="success" icon-name="utility:edit_form" class="slds-icon slds-icon_small"
+                            size="x-small" alternative-text="icon" slot="actions"></lightning-icon>
+                        <template if:true={responseListError}>
+                            <div class="errorMessage">
+                                <span style="color: red;">{responseListError}</span>
+                            </div>
+                        </template>
+                        <div style="padding: 12px;">
+                            <template for:each={responseList} for:item="item" for:index="index">
+                                <div key={item.Id}>
+                                    <template if:false={item.Id}>
+                                        <template if:true={isWeekLastDay}>
+                                            <lightning-textarea data-id={index} data-field-name-id="Response__c" label={item.Question__c} value={item.Response__c} required onchange={handleQuestionAnswerChange}>
+                                            </lightning-textarea>
+                                        </template>
+                                        <template if:false={isWeekLastDay}>
+                                            <lightning-textarea data-id={index} data-field-name-id="Response__c" label={item.Question__c} value={item.Response__c} required onchange={handleQuestionAnswerChange}>
+                                            </lightning-textarea>
+                                        </template>
+                                    </template>
+                                    <template if:true={item.Id}>
+                                        <template if:true={item.WeekResearchActive__c}>
+                                            <template if:false={item.QuestionItemActive__c}>
+                                                <lightning-textarea disabled data-id={index} data-field-name-id="Response__c" label={item.Question__c} value={item.Response__c} onchange={handleQuestionAnswerChange} >
+                                                </lightning-textarea>
+                                                <div  style="color:red;">{label.PromoterDailyReport_WEEK_PROBLEM_UNACTIVE}</div>
+                                            </template>
+                                            <template if:true={item.QuestionItemActive__c}>
+                                                <template if:true={isWeekLastDay}>
+                                                    <lightning-textarea data-id={index} data-field-name-id="Response__c" label={item.Question__c} value={item.Response__c} required onchange={handleQuestionAnswerChange}>
+                                                    </lightning-textarea>
+                                                </template>
+                                                <template if:false={isWeekLastDay}>
+                                                    <lightning-textarea data-id={index} data-field-name-id="Response__c" label={item.Question__c} value={item.Response__c} required onchange={handleQuestionAnswerChange}>
+                                                    </lightning-textarea>
+                                                </template>
+                                            </template>
+                                        </template>
+                                        <template if:false={item.WeekResearchActive__c}>
+                                            <lightning-textarea disabled data-id={index} data-field-name-id="Response__c" label={item.Question__c} value={item.Response__c} onchange={handleQuestionAnswerChange} >
+                                            </lightning-textarea>
+                                            <div  style="color:red;">{label.WeekResearch_UNACTIVE}</div>
+                                        </template>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-accordion-section>
+                    <lightning-accordion-section name="retailSale" label={label.CheckInCheckOut_RETAIL_SALE} >
+                        <!--wfc新增需求 在促销员，新增"当日実績なし"勾选项。勾选后不能“+”当日业绩。勾选后，保存时，需要生成一条业绩为0的数据--> 
+                        <span slot="actions" style="margin-right: 2rem;"> 
+                            <template if:true={noPerformance}>
+                                <lightning-input type="toggle" 
+                                                    label={label.PromoterDailyReport_No_Performance}
+                                                    name ="noPerformance" 
+                                                    checked 
+                                                    message-toggle-active=""  
+                                                    message-toggle-inactive="" 
+                                                    onchange={noPerformanceCheck}
+                                                    >
+                                </lightning-input>
+                            </template>
+                            <template if:false={noPerformance}>
+                                <lightning-input type="toggle" 
+                                                    label={label.PromoterDailyReport_No_Performance}
+                                                    name ="noPerformance" 
+                                                    unchecked 
+                                                    message-toggle-active=""  
+                                                    message-toggle-inactive="" 
+                                                    onchange={noPerformanceCheck}
+                                                    >
+                                </lightning-input>
+                            </template>
+                        </span>
+                        <!-- ———————————————————————————————————————————————————————————————————————————————————————————————————————————— -->
+                        <a onclick={addRetailSaleItem} slot="actions" style="margin-right: 0.75rem;" >
+                            <lightning-icon variant="success" icon-name="utility:add" 
+                                size="small"  title=""></lightning-icon>
+                            <span class="slds-assistive-text"></span>
+                        </a>
+                        <template if:true={retailSaleListError}>
+                            <div class="errorMessage">
+                                {retailSaleListError}
+                            </div>
+                        </template>
+                        <template for:each={retailSaleList} for:item="item" for:index="index">
+                            <lightning-record-edit-form object-api-name="Retail_Number__c"  key={item.Id} record-id={item.Id}>
+                                <div class="slds-grid slds-wrap slds-m-vertical_medium">
+                                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                        <lightning-input-field required data-id={index} 
+                                                               data-field-name-id="Product__c" 
+                                                               field-name="Product__c" 
+                                                               value={item.Product__c} 
+                                                               onchange={handleRetailSaleInputChange}> 
+                                        </lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                        <template if:true={item.Product__c}>
+                                            <lightning-record-view-form object-api-name="Product__c" record-id={item.Product__c}>
+                                                <lightning-output-field data-field-name-id="Series__c" field-name="Series__c" > </lightning-output-field>
+                                            </lightning-record-view-form>
+                                        </template>
+                                    </div>
+                                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                        <lightning-input-field required data-id={index} data-field-name-id="Number__c" field-name="Number__c" value={item.Number__c} onchange={handleRetailSaleInputChange}> </lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                        <template if:true={item.Product__c}>
+                                            <lightning-record-view-form object-api-name="Product__c" record-id={item.Product__c}>
+                                                <lightning-output-field data-field-name-id="Category__c" field-name="Category__c" > </lightning-output-field>
+                                            </lightning-record-view-form>
+                                        </template>
+                                    </div>
+                                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                        <div class ="delIcon" >
+                                            <a onclick={delRetailSaleItem} data-id={index} >
+                                                <lightning-icon icon-name="utility:delete" size="small"
+                                                    alternative-text="Delete"></lightning-icon>
+                                                <span class="slds-assistive-text">Delete</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <lightning-button class="slds-hide" type="submit"></lightning-button>
+                            </lightning-record-edit-form>
+    
+                        </template>
+                    </lightning-accordion-section>
+                    <lightning-accordion-section name="productPrice" label={label.PromoterDailyReport_PRODUCT_PRICE}>
+                        <template if:true={productPriceListError}>
+                            <div class="errorMessage">
+                                {productPriceListError}
+                            </div>
+                        </template>
+                        <div style="margin-top:10px;">
+                            <lightning-button onclick={addHisenseProduct} variant="brand" label={label.PromoterDailyReport_ADD_ITEM}  class="slds-p-around_x-small"></lightning-button>
+                        </div>
+                        <div style="overflow: scroll; margin-top:10px;">
+                            <lightning-record-edit-form object-api-name="Shop_Retail_Detail__c">
+                                <table class="productPriceTable" cellspacing="0" >
+                                    <tbody>
+                                        <!--确定每一列宽度，不显示-->
+                                        <tr>
+                                            <td style="width:35px;border:0px;"></td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                <td key={productItem.Index}  style="width:130px;border:0px;">
+                                                    
+                                                </td>
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem"  for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id}  style="width:130px;border:0px;">
+                                                            
+                                                        </td>
+                                                    </template>
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                        <!--第一行操作-->
+                                        <tr>
+                                            <td class="head"></td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                <td key={productItem.Index}  class="hisenseProduct">
+                                                    <div>
+                                                        <label class="slds-form-element__label">
+                                                            <template if:true={productItem.IsActive}>
+                                                                <span>{label.PromoterDailyReport_DISPLAY_COMPETITIVE}</span>
+                                                            </template>
+                                                            <template if:false={productItem.IsActive}>
+                                                                <span>{label.PromoterDailyReport_HIDE_COMPETITIVE}</span>
+                                                            </template>
+                                                        </label>
+                                                    </div>
+                                                    <lightning-input data-id={index} 
+                                                                        class="slds-checkbox_toggle slds-grid" 
+                                                                        name ="IsActive" 
+                                                                        type="toggle" 
+                                                                        checked message-toggle-active=""  
+                                                                        variant="label-hidden"
+                                                                        message-toggle-inactive="" 
+                                                                        onchange={handleToggle} 
+                                                                        value={productItem.IsActive}>
+                                                    </lightning-input>
+                                                </td>
+                                                <template if:true={productItem.IsActive}>
+                                                    <template if:true={productItem.ComtitiveShopRetailDetails}>
+                                                        <template if:true={productItem.ComtitiveShopRetailDetails.length} >
+                                                            <td colspan={productItem.ComtitiveShopRetailDetails.length} key={productItem.Index} style="text-align: center;color:rgb(165, 162, 162)">
+                                                                {label.Competing_Msg}
+                                                            </td>
+                                                        </template>
+                                                    </template>
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                         <!--品牌-->
+                                         <tr>
+                                            <td class="head"><div style="line-height: 0px;">*</div>{label.PromoterDailyReport_BRAND}</td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                
+                                                    <td key={productItem.Index} class="hisenseProduct">
+                                                        Hisense
+                                                    </td>
+                                                
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem" for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id} class="competitiveProduct">                                            
+                                                            <lightning-input-field access-key={index} field-name="CP_Brand__c" variant="label-hidden" data-id={comoetitiveIndex} data-field-name-id="CP_Brand__c" value={competitiveItem.CP_Brand__c} onchange={handleCompetitiveProductInputChange} name="CP_Brand__c"></lightning-input-field>
+                                                            <template if:true={isShowTableRequiredError}>
+                                                                <template if:false={competitiveItem.CP_Brand__c}>
+                                                                    <div style="color:red;">{label.PromoterDailyReport_REQUIRED_FIELD}</div>
+                                                                </template>
+                                                            </template>
+
+                                                        </td>
+                                                    </template>
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                        <!--型番-->
+                                        <tr>
+                                            <td class="head"><div style="line-height: 0px;">*</div>
+                                                {label.PromoterDailyReport_TYPE}
+                                                <div>
+                                                    <lightning-helptext content="競合機種の型番ご記入下さい">
+                                                    </lightning-helptext>  
+                                                </div>
+                                            </td>
+                                         
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                               
+                                                <td key={productItem.Index} class="hisenseProduct">
+                                                    <lightning-input-field field-name="Product__c" 
+                                                                            variant="label-hidden" 
+                                                                            data-id={index} 
+                                                                            value={productItem.RetailDetail.Product__c} data-field-name-id="Product__c" 
+                                                                            onchange={handleHisenseProductInputChange} >
+                                                    </lightning-input-field>
+                                                    <template if:true={isShowTableRequiredError}>
+                                                        <template if:false={productItem.RetailDetail.Product__c}>
+                                                            <div style="color:red;">{label.PromoterDailyReport_REQUIRED_FIELD}</div>
+                                                        </template>
+                                                    </template>
+
+                                                </td>
+                                         
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem" for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id} class="competitiveProduct">
+                                                            <!-- <lightning-input-field  access-key={index} field-name="CompetitiveProduct__c" variant="label-hidden" data-id={comoetitiveIndex} data-field-name-id="CompetitiveProduct__c" value={competitiveItem.CompetitiveProduct__c} onchange={handleCompetitiveProductInputChange}></lightning-input-field> -->
+                                                            <lightning-input type="text" 
+                                                                             access-key={index} 
+                                                                             value={competitiveItem.CompetitiveProduct__c} 
+                                                                             data-id={comoetitiveIndex}
+                                                                             placeholder = {label.WeekResearch_EXAMPLE_Product}
+                                                                             variant="label-hidden"
+                                                                             onchange={handleCompetitiveProductInputChange}
+                                                                             name="CompetitiveProduct__c">
+                                                            </lightning-input>
+                                                            <template if:true={isShowTableRequiredError}>
+                                                                <template if:false={competitiveItem.CompetitiveProduct__c}>
+                                                                    <div style="color:red;">{label.PromoterDailyReport_REQUIRED_FIELD}</div>
+                                                                </template>
+                                                            </template>
+                                                        </td>
+                                                    </template>
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                        <!--售价-->
+                                        <tr>
+                                            <td class="head"><div style="line-height: 0px;">*</div>
+                                                {label.PromoterDailyReport_PRICE}
+                                                <lightning-helptext content="競合機種の売価ご記入下さい">
+                                                </lightning-helptext>  
+                                            </td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                
+                                                    <td key={productItem.Index} class="hisenseProduct">
+                                                        <lightning-input-field field-name="Price__c" variant="label-hidden" data-id={index} value={productItem.RetailDetail.Price__c} data-field-name-id="Price__c"  onchange={handleHisenseProductInputChange}></lightning-input-field>
+                                                        <template if:true={isShowTableRequiredError}>
+                                                            <template if:false={productItem.RetailDetail.Price__c}>
+                                                                <div style="color:red;">{label.PromoterDailyReport_REQUIRED_FIELD}</div>
+                                                            </template>
+                                                            <template if:true={productItem.RetailDetail.ErrorMessage}>
+                                                                <div style="color:red;">{productItem.RetailDetail.ErrorMessage}</div>
+                                                            </template>
+                                                        </template>
+
+                                                    </td>
+                                                
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem" for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id} class="competitiveProduct">
+                                                            <!-- <lightning-input-field access-key={index} 
+                                                                                   field-name="Price__c" 
+                                                                                   variant="label-hidden" 
+                                                                                   data-id={comoetitiveIndex} 
+                                                                                   value={competitiveItem.Price__c} 
+                                                                                   data-field-name-id="Price__c"  
+                                                                                   onchange={handleCompetitiveProductInputChange}>
+                                                            </lightning-input-field> -->
+                                                            <lightning-input type="number" 
+                                                                             access-key={index} 
+                                                                             value={competitiveItem.Price__c} 
+                                                                             data-id={comoetitiveIndex}
+                                                                             placeholder = {label.WeekResearch_EXAMPLE_Price}
+                                                                             variant="label-hidden"
+                                                                             onchange={handleCompetitiveProductInputChange}
+                                                                             step="0.01"
+                                                                             formatter="currency"
+                                                                             name="Price__c">
+                                                            </lightning-input>
+                                                            <template if:true={isShowTableRequiredError}>
+                                                                <template if:false={competitiveItem.Price__c}>
+                                                                    <div style="color:red;">{label.PromoterDailyReport_REQUIRED_FIELD}</div>
+                                                                </template>
+                                                                <template if:true={competitiveItem.ErrorMessage}>
+                                                                    <div style="color:red;">{competitiveItem.ErrorMessage}</div>
+                                                                </template>
+                                                            </template>
+                                                        </td>
+                                                    </template>
+                                                    
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                        <!--折扣-->
+                                        <tr>
+                                            <td class="head">
+                                                {label.PromoterDailyReport_DISCOUNT}
+                                                <lightning-helptext content="競合機種の割引ご記入下さい"></lightning-helptext>  
+                                            </td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                
+                                                    <td key={productItem.Index} class="hisenseProduct">
+                                                        <lightning-input-field field-name="DiscountPrice__c" variant="label-hidden" data-id={index} value={productItem.RetailDetail.DiscountPrice__c} data-field-name-id="DiscountPrice__c" onchange={handleHisenseProductInputChange} ></lightning-input-field>
+                                                    </td>
+                                                
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem" for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id} class="competitiveProduct">
+                                                            <!-- <lightning-input-field access-key={index} field-name="DiscountPrice__c" variant="label-hidden" data-id={comoetitiveIndex} value={competitiveItem.DiscountPrice__c} data-field-name-id="DiscountPrice__c"  onchange={handleCompetitiveProductInputChange}></lightning-input-field> -->
+
+                                                            <lightning-input type="number" 
+                                                                             access-key={index} 
+                                                                             value={competitiveItem.DiscountPrice__c} 
+                                                                             data-id={comoetitiveIndex}
+                                                                             placeholder = {label.WeekResearch_EXAMPLE_DiscountPrice}
+                                                                             variant="label-hidden"
+                                                                             onchange={handleCompetitiveProductInputChange}
+                                                                             step="0.01"
+                                                                             formatter="currency"
+                                                                             name="DiscountPrice__c">
+                                                            </lightning-input>
+                                                        </td>
+                                                    </template>
+                                                    
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                        <!--返点-->
+                                        <tr>
+                                            <td class="head">{label.PromoterDailyReport_POINT}</td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                
+                                                    <td key={productItem.Index} class="hisenseProduct">
+                                                        <lightning-input-field field-name="Point__c" variant="label-hidden" data-id={index} value={productItem.RetailDetail.Point__c} data-field-name-id="Point__c" onchange={handleHisenseProductInputChange}></lightning-input-field>
+                                                    </td>
+                                                
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem" for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id} class="competitiveProduct">
+                                                            <lightning-input-field access-key={index} field-name="Point__c" variant="label-hidden" data-id={comoetitiveIndex} value={competitiveItem.Point__c} data-field-name-id="Point__c"   onchange={handleCompetitiveProductInputChange} name="Point__c"></lightning-input-field>
+                                                        </td>
+                                                    </template>
+                                                    
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="head">{label.PromoterDailyReport_ACTION}</td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                <td key={productItem.Index} class="hisenseProduct">
+                                                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_12-of-12 slds-p-horizontal_small">
+                                                        <div class ="delIcon">
+                                                            <!-- <a onclick={addCompetitiveProduct} data-id={index}>
+                                                                <lightning-icon  icon-name="utility:add" size="small"  
+                                                                alternative-text="add"></lightning-icon>
+                                                                <span class="slds-assistive-text">add</span>
+                                                            </a> -->
+                                                            <!-- <button class="slds-button slds-button_neutral" onclick={addCompetitiveProduct} data-id={index}>{label.promoterModelTypeAdd}</button> -->
+                                                            <button class="slds-button slds-button_neutral" onclick={addHisenseProduct} data-id={index}>{label.PromoterDailyReport_ADD_ITEM}</button>
+                                                        </div>
+                                                        
+                                                        <div class ="delIcon">
+                                                            <!-- <a onclick={deleteHisenseProduct} data-id={index} >
+                                                                <lightning-icon icon-name="utility:delete" size="small"
+                                                                    alternative-text="Delete"></lightning-icon>
+                                                                <span class="slds-assistive-text">delete</span>
+                                                            </a> -->
+                                                            <button class="slds-button slds-button_neutral" onclick={deleteHisenseProduct} data-id={index}>{label.promoterModelTypeDelete}</button>
+                                                        </div>
+                                                    </div> 
+                                                </td>
+                                                <template if:true={productItem.IsActive}>
+                                                
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem" for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id} class="competitiveProduct">
+                                                            <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_12-of-12 slds-p-horizontal_small">
+                                                                <div class ="delIcon" >
+                                                                    <!-- <a  onclick={deleteCompetitiveProduct}  data-id={comoetitiveIndex} name={index} >
+                                                                        <lightning-icon icon-name="utility:delete" size="small"
+                                                                            alternative-text="Delete"></lightning-icon>
+                                                                        <span class="slds-assistive-text">Delete</span>
+                                                                    </a> -->
+                                                                    <button class="slds-button slds-button_neutral " onclick={addCompetitiveProduct}  data-id={index} name={index}>{label.promoterModelTypeAdd}</button>
+                                                                </div>
+                                                                <div class ="delIcon" >
+                                                                    <!-- <a  onclick={deleteCompetitiveProduct}  data-id={comoetitiveIndex} name={index} >
+                                                                        <lightning-icon icon-name="utility:delete" size="small"
+                                                                            alternative-text="Delete"></lightning-icon>
+                                                                        <span class="slds-assistive-text">Delete</span>
+                                                                    </a> -->
+                                                                    <button class="slds-button slds-button_neutral " onclick={deleteCompetitiveProduct}  data-id={comoetitiveIndex} name={index}>{label.promoterDailyReport_DEL_ITEM}</button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </template>
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </lightning-record-edit-form>
+                        </div>
+                    </lightning-accordion-section>
+                    <lightning-accordion-section name="checkStatus" label={label.PromoterDailyReport_CHECK_IN_STATUS} >
+                        <template if:true={promoterItemError}>
+                            <div class="errorMessage">
+                                {promoterItemError}
+                            </div>
+                        </template>
+                        <lightning-record-edit-form object-api-name="Promoter_Attendance__c" record-id={promoterItem.Id}>
+                            <div class="slds-grid slds-wrap slds-m-vertical_medium">
+                                <div class="minSection">
+                                    {label.PromoterDailyReport_CHECK_INFO}
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="CheckInStatus__c" field-name="CheckInStatus__c" value={promoterItem.CheckInStatus__c} disabled> </lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="Shop__c" field-name="Shop__c" disabled> </lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="SignInTime__c" field-name="SignInTime__c" disabled> </lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="CheckOutShop__c" field-name="CheckOutShop__c" disabled> </lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="SignOutTime__c" field-name="SignOutTime__c" disabled> </lightning-input-field>
+                                </div>
+                                <template if:true={isToday}>
+                                    <template if:false={promoterItem.SignOutTime__c}>
+                                        <div class="minSection" style="color: red;">
+                                            * {label.PromoterDailyReport_CHECK_OUT_TODAY}
+                                        </div>
+                                    </template>
+                                </template>
+  
+                                <div class="minSection">
+                                    {label.PromoterDailyReport_ADD_CHECK_INFO}
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="ApprovalStatus__c" field-name="ApprovalStatus__c" disabled> </lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="CheckOutApprovalStatus__c" field-name="CheckOutApprovalStatus__c" disabled> </lightning-input-field>
+                                </div>
+                            </div>
+                        </lightning-record-edit-form>
+                        <template if:true={isAllowEditAddCheckTime}>
+                            <lightning-record-edit-form object-api-name="Supplementary_Information__c">
+                                <div class="slds-grid slds-wrap slds-m-vertical_medium">
+                                    <div class="minSection">
+                                        {label.PromoterDailyReport_ADD_CHECK_IN}
+                                    </div>
+                                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                        <lightning-input-field data-field-name-id="Shop__c" field-name="Shop__c"  onchange={handlePromoterAttandenceChange} > </lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                        <lightning-input-field data-field-name-id="Supplementary_SignIn_Time__c" field-name="Supplementary_SignIn_Time__c" onchange={handlePromoterAttandenceChange} > </lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small" >
+                                        <lightning-input-field data-field-name-id="Reson__c" field-name="Reson__c" onchange={handlePromoterAttandenceChange} > </lightning-input-field>
+                                    </div>
+                                    <!--
+                                        <div class="minSection" style="color: red;">
+                                            * {label.PromoterDailyReport_CHECK_TAB}
+                                        </div>
+                                    -->
+                                </div>
+                            </lightning-record-edit-form>
+                        </template>
+                        <!--
+                        <template if:false={isAllowEditAddCheckTime}>
+                            <div class="minSection" style="color: red;">
+                                * {label.PromoterDailyReport_CHECK_TAB}
+                            </div>
+                        </template>
+                        -->
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </template>
+            <template if:false={isAllowEdit}>
+                <lightning-accordion allow-multiple-sections-open onsectiontoggle={handleSectionToggle} active-section-name={activeSections}>
+                    <lightning-accordion-section name="checkStatus" label={label.PromoterDailyReport_CHECK_IN_STATUS} >
+                        <lightning-record-edit-form object-api-name="Promoter_Attendance__c" record-id={promoterItem.Id}>
+                            <div class="slds-grid slds-wrap slds-m-vertical_medium">
+                                <div class="minSection">
+                                    {label.PromoterDailyReport_CHECK_INFO}
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="CheckInStatus__c" field-name="CheckInStatus__c" value={promoterItem.CheckInStatus__c} disabled> </lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="Shop__c" field-name="Shop__c" disabled> </lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="SignInTime__c" field-name="SignInTime__c" disabled> </lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="CheckOutShop__c" field-name="CheckOutShop__c" disabled> </lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="SignOutTime__c" field-name="SignOutTime__c" disabled> </lightning-input-field>
+                                </div>
+
+                                <div class="minSection">
+                                    {label.PromoterDailyReport_ADD_CHECK_INFO}
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="ApprovalStatus__c" field-name="ApprovalStatus__c" disabled> </lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                    <lightning-input-field data-field-name-id="CheckOutApprovalStatus__c" field-name="CheckOutApprovalStatus__c" disabled> </lightning-input-field>
+                                </div>
+                                <div class="minSection" style="color: red;">
+                                    * {label.PromoterDailyReport_CHECK_TAB}
+                                </div>
+                            </div>
+                        </lightning-record-edit-form>
+                    </lightning-accordion-section>
+                    <lightning-accordion-section name="retailSale" label={label.CheckInCheckOut_RETAIL_SALE} >
+                        <!--wfc新增需求 在促销员，新增"当日実績なし"勾选项。勾选后不能“+”当日业绩。勾选后，保存时，需要生成一条业绩为0的数据--> 
+                        <span slot="actions" style="margin-right: 2rem;"> 
+                            <template if:true={noPerformance}>
+                                <lightning-input type="toggle" 
+                                                    label={label.PromoterDailyReport_No_Performance}
+                                                    name ="noPerformance" 
+                                                    checked 
+                                                    message-toggle-active=""  
+                                                    message-toggle-inactive=""
+                                                    disabled
+                                                    >
+                                </lightning-input>
+                            </template>
+                            <template if:false={noPerformance}>
+                                <lightning-input type="toggle" 
+                                                    label={label.PromoterDailyReport_No_Performance}
+                                                    name ="noPerformance" 
+                                                    unchecked 
+                                                    message-toggle-active=""  
+                                                    message-toggle-inactive="" 
+                                                    disabled
+                                                    >
+                                </lightning-input>
+                            </template>
+                        </span>
+                        <!-- ———————————————————————————————————————————————————————————————————————————————————————————————————————————— -->
+                        <template for:each={retailSaleList} for:item="item" for:index="index">
+                            <div key={item.Id} style ="border: 1px rgb(201, 201, 201) solid;margin-bottom: 5px;margin-top: 10px;">
+                                <lightning-record-edit-form object-api-name="Retail_Number__c"  record-id={item.Id}>
+                                    <div class="slds-grid slds-wrap slds-m-vertical_medium">
+                                        <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                            <lightning-input-field  data-id={index} data-field-name-id="Product__c" field-name="Product__c" disabled> </lightning-input-field>
+                                        </div>
+                                        <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                            <lightning-output-field data-field-name-id="ProductSeries__c" field-name="ProductSeries__c"> </lightning-output-field>
+                                        </div>
+                                        <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                            <lightning-input-field data-id={index} data-field-name-id="Number__c" field-name="Number__c" disabled> </lightning-input-field>
+                                        </div>
+                                        <div class="slds-col slds-size_12-of-12 slds-small-size_12-of-12 slds-large-size_6-of-12 slds-p-horizontal_small">
+                                            <lightning-output-field data-id={index} data-field-name-id="ProductCategory__c" field-name="ProductCategory__c" disabled> </lightning-output-field>
+                                        </div>
+                                    </div>
+                                    <lightning-button class="slds-hide" type="submit"></lightning-button>
+                                </lightning-record-edit-form>
+                            </div>
+                        </template>
+                    </lightning-accordion-section>
+                    <lightning-accordion-section name="productPrice" label={label.PromoterDailyReport_PRODUCT_PRICE}>
+                        <div style="overflow: scroll; margin-top:10px;">
+                            <lightning-record-edit-form object-api-name="Shop_Retail_Detail__c">
+                                <table class="productPriceTable" cellspacing="0" >
+                                    <tbody>
+                                        <!--确定每一列宽度，不显示-->
+                                        <tr>
+                                            <td style="width:35px;border:0px;"></td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                <td key={productItem.Index}  style="width:130px;border:0px;">
+                                                    
+                                                </td>
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem"  for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id}  style="width:130px;border:0px;">
+                                                            
+                                                        </td>
+                                                    </template>
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                        <!--第一行操作-->
+                                        <tr>
+                                            <td class="head"></td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                <td key={productItem.Index}  class="hisenseProduct">
+                                                    <!-- <template if:true={productItem.IsActive}> -->
+                                                        <!--<lightning-input data-id={index} name ="isActive" type="toggle" label-hidden="label-hidden"  checked message-toggle-active=""  message-toggle-inactive="" onchange={handleToggle}></lightning-input>-->
+                                                        <!-- <div class="slds-form-element"> -->
+                                                            <!-- <label class="slds-checkbox_toggle slds-grid">
+                                                                <input data-id={index} type="checkbox" name="IsActive" checked="" onchange={handleToggle} />
+                                                                <span  class="slds-checkbox_faux_container" aria-live="assertive">
+                                                                    <span class="checkbox_custom_open_box">
+                                                                        <span class="checkbox_custom_open_icon"></span>
+                                                                        <span class="checkbox_custom_open">{label.PromoterDailyReport_DISPLAY_COMPETITIVE}</span>
+                                                                    </span>
+                                                                </span>
+                                                            </label> -->
+                                                        <!-- </div> -->
+
+                                                        <!-- <div class="slds-form-element">
+                                                            <label class="slds-checkbox_toggle slds-grid">
+                                                                <span class="slds-form-element__label slds-m-bottom_none"></span>
+                                                                <input data-id={index} type="checkbox" name="IsActive" checked="" onchange={handleToggle} value="true"/>
+                                                                <span class="slds-checkbox_faux_container" aria-live="assertive">
+                                                                    <span class="slds-checkbox_faux"></span>
+                                                                    <span class="slds-checkbox_on">{label.PromoterDailyReport_DISPLAY_COMPETITIVE}</span>
+                                                                </span>
+                                                            </label>
+                                                        </div> -->
+
+                                                        <div>
+                                                            <label class="slds-form-element__label">
+                                                                <template if:true={productItem.IsActive}>
+                                                                    <span>{label.PromoterDailyReport_DISPLAY_COMPETITIVE}</span>
+                                                                </template>
+                                                                <template if:false={productItem.IsActive}>
+                                                                    <span>{label.PromoterDailyReport_HIDE_COMPETITIVE}</span>
+                                                                </template>
+                                                            </label>
+                                                        </div>
+                                                        <lightning-input data-id={index} 
+                                                                         class="slds-checkbox_toggle slds-grid" 
+                                                                         name ="isActive" 
+                                                                         type="toggle" 
+                                                                         checked message-toggle-active=""  
+                                                                         variant="label-hidden"
+                                                                         message-toggle-inactive="" 
+                                                                         onchange={handleToggle} 
+                                                                         value={productItem.IsActive}>
+                                                        </lightning-input>
+
+                                                    <!-- </template> -->
+                                                  
+                                                </td>
+                                                <template if:true={productItem.IsActive}>
+                                                    <template if:true={productItem.ComtitiveShopRetailDetails}>
+                                                        <template if:true={productItem.ComtitiveShopRetailDetails.length} >
+                                                            <td colspan={productItem.ComtitiveShopRetailDetails.length} key={productItem.Index} style="text-align: center;">
+                                                                {label.Competing_Msg}
+                                                            </td>
+                                                        </template>
+                                                    </template>
+
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                         <!--品牌-->
+                                         <tr>
+                                            <td class="head"><div style="line-height: 0px;">*</div>{label.PromoterDailyReport_BRAND}</td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                
+                                                    <td key={productItem.Index} class="hisenseProduct">
+                                                        Hisense
+                                                    </td>
+                                                
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem" for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id} class="competitiveProduct">
+                                                            <lightning-input-field access-key={index} field-name="CP_Brand__c" variant="label-hidden" data-id={comoetitiveIndex} data-field-name-id="CP_Brand__c" value={competitiveItem.CP_Brand__c} disabled></lightning-input-field>
+                                                        </td>
+                                                    </template>
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                        <!--型番-->
+                                        <tr>
+                                            <td class="head"><div style="line-height: 0px;">*</div>{label.PromoterDailyReport_TYPE}</td>
+                                         
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                               
+                                                <td key={productItem.Index} class="hisenseProduct">
+                                                    <lightning-input-field field-name="Product__c" variant="label-hidden" data-id={index} value={productItem.RetailDetail.Product__c} data-field-name-id="Product__c" disabled></lightning-input-field>
+                                                </td>
+                                         
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem" for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id} class="competitiveProduct">
+                                                            <lightning-input-field  access-key={index} field-name="CompetitiveProduct__c" variant="label-hidden" data-id={comoetitiveIndex} data-field-name-id="CompetitiveProduct__c" value={competitiveItem.CompetitiveProduct__c} disabled></lightning-input-field>
+                                                            
+                                                        </td>
+                                                    </template>
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                        <!--售价-->
+                                        <tr>
+                                            <td class="head"><div style="line-height: 0px;">*</div>{label.PromoterDailyReport_PRICE}</td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                
+                                                    <td key={productItem.Index} class="hisenseProduct">
+                                                        <lightning-input-field field-name="Price__c" variant="label-hidden" data-id={index} value={productItem.RetailDetail.Price__c} data-field-name-id="Price__c" disabled></lightning-input-field>
+                                                   
+                                                    </td>
+                                                
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem" for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id} class="competitiveProduct">
+                                                            <lightning-input-field access-key={index} field-name="Price__c" variant="label-hidden" data-id={comoetitiveIndex} value={competitiveItem.Price__c} data-field-name-id="Price__c" disabled></lightning-input-field>
+                                                        </td>
+                                                    </template>
+                                                    
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                        <!--折扣-->
+                                        <tr>
+                                            <td class="head">{label.PromoterDailyReport_DISCOUNT}</td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                
+                                                    <td key={productItem.Index} class="hisenseProduct">
+                                                        <lightning-input-field field-name="DiscountPrice__c" variant="label-hidden" data-id={index} value={productItem.RetailDetail.DiscountPrice__c} data-field-name-id="DiscountPrice__c" disabled></lightning-input-field>
+                                                    </td>
+                                                
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem" for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id} class="competitiveProduct">
+                                                            <lightning-input-field access-key={index} field-name="DiscountPrice__c" variant="label-hidden" data-id={comoetitiveIndex} value={competitiveItem.DiscountPrice__c} data-field-name-id="DiscountPrice__c" disabled></lightning-input-field>
+                                                        </td>
+                                                    </template>
+                                                    
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                        <!--返点-->
+                                        <tr>
+                                            <td class="head">{label.PromoterDailyReport_POINT}</td>
+                                            <template for:each={productPriceList} for:item="productItem"  for:index="index">
+                                                
+                                                    <td key={productItem.Index} class="hisenseProduct">
+                                                        <lightning-input-field field-name="Point__c" variant="label-hidden" data-id={index} value={productItem.RetailDetail.Point__c} data-field-name-id="Point__c" disabled></lightning-input-field>
+                                                    </td>
+                                                
+                                                <template if:true={productItem.IsActive}>
+                                                    <template for:each={productItem.ComtitiveShopRetailDetails} for:item="competitiveItem" for:index="comoetitiveIndex">
+                                                        <td key={competitiveItem.Id} class="competitiveProduct">
+                                                            <lightning-input-field access-key={index} field-name="Point__c" variant="label-hidden" data-id={comoetitiveIndex} value={competitiveItem.Point__c} data-field-name-id="Point__c" disabled></lightning-input-field>
+                                                        </td>
+                                                    </template>
+                                                    
+                                                </template>
+                                            </template>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </lightning-record-edit-form>
+                        </div>
+                    </lightning-accordion-section>
+                    <lightning-accordion-section name="weeklyReportQuestions" label={label.PromoterDailyReport_WEEK_PROBLEM} >
+                        <div style="padding: 12px;">
+                            <template for:each={responseList} for:item="item" for:index="index">
+                                <div key={item.Id}>
+                                    <lightning-textarea data-id={index} data-field-name-id="Response__c" label={item.Question__c} value={item.Response__c} disabled>
+                                    </lightning-textarea>
+                                </div>
+                            </template>
+                        </div>
+                    </lightning-accordion-section>
+                </lightning-accordion>
+            </template>
+        </div>
+        <div style="height: 56px;">
+        </div>
+    </lightning-card>
+    </div>
+
+</template>

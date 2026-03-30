@@ -1,0 +1,304 @@
+<template>
+<template if:true={haveHistory}>
+    <!-- 在客户主信息lwc页面中 -->
+    <template if:true={isSub}>
+        <div class="slds-modal__container">
+            <template if:true={isShowDifferencesSpinner}>
+                <lightning-spinner alternative-text="Loading" size="medium" variant="brand" style="z-index: 99;"></lightning-spinner>
+            </template>
+            <div class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={cancel}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 class="slds-text-heading--medium">
+                    Changes Information
+                </h2>
+            </div>
+
+            <div class="slds-modal__content slds-var-p-around_medium">
+                <div class="slds-text-title_bold slds-var-p-left_xx-small">
+                    主信息内容更改
+                </div>
+                <lightning-record-edit-form object-api-name="Account">
+                    <template for:each={customerDifferencesList} for:item="differences" for:index="index">
+                        <div key={differences} class="slds-var-p-left_x-small">
+                            <div class="slds-grid slds-grid_align-center">
+                                <div class="slds-col slds-size_5-of-12">
+                                    <lightning-input-field field-name={differences.fieldName} value={differences.initialValue} disabled></lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-grow-none slds-var-m-left_medium slds-var-m-right_medium slds-align_absolute-center">
+                                    <lightning-icon class="custom-icon-forward slds-var-p-top_small" icon-name='utility:forward' alternative-text='forward' size='small' title='forward'></lightning-icon>
+                                </div>
+                                <div class="slds-col slds-size_5-of-12">
+                                    <lightning-input-field field-name={differences.fieldName} value={differences.changeValue} disabled></lightning-input-field>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </lightning-record-edit-form>
+
+                <div class="line"></div>
+                <div class="slds-text-title_bold slds-var-p-left_xx-small">
+                    公司视图内容更改
+                </div>
+                <lightning-record-edit-form object-api-name="Customer_Extend__c">
+                    <div class="slds-var-p-left_x-small slds-var-p-top_xx-small">修改的数据</div>
+                    <template for:each={companyUpdateDifferencesList} for:item="differences" for:index="index">
+                        <div key={differences} class="slds-var-p-left_x-small">
+                            <div class="slds-text-color_success">{differences.entityUpdate}</div>
+                            <template for:each={differences.differences} for:item="item" for:index="index">
+                                <div class="slds-grid slds-grid_align-center" key={item}>
+                                    <div class="slds-col slds-size_5-of-12">
+                                        <lightning-input-field field-name={item.fieldName} value={item.initialValue} disabled></lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-grow-none slds-var-m-left_medium slds-var-m-right_medium slds-align_absolute-center">
+                                        <lightning-icon class="custom-icon-forward slds-var-p-top_small" icon-name='utility:forward' alternative-text='forward' size='small' title='forward'></lightning-icon>
+                                    </div>
+                                    <div class="slds-col slds-size_5-of-12">
+                                        <lightning-input-field field-name={item.fieldName} value={item.changeValue} disabled></lightning-input-field>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    <div class="slds-var-p-top_xx-small slds-var-p-left_x-small">新增的数据</div>
+                    <template for:each={companyNewDifferencesList} for:item="differences" for:index="index">
+                        <div key={differences} class="slds-var-p-left_x-small">
+                            <div class="slds-text-color_success">{differences.entityNew}</div>
+                        </div>
+                    </template>
+                </lightning-record-edit-form>
+
+                <div class="line"></div>
+                <div class="slds-text-title_bold slds-var-p-left_xx-small">
+                    销售视图内容更改
+                </div>
+                <lightning-record-edit-form object-api-name="Customer_Extend__c">
+                    <div class="slds-var-p-left_x-small slds-var-p-top_xx-small">修改的数据</div>
+                    <template for:each={salesUpdateDifferencesList} for:item="differences" for:index="index">
+                        <div key={differences} class="slds-var-p-left_x-small">
+                            <div class="slds-text-color_success">{differences.entityUpdate}</div>
+                            <template for:each={differences.differences} for:item="item" for:index="index">
+                                <div class="slds-grid slds-grid_align-center" key={item}>
+                                    <div class="slds-col slds-size_5-of-12">
+                                        <lightning-input-field field-name={item.fieldName} value={item.initialValue} disabled></lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-grow-none slds-var-m-left_medium slds-var-m-right_medium slds-align_absolute-center">
+                                        <lightning-icon class="custom-icon-forward slds-var-p-top_small" icon-name='utility:forward' alternative-text='forward' size='small' title='forward'></lightning-icon>
+                                    </div>
+                                    <div class="slds-col slds-size_5-of-12">
+                                        <lightning-input-field field-name={item.fieldName} value={item.changeValue} disabled></lightning-input-field>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    <div class="slds-var-p-top_xx-small slds-var-p-left_x-small">新增的数据</div>
+                    <template for:each={salesNewDifferencesList} for:item="differences" for:index="index">
+                        <div key={differences} class="slds-var-p-left_x-small">
+                            <div class="slds-text-color_success">{differences.entityNew}</div>
+                        </div>
+                    </template>
+                </lightning-record-edit-form>
+
+                <div class="line"></div>
+                <div class="slds-text-title_bold slds-var-p-left_xx-small">
+                    银行视图内容更改
+                </div>
+                <lightning-record-edit-form object-api-name="Customer_Banks__c">
+                    <div class="slds-var-p-left_x-small slds-var-p-top_xx-small">修改的数据</div>
+                    <template for:each={banksUpdateDifferencesList} for:item="differences" for:index="index">
+                        <div key={differences} class="slds-var-p-left_x-small">
+                            <div class="slds-text-color_success">{differences.nameUpdate}</div>
+                            <template for:each={differences.differences} for:item="item" for:index="index">
+                                <div class="slds-grid slds-grid_align-center" key={item}>
+                                    <div class="slds-col slds-size_5-of-12">
+                                        <lightning-input-field field-name={item.fieldName} value={item.initialValue} disabled></lightning-input-field>
+                                    </div>
+                                    <div class="slds-col slds-grow-none slds-var-m-left_medium slds-var-m-right_medium slds-align_absolute-center">
+                                        <lightning-icon class="custom-icon-forward slds-var-p-top_small" icon-name='utility:forward' alternative-text='forward' size='small' title='forward'></lightning-icon>
+                                    </div>
+                                    <div class="slds-col slds-size_5-of-12">
+                                        <lightning-input-field field-name={item.fieldName} value={item.changeValue} disabled></lightning-input-field>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    <div class="slds-var-p-top_xx-small slds-var-p-left_x-small">新增的数据</div>
+                    <template for:each={banksNewDifferencesList} for:item="differences" for:index="index">
+                        <div key={differences} class="slds-var-p-left_x-small">
+                            <div class="slds-text-color_success">{differences.nameNew}</div>
+                        </div>
+                    </template>
+                </lightning-record-edit-form>
+            </div>
+
+            <div class="modal-footer slds-modal__footer">
+                <lightning-button
+                    variant="brand-outline"
+                    label="Cancel"
+                    onclick={cancel}
+                    class="slds-var-m-left_x-small"
+                ></lightning-button>
+            </div>
+        </div>
+    </template>
+    <!-- 审批流详情页面中 -->
+    <template if:false={isSub}>
+        <div class="slds-modal__header">
+            <h2 class="slds-text-heading--medium">
+                Changes Information
+            </h2>
+        </div>
+
+        <div class="slds-modal__content slds-var-p-around_medium">
+            <div class="slds-text-title_bold slds-var-p-left_xx-small">
+                主信息内容更改
+            </div>
+            <lightning-record-edit-form object-api-name="Account">
+                <template for:each={customerDifferencesList} for:item="differences" for:index="index">
+                    <div key={differences} class="slds-var-p-left_x-small">
+                        <div class="slds-grid slds-grid_align-center">
+                            <div class="slds-col slds-size_5-of-12">
+                                <lightning-input-field field-name={differences.fieldName} value={differences.initialValue} disabled></lightning-input-field>
+                            </div>
+                            <div class="slds-col slds-grow-none slds-var-m-left_medium slds-var-m-right_medium slds-align_absolute-center">
+                                <lightning-icon class="custom-icon-forward slds-var-p-top_small" icon-name='utility:forward' alternative-text='forward' size='small' title='forward'></lightning-icon>
+                            </div>
+                            <div class="slds-col slds-size_5-of-12">
+                                <lightning-input-field field-name={differences.fieldName} value={differences.changeValue} disabled></lightning-input-field>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </lightning-record-edit-form>
+
+            <div class="line"></div>
+            <div class="slds-text-title_bold slds-var-p-left_xx-small">
+                公司视图内容更改
+            </div>
+            <lightning-record-edit-form object-api-name="Customer_Extend__c">
+                <div class="slds-var-p-left_x-small slds-var-p-top_xx-small">修改的数据</div>
+                <template for:each={companyUpdateDifferencesList} for:item="differences" for:index="index">
+                    <div key={differences} class="slds-var-p-left_x-small">
+                        <div class="slds-text-color_success">{differences.entityUpdate}</div>
+                        <template for:each={differences.differences} for:item="item" for:index="index">
+                            <div class="slds-grid slds-grid_align-center" key={item}>
+                                <div class="slds-col slds-size_5-of-12">
+                                    <lightning-input-field field-name={item.fieldName} value={item.initialValue} disabled></lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-grow-none slds-var-m-left_medium slds-var-m-right_medium slds-align_absolute-center">
+                                    <lightning-icon class="custom-icon-forward slds-var-p-top_small" icon-name='utility:forward' alternative-text='forward' size='small' title='forward'></lightning-icon>
+                                </div>
+                                <div class="slds-col slds-size_5-of-12">
+                                    <lightning-input-field field-name={item.fieldName} value={item.changeValue} disabled></lightning-input-field>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <div class="slds-var-p-top_xx-small slds-var-p-left_x-small">新增的数据</div>
+                <template for:each={companyNewDifferencesList} for:item="differences" for:index="index">
+                    <div key={differences} class="slds-var-p-left_x-small">
+                        <div class="slds-text-color_success">{differences.entityNew}</div>
+                    </div>
+                </template>
+            </lightning-record-edit-form>
+
+            <div class="line"></div>
+            <div class="slds-text-title_bold slds-var-p-left_xx-small">
+                销售视图内容更改
+            </div>
+            <lightning-record-edit-form object-api-name="Customer_Extend__c">
+                <div class="slds-var-p-left_x-small slds-var-p-top_xx-small">修改的数据</div>
+                <template for:each={salesUpdateDifferencesList} for:item="differences" for:index="index">
+                    <div key={differences} class="slds-var-p-left_x-small">
+                        <div class="slds-text-color_success">{differences.entityUpdate}</div>
+                        <template for:each={differences.differences} for:item="item" for:index="index">
+                            <div class="slds-grid slds-grid_align-center" key={item}>
+                                <div class="slds-col slds-size_5-of-12">
+                                    <lightning-input-field field-name={item.fieldName} value={item.initialValue} disabled></lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-grow-none slds-var-m-left_medium slds-var-m-right_medium slds-align_absolute-center">
+                                    <lightning-icon class="custom-icon-forward slds-var-p-top_small" icon-name='utility:forward' alternative-text='forward' size='small' title='forward'></lightning-icon>
+                                </div>
+                                <div class="slds-col slds-size_5-of-12">
+                                    <lightning-input-field field-name={item.fieldName} value={item.changeValue} disabled></lightning-input-field>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <div class="slds-var-p-top_xx-small slds-var-p-left_x-small">新增的数据</div>
+                <template for:each={salesNewDifferencesList} for:item="differences" for:index="index">
+                    <div key={differences} class="slds-var-p-left_x-small">
+                        <div class="slds-text-color_success">{differences.entityNew}</div>
+                    </div>
+                </template>
+            </lightning-record-edit-form>
+
+            <div class="line"></div>
+            <div class="slds-text-title_bold slds-var-p-left_xx-small">
+                银行视图内容更改
+            </div>
+            <lightning-record-edit-form object-api-name="Customer_Banks__c">
+                <div class="slds-var-p-left_x-small slds-var-p-top_xx-small">修改的数据</div>
+                <template for:each={banksUpdateDifferencesList} for:item="differences" for:index="index">
+                    <div key={differences} class="slds-var-p-left_x-small">
+                        <div class="slds-text-color_success">{differences.nameUpdate}</div>
+                        <template for:each={differences.differences} for:item="item" for:index="index">
+                            <div class="slds-grid slds-grid_align-center" key={item}>
+                                <div class="slds-col slds-size_5-of-12">
+                                    <lightning-input-field field-name={item.fieldName} value={item.initialValue} disabled></lightning-input-field>
+                                </div>
+                                <div class="slds-col slds-grow-none slds-var-m-left_medium slds-var-m-right_medium slds-align_absolute-center">
+                                    <lightning-icon class="custom-icon-forward slds-var-p-top_small" icon-name='utility:forward' alternative-text='forward' size='small' title='forward'></lightning-icon>
+                                </div>
+                                <div class="slds-col slds-size_5-of-12">
+                                    <lightning-input-field field-name={item.fieldName} value={item.changeValue} disabled></lightning-input-field>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <div class="slds-var-p-top_xx-small slds-var-p-left_x-small">新增的数据</div>
+                <template for:each={banksNewDifferencesList} for:item="differences" for:index="index">
+                    <div key={differences} class="slds-var-p-left_x-small">
+                        <div class="slds-text-color_success">{differences.nameNew}</div>
+                    </div>
+                </template>
+            </lightning-record-edit-form>
+        </div>
+    </template>
+</template>
+<template if:false={haveHistory}>
+    <div class="slds-modal__container">
+        <div class="slds-modal__header">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                        title="Close" onclick={cancel}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 class="slds-text-heading--medium">
+                    Changes Information
+                </h2>
+        </div>
+        <div class="slds-modal__content">
+            <div class="slds-text-title_bold slds-align_absolute-center slds-var-m-around_large">
+                The history has not been changed.
+            </div>
+        </div>
+        <div class="modal-footer slds-modal__footer">
+            <lightning-button
+                variant="brand-outline"
+                label="Cancel"
+                onclick={cancel}
+                class="slds-var-m-left_x-small"
+            ></lightning-button>
+        </div>
+    </div>
+</template>
+</template>

@@ -1,0 +1,471 @@
+<!--
+  @description       : 
+  @author            : chenpeng@deloitte.com.cn
+  @group             : 
+  @last modified on  : 03-23-2022
+  @last modified by  : chenpeng@deloitte.com.cn
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:lightningQuickActionWithoutHeader,force:hasRecordId" 
+                access="global" 
+                controller="PositionCreateController">
+
+    <aura:attribute name="showWaiting" type="Boolean" default="false" />
+    <aura:handler name="init" action="{!c.init}" value="{!this}"/>
+    <aura:attribute name="items" type="Object" access="PRIVATE"/>
+    <aura:attribute name="gridColumns" type="List" access="PRIVATE" />
+    <aura:attribute name="gridSelectedRows" type="List" access="PRIVATE" default=""/>
+    <aura:attribute name="gridExpandedRows" type="Object" />
+
+    
+    <aura:attribute name="gridNewColumns" type="List" access="PRIVATE" />
+
+    <!-- 网格折叠时,记录选择的行 -->
+    <aura:attribute name="gridSelectedRowsCollapse" type="List"/>
+    <aura:attribute name="bypassOnRowSelection" type="Boolean" default="false"/>
+    <aura:attribute name="expandedRowsCount" type="Integer" default="0"/>
+    <aura:attribute name="gridData" type="Object" />
+    <aura:attribute name="gridMap" type="map" />
+
+    <!-- 客户产品线 -->
+    <aura:attribute name="accProductLineList" type="Object[]"/>
+
+    <!-- 产品线基础数据 -->
+    <aura:attribute name="productLineList" type="Object[]"/>
+
+    <!-- 选择的门店列表 -->
+    <!-- <aura:attribute name="shopList" type="Object[]"/> -->
+    <!-- <aura:attribute name="shopId" type="String"/> -->
+    <aura:attribute name="shopItemList" type="List" />
+
+    <!-- 选择的人员列表 wfc-->
+    <aura:attribute name="userList" type="List" />
+
+    <!-- 查询的门店列表 -->
+    <aura:attribute name="shopSearchList" type="Object[]"/>
+
+    <!-- 门店搜索条件 -->
+    <!-- <aura:attribute name="shopName" type="String"/>
+    <aura:attribute name="accountName" type="String"/>
+    <aura:attribute name="griddingName" type="String"/> -->
+    <aura:attribute name="shopSearch" type="Object" />
+
+    <!-- 产品线数量 -->
+    <aura:attribute name="productLineNumber" type="String"/>
+
+
+    <div class="slds-modal__header">
+        <h2 class="slds-text-heading--medium">
+            {!$Label.c.POSITION_PERMISSION_MODIFY}
+        </h2>
+    </div>
+
+    <ui:scrollerWrapper class="scrollerSize" aura:id="scrollbottom">
+        <lightning:card title="">
+            <aura:if isTrue="{!v.showWaiting}">
+                <div class="backgroundInverse">
+                    <lightning:spinner class="spins" size="medium" variant="brand" alternativeText="Loading" />
+                </div>
+            </aura:if>
+
+            <lightning:tabset>
+                <!-- ***************************客户&产品线*************************** -->
+                <lightning:tab onactive="{!c.handleActive}" label="{!$Label.c.ACCOUNT_PRODUCT_LINE}" id="accountProductLine" aura:id="accountProductLine">
+                    <div align="right">
+                        <lightning:button label="{!$Label.c.ADD_NEW_LINE}" iconName="utility:add" iconPosition="right" variant="brand" onclick="{!c.addNewRowAccProductLine}" class=""/>
+                    </div>
+
+                        <div tabindex="-1" style="width: 100%; overflow: auto !important;min-height: 180px !important;">
+                            <table class="tableCss" cellpadding="2" cellspacing="0" style="width: 100%;">
+                                <tr>
+                                    <th style="width: 1%" class="tableHead">{!$Label.c.POSITION_NO}</th>
+                                    <th style="width: 19%" class="tableHead">{!$Label.c.POSITION_ACCOUNT}</th>
+                                    <aura:iteration items="{!v.productLineList}" var="item" indexVar="index">
+                                        <th style="width: 5%" class="tableHead" colspan="{!v.productLineNumber}">{!item.label}</th>
+                                    </aura:iteration>
+                                    <th style="width: 5%" class="tableHead">{!$Label.c.POSITION_ACTION}</th>
+                                </tr>
+                                <aura:iteration items="{!v.accProductLineList}" var="item" indexVar="index">
+                                    <tr style="text-align: center;">
+                                        <td style="width: 1%" class="tableBody">{!index + 1}</td>
+                                        <td style="width: 19%" class="tableBody">
+                                            <lightning:recordEditForm aura:id="recordViewForm" objectApiName="Position_Permissions__c" class="slds-modal--medium">
+                                                <lightning:inputField fieldName="Account__c" value="{!item.accId}" required="true" variant="label-hidden" onchange="{!c.changeAccount}" class="{!index}"/>
+                                            </lightning:recordEditForm>
+                                        </td>
+                                        <aura:iteration items="{!item.productLineList}" var="itemChild" indexVar="index">
+                                            <td style="width: 5%" class="tableBody"> 
+                                                <div align="center">
+                                                    <ui:inputCheckbox aura:id="checkbox" change="{!c.onCheck}" value="{!itemChild.isTrue}" disabled="{!itemChild.isDisable}" name="{!itemChild.accProductLineKey}"/>
+                                                </div>
+                                            </td>
+                                        </aura:iteration>
+                                        <td style="width: 5%" class="tableBody"> 
+                                            <div align="center">
+                                                <a onclick="{!c.deleteRow}" id="{!index}" name="{!index}">
+                                                    <lightning:icon variant="error" iconName="utility:delete"
+                                                        class="slds-icon slds-icon_small" size="x-small" alternativeText="icon" title="删除行"/>
+                                                    <span class="slds-assistive-text">Delete Icon</span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </aura:iteration>
+                            </table>
+                        </div>
+                </lightning:tab>
+
+                <!-- ***************************门店*************************** -->
+                <lightning:tab onactive="{!c.handleActive}" label="{!$Label.c.POSITION_SHOP}" id="shop" aura:id="shop">
+                    <lightning:recordEditForm aura:id="recordViewForm" objectApiName="Position_Permissions__c" class="slds-modal--medium">
+                        <lightning:layout multipleRows="true">
+                            <lightning:layoutItem size="6" smallDeviceSize="12" largeDeviceSize="3" mediumDeviceSize="12" >
+                                <lightning:input onchange="{oninputCodeChange}" type="text" label="{!$Label.c.POSITION_SHOP_NAME}" value="{!v.shopSearch.shopName}" placeholder="{!$Label.c.POSITION_SEARCH_PLACEHOLDER}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="6" smallDeviceSize="12" largeDeviceSize="1" mediumDeviceSize="12" >
+
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="6" smallDeviceSize="12" largeDeviceSize="3" mediumDeviceSize="12" >
+                                <lightning:input onchange="{oninputCodeChange}" type="text" label="{!$Label.c.POSITION_ACCOUNT_NAME}" value="{!v.shopSearch.accountName}" placeholder="{!$Label.c.POSITION_SEARCH_PLACEHOLDER}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="6" smallDeviceSize="12" largeDeviceSize="1" mediumDeviceSize="12" >
+
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="6" smallDeviceSize="12" largeDeviceSize="3" mediumDeviceSize="12" >
+                                <lightning:input onchange="{oninputCodeChange}" type="text" label="{!$Label.c.POSITION_GRIDDING}" value="{!v.shopSearch.griddingName}" placeholder="{!$Label.c.POSITION_SEARCH_PLACEHOLDER}" />
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="6" smallDeviceSize="12" largeDeviceSize="1" mediumDeviceSize="12" >
+                                <div>
+                                    <label class="slds-form-element__label">
+                                    <span>&nbsp;</span>
+                                    </label>
+                                </div>
+                                <lightning:button label="{!$Label.c.POSITION_SEARCH}" iconName="utility:search" iconPosition="left" onclick="{!c.searchDataHelper}" variant="brand" class="slds-m-left_x-small"></lightning:button>
+                            </lightning:layoutItem>
+                            <!-- <lightning:layoutItem size="12" smallDeviceSize="12" largeDeviceSize="12" mediumDeviceSize="12" /> -->
+                            <lightning:layoutItem size="6" smallDeviceSize="12" largeDeviceSize="6" mediumDeviceSize="12" >
+                                <div>
+                                    <label class="slds-form-element__label">
+                                    <span>{!$Label.c.POSITION_SEARCH_SHOP}</span>
+                                    </label>
+                                </div>
+                                <!-- <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none" 
+                                     style="border:1px solid #ccc;border-bottom:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;min-height:100px">
+                                    <aura:iteration items="{!v.shopItemList}" var="item">
+                                        <span>
+                                            <lightning:pill label="{!item.shopName}" onremove="{! c.onRemoveSelectedItem }" name="{!item.shopId}">
+                                                <aura:set attribute="media">
+                                                    <lightning:icon iconName="standard:agent_home" />
+                                                </aura:set>
+                                            </lightning:pill>
+                                        </span>
+                                    </aura:iteration>
+                                </div> -->
+
+                                
+
+                                <div class="slds-scrollable" style="width: 100%;overflow: scroll;">
+                                    <table class="tableCss" style="width: 100%;" cellpadding="0" cellspacing="0">
+                                        <thead>
+                                            <tr class="slds-line-height_reset" style="position: -webkit-sticky; position: sticky;" bgcolor="#25665E">
+                                                <th width="3%;" height="30px;" class="slds-text-align_center slds-is-sortable slds-is-sorted" scope="col" aria-sort="descending">
+                                                    <span style="color: aliceblue;" class="" title="action">{!$Label.c.POSITION_ACTION}</span>
+                                                </th>
+                                                <th width="8%;" height="30px;"
+                                                    class="slds-text-align_center slds-is-sortable slds-is-sorted"
+                                                    scope="col" aria-sort="descending">
+                                                    <span style="color: aliceblue;" class="" title="Name">{!$Label.c.POSITION_NO}</span>
+                                                </th>
+                                                <th width="10%;" height="30px;" class="slds-text-align_center" scope="col">
+                                                    <span style="color: aliceblue;" class="" title="ItemNm__c">{!$Label.c.POSITION_SHOP_NAME}</span>
+                                                </th>
+                                                <th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+                                                    <span style="color: aliceblue;" class="" title="SalesRep__c">{!$Label.c.POSITION_ACCOUNT_NAME}</span>
+                                                </th>
+                                                <th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+                                                    <span style="color: aliceblue;" class="" title="BuildAddr__c">{!$Label.c.POSITION_GRIDDING}</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="slds-scrollable" style="width: 100%;overflow: scroll;">
+                                    <table class="tableCss" style="width: 100%;word-break:break-all;" cellpadding="1" cellspacing="1">
+                                        <tbody class="slds-scrollable">
+                                            <aura:iteration items="{!v.shopSearchList}" var="item" indexVar="index">
+                                                <tr class="slds-hint-parent">
+                                                    <td class="slds-cell-edit slds-text-align_center" role="gridcell" style="border-bottom: 1px solid #ddd;" width="3%;">
+                                                        <!-- <lightning-button-icon icon-name={objData.icon} size="x-small" alternative-text="添加" onclick={chooseBizData} value={objData}>
+                                                        </lightning-button-icon> -->
+                                                        <!-- variant="brand" -->
+                                                        <lightning:buttonIcon iconName="{!item.icon}" size="x-small" value="{!item.shopExternalKeyID}" onclick="{!c.chooseShop}"/>
+                                                    </td>
+                                                    <td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid #ddd;" width="8%;">
+                                                        <span class="">
+                                                            {!index + 1}
+                                                        </span>
+                                                    </td>
+                                                    <td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid #ddd;" width="10%;">
+                                                        <span class="">
+                                                            {!item.shopName}
+                                                        </span>
+                                                    </td>
+                                                    <td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid #ddd;" width="8%;">
+                                                        <span class="">
+                                                            {!item.accountName}
+                                                        </span>
+                                                    </td>
+                                                    <td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid #ddd;" width="8%;">
+                                                        <span class="">
+                                                            {!item.griddingName}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </aura:iteration>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="6" smallDeviceSize="12" largeDeviceSize="6" mediumDeviceSize="12" >
+                                <div>
+                                    <label class="slds-form-element__label">
+                                    <span>{!$Label.c.POSITION_CURRENT_SHOP_PERMISSION}</span>
+                                    </label>
+                                </div>
+                                <!-- <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon slds-input-has-icon_left-right" role="none" 
+                                     style="border:1px solid #ccc;border-bottom:1px solid #ccc;border-left:1px solid #ccc;border-right:1px solid #ccc;min-height:100px">
+                                    <aura:iteration items="{!v.shopItemList}" var="item">
+                                        <span>
+                                            <lightning:pill label="{!item.shopName}" onremove="{! c.onRemoveSelectedItem }" name="{!item.shopId}">
+                                                <aura:set attribute="media">
+                                                    <lightning:icon iconName="standard:agent_home" />
+                                                </aura:set>
+                                            </lightning:pill>
+                                        </span>
+                                    </aura:iteration>
+                                </div> -->
+
+                                
+
+                                <div class="slds-scrollable" style="width: 100%;overflow: scroll;">
+                                    <table class="tableCss" style="width: 100%;" cellpadding="0" cellspacing="0">
+                                        <thead>
+                                            <tr class="slds-line-height_reset" style="position: -webkit-sticky; position: sticky;" bgcolor="#25665E">
+                                                <th width="3%;" height="30px;" class="slds-text-align_center slds-is-sortable slds-is-sorted" scope="col" aria-sort="descending">
+                                                    <span style="color: aliceblue;" class="" title="action">{!$Label.c.POSITION_ACTION}</span>
+                                                </th>
+                                                <th width="8%;" height="30px;"
+                                                    class="slds-text-align_center slds-is-sortable slds-is-sorted"
+                                                    scope="col" aria-sort="descending">
+                                                    <span style="color: aliceblue;" class="" title="Name">{!$Label.c.POSITION_NO}</span>
+                                                </th>
+                                                <th width="10%;" height="30px;" class="slds-text-align_center" scope="col">
+                                                    <span style="color: aliceblue;" class="" title="ItemNm__c">{!$Label.c.POSITION_SHOP_NAME}</span>
+                                                </th>
+                                                <th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+                                                    <span style="color: aliceblue;" class="" title="SalesRep__c">{!$Label.c.POSITION_ACCOUNT_NAME}</span>
+                                                </th>
+                                                <th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+                                                    <span style="color: aliceblue;" class="" title="BuildAddr__c">{!$Label.c.POSITION_GRIDDING}</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="slds-scrollable" style="width: 100%;overflow: scroll;">
+                                    <table class="tableCss" style="width: 100%;word-break:break-all;" cellpadding="1" cellspacing="1">
+                                        <tbody class="slds-scrollable">
+                                            <aura:iteration items="{!v.shopItemList}" var="item" indexVar="index">
+                                                <tr class="slds-hint-parent">
+                                                    <td class="slds-cell-edit slds-text-align_center" role="gridcell" style="border-bottom: 1px solid #ddd;" width="3%;">
+                                                        <!-- <lightning-button-icon icon-name={objData.icon} size="x-small" alternative-text="添加" onclick={chooseBizData} value={objData}>
+                                                        </lightning-button-icon> -->
+                                                        <!-- variant="brand" -->
+                                                        <lightning:buttonIcon iconName="{!item.icon}" size="x-small" value="{!item.shopExternalKeyID}" onclick="{!c.unChooseShop}"/>
+                                                    </td>
+                                                    <td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid #ddd;" width="8%;">
+                                                        <span class="">
+                                                            {!index + 1}
+                                                        </span>
+                                                    </td>
+                                                    <td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid #ddd;" width="10%;">
+                                                        <span class="">
+                                                            {!item.shopName}
+                                                        </span>
+                                                    </td>
+                                                    <td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid #ddd;" width="8%;">
+                                                        <span class="">
+                                                            {!item.accountName}
+                                                        </span>
+                                                    </td>
+                                                    <td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid #ddd;" width="8%;">
+                                                        <span class="">
+                                                            {!item.griddingName}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            </aura:iteration>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </lightning:layoutItem>
+
+                            <!-- 门店 -->
+                            <!-- <lightning:layoutItem size="12" smallDeviceSize="12" largeDeviceSize="3" mediumDeviceSize="3" >
+                                <lightning:inputField fieldName="Shop__c" value="{!v.shopId}" required="true" variant="label-stacked"/>
+                            </lightning:layoutItem>
+                            <lightning:layoutItem size="12" smallDeviceSize="12" largeDeviceSize="3" mediumDeviceSize="3" >
+                                <div>
+                                    <label class="slds-form-element__label">
+                                    <span>&nbsp;</span>
+                                    </label>
+                                </div>
+                                <lightning:button label="确认" iconName="utility:add" iconPosition="right" variant="brand" onclick="{!c.confirmShop}" class=""/>
+                            </lightning:layoutItem> -->
+                        </lightning:layout>
+                    </lightning:recordEditForm>
+                </lightning:tab>
+
+                <!-- ***************************网格*************************** -->
+                <lightning:tab onactive="{!c.handleActive}" label="网格" id="gradding" aura:id="gradding">
+                    <lightning:layout multipleRows="true">
+                        <table>
+                            <thead>
+                                <th>Name</th>
+                                <th>Choose</th>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{!v.gridNewColumns}" var="item" indexVar="index">
+                                    <aura:if isTrue="{!item.rowStyle}">
+                                        <tr>
+                                            <td style="border-bottom:1px dashed #c2c2c2;">
+                                                <span style="{!item.nameStyle}">
+                                                    <a onclick="{!c.showOrHideChildrenRows}" id="{!item.recordId}" name="{!item.recordId}">
+                                                        <lightning:icon 
+                                                            iconName = "{!item.iconName}"
+                                                            class="slds-icon slds-icon_small" 
+                                                            size = "x-small" 
+                                                            data-expanded = "false"
+                                                            data-rowid = "{!item.recordId}"
+                                                            />
+                                                    </a>
+                                                    {!item.name}
+                                                </span>
+                                            </td>
+                                            <td style="border-bottom:1px dashed #c2c2c2;">
+                                                <ui:inputCheckbox aura:id="checkbox" label="" change="{!c.onCheckGridding}" value="{!item.isChoose}" name="{!item.recordId}"/>
+                                            </td>
+                                        </tr>
+                                    </aura:if>
+                                </aura:iteration>
+                                <!-- <template for:each={tableData} for:item="rowData">
+                                    <tr key={rowData.Id} class={rowData.rowStyle}>
+                                        <td>
+                                            <span style={rowData.nameStyle}>
+                                                <lightning-icon icon-name={rowData.iconName} 
+                                                size=x-small 
+                                                onclick={showOrHideChildrenRows} 
+                                                data-rowid={rowData.Id}
+                                                data-expanded="false">
+                                                </lightning-icon>
+                                                {rowData.Name}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </template> -->
+                            </tbody>
+                        </table>
+                    </lightning:layout>
+                </lightning:tab>
+
+                <lightning:tab onactive="{!c.handleActive}" label="人员" id="user" aura:id="user">
+                    <div class="slds-scrollable" style="width: 100%;overflow: scroll;">
+                        <table class="tableCss" style="width: 100%;" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr class="slds-line-height_reset" style="position: -webkit-sticky; position: sticky;" bgcolor="#25665E">
+                                    <th width="10%;" height="30px;"
+                                        class="slds-text-align_center slds-is-sortable slds-is-sorted"
+                                        scope="col" aria-sort="descending">
+                                        <span style="color: aliceblue;" class="" title="Name">{!$Label.c.POSITION_NO}</span>
+                                    </th>
+                                    <th width="40%;" height="30px;" class="slds-text-align_center" scope="col">
+                                        <span style="color: aliceblue;" class="" title="userName">姓名</span>
+                                    </th>
+                                    <th width="40%;" height="30px;" class="slds-text-align_center" scope="col">
+                                        <span style="color: aliceblue;" class="" title="roleName">角色</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <div class="slds-scrollable" style="width: 100%;overflow: scroll;">
+                        <table class="tableCss" style="width: 100%;word-break:break-all;" cellpadding="1" cellspacing="1">
+                            <tbody class="slds-scrollable">
+                                <aura:iteration items="{!v.userList}" var="item" indexVar="index">
+                                    <tr class="slds-hint-parent">
+                                        <td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid #ddd;" width="10%;">
+                                            <span class="">
+                                                {!index + 1}
+                                            </span>
+                                        </td>
+                                        <td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid #ddd;" width="40%;">
+                                            <span class="">
+                                                {!item.userName}
+                                            </span>
+                                        </td>
+                                        <td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid #ddd;" width="40%;">
+                                            <span class="">
+                                                {!item.roleName}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </aura:iteration>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </lightning:tab>
+            </lightning:tabset>
+        </lightning:card>
+    </ui:scrollerWrapper>
+
+    <!-- <div class="modal-footer slds-modal__footer slds-size_1-of-1">
+        <div class="forceChangeRecordTypeFooter">
+            <lightning:button label="取消" variant="neutral" onclick="{!c.cancel}" />
+            <lightning:button label="保存" variant="brand" onclick="{!c.save}" />
+        </div>
+    </div> -->
+
+    <aura:html tag="style">
+        .slds-modal__container{
+            width: 100%;
+            max-width: 300rem;
+            height: 100%;
+            max-height: 1000rem;
+            overflow:hidden;
+            padding: 0 1.75rem !important;
+        }
+        .cuf-content {
+            padding: 0 0rem !important;
+        }
+        .slds-p-around--medium {
+            padding: 0rem !important;
+        }       
+        .slds-modal__content{
+            overflow-y:hidden !important;
+            height:unset !important;
+            max-height:unset !important;
+        }
+        <!-- .slds-th__action{
+            display: none !important;
+        } -->
+        <!-- .slds-th__action_form{
+            display: none !important;
+        } -->
+        <!-- .slds-cell-fixed{
+            display: none !important;
+        } -->
+
+        
+    </aura:html>
+</aura:component>

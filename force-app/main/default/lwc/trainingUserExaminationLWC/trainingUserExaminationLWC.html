@@ -1,0 +1,214 @@
+<template>
+    <template if:true={isShowSpinner} >
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+    <template if:false={isHaveAnswer}>
+        <div style="height: 200px; color:rgb(187, 52, 52); text-align: center; line-height: 200px;">  
+            培训人员未答题！
+        </div>
+    </template>
+    
+    <template if:true={isHaveAnswer}>
+        <!--试卷标题-->
+        <lightning-card class="slds-color__background_gray-4 pageHeader">
+            <header class = "slds-modal__header">
+                <h2 class = "slds-modal__title slds-hyphenate slds-text-title_bold">
+                    {trainingTaskName}     
+                </h2>
+            </header>
+        </lightning-card>
+        <template for:each={questionBankList} for:item="questionBank" for:index="indexList">
+            <lightning-accordion key={questionBank} allow-multiple-sections-open="true" active-section-name="A">
+                <lightning-accordion-section label={questionBank.answerLabel} name={questionBank.activeSectionName}>
+                    <!--试题展示-->
+                    <lightning-card>
+                        <div class="slds-modal__content" >
+                            <template if:true={questionBank.haveSingleChoiceList}><div class="type">单选题：</div></template>
+                            
+                            <template for:each={questionBank.singleChoiceList} for:item="singleChoice" for:index="index">
+                                <div key={singleChoice.id}>
+                                    <div>
+                                        <span>{singleChoice.questionNumber}. {singleChoice.title}</span>
+                                        <span>({singleChoice.score}分)</span>
+                                        <template if:true={singleChoice.correctAnswer}>
+                                            <span style="color:green">答案：{singleChoice.answer}</span>
+                                        </template>
+                                        <template if:false={singleChoice.correctAnswer}>
+                                            <span style="color:red">答案：{singleChoice.answer}</span>
+                                        </template>
+                                        
+                                    </div>
+                                    <div class="optionDiv">
+                                        <div class="optionSpan">
+                                            <template if:true={singleChoice.isChoiceA}>
+                                                <lightning-input type="radio" label={singleChoice.choiceA} name={singleChoice.Id} value="A" checked disabled></lightning-input> 
+                                            </template>
+                                            <template if:false={singleChoice.isChoiceA}>
+                                                <lightning-input type="radio" label={singleChoice.choiceA} name={singleChoice.Id} value="A" disabled></lightning-input> 
+                                            </template>
+                                        </div>
+                                        <div class="optionSpan">
+                                            <template if:true={singleChoice.isChoiceB}>
+                                                <lightning-input type="radio" label={singleChoice.choiceB} name={singleChoice.Id} value="B" checked disabled></lightning-input>
+                                            </template>
+                                            <template if:false={singleChoice.isChoiceB}>
+                                                <lightning-input type="radio" label={singleChoice.choiceB} name={singleChoice.Id} value="B" disabled></lightning-input>
+                                            </template>
+                                        </div>
+                                        <div class="optionSpan">
+                                            <template if:true={singleChoice.isChoiceC}>
+                                                <lightning-input type="radio" label={singleChoice.choiceC} name={singleChoice.Id} value="C" checked disabled></lightning-input>
+                                            </template>
+                                            <template if:false={singleChoice.isChoiceC}>
+                                                <lightning-input type="radio" label={singleChoice.choiceC} name={singleChoice.Id} value="C" disabled></lightning-input>
+                                            </template>
+                                        </div>
+                                        <div class="optionSpan">
+                                            <template if:true={singleChoice.isChoiceD}>
+                                                <lightning-input type="radio" label={singleChoice.choiceD} name={singleChoice.Id} value="D" checked disabled></lightning-input>
+                                            </template>
+                                            <template if:false={singleChoice.isChoiceD}>
+                                                <lightning-input type="radio" label={singleChoice.choiceD} name={singleChoice.Id} value="D" disabled></lightning-input>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </template>
+            
+                            <template if:true={questionBank.haveMultipleChoiceList}><div class="type">多选题：</div></template>
+                            <template for:each={questionBank.multipleChoiceList} for:item="multipleChoice" for:index="index">
+                                <div key={multipleChoice.id}>
+                                    <div>
+                                        <span>{multipleChoice.questionNumber}. {multipleChoice.title}</span>
+                                        <span>({multipleChoice.score}分)</span>
+                                        <template if:true={multipleChoice.correctAnswer}>
+                                            <span style="color:green">答案：{multipleChoice.answer}</span> 
+                                        </template>
+                                        <template if:false={multipleChoice.correctAnswer}>
+                                            <span style="color:red">答案：{multipleChoice.answer}</span> 
+                                        </template>
+                                    </div>
+                                    <div class="optionDiv">
+                                        <div class="optionSpan">
+                                            <template if:true={multipleChoice.isChoiceA}>
+                                                <lightning-input type="checkbox" label={multipleChoice.choiceA} name={multipleChoice.Id} value="A" checked disabled></lightning-input> 
+                                            </template>
+                                            <template if:false={multipleChoice.isChoiceA}>
+                                                <lightning-input type="checkbox" label={multipleChoice.choiceA} name={multipleChoice.Id} value="A" disabled></lightning-input> 
+                                            </template>
+                                        </div>
+                                        <div class="optionSpan">
+                                            <template if:true={multipleChoice.isChoiceB}>
+                                                <lightning-input type="checkbox" label={multipleChoice.choiceB} name={multipleChoice.Id} value="B" checked disabled></lightning-input> 
+                                            </template>
+                                            <template if:false={multipleChoice.isChoiceB}>
+                                                <lightning-input type="checkbox" label={multipleChoice.choiceB} name={multipleChoice.Id} value="B" disabled></lightning-input> 
+                                            </template>
+                                        </div>
+                                        <div class="optionSpan">
+                                            <template if:true={multipleChoice.isChoiceC}>
+                                                <lightning-input type="checkbox" label={multipleChoice.choiceC} name={multipleChoice.Id} value="C" checked disabled></lightning-input> 
+                                            </template>
+                                            <template if:false={multipleChoice.isChoiceC}>
+                                                <lightning-input type="checkbox" label={multipleChoice.choiceC} name={multipleChoice.Id} value="C" disabled></lightning-input> 
+                                            </template>
+                                        </div>
+                                        <div class="optionSpan">
+                                            <template if:true={multipleChoice.isChoiceD}>
+                                                <lightning-input type="checkbox" label={multipleChoice.choiceD} name={multipleChoice.Id} value="D" checked disabled></lightning-input> 
+                                            </template>
+                                            <template if:false={multipleChoice.isChoiceD}>
+                                                <lightning-input type="checkbox" label={multipleChoice.choiceD} name={multipleChoice.Id} value="D" disabled></lightning-input> 
+                                            </template>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </template>
+            
+                            <template if:true={questionBank.haveJudgmentQuestionList}><div class="type">判断题：</div></template>
+                            <template for:each={questionBank.judgmentQuestionList} for:item="judgmentQuestion" for:index="index">
+                                <div key={judgmentQuestion.id}>
+                                    <div>
+                                        <span>{judgmentQuestion.questionNumber}. {judgmentQuestion.title}</span>
+                                        <span>({judgmentQuestion.score}分)</span>
+                                        <template if:true={judgmentQuestion.correctAnswer}>
+                                            <span style="color:green">答案：{judgmentQuestion.answer}</span> 
+                                        </template>
+                                        <template if:false={judgmentQuestion.correctAnswer}>
+                                            <span style="color:red">答案：{judgmentQuestion.answer}</span> 
+                                        </template>
+                                    </div>
+                                    <div class="optionDiv">
+                                        <div class="optionSpan">
+                                            <template if:true={judgmentQuestion.judgmentUserAnswer}>
+                                                <lightning-input type="radio" label="True" name={judgmentQuestion.Id} value="True" checked disabled></lightning-input>
+                                                <lightning-input type="radio" label="False" name={judgmentQuestion.Id} value="False" disabled></lightning-input>
+                                            </template>
+                                        </div>
+                                        <div class="optionSpan">
+                                            <template if:false={judgmentQuestion.judgmentUserAnswer}>
+                                                <lightning-input type="radio" label="True" name={judgmentQuestion.Id} value="True" disabled></lightning-input>
+                                                <lightning-input type="radio" label="False" name={judgmentQuestion.Id} value="False" checked disabled></lightning-input>
+                                            </template> 
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </template>
+            
+                            <template if:true={questionBank.haveSubjectiveQuestionList}><div class="type">主观题：</div></template>
+                            <template for:each={questionBank.subjectiveQuestionList} for:item="subjectiveQuestion" for:index="index">
+                                <div key={subjectiveQuestion.id}>
+                                    <div style="margin-bottom: 20px;">
+                                        <span>{subjectiveQuestion.questionNumber}. {subjectiveQuestion.title}</span>
+                                        <span>({subjectiveQuestion.score}分)</span>
+                                        <span style="float: right;width: 60px">
+                                            <lightning-input 
+                                                type="number"
+                                                name={subjectiveQuestion.Id}
+                                                data-record={subjectiveQuestion.score}
+                                                data-name={indexList}
+                                                value={subjectiveQuestion.answerScore}
+                                                min="0" 
+                                                max={subjectiveQuestion.score} 
+                                                message-when-range-underflow="评分不能小于0"
+                                                message-when-range-overflow="评分不能大于题目最大分数"
+                                                placeholder="score"
+                                                onchange={changeScore}
+                                            ></lightning-input>
+                                        </span>
+                                    </div>
+                                    <div class="optionDiv">
+                                        <div class="optionSpan">
+                                            <lightning-textarea max-length="131072" value={subjectiveQuestion.subjectiveUserAnswer} readonly></lightning-textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </template>
+                        </div>
+                    </lightning-card>
+                    <!--主观题评分-->
+                    <template if:true={questionBank.haveSubjectiveQuestionList}>
+                        <lightning-card>
+                            <div class="modal-footer slds-modal__footer">
+                                <lightning-button
+                                        variant="brand"
+                                        label="Save"
+                                        data-record={indexList}
+                                        onclick={submit}
+                                        class="slds-var-m-left_x-small"
+                                ></lightning-button>
+                            </div>
+                        </lightning-card>
+                    </template>
+                </lightning-accordion-section>
+            </lightning-accordion>
+        </template>
+        
+    </template>
+
+</template>

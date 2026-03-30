@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <description>... this flow abstracts the authorization logic leveraged by our scheduled flows to support profiling activities.  Cuneiform leverages this flow to authorize the user that scheduled a flow before executing profiling on the specified schedule.</description>
+    <environments>Default</environments>
+    <label>Cuneiform: Profiling Results: Auth: Schedule Flow</label>
+    <processType>AutoLaunchedFlow</processType>
+</Flow>

@@ -1,0 +1,147 @@
+.coface-card {
+    min-height: 200px;
+}
+
+.result-card {
+    border: 1px solid var(--lwc-colorBorder, #dddbda);
+    border-radius: 0.25rem;
+    background: var(--lwc-colorBackgroundAlt, #ffffff);
+    transition: background-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    cursor: default;
+}
+
+.selected-card {
+    border: 1px solid var(--lwc-colorBorder, #dddbda);
+    border-left: 4px solid var(--lwc-brandAccessible, #0176d3);
+    border-radius: 0.25rem;
+    background: var(--lwc-colorBackgroundAlt, #ffffff);
+}
+
+/* 让国家下拉列表宽度与 lightning-input 一致 */
+.country-dropdown {
+    position: relative;
+}
+.country-dropdown.slds-dropdown {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+}
+.country-dropdown .slds-listbox {
+    width: 100%;
+}
+
+/* 让“+更多搜索条件/-精简搜索条件”看起来像链接 */
+.link-like {
+    --slds-c-button-base-color: var(--lwc-colorTextLink, #0176d3);
+    --slds-c-button-text-color: var(--lwc-colorTextLink, #0176d3);
+    --slds-c-button-spacing-block-start: 0;
+    --slds-c-button-spacing-block-end: 0;
+    text-decoration: underline;
+}
+
+/* 让搜索按钮垂直居中列 */
+.action-col {
+    min-height: 3rem;
+}
+
+/* 响应式微调：在小屏上增加卡片间距 */
+@media (max-width: 48em) {
+    .result-card,
+    .selected-card {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.inputCard-input-body {
+    /* margin-left: 11.5%; */
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;    /* 垂直居中（如果需要） */
+}
+
+.inputCard-message-body {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;    /* 垂直居中（如果需要） */
+}
+.input__container {
+	width: 28%;
+    max-width: 90%;
+    display: flex;
+    /* justify-content: center; 水平居中 */
+    align-items: center;    /* 垂直居中（如果需要） */
+    /* height: 100vh;         让容器充满视口高度，以便垂直居中 */
+    width: 400px;
+    margin: 0 10px;           /* 设置左右间距，避免输入框紧贴在一起 */
+    /* margin-left: 50px;; */
+}
+.input-content {
+    /* margin-right: 20px; */
+    width: 100%;
+}
+.input-container {
+    position: relative;
+    width: 100%;
+}
+/* 样式化下拉列表 */
+.dropdown-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #ccc;
+    position: absolute;
+    background-color: white;
+    width: 100%;  /* 让下拉列表宽度与输入框一致 */
+    top: 100%;  /* 将下拉列表定位到输入框下方 */
+    left: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;  /* 保证下拉列表在输入框之上 */
+}
+.dropdown-list li {
+    padding: 8px;
+    cursor: pointer;
+}
+.dropdown-list li:hover {
+    background-color: #f4f4f4;
+}
+
+/* 悬停态：鼠标为手型且背景高亮，增加轻微阴影以提示可交互 */
+.result-card.hovered {
+    cursor: pointer;
+    background-color: #eefff8;
+}
+
+.my-brand {
+    --slds-c-button-neutral-spacing-inline-start: 2rem;
+    --slds-c-button-neutral-spacing-inline-end: 2.4rem;
+    --slds-c-button-neutral-color-background-hover: rgb(215 253 245);
+    --slds-c-button-brand-spacing-inline-start: 2rem;
+    --slds-c-button-brand-spacing-inline-end: 2.4rem;
+}
+
+/* Increase dialog action button height and align icon/text horizontally */
+.dialog-action-btn {
+    /* increase height using SLDS design tokens */
+    --slds-c-button-line-height: 2.25rem;
+    --slds-c-button-sizing-height: 2.5rem;
+    --slds-c-button-radius-border: 0.25rem;
+
+    /* ensure icon + label align center horizontally */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    
+    /* set font size to 20px as requested */
+    font-size: 1rem;
+}
+
+/* Slightly larger icon for balance inside buttons */
+.dialog-action-btn lightning-icon {
+    --slds-c-icon-size: 1rem;
+}
+
+.line {
+    border-top: 1px solid rgb(165, 165, 165); /* 上边框，宽度为2px，颜色为黑色 */
+    width: 100%; /* 横线宽度 */
+}

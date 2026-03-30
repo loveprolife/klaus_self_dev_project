@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "06b2989c-6ec3-4f2a-bbca-60a22ae63ddf",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "Store_Related_List__c",
+  "id" : "2fb54dbb-a4a5-4c21-ac68-26ac9c0d7002",
+  "label" : "Store Related List",
+  "objectApiName" : "Shop__c",
+  "routeType" : "relatedlist-a26",
+  "type" : "route",
+  "urlPrefix" : "shop"
+}

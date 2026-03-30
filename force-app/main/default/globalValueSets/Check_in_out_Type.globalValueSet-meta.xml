@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Offsite</fullName>
+        <default>false</default>
+        <label>Offsite</label>
+    </customValue>
+    <customValue>
+        <fullName>Onsite</fullName>
+        <default>false</default>
+        <label>Onsite</label>
+    </customValue>
+    <masterLabel>Check in/out Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

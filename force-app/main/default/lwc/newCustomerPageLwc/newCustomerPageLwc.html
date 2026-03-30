@@ -1,0 +1,115 @@
+<!--
+ * @Author: WFC
+ * @Date: 2023-11-22 16:00:37
+ * @LastEditors: WFC
+ * @LastEditTime: 2024-02-22 17:47:41
+ * @Description: 
+ * @FilePath: \hisenseall-231026\force-app\main\default\lwc\newCustomerPageLwc\newCustomerPageLwc.html
+-->
+<template>
+    <div>
+        <!-- Loading -->
+        <template if:true={isShowSpinner}>
+            <lightning-spinner class="slds-is-fixed" size="medium" variant="brand"></lightning-spinner>
+        </template>
+<lightning-card variant="Narrow" title="New Customer" icon-name="standard:account">
+    <!-- <lightning-record-edit-form object-api-name='Account' record-id='' >
+            <lightning-input-field field-name='Name' name="Name" required onchange={handleCustomerName}> </lightning-input-field>
+            <lightning-input-field field-name='Sales_Region__c' name="Sales_Region__c" required onchange={handleSalesRegion}> </lightning-input-field> -->
+    <div style="padding-left: 10px; padding-right: 10px;">
+        <lightning-input type="text" label={label.New_Customer_Buyer_Name} placeholder={label.New_Customer_Buyer_Name_Verify} onchange={handleCustomerName} required="true"></lightning-input>
+        <!-- 带输入框的搜索框 -->
+        <c-searchable-combobox required="true" label={label.New_Customer_Country_Region_Code} options={options.data} onchange={handleSalesRegion}></c-searchable-combobox>
+    </div>
+
+    <div class="slds-var-m-top_large slds-clearfix">
+        <lightning-button class="slds-float_right slds-var-p-right_medium" variant="brand" label="Check" onclick={handleCheck}>
+        </lightning-button>
+
+        <lightning-button class="slds-float_right slds-var-p-right_medium" variant="Neutral" label="Cancel" onclick={handleCancel}>
+        </lightning-button>
+    </div>
+    <!-- </lightning-record-edit-form> -->
+</lightning-card>
+
+<div style="margin-bottom: 15px;"></div>
+
+<template if:true={isChecked}>
+            <lightning-card variant="Narrow" title={label.New_Customer_EDI_Data} icon-name="standard:account">
+                <lightning-button-icon icon-name="utility:settings" alternative-text="Settings"
+                    title="Select Fields to Display" slot="actions"
+                    onclick={handleDisplayClick}></lightning-button-icon>
+            </lightning-card>
+            <lightning-card>
+                <lightning-datatable class="slds-var-m-bottom_large" key-field="Id" data={ediData}
+                    show-row-number-column max-row-selection='1' columns={columns} onrowselection={handleChange}
+                    default-sort-direction={defaultSortDirection} sorted-direction={sortDirection} sorted-by={sortedBy}
+                    onsort={onHandleSort}>
+                </lightning-datatable>
+                <div class="modal-footer slds-modal__footer">
+                    <lightning-button class="slds-var-p-around_x-small" variant="brand" label="Skip"
+                        onclick={handleSkip}>
+                    </lightning-button>
+                    <template if:true={isHaveEDI}>
+                        <lightning-button class="slds-var-p-around_x-small" variant="brand" label="Next"
+                            onclick={handleSelect}>
+                        </lightning-button>
+                    </template>
+</div>
+</lightning-card>
+</template>
+
+<!-- Select Fields to Display -->
+<template if:true={isShowDisplay}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container isMobile" style={style}>
+                    <header class="slds-modal__header">
+                        <h2 class="slds-modal__title slds-hyphenate slds-text-title_bold">
+                            Select Fields to Display
+                        </h2>
+                    </header>
+                    <div class="slds-modal__content slds-var-p-around_medium">
+                        <lightning-dual-listbox name="display" label="" source-label="Available"
+                            selected-label="Selected" options={optionsDisplay} onchange={handleSelectChange}
+                            style="margin-left: 20px;" value={optionsValue}>
+                        </lightning-dual-listbox>
+                    </div>
+                    <div class="modal-footer slds-modal__footer">
+                        <lightning-button variant="brand-outline" label='cancle' onclick={cancelDisplay}
+                            class="slds-var-m-left_x-small"> </lightning-button>
+                        <lightning-button variant="brand" label='save' onclick={saveDisplay}
+                            class="slds-var-m-left_x-small"></lightning-button>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+</div>
+<!-- 关联客户 -->
+<template if:true={showConnectingCustomers}>
+        <div class="demo-only" style="height:24rem">
+            <section role="dialog" tabindex="0" aria-modal="true" aria-labelledby="prompt-heading-id"
+                aria-describedby="prompt-message-wrapper" class="slds-modal slds-fade-in-open slds-modal_prompt">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header slds-theme_error slds-theme_alert-texture" style="background-color: #1f3f3b;">
+                        <h1 class="slds-text-heading_medium" id="prompt-heading-id">Select Customer</h1>
+                    </div>
+                    <div class="slds-modal__content slds-p-around_medium" id="prompt-message-wrapper">
+                        <div
+                            class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+                            <lightning-record-edit-form object-api-name="EDI_Customer__c">
+                                <lightning-input-field field-name="Customer_Cleaning_Id__c" value={customerid} variant="label-stacked" required onchange={handleCustomerIdChange}></lightning-input-field>
+                            </lightning-record-edit-form>
+                        </div>
+                    </div>
+                    <div class="slds-modal__footer slds-theme_default">
+                        <button class="slds-button slds-button_neutral" onclick={cancelConnectingCustomers}>cancel</button>
+                        <button class="slds-button slds-button_neutral" onclick={ConnectingCustomers}>Confirm</button>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        </div>
+    </template>
+</template>

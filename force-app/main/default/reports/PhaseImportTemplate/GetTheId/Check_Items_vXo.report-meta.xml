@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CheckItem__c$Id</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$Project__c</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$Description__c</field>
+    </columns>
+    <columns>
+        <field>CheckItem__c$BussinessArea__c</field>
+    </columns>
+    <currency>USD</currency>
+    <format>Tabular</format>
+    <name>Check Items</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Check_Items__c</reportType>
+    <scope>scopingRule</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CheckItem__c$CreatedDate</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

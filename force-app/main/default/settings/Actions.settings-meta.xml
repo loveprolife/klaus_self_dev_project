@@ -3,5 +3,5 @@
     <enableDefaultQuickActionsOn>true</enableDefaultQuickActionsOn>
     <enableMdpEnabled>true</enableMdpEnabled>
     <enableOfflineWebLinks>false</enableOfflineWebLinks>
-    <enableThirdPartyActions>false</enableThirdPartyActions>
+    <enableThirdPartyActions>true</enableThirdPartyActions>
 </ActionsSettings>

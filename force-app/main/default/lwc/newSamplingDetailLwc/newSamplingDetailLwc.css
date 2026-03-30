@@ -1,0 +1,36 @@
+.line {
+    border-top: 1px solid rgb(165, 165, 165); /* 上边框，宽度为2px，颜色为黑色 */
+    width: 100%; /* 横线宽度 */
+    margin-top: 20px; /* 上边距 */
+    margin-bottom: 20px; /* 上边距 */  
+}
+
+
+/* lwcDemoContainer.css */
+.container {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-area {
+    flex: 1;
+    /* overflow-y: auto; */
+    min-height: 0; /* 修复Firefox滚动问题 */
+}
+
+.scroll-content {
+    padding: 1rem;
+}
+
+.button-footer {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    border-top: 1px solid rgb(165, 165, 165);
+    background: white;
+    box-shadow: 0 -1px 2px rgba(0,0,0,0.1);
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}

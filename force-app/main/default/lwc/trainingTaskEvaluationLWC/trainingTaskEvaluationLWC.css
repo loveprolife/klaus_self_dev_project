@@ -1,0 +1,5 @@
+:host{ 
+    --sds-c-accordion-heading-font-size: 1rem;
+    --slds-c-accordion-section-spacing-inline-end: 0px;
+    --sds-c-textarea-sizing-min-height: 140px;
+}

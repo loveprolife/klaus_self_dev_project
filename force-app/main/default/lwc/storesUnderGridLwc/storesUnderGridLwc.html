@@ -1,0 +1,58 @@
+<template>
+    <div class="slds-is-relative">
+        <!-- <template if:true={isShowSpinner}>
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        </template> -->
+
+        <div class="slds-modal__header" style="text-align:left; background-color:rgb(243 243 243);position:relative;">
+            <div style="padding-right:12px; display: inline-block;">
+                <lightning-icon icon-name="custom:custom11" title="custom11" size="small"></lightning-icon>
+            </div>
+            <div style="text-align: center;display: inline-block; height: 26px;line-height: 26px;">
+                <h2 class="slds-card__header-title">{label.Store_List}</h2>
+            </div>
+
+        </div>
+        <lightning-layout>
+            <lightning-layout-item flexibility='auto' size="12">
+                <div class="slds-scrollable_x" style="text-align: center;overflow: auto; width: 100%;">
+                    <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-resizable">
+                        <thead>
+                            <!-- <tr>
+                                <th style="width: 50%;">Store</th>
+                                <th style="width: 50%;">Customer</th>
+                            </tr> -->
+                        </thead>
+                        <tbody>
+                            <template for:each={recordList} for:item="item" for:index="index">
+                                <tr key={item.Id}>
+                                    <!-- Store Name -->
+                                    <td style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis;">
+                                        <a data-index={index} onclick={handleClick}
+                                            style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis;">
+                                            {item.Name}
+                                        </a>
+                                    </td>
+                                    <!-- Customer -->
+                                    <!-- <td style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis;">
+                                        <a data-index={index} onclick={customerHandleClick}
+                                            style="white-space:nowrap; overflow:hidden; text-overflow: ellipsis;">
+                                            {item.Account_Name__c}
+                                        </a>
+                                    </td> -->
+                                </tr>
+
+                            </template>
+                            <template if:true={isEmpty}>
+                                <tr style="margin: 10px 0px; text-align:center; width: 100%;">
+                                    <td style="text-align:center;">No items to display.</td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

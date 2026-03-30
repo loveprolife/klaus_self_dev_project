@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>度公司sales force完成审批后自动发邮件到印度财务同事krunal（邮箱：krunal.humane@hisense.com）</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Customer Final Approval India</name>
+    <style>none</style>
+    <subject>Customer Onboard Final Approval</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -1,0 +1,64 @@
+<!--
+ * @Author: WFC
+ * @Date: 2025-03-05 09:12:05
+ * @LastEditors: WFC
+ * @LastEditTime: 2025-10-22 09:51:36
+ * @Description: 
+ * @FilePath: \testuat\force-app\main\default\aura\EventReceiptPDFCmp\EventReceiptPDFCmp.cmp
+-->
+<aura:component controller="EventSalesController" access="global"
+	implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+
+	<aura:attribute name="recordId" type="String" />
+	<aura:attribute name="pdfUrl" type="String" />
+	<aura:attribute name="isMobile" type="Boolean" default="false" />
+	<aura:attribute name="pageReference" type="Object" />
+	<lightning:navigation aura:id="navService" />
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+	<aura:if isTrue="{!!v.isMobile}">
+		<!-- <div class="visibile" id="ensureWindow">
+			<div style="text-align: center;border-bottom: 1px solid; padding-bottom: 20px; margin-bottom: 20px;">
+				<h2 class="title slds-text-heading-medium" >Print Event Receipt PDF</h2>
+			</div>
+			<div style="text-align: center; font-size: 22px;">
+				Confirm to Print Event Receipt PDF?
+			</div>
+			<div style="margin-top: 4rem;">
+				<button style="float:right;margin-left:.5rem;" class="slds-button slds-button-brand slds-button slds-button-brand" type="button" value="Comfirm" onclick="{!c.admit}">
+					<span >Confirm</span>
+				</button>
+				<button style="float:right;border-color: rgb(221, 219, 218);background-color: rgb(255, 255, 255);border: 1px solid rgb(221, 219, 218);color: rgb(62, 62, 60);" class="slds-button slds-button-brand slds-button slds-button-brand" type="button" value="Cancel" onclick="{!c.cancel}">
+					<span >Cancel</span>
+				</button>
+			</div>
+		</div> -->
+		<!-- 链接PDF页面 -->
+		<iframe style="position: absolute;top:0;left: 0;" src="{! v.pdfUrl}" width="100%" height="100%" frameBorder="0"
+			id="PDFframe" />
+		<!-- PDF右上角的“X”关闭窗口的功能 -->
+		<div style="position: absolute;top:0;right:-60px;" onclick="{!c.close}" id="closeFrame">
+			<lightning:buttonIcon iconName="utility:close" variant="border-inverse" title="close"
+				alternativeText="Close modal" />
+		</div>
+	</aura:if>
+	<aura:if isTrue="{!v.isMobile}">
+		<!-- <div class="visibile" id="ensureWindow">
+			<div style="text-align: center;border-bottom: 1px solid; padding-bottom: 20px; margin-bottom: 20px;">
+				<h2 class="title slds-text-heading-medium" >Print Event Receipt PDF</h2>
+			</div>
+			<div style="text-align: center; font-size: 22px;">
+				Confirm to Print Event Receipt PDF?
+			</div>
+			<div style="margin-top: 4rem;">
+				<button style="float:right;margin-left:.5rem;" class="slds-button slds-button-brand slds-button slds-button-brand" type="button" value="Comfirm" onclick="{!c.admit}">
+					<span >Confirm</span>
+				</button>
+				<button style="float:right;border-color: rgb(221, 219, 218);background-color: rgb(255, 255, 255);border: 1px solid rgb(221, 219, 218);color: rgb(62, 62, 60);" class="slds-button slds-button-brand slds-button slds-button-brand" type="button" value="Cancel" onclick="{!c.cancel}">
+					<span >Cancel</span>
+				</button>
+			</div>
+		</div> -->
+	</aura:if>
+
+</aura:component>

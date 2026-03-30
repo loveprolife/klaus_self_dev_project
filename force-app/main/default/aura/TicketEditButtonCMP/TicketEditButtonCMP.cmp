@@ -1,0 +1,16 @@
+<aura:component
+    implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable,flexipage:availableForAllPageTypes"
+    access="global">
+    <aura:html tag="style">
+        <!-- .bodyWrapper{
+            height: 800px !important;
+        } -->
+        .slds-modal__content{
+	        overflow-y:auto !important;
+	        height:unset !important;
+	        max-height:unset !important;
+	        min-height:8rem;
+	    }
+    </aura:html>
+    <c:ticketEditButtonLwc recordId="{!v.recordId}" onrefreshview="{!c.refreshview}" onclosemodal="{!c.closeModal}" />
+</aura:component>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#00AAA6</headerColor>
+        <logo>X20260115104322</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <description>海外数字化门店</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>true</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>true</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
+    <label>Hihub</label>
+    <navType>Standard</navType>
+    <setupExperience>all</setupExperience>
+    <tabs>QBI_Test</tabs>
+    <tabs>Customer_Management</tabs>
+    <tabs>Store_Management</tabs>
+    <tabs>Basic_Product_Information</tabs>
+    <tabs>Commodity</tabs>
+    <tabs>Attendance_Rule</tabs>
+    <tabs>Attendance_Report</tabs>
+    <tabs>Checklist</tabs>
+    <tabs>Template</tabs>
+    <tabs>Store_Visit_Target</tabs>
+    <tabs>Store_Visit_Plan</tabs>
+    <tabs>Store_Visit_Report</tabs>
+    <tabs>Image_Gallery</tabs>
+    <tabs>Ticket_Management</tabs>
+    <tabs>Ticket_Assignment</tabs>
+    <tabs>Sellout_Management</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Hihub_UtilityBar</utilityBar>
+</CustomApplication>

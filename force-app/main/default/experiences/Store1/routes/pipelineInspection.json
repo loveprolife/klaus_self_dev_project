@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "6cf00a2e-5906-41ee-8804-bc132cb9a122",
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "configurationTags" : [ ],
+  "devName" : "Pipeline_Inspection",
+  "id" : "acbe3913-078c-4d8c-b1ce-48eaceb8ed12",
+  "label" : "Pipeline Inspection",
+  "routeType" : "pipeline-inspection",
+  "type" : "route",
+  "urlPrefix" : "pipeline-inspection"
+}

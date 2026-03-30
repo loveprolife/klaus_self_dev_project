@@ -1,0 +1,70 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable,lightning:isUrlAddressable" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:attribute name="isOpen" type="boolean" default="true"/>
+    <aura:attribute name="objectLoad" type="String" />
+    <!-- <aura:attribute name="date" type="Date" /> -->
+    <aura:attribute name="dateYearMonth" type="String" />
+    <aura:attribute name="pageReference" type="Object"/>
+    <lightning:navigation aura:id="navService"/>
+	<aura:html tag="style">
+        .slds-modal__container{
+            width: 33%;
+            max-width:33%;
+        }
+    </aura:html>
+    <aura:if isTrue="{!v.isOpen}">
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- <ui:inputDate aura:id="expdate" label="Today's Date" class="field" displayDatePicker="true" /> -->
+                <!-- ###### MODAL BOX HEADER Start ######-->
+                <header class="slds-modal__header">
+                    <h2 style="font-size: 1.5em;">{!$Label.c.REPORT_SELECT_TYPE}</h2>
+                </header>
+                <!--###### MODAL BOX BODY Part Start######-->
+                <div class="slds-modal__content slds-p-around_medium slds-var-p-around_medium slds-grid slds-wrap slds-media_center slds-grid_align-center" id="modal-content-id-1">
+                    <!-- <ui:inputDate aura:id="expdate" label="Select Import Date" value="{!v.date}" class="field" displayDatePicker="true" /> -->
+                    <p style="padding-right:3px">Year:</p>
+                    <p>
+                        <ui:inputSelect class="single" aura:id="InputSelectSingleYear">
+                            <ui:inputSelectOption text="2022"/>
+                            <ui:inputSelectOption text="2023"/>
+                            <ui:inputSelectOption text="2024" value="true"/>
+                            <ui:inputSelectOption text="2025"/>
+                        </ui:inputSelect>
+                    </p>
+                    <p style="padding-left:20px;padding-right:3px">Month:</p>
+                    <p>
+                        <ui:inputSelect class="single" aura:id="InputSelectSingleMonth">
+                        <ui:inputSelectOption text="01"/>
+                        <ui:inputSelectOption text="02"/>
+                        <ui:inputSelectOption text="03"/>
+                        <ui:inputSelectOption text="04"/>
+                        <ui:inputSelectOption text="05"/>
+                        <ui:inputSelectOption text="06"/>
+                        <ui:inputSelectOption text="07"/>
+                        <ui:inputSelectOption text="08"/>
+                        <ui:inputSelectOption text="09"/>
+                        <ui:inputSelectOption text="10"/>
+                        <ui:inputSelectOption text="11"/>
+                        <ui:inputSelectOption text="12"/>
+                    </ui:inputSelect>
+                    </p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral" 
+                                        label="Cancel"
+                                        title="Cancel"
+                                        onclick="{! c.closeModal }"/>
+                    <lightning:button variant="brand" 
+                                        label="Save"
+                                        title="Save"
+                                        onclick="{! c.submit }"/>
+                
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    <c:dailySalesUploadLwc recordId="{!v.recordId}" objectLoad="{!v.objectLoad}" importDate="{!v.dateYearMonth}" onrefreshView="{!c.refreshView}" oncloseModal="{!c.closeModal}"/>
+</aura:component>

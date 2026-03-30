@@ -1,0 +1,8 @@
+{!Today}
+
+Dear {!User.User_Full_Name__c},
+
+You have a new Salesforce Issue ticket. Please login to the system and review the issue ticket. Thanks.
+
+Sincerely,
+{!User.Email}

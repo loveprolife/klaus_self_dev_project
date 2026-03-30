@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>GB2312</encodingKey>
+    <name>Exhibition Transfer Reservation Notice</name>
+    <style>none</style>
+    <subject>Reminder to fill in your flight and hotel information for 137 Canton Fair</subject>
+    <textOnly>尊敬的 {!Exhibition_Vehical_Booking__c.Guest_Name_CN__c}
+
+您的报名已通过公司审核。第137届广交会将于4月15日至19日开展，请尽快登录【信鸿-应用程序-国际营销展会系统】填报航班/酒店/班车需求。预祝参展顺利，谢谢！
+
+Dear  {!Exhibition_Vehical_Booking__c.Guest_Name_EN__c} 
+
+Your registration has been approved by the company. The 137th Canton Fair will be held from April 15th to 19th, please log in to HiChat -App Center-International Expo Management System as soon as possible to fill in the flight/hotel/shuttle bus demand. 
+Wishing you all the best in the Fair, thank you!
+
+ 登陆遇到问题咨询 王芳wangfang19@hisense.com
+If you encounter any problem logging in, please contact Wang Fang: wangfang19@hisense.com</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

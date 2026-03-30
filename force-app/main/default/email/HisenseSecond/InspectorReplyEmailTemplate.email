@@ -1,0 +1,8 @@
+"ご担当者様
+ 
+お疲れ様です。
+ {!Responde__c.OwnerName__c}日報のコメント返事がありました。
+ご確認お願い致します。"
+
+{!Responde__c.Evaluate} {!Responde__c.Responde__c}
+{!Responde__c.RecordLink__c}

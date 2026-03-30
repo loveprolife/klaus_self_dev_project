@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>判断Ticket是从巡店日报、促销员日报创建的，还是通过Ticket对象创建的</description>
+        <name>Choose_Ticket_Source</name>
+        <label>Choose Ticket Source</label>
+        <locationX>182</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Update_Store_Default_Ticket</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Ticket</defaultConnectorLabel>
+        <rules>
+            <name>Inspection_Ticket</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Store_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Store_Inspection</targetReference>
+            </connector>
+            <label>Inspection Ticket</label>
+        </rules>
+    </decisions>
+    <description>通过巡店日报、促销员日报创建Ticket时，获取并更新对应的门店字段值</description>
+    <environments>Default</environments>
+    <interviewLabel>Update Store Field {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Store Field</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Store_Default_Ticket</name>
+        <label>Update Store(Default Ticket)</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Store__c</field>
+            <value>
+                <elementReference>$Record.Store__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <description>获取日报中的门店字段</description>
+        <name>Update_Store_Inspection</name>
+        <label>Update Store(Inspection)</label>
+        <locationX>50</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Store__c</field>
+            <value>
+                <elementReference>$Record.Store_Id__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Choose_Ticket_Source</targetReference>
+        </connector>
+        <object>Ticket__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

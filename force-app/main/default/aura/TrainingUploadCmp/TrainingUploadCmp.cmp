@@ -1,0 +1,18 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride,force:appHostable,lightning:isUrlAddressable" access="global"
+    controller="TrainingController" >
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:attribute name="objectLoad" type="String" />
+    <aura:attribute name="isCanUpload" type="Boolean"/>
+	<aura:html tag="style">
+        .slds-modal__container{
+            width: 33%;
+            max-width:33%;
+        }
+    </aura:html>
+    <aura:if isTrue="{!v.isCanUpload == true}" >
+        <c:dailySalesUploadLwc recordId="{!v.recordId}" objectLoad="{!v.objectLoad}" onrefreshView="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+    </aura:if>
+    <aura:if isTrue="{!v.isCanUpload == false}">
+        <c:dailySalesNoUploadLwc onrefreshView="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+    </aura:if>
+</aura:component>

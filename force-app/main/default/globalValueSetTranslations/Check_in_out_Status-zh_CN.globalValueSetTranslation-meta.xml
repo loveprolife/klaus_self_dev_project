@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>Check in</masterLabel>
+        <translation>签到</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Check out</masterLabel>
+        <translation>签退</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Early Check out</masterLabel>
+        <translation>早退</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Late Check in</masterLabel>
+        <translation>迟到</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>No record</masterLabel>
+        <translation>没有记录</translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

@@ -1,0 +1,9 @@
+Dear {!Visit_Participant__c.Visit_Participant_Name__c},
+
+Customer visit {!Customer_Visit__c.Name} can be closed for the visit date have passed for 7 days.
+
+Customer Visit Record Name: {!Customer_Visit__c.Name}
+
+Customer Visit Date: {!Customer_Visit__c.Visit_Date__c}
+
+Customer Visit Place: {!Customer_Visit__c.Place__c}

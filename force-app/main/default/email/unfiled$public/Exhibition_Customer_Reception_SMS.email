@@ -1,0 +1,6 @@
+<p>{!ExpoApplyInfo__c.ExpoTitleCN__c}Expo System Notification</p>
+<p>You have received a new customer info</p>
+<p>Detail ：</p>
+<p>Company Name ：{!ExpoApplyInfo__c.CompanyEN__c}</p>
+<p>Company Name(CN)：{!ExpoApplyInfo__c.CompanyCN__c}</p>
+<p>Pls login https://expo.hisense.com to check detail </p>

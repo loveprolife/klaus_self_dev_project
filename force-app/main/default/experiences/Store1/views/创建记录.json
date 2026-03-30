@@ -1,0 +1,34 @@
+{
+  "appPageId" : "36153d3c-65f6-4269-94ec-37c7bad7fe8b",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "3c336cb1-8a9a-4eac-bc25-30d719e67861",
+  "label" : "创建记录",
+  "regions" : [ {
+    "id" : "0a7faf4e-7dff-4b6a-979e-0edf10cd1d64",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "actionApiName" : "{!actionApiName}",
+        "isMicrobatch" : false
+      },
+      "componentName" : "forceCommunity:createRecordForm",
+      "id" : "fc4ad312-a47e-4550-bb21-14c7fa77751a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "f07b6a12-b3a3-4a60-aade-cd3db854d735",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "e9af0604-3eb5-47cd-b98c-cd1aaa7d6322",
+    "regionName" : "footer",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "createrecord"
+}

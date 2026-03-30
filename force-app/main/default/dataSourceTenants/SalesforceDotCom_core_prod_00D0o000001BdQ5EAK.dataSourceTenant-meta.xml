@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataSourceTenant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <externalRecordId>core/prod/00D0o000001BdQ5EAK</externalRecordId>
+    <masterLabel>Hisense International (HK) Co., Limited</masterLabel>
+</DataSourceTenant>

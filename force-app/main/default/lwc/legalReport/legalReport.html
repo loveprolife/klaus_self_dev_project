@@ -1,0 +1,43 @@
+<!--
+ * @Author: WFC
+ * @Date: 2022-10-31 10:45:35
+ * @LastEditors: WFC
+ * @LastEditTime: 2024-06-04 16:47:27
+ * @Description: 
+ * @FilePath: \HisenseAll20240426\force-app\main\default\lwc\legalReport\legalReport.html
+-->
+<template>
+    <lightning-card title="File Upload">
+        <template if:true={isMobile}>
+            <div style="position:absolute; right:0.1rem; top: 0.1rem" class="slds-var-p-left_small slds-var-p-bottom_small" onclick={handleCancel}>
+                <lightning-icon 
+                    icon-name="utility:close" 
+                    title="Cancel"
+                    size='small'
+                    >
+                </lightning-icon>
+            </div>
+        </template>
+        <lightning-file-upload class="slds-align_absolute-center slds-text-heading_medium"
+            label=""
+            name="fileUploader"
+            accept={acceptedFormats}
+            record-id={recordId}
+            onuploadfinished={handleUploadFinishedEvent}
+            multiple>
+        </lightning-file-upload>
+    </lightning-card>
+
+    <lightning-card>
+        <div class="slds-var-p-left_small">
+            <a href={label.Legal_Report_Template_Download_URL} target="_blank">
+                <lightning-icon variant="success" icon-name="utility:download" class="slds-icon slds-icon_small"
+                    size="small" alternative-text="large" style="margin-right: 0.75rem;">
+                </lightning-icon>
+                {label.Legal_Report_Template_Download}
+            </a>
+            <div style="color:rgb(187, 52, 52);margin-top:10px">{label.Legal_Report_Template_Download_Tips}</div>
+        </div>
+    </lightning-card>
+    
+</template>

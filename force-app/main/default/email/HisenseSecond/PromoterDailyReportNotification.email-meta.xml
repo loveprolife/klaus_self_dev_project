@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>每天19点，发送给还未提交日报的促销员的邮件→每周周末之后的周一上午9点为止如果未提出周报的情况下邮件通知</description>
+    <encodingKey>GB2312</encodingKey>
+    <name>促销员日报待创建提醒</name>
+    <style>none</style>
+    <subject>週報提出のお願い</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

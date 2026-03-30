@@ -1,0 +1,8 @@
+<!--
+ * @Author: YYL
+ * @LastEditors: YYL
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:lightningQuickActionWithoutHeader,lightning:actionOverride"
+    access="global">
+    <c:trainingTaskCreateExaminationLWC recordId="{!v.recordId}" onrefreshView="{c.refreshView}" oncloseModal="{!c.closeModal}"/>
+</aura:component>

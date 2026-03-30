@@ -1,0 +1,20 @@
+<template> 
+    <div style="background-color: white;">
+        <template lwc:if={isShowSpinner}>
+            <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+        </template>
+        <template lwc:else>
+            <template lwc:if={max}>
+                <div class="main" style="min-height:500px;width:auto;padding:1%;"></div>
+            </template>
+            <template lwc:else>
+                <div class="main" style="    min-height: 50px;
+                width: auto;
+                line-height: 50px;
+                text-align: center;">
+                    <p>{label.Sales_Target_Report_No_Datas_Error}</p>
+                </div> 
+            </template>
+        </template>
+    </div>
+</template>

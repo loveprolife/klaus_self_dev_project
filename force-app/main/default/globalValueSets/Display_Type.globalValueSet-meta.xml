@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>In-Line</fullName>
+        <default>false</default>
+        <label>In-Line</label>
+    </customValue>
+    <customValue>
+        <fullName>End Cap</fullName>
+        <default>false</default>
+        <label>End Cap</label>
+    </customValue>
+    <customValue>
+        <fullName>Wall</fullName>
+        <default>false</default>
+        <label>Wall</label>
+    </customValue>
+    <customValue>
+        <fullName>Triple Stack</fullName>
+        <default>false</default>
+        <label>Triple Stack</label>
+    </customValue>
+    <customValue>
+        <fullName>Google Display</fullName>
+        <default>false</default>
+        <label>Google Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Vignette</fullName>
+        <default>false</default>
+        <label>Vignette</label>
+    </customValue>
+    <customValue>
+        <fullName>Floor Display</fullName>
+        <default>false</default>
+        <label>Floor Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Pad Display</fullName>
+        <default>false</default>
+        <label>Pad Display</label>
+    </customValue>
+    <customValue>
+        <fullName>Table</fullName>
+        <default>false</default>
+        <label>Table</label>
+    </customValue>
+    <customValue>
+        <fullName>Booth</fullName>
+        <default>false</default>
+        <label>Booth</label>
+    </customValue>
+    <customValue>
+        <fullName>Sample</fullName>
+        <default>false</default>
+        <label>Sample</label>
+    </customValue>
+    <masterLabel>Display Type</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

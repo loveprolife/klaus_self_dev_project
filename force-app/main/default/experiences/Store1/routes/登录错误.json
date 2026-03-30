@@ -1,0 +1,11 @@
+{
+  "activeViewId" : "fb8a1038-250f-4429-9517-ded1dea6558a",
+  "appPageId" : "a6e85b47-d163-48e0-b17a-ab8a6204fc60",
+  "configurationTags" : [ ],
+  "devName" : "Login_Error",
+  "id" : "663fffc4-6e04-48e3-aa9e-6ad0fa3517f7",
+  "label" : "登录错误",
+  "routeType" : "login-error",
+  "type" : "route",
+  "urlPrefix" : "error"
+}

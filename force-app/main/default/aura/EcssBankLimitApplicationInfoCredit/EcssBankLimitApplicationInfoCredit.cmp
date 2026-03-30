@@ -1,0 +1,153 @@
+<aura:component controller="EcssBankLimitApplicationInfoController"
+implements="flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId" 
+access="global">
+    <ltng:require styles="{!$Resource.enlargeModalWindow + '/enlargeModalWindow.css'}" />
+
+<!-- 主记录ID -->
+<aura:attribute name="recordId" type="Id" />
+<aura:attribute name="loaded" type="Boolean" default="false" />
+
+<!-- 初始化数据 -->
+<aura:handler name="init" value="{!this}" action="{!c.myAction}" />
+<aura:attribute name="rrAuditListData" type="Ecss_Customer_Info__c[]"/>
+
+<div class="exampleHolder">
+	<aura:if isTrue="{! v.loaded }">
+		<lightning:spinner alternativeText="Loading" />
+	</aura:if>
+</div>
+
+<div class="slds-grid slds-page-header forceRelatedListCardHeader" >
+	<h2 class="slds-card__header-title">
+		<span class="slds-truncate">{!$Label.c.Ecss_Information}</span>
+	</h2>
+	<div style="float: right;margin-left:20em">
+		<lightning:button variant="brand-outline" label="{!$Label.c.Ecss_Information_Sync}" title="{!$Label.c.Ecss_Information_Sync}" onclick="{! c.admit }" />
+	</div>
+</div>
+
+<div style="width: 100%;">
+	<table class="tableCss" style="width: 100%;" cellpadding="0" cellspacing="0">
+		<thead>
+			<tr class="slds-line-height_reset" style="position: -webkit-sticky; position: sticky;" bgcolor="#FFFFFF">
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_ecssResult}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_dataSupplierCode}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_dataSupplierName}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_type}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_referenceId}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_lawsAndRegulation}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_listType}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_name}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_country}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_city}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_street}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss}</span>
+				</th>
+				<th width="8%;" height="30px;" class="slds-text-align_center" scope="col">
+					<span style="color: black;" >{!$Label.c.Ecss_matchedResult}</span>
+				</th>
+			</tr>
+		</thead>
+	</table>
+</div>
+
+<div class="slds-scrollable" style="width: 100%;">
+	<table class="tableCss" style="width: 100%;word-break:break-all;" cellpadding="1" cellspacing="1">
+		<tbody class="slds-scrollable">
+			<aura:iteration items="{!v.rrAuditListData}" var="item" indexVar="index">
+				<tr class="slds-hint-parent" bgcolor="#FFFFFF">
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.ecss_result__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.dataSupplierCode__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.dataSupplierName__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.type__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="7%;">
+						<span class="">
+							{!item.referenceId__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.lawsAndRegulation__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.listType__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.name__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.country__c}
+						</span>
+					</td>
+
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="7%;">
+						<span class="">
+							{!item.city__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.street__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.zip__c}
+						</span>
+					</td>
+					<td role="gridcell" class="slds-text-align_center slds-cell-wrap" style="border-bottom: 1px solid rgb(200, 200, 200); height: 50px;" width="8%;">
+						<span class="">
+							{!item.matchedResult__c}
+						</span>
+					</td>
+				</tr>
+			</aura:iteration>
+		</tbody>
+	</table>
+</div>
+</aura:component>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <valueTranslation>
+        <masterLabel>AC</masterLabel>
+        <translation>家电-空调</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>All</masterLabel>
+        <translation><!-- All --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>B-Monitor</masterLabel>
+        <translation>商用显示器</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BG-Others</masterLabel>
+        <translation><!-- BG-Others --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CF</masterLabel>
+        <translation><!-- CF --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Commercial display</masterLabel>
+        <translation><!-- Commercial display --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Cooking</masterLabel>
+        <translation>家电-炉灶具</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Dishwasher</masterLabel>
+        <translation>家电-洗碗机</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Freezer</masterLabel>
+        <translation>家电-冷柜</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>HeatPump</masterLabel>
+        <translation><!-- HeatPump --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Hitachi Commercial AC</masterLabel>
+        <translation><!-- Hitachi Commercial AC --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>LCAC</masterLabel>
+        <translation>家电-海信商空</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Laser TV</masterLabel>
+        <translation>多媒体.激光电视</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MP</masterLabel>
+        <translation><!-- MP --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Medical Device</masterLabel>
+        <translation><!-- Medical Device --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Medical utltrasound</masterLabel>
+        <translation><!-- Medical utltrasound --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Mobile</masterLabel>
+        <translation>多媒体.ITV</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Other</masterLabel>
+        <translation><!-- Other --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Refrigerator</masterLabel>
+        <translation>家电-冰箱</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Small Domestic Home Appliances</masterLabel>
+        <translation>家电-小家电</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Smart City</masterLabel>
+        <translation><!-- Smart City --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Sound Bar</masterLabel>
+        <translation><!-- Sound Bar --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>TV</masterLabel>
+        <translation>多媒体-电视(LED)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>WM</masterLabel>
+        <translation>家电-洗衣机</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>WineCabi</masterLabel>
+        <translation><!-- WineCabi --></translation>
+    </valueTranslation>
+</GlobalValueSetTranslation>

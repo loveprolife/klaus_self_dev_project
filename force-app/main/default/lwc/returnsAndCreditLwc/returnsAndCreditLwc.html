@@ -1,0 +1,254 @@
+<template>
+
+    <template if:true={isShowSpinner}>
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+    <template for:each={recordList} for:item="item" for:index="index">
+        <table class="slds-table slds-table_bordered slds-table_fixed-layout slds-resizable returnsAndCreditTable"
+            key={item.index}>
+            <thead>
+                <!-- Return No. -->
+                <tr>
+                    <td class="tdOne">
+                        <span>{fields.Name}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <lightning-input variant="label-hidden" field-name='Name' data-index={index} name={index}
+                            value={item.Name} data-field-name="Name" readonly="false">
+                        </lightning-input>
+                    </td>
+                </tr>
+                <!-- Repair/Credit/Collection -->
+                <tr>
+                    <td class="tdOne">
+                        <!-- <span>Repair/Credit/Collection</span> -->
+                        <span>{fields.UserFeedbackSources__c}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <lightning-input variant="label-hidden" field-name='UserFeedbackSources__c' data-index={index}
+                            name={index} value={item.UserFeedbackSources__c} data-field-name="UserFeedbackSources__c"
+                            onchange={inputChangeHandler} type="text">
+                        </lightning-input>
+                    </td>
+                </tr>
+                <!-- Description -->
+                <tr>
+                    <td class="tdOne">
+                        <span>{fields.Description__c}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <lightning-input variant="label-hidden" field-name='Description__c' data-index={index}
+                            name={index} value={item.Description__c} data-field-name="Description__c"
+                            onchange={inputChangeHandler} type="text">
+                        </lightning-input>
+                    </td>
+                </tr>
+                <!-- Returned Quantity -->
+                <tr>
+                    <td class="tdOne">
+                        <span>{fields.ReturnedQuantity__c}</span>
+                    </td>
+                    <td class="tdTwo">
+                        <!-- <lightning-input variant="label-hidden" field-name='ReturnedQuantity__c' data-index={index}
+                            name={index} value={item.ReturnedQuantity__c} data-field-name="ReturnedQuantity__c"
+                            onchange={inputChangeHandler} type="number">
+                        </lightning-input> -->
+                        <lightning-formatted-text value={item.returnedQuantity}></lightning-formatted-text>
+                    </td>
+                </tr>
+                <!-- Products -->
+                <tr>
+                    <td class="tdOne">
+                        <span>{fields.Product__c}</span>
+                        <span>s</span>
+                    </td>
+                    <td class="tdTwo">
+                        <div style="float: right;">
+                            <a>
+                                <lightning-icon variant="success" icon-name="utility:add" size="x-small" title=""
+                                    data-index={index} data-id={productIndex} onclick={productItemAddHandler}>
+                                </lightning-icon>
+                                <span class="slds-assistive-text"></span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <template for:each={item.productItemList} for:item="product" for:index="productIndex">
+                <tbody class="returnsAndCreditProductTable" key={product.index}>
+                    <!-- Product -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>&emsp;{fields.Product__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <lightning-record-edit-form object-api-name="ReturnsAndCredit__c" density="Compact">
+                                <lightning-input-field variant="label-hidden" field-name='Product__c' data-index={index}
+                                    data-id={productIndex} name={index} value={product.Product__c}
+                                    data-field-name="Product__c" onchange={productInputChangeHandler}>
+                                </lightning-input-field>
+                            </lightning-record-edit-form>
+                        </td>
+                    </tr>
+                    <!-- Quantity -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>&emsp;{fields.Quantity__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <lightning-input variant="label-hidden" field-name='Quantity__c' data-index={index}
+                                data-id={productIndex} name={index} value={product.Quantity__c}
+                                data-field-name="Quantity__c" onchange={productInputChangeHandler} type="number">
+                            </lightning-input>
+                        </td>
+                    </tr>
+                    <!-- Reason -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>&emsp;{fields.Reason__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <lightning-input variant="label-hidden" field-name='Reason__c' data-index={index}
+                                data-id={productIndex} name={index} value={product.Reason__c}
+                                data-field-name="Reason__c" onchange={productInputChangeHandler} type="text">
+                            </lightning-input>
+                        </td>
+                    </tr>
+                    <!-- Comments -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>&emsp;{fields.Comments__c}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <lightning-input variant="label-hidden" field-name='Comments__c' data-index={index}
+                                data-id={productIndex} name={index} value={product.Comments__c}
+                                data-field-name="Comments__c" onchange={productInputChangeHandler} type="text">
+                            </lightning-input>
+                        </td>
+                    </tr>
+                    <!-- Attachment -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>&emsp;{label.PromoterDailyReport_ATTACHMENT}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <c-upload-files-lwc parent-id={recordId} record-id={product.Id} data-index={product.index}
+                                onselectfiles={handleSelectFiles}></c-upload-files-lwc>
+                        </td>
+                    </tr>
+                    <!-- Action -->
+                    <tr>
+                        <td class="tdOne">
+                            <span>&emsp;{label.PromoterDailyReport_ACTIONS}</span>
+                        </td>
+                        <td class="tdTwo">
+                            <div>
+                                <div style="float: left;">
+                                    <a>
+                                        <lightning-icon variant="success" icon-name="utility:dash" size="x-small"
+                                            title="" data-index={index} data-id={productIndex}
+                                            onclick={productItemRemoveHandler}>
+                                        </lightning-icon>
+                                        <span class="slds-assistive-text"></span>
+                                    </a>
+                                </div>
+                                <div style="float: right;">
+                                    <a>
+                                        <lightning-icon variant="success" icon-name="utility:add" size="x-small"
+                                            title="" data-index={index} data-id={productIndex}
+                                            onclick={productItemAddHandler}>
+                                        </lightning-icon>
+                                        <span class="slds-assistive-text"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </template>
+
+            <!-- Provide Job Number -->
+            <tr>
+                <td class="tdOne">
+                    <span>{fields.ProvideJobNumber__c}</span>
+                </td>
+                <td class="tdTwo">
+                    <lightning-input variant="label-hidden" field-name='ProvideJobNumber__c' data-index={index}
+                        name={index} value={item.ProvideJobNumber__c} data-field-name="ProvideJobNumber__c"
+                        onchange={inputChangeHandler} type="text">
+                    </lightning-input>
+                </td>
+            </tr>
+            <!-- Provide  Credit Number -->
+            <tr>
+                <td class="tdOne">
+                    <span>{fields.ProvideCreditNumber__c}</span>
+                </td>
+                <td class="tdTwo">
+                    <lightning-input variant="label-hidden" field-name='ProvideCreditNumber__c' data-index={index}
+                        name={index} value={item.ProvideCreditNumber__c} data-field-name="ProvideCreditNumber__c"
+                        onchange={inputChangeHandler} type="text">
+                    </lightning-input>
+                </td>
+            </tr>
+            <!-- Is all Paperwork in Order -->
+            <tr>
+                <td class="tdOne">
+                    <span>{fields.IsAllPaperworkInOrder__c}</span>
+                </td>
+                <td class="tdTwo">
+                    <lightning-record-edit-form object-api-name="ReturnsAndCredit__c" density="Compact">
+                        <lightning-input-field variant="label-hidden" field-name='IsAllPaperworkInOrder__c'
+                            data-index={index} name={index} value={item.IsAllPaperworkInOrder__c}
+                            data-field-name="IsAllPaperworkInOrder__c" onchange={inputChangeHandler}>
+                        </lightning-input-field>
+                    </lightning-record-edit-form>
+
+                </td>
+            </tr>
+            <!-- What Paperwork is missing -->
+            <tr>
+                <td class="tdOne">
+                    <span>{fields.WhatPaperworkIsMissing__c}</span>
+                </td>
+                <td class="tdTwo">
+                    <lightning-input variant="label-hidden" field-name='WhatPaperworkIsMissing__c' data-index={index}
+                        name={index} value={item.WhatPaperworkIsMissing__c} data-field-name="WhatPaperworkIsMissing__c"
+                        onchange={inputChangeHandler} type="text">
+                    </lightning-input>
+                </td>
+            </tr>
+
+            <!-- Action -->
+            <tr>
+                <td class="tdOne">
+                    <span>{label.PromoterDailyReport_ACTIONS}</span>
+                </td>
+                <td class="tdTwo">
+                    <div>
+                        <div style="float: left;">
+                            <a>
+                                <lightning-icon variant="success" icon-name="utility:dash" size="x-small" title=""
+                                    data-index={index} onclick={itemRemoveHandler}>
+                                </lightning-icon>
+                                <span class="slds-assistive-text"></span>
+                            </a>
+                        </div>
+                        <div style="float: right;">
+                            <a>
+                                <lightning-icon variant="success" icon-name="utility:add" size="x-small" title=""
+                                    data-index={index} onclick={itemAddHandler}>
+                                </lightning-icon>
+                                <span class="slds-assistive-text"></span>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
+        </table>
+    </template>
+
+</template>

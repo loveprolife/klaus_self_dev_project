@@ -1,0 +1,35 @@
+<aura:component controller="StoreSelloutInventoryCMPController" 
+implements="flexipage:availableForRecordHome,force:lightningQuickActionWithoutHeader,force:hasRecordId" 
+access="global">
+<!-- 主记录ID -->
+<aura:attribute name="recordId" type="Id" />
+<!-- 初始化数据 -->
+<aura:attribute name="productLineColumns" type="List"/>
+<aura:attribute name="productLineListData" type="List"/>
+
+
+<aura:attribute name="isError" type="Boolean"/>
+<aura:attribute name="WarningMsg" type="String"/>
+<aura:handler name="init" value="{!this}" action="{!c.initCMP}" />
+
+<aura:if isTrue="{!v.isError}">
+    <ui:message title="Warning" severity="warning" closable="false" class="alertMessage">
+        {!v.WarningMsg}
+    </ui:message>
+</aura:if>
+    <!-- <div>
+        <aura:if isTrue="{!!v.isError}">
+            <h2 class="title slds-text-heading_medium" >
+            出样数量
+            </h2>
+        </aura:if>
+	</div>
+	<br/> -->
+    <lightning:datatable data="{! v.productLineListData }"
+                             columns="{! v.productLineColumns }"
+                             keyField="id"
+                             hideCheckboxColumn="false"
+                             showRowNumberColumn="true"
+                             />
+
+</aura:component>

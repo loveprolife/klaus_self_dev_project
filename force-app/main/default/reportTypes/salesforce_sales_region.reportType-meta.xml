@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ReportType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <baseObject></baseObject>
+    <category>other</category>
+    <deployed>false</deployed>
+    <description>salesforce 根据用户的sales region统计页面浏览量
+每月或6个月统计一次
+可区分东盟和国际营销</description>
+    <label>salesforce 根据用户的sales region统计页面浏览量</label>
+    <sections>
+        <masterLabel>Lightning Usage By Page Metrics</masterLabel>
+    </sections>
+</ReportType>

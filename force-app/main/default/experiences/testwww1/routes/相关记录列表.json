@@ -1,0 +1,12 @@
+{
+  "activeViewId" : "6ccd7b52-9e9a-481b-af0f-3f6a9c3a37ab",
+  "appPageId" : "e0bf1275-58c2-4fd8-9393-d738c12db8fe",
+  "configurationTags" : [ ],
+  "devName" : "Related_Record_List",
+  "id" : "e44c6e40-475b-4a32-a34a-a611460d3c89",
+  "label" : "相关记录列表",
+  "pageAccess" : "UseParent",
+  "routeType" : "relatedlist",
+  "type" : "route",
+  "urlPrefix" : "relatedlist"
+}

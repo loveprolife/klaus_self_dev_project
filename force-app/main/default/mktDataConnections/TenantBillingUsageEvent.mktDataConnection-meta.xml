@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MktDataConnection xmlns="http://soap.sforce.com/2006/04/metadata">
+    <connectionMethod>Ingress</connectionMethod>
+    <connectionStatus>INACTIVE</connectionStatus>
+    <connectorName>TenantBillingUsageConnector</connectorName>
+    <isActivityEnabled>false</isActivityEnabled>
+    <isSentosEnabled>false</isSentosEnabled>
+    <masterLabel>TenantBillingUsageEvent</masterLabel>
+    <parameters>
+        <fullName>TenantBillingUsageEvent_orgId</fullName>
+        <paramName>orgId</paramName>
+        <value>core/prod/00DA8000004BDqsEAK</value>
+    </parameters>
+    <parameters>
+        <fullName>TenantBillingUsageEvent_tenantId</fullName>
+        <paramName>tenantId</paramName>
+        <value>a360/prod9/d185f8e67fca40c89d02acc3623e95bc</value>
+    </parameters>
+    <shouldAutoCreatePolicies>false</shouldAutoCreatePolicies>
+</MktDataConnection>

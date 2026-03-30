@@ -8,6 +8,18 @@
     <label>Data Manager</label>
     <navType>Standard</navType>
     <tabs>standard-AnalyticsDataManager</tabs>
-    <tabs>District__c</tabs>
+    <tabs>Customer_Management__c</tabs>
+    <tabs>Customer_Information__c</tabs>
+    <tabs>Rep_Project_Pipeline__c</tabs>
+    <tabs>Notes__c</tabs>
+    <tabs>Project__c</tabs>
+    <tabs>Project_Equipment__c</tabs>
+    <tabs>Customer_Order_Report__c</tabs>
+    <tabs>Ecss_Customer_Info__c</tabs>
+    <tabs>Expo_Purpose__c</tabs>
+    <tabs>Expo_Menu_Controller__c</tabs>
+    <tabs>Product_line_Detail__c</tabs>
+    <tabs>Expo_Date_Controller__c</tabs>
+    <tabs>Expo_Fields_Controller__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

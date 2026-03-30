@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <formulas>
+        <name>External_Key_ID</name>
+        <dataType>String</dataType>
+        <expression>IF(
+    !ISBLANK({!$Record.Shop__c}), 
+    {!$Record.Shop__c}  + &apos;-&apos; + {!$Record.Position__c},
+    IF(
+        !ISBLANK({!$Record.Gridding__c}), 
+        {!$Record.Gridding__c} + &apos;-&apos; + {!$Record.Position__c},
+        IF(
+            !ISBLANK({!$Record.Account__c}), 
+            {!$Record.Account__c} + &apos;-&apos; + TEXT({!$Record.Product_Line__c})  + &apos;-&apos; + {!$Record.Position__c},
+            IF(
+            !ISBLANK({!$Record.User__c}), 
+            {!$Record.User__c} + &apos;-&apos; + {!$Record.Position__c},
+            &apos;&apos;
+        )       
+      )
+    )
+)</expression>
+    </formulas>
+    <interviewLabel>更新岗位权限外键 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>更新岗位权限外键V1.4</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_External_Key</name>
+        <label>更新外键字段</label>
+        <locationX>776</locationX>
+        <locationY>335</locationY>
+        <inputAssignments>
+            <field>External_Key_ID__c</field>
+            <value>
+                <elementReference>External_Key_ID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>650</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Update_External_Key</targetReference>
+        </connector>
+        <object>Position_Permissions__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

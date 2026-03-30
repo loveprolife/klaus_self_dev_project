@@ -6,7 +6,7 @@
     <doesApiLoginRequireOrgDomain>false</doesApiLoginRequireOrgDomain>
     <doesWarnOnForceComRedirect>false</doesWarnOnForceComRedirect>
     <doesWarnOnRedirect>false</doesWarnOnRedirect>
-    <domainPartition>develop</domainPartition>
+    <domainPartition>sandbox</domainPartition>
     <edgeRoutingMethod>global</edgeRoutingMethod>
     <enableCrossDomainPreviewCookies>true</enableCrossDomainPreviewCookies>
     <enableEdgeDuringRollout>true</enableEdgeDuringRollout>
@@ -19,9 +19,9 @@
     <instancedUrlRedirectHandling>NoRedirect</instancedUrlRedirectHandling>
     <isFirstPartyCookieUseRequired>false</isFirstPartyCookieUseRequired>
     <isIcorInstApiTrafficBlocked>false</isIcorInstApiTrafficBlocked>
-    <isInstancedApiTrafficBlocked>true</isInstancedApiTrafficBlocked>
+    <isInstancedApiTrafficBlocked>false</isInstancedApiTrafficBlocked>
     <logRedirections>false</logRedirections>
-    <myDomainName>orgfarm-6a19103cd2-dev-ed</myDomainName>
+    <myDomainName>hisenseint</myDomainName>
     <myDomainSuffix>MySalesforce</myDomainSuffix>
     <onboardCustomerSpecificSuffix>false</onboardCustomerSpecificSuffix>
     <redirectForceComSiteUrls>true</redirectForceComSiteUrls>

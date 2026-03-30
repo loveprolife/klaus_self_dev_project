@@ -7,6 +7,7 @@
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Audience360</label>
     <navType>Standard</navType>
+    <setupExperience>all</setupExperience>
     <tabs>standard-home</tabs>
     <tabs>standard-DataStream</tabs>
     <tabs>standard-DataLakeObjectInstance</tabs>
@@ -22,19 +23,25 @@
     <tabs>standard-MarketSegment</tabs>
     <tabs>standard-ActivationTarget</tabs>
     <tabs>standard-MarketSegmentActivation</tabs>
+    <tabs>standard-DataSpace</tabs>
     <tabs>standard-MlWorkspace</tabs>
-    <tabs>standard-DataSemanticSearch</tabs>
     <tabs>standard-MktAiPredictiveInsight</tabs>
     <tabs>standard-DataGraph</tabs>
     <tabs>standard-ExtDataShare</tabs>
     <tabs>standard-ExtDataShareTarget</tabs>
-    <tabs>standard-DataQueryWorkspace</tabs>
     <tabs>standard-MktDataTransform</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
-    <tabs>standard-UnstructuredData</tabs>
+    <tabs>standard-DataQueryWorkspace</tabs>
+    <tabs>Ecss_Customer_Info__c</tabs>
+    <tabs>Expo_Purpose__c</tabs>
+    <tabs>Expo_Menu_Controller__c</tabs>
+    <tabs>Product_line_Detail__c</tabs>
+    <tabs>Expo_Date_Controller__c</tabs>
+    <tabs>Expo_Fields_Controller__c</tabs>
+    <tabs>standard-DataCommunicationCap</tabs>
     <tabs>standard-DataObjSecondaryIndex</tabs>
-    <tabs>standard-SemanticContext</tabs>
-    <tabs>District__c</tabs>
+    <tabs>standard-DataGovernance</tabs>
+    <tabs>standard-UnstructuredData</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

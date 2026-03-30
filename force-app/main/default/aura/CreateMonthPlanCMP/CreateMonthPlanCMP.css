@@ -1,0 +1,22 @@
+.THIS .sticky-header-card .slds-card__header {
+    left: 0px; 
+    right: 0px; 
+    padding-left: 32px; 
+    padding-right: 32px; 
+    border-radius: 0px; 
+    transform: translate3d(0px, -14px, 0px);
+    position: fixed;
+    z-index: 10;
+
+    padding: var(--lwc-varSpacingVerticalMedium, 1rem) var(--lwc-varSpacingHorizontalMedium, 1rem);
+    border-bottom: var(--lwc-borderWidthThin, 1px) solid var(--slds-g-color-border-base-1, var(--lwc-pageHeaderColorBorder, rgb(201, 201, 201)));
+    border-radius: var(--lwc-pageHeaderBorderRadius, 0.25rem);
+    background: var(--slds-g-color-neutral-base-95, var(--lwc-pageHeaderColorBackground, rgb(243, 243, 243)));
+    background-clip: padding-box;
+    box-shadow: var(--lwc-pageHeaderShadow, 0 2px 2px 0 rgba(0, 0, 0, 0.10));
+    border: var(--lwc-borderWidthThin, 1px) solid var(--slds-g-color-border-base-1, var(--lwc-pageHeaderColorBorder, rgb(201, 201, 201)));
+}
+
+.THIS .sticky-header-card .slds-card__body {
+    margin-top: 10px;
+}
