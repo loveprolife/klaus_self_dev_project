@@ -35,5 +35,6 @@
     <tabs>standard-UnstructuredData</tabs>
     <tabs>standard-DataObjSecondaryIndex</tabs>
     <tabs>standard-SemanticContext</tabs>
+    <tabs>District__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Decoration Style --></label>
+    <name>DecorationStyle__c</name>
+    <picklistValues>
+        <masterLabel>Basic</masterLabel>
+        <translation><!-- Basic --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Chinese</masterLabel>
+        <translation><!-- Chinese --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>European</masterLabel>
+        <translation><!-- European --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Fine</masterLabel>
+        <translation><!-- Fine --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Luxury</masterLabel>
+        <translation><!-- Luxury --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Modern Minimalist</masterLabel>
+        <translation><!-- Modern Minimalist --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Unfinished</masterLabel>
+        <translation><!-- Unfinished --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

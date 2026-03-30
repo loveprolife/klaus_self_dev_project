@@ -11,4 +11,5 @@
     <tabs>standard-Contact</tabs>
     <tabs>standard-Opportunity</tabs>
     <tabs>standard-Order</tabs>
+    <tabs>District__c</tabs>
 </CustomApplication>

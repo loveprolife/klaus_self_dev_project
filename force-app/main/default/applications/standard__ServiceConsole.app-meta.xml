@@ -181,7 +181,11 @@
     <tabs>standard-Case</tabs>
     <tabs>standard-Opportunity</tabs>
     <tabs>standard-Lead</tabs>
+    <tabs>District__c</tabs>
     <workspaceConfig>
+        <mappings>
+            <tab>District__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-Account</tab>
         </mappings>
